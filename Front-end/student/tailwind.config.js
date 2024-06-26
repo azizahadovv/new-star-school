@@ -13,7 +13,7 @@ module.exports = {
         green: "#41C981",
         textBlack: "#1D2049",
         textWhite: "#fff",
-        gray:'#F2F2F2'
+        gray:'#e9e9e9'
       },
 
       screens: {
