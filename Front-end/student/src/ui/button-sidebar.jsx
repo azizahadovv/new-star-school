@@ -1,19 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function ButtonSidebar({ slug, name }) {
+function ButtonSidebar({ obj, name }) {
   const path = window.location.pathname
   return (
-    <div className='flex items-center justify-between'>
-      <label className='flex items-center justify-between w-full px-2 text-xl leading-10 '>
-        <Link to={slug} className={`flex items-center justify-start gap-3 no-underline text-gray hover:text-white ${path === slug ? "text-red-500" : ""}`}>
-          <i className='fa fa-user'/>
-          {name}
-        </Link>
-        <i className='fa fa-angle-left' />
-      </label>
-
-    </div>
+    <li className="nav-item dropdown">
+      <a className="nav-link dropdown-toggle d-flex justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {name}
+      </a>
+      <ul className="dropdown-menu dropdown-menu-dark">
+        <li><a className="dropdown-item" href="#">{obj.drop1}</a></li>
+        <li><a className="dropdown-item" href="#">{obj.drop2}</a></li>
+        <li>
+          <hr className="dropdown-divider" />
+        </li>
+        <li><a className="dropdown-item" href="#">{obj.drop3}</a></li>
+      </ul>
+    </li>
   )
 }
 
