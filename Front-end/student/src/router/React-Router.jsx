@@ -6,7 +6,7 @@ import { LAYOUT } from '../template';
 function ReactRouter() {
     const token = localStorage.getItem('token');
     return (
-        <div className='container'>
+        <div >
             <Routes>
                 <Route path='/' element={<LAYOUT />} >
                     <Route path='' element={<Home />} />

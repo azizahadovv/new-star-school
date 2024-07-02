@@ -1,27 +1,32 @@
 import { useDispatch } from 'react-redux';
 import { exitSidebarBtn } from '../slice/register';
-import { BUTTONSIDEBAR } from '../ui';
+import { BUTTONSIDEBAR, LANGUAGEPOTION } from '../ui';
 import { useNavigate } from 'react-router-dom';
+import { attendance, infoUser, logo, rating, savatcha } from '../icons';
 
 function Sidebar({ open }) {
   const dispatch = useDispatch()
   const navitagate = useNavigate()
   return (
-    <div>
-      <div className="offcanvas-header">
-        <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+    <div className='p-3'>
+      <div className="offcanvas-header border-b border-white ">
+        <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel"><img className='w-36' src={logo} alt="logo" /></h5>
         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div className="offcanvas-body">
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <BUTTONSIDEBAR name={"Dropdown"} obj={{ drop1: "Action", drop2: "Another action", drop3: "Something else here" }} />
-          <BUTTONSIDEBAR name={"Dropdown"} obj={{ drop1: "Action", drop2: "Another action", drop3: "Something else here" }} />
-          <BUTTONSIDEBAR name={"Dropdown"} obj={{ drop1: "Action", drop2: "Another action", drop3: "Something else here" }} />
+          <BUTTONSIDEBAR img={savatcha} boolean={true} name={"Dars jadvali"} obj={{ drop1: "Action", drop2: "Another action", drop3: "Something else here" }} />
+          <BUTTONSIDEBAR img={rating} name={"Baxolar reytingi"} obj={{ drop1: "Action", drop2: "Another action", drop3: "Something else here" }} />
+          <BUTTONSIDEBAR img={attendance} name={"Davomat"} obj={{ drop1: "Action", drop2: "Another action", drop3: "Something else here" }} />
+          <BUTTONSIDEBAR img={infoUser} name={"Shaxsiy malumotlar"} obj={{ drop1: "Action", drop2: "Another action", drop3: "Something else here" }} />
         </ul>
+        <div className='w-full minMobil:block tablet:hidden mt-5'>
+          <LANGUAGEPOTION />
+        </div>
         <button onClick={() => {
           navitagate('/register')
           dispatch(exitSidebarBtn())
-        }} className="btn btn-danger w-100 my-5 py-2 d-flex justify-content-between align-items-center" href="#" role="button">
+        }} className="btn btn-danger w-100 mt-2 py-2 d-flex justify-content-between align-items-center" href="#" role="button">
           Exit
         </button>
       </div>

@@ -11,11 +11,19 @@ module.exports = {
 
       colors: {
         green: "#41C981",
-        textBlack: "#1D2049",
-        textWhite: "#fff",
-        gray: '#e9e9e9'
+        textBlack: "#07121D",
+        white: "#fff",
+        ligthWhite:"#F4F7f9",
+        red: "#C70909",
+        moodGray: "#465566",
+        textGray: "#81909F",
+        hoverGray: "#AEB3B9",
+        brGray: "#E1EAF1",
+        lightGray: "#EEF3F7",
+        darkGray: "#34414F",
+        gray: '#ECF1F4'
       },
-      
+
 
       screens: {
         minMobil: "310px",
