@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+/* @import url('https://myfonts.ru/myfonts?fonts=gt-eesti-pro-display'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* register  page */
+
+html {
+    /* background-color: #F4F7f9; */
+    padding-top: 100px;
+}
+
+.shadowColor {
+    box-shadow: 0px 4px 40px 0px #34414F0D;
+    border-bottom: 1px solid rgb(164, 163, 163);
+}
+
+.registerShadow-top {
+    border-top: 8px solid #34414F;
+    border-right: 1px solid #E1EAF1;
+    border-left: 1px solid #E1EAF1;
+    border-bottom: 1px solid #E1EAF1;
+    box-shadow: 0px 0px 60px 0px #34414F0D;
+
+}
+
+.registerShadow-bottom {
+    border-radius: 16px;
+    border: 1px solid #E1EAF1;
+    box-shadow: 0px 0px 60px 0px #34414F0D;
+
+
+}
+
+.fontPoppins {
+    font-family: "Poppins", sans-serif
+}
+
+.fontProDisplay {
+    font-family: 'GT Eesti Pro Display', arial;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Serif", "Roboto" serif;
+}
+
+*::selection {
+    background-color: #000;
+    color: red;
+}
+
+*::-webkit-scrollbar {
+    display: block;
+    overflow-x: hidden;
+}
+
+*::-webkit-scrollbar {
+    width: 7px;
+    height: 8px;
+    background-color: #fff;
+    /* or add it to the track */
+}
+
+/* Add a thumb */
+*::-webkit-scrollbar-thumb {
+    background: #41C981;
+    border-radius: 10px;
+}
+
+li {
+    list-style: none;
+}
