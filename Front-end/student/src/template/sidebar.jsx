@@ -3,17 +3,28 @@ import { exitSidebarBtn } from '../slice/register';
 import { BUTTONSIDEBAR, LANGUAGEPOTION } from '../ui';
 import { useNavigate } from 'react-router-dom';
 import { attendance, infoUser, logo, rating, savatcha } from '../icons';
+<<<<<<< HEAD
 import { openVisible } from '../slice/sidebar';
+=======
+>>>>>>> 8c6a15fb91b24e2bbb3a12d19f05dae130261b47
 
 function Sidebar({ open }) {
   const dispatch = useDispatch()
   const navitagate = useNavigate()
+<<<<<<< HEAD
 
   return (
     <div className='p-3 d-flex flex-col gap-3'>
       <div className="offcanvas-header border-b border-white d-flex align-items-center justify-content-between py-3">
         <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel"><img className='w-36' src={logo} alt="logo" /></h5>
         <button onClick={()=>dispatch(openVisible())} className="btn-close btn-close-white"></button>
+=======
+  return (
+    <div className='p-3'>
+      <div className="offcanvas-header border-b border-white ">
+        <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel"><img className='w-36' src={logo} alt="logo" /></h5>
+        <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+>>>>>>> 8c6a15fb91b24e2bbb3a12d19f05dae130261b47
       </div>
       <div className="offcanvas-body">
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">

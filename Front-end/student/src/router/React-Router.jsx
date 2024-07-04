@@ -12,6 +12,10 @@ function ReactRouter() {
                     <Route path='' element={<Home />} />
                     <Route path='profile' element={<PROFIL />} />
                 </Route>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c6a15fb91b24e2bbb3a12d19f05dae130261b47
                 <Route path='*' element={<PageNoteFound />} />
                 <Route path='/register' element={<REGISTER />} />
             </Routes>
