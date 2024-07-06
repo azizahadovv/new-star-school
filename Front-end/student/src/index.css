@@ -11,7 +11,7 @@
 
 html {
     /* background-color: #F4F7f9; */
-    padding-top: 100px;
+    /* padding-top: 100px; */
 }
 
 .shadowColor {
@@ -49,6 +49,7 @@ html {
     padding: 0;
     box-sizing: border-box;
     font-family: "Noto Serif", "Roboto" serif;
+    text-decoration: none;
 }
 
 *::selection {

@@ -4,7 +4,7 @@ function App() {
   const navigate = useNavigate()
   const token = localStorage.getItem('token');
   return (
-    <div className='container'>
+    <div className='p-0 m-auto'>
       <ReactRouter />
     </div>
   )

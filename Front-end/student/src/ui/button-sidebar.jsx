@@ -1,22 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
-function ButtonSidebar({ img, obj, name, boolean }) {
+function ButtonSidebar({ img, img2, slug, name }) {
   const path = window.location.pathname
   return (
-    <li className="nav-item dropdown">
-      <a className="nav-link dropdown-toggle d-flex justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <div className='flex gap-2 text-[18px]'> <img src={img} width={20} alt="##" /> {name}</div>
-      </a>
-      <ul className={`${boolean === true ? "hidden" : "block"} dropdown-menu`}>
-        <li><a className="dropdown-item" href="#">{obj.drop1}</a></li>
-        <li><a className="dropdown-item" href="#">{obj.drop2}</a></li>
-        <li>
-          <hr className="dropdown-divider" />
-        </li>
-        <li><a className="dropdown-item" href="#">{obj.drop3}</a></li>
-      </ul>
-    </li>
+    <Link to={slug} className={`flex items-center justify-start gap-3 no-underline text-white leading-8  px-2 py-2  rounded-lg ${slug === path ? "bg-moodGray border border-brGray " : ""}`}>
+      <span className={`flex gap-3 text-[18px] font-semibold ${slug === path ? "text-white" : "text-iconColor"}`}> <img src={slug === path ? img : img2} width={25} height={25} alt="##" /> {name}</span>
+    </Link>
   )
 }
 

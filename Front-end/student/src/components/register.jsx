@@ -7,7 +7,7 @@ function Register() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-white -mt-[100px]">
+    <div className="w-full h-screen flex items-center justify-center bg-white">
       <div className="tablet:max-w-[550px] minMobil:w-full min-h-[420px] px-4 py-10 flex justify-center flex-col  gap-3 ">
         <div className="flex items-center justify-center w-full h-36 rounded-2xl border-t-8 border-darkGray registerShadow-top">
           <img className="w-1/3" src={IconLight} alt="" />
@@ -28,12 +28,11 @@ function Register() {
               <Link className="minMobil:text-sm tablet:text-base text-red no-underline font-semibold">Parolni unutdingizmi?</Link>
             </div>
           </div>
-          <div onClick={() => {
-            navigate('/')
-            dispatch(registerBtn())
-          }}
-            className="w-full"
-          >
+          <div className="w-full"
+            onClick={() => {
+              navigate('/')
+              dispatch(registerBtn())
+            }}>
             <BUTTON name={"Kirish"} />
           </div>
         </div>

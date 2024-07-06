@@ -1,61 +1,35 @@
-import * as React from 'react';
-import { openBar, userIcon } from '../icons';
-import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-import { ANTD, SIDEBAR } from '.';
-import { LANGUAGEPOTION } from '../ui';
+import { useDispatch, useSelector } from 'react-redux'
+import { SIDEBAR } from '.'
 import './navbar.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { openVisible } from '../slice/sidebar';
+import { openVisible } from '../slice/sidebar'
+import { openBar } from '../icons'
+import { LANGUAGEPOTION } from '../ui'
+import { MdTableRows } from "react-icons/md";
+import { NavLink } from 'react-router-dom'
+
 function Navbar() {
-  const visible = useSelector(select => select.sidebarReduser.open)
   const dispatch = useDispatch()
-
+  const toggle = useSelector(sel => sel.sidebarReduser.open)
   return (
-    <nav className="navbar navbar-dark bg-light fixed-top shadowColor h-[90px]">
-      {/* <div className="container-fluid container">
-        <div className='flex items-center justify-center gap-3'>
-          <button onClick={() => dispatch(openVisible())} className='w-10 h-10 flex items-center justify-center bg-lightGray rounded-lg border-2 border-brGray' >
-=======
-import { SIDEBAR } from '.';
-import { LANGUAGEPOTION } from '../ui';
-
-function Navbar() {
-  return (
-    <nav className="navbar navbar-dark bg-light fixed-top shadowColor h-[90px] ">
-      <div className="container-fluid container">
-        <div className='flex items-center justify-center gap-3'>
-          <button className='w-10 h-10 flex items-center justify-center bg-lightGray rounded-lg border-2 border-brGray' type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
->>>>>>> 8c6a15fb91b24e2bbb3a12d19f05dae130261b47
-            <span className=""> <img src={openBar} alt="" /></span>
-          </button>
-          <span className='font-bold text-2xl minMobil:hidden tablet:block'>Dars jadvali</span>
-        </div>
-        <div className='flex items-center justify-center gap-3'>
-          <div className='w-[100px] minMobil:hidden tablet:block'>
+    <div className='w-full shadowBG bg-white border-b border-brGray '>
+      <div className='flex container relative'>
+        <div className='w-full h-20 flex items-center justify-between'>
+          <div className={`flex items-center justify-center gap-3`}>
+            <button onClick={() => (dispatch(openVisible()))} l className='w-10 h-10 rounded-lg bg-lightGray border border-brGray flex items-center justify-center'>
+              <img className='w-5 h-5' src={openBar} alt="" />
+            </button>
+            <h2 className={`minMobil:hidden tablet:block font-semibold text-textBlack ${toggle ? "hidden" : "block"}`}>Dars jadvali</h2>
+          </div>
+          <div>
             <LANGUAGEPOTION />
           </div>
-          <Link to={'/profile'} className='flex gap-3 items-center justify-center h-full no-underline '>
-            <button className='w-10 h-10 rounded-full overflow-hidden bg-red-700'><img src={userIcon} alt="#" /></button>
-            <div className='fontProDisplay flex items-start justify-center flex-col'>
-              <span className={`text-center leading-7 font-semibold tablet:block text-textBlack capitalize text-2xl`}>Ziyodullayev.T</span>
-              <span className='font-semibold leading-4 text-textGray'>O‘quvchi</span>
-            </div>
-          </Link>
         </div>
-<<<<<<< HEAD
-        <div className={`bg-darkGray laptop:w-1/4 tablet:w-1/3 mobil:w-1/2 minMobil:w-full ${visible ? "block scale-up-hor-left my-sidebar" : "hidden"}`}>
+        <div className={`tablet:w-1/4 mobil:w-1/2 minMobil:w-full h-screen fixed left-0 ${toggle ? "scale-up-hor-left block" : "hidden scale-down-hor-left"} `}>
           <SIDEBAR />
         </div>
-      </div> */}
-      <ANTD />
-=======
-        <div className="offcanvas offcanvas-start text-bg-secondary" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-          <SIDEBAR />
-        </div>
+
       </div>
->>>>>>> 8c6a15fb91b24e2bbb3a12d19f05dae130261b47
-    </nav>
+    </div>
   )
 }
 

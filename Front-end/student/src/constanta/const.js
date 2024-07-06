@@ -1,46 +1,40 @@
 import { Link } from "react-router-dom";
-import {
-    AppstoreOutlined,
-    CalendarOutlined,
-    LinkOutlined,
-    MailOutlined,
-    SettingOutlined,
-} from '@ant-design/icons';
+import { attendance, infoUser, rating, savatcha } from "../icons";
 
 export const NavbarItems = [
     {
-        key: 'link1',
-        icon: <LinkOutlined />,
+        key: 'Dars jadvali',
+        icon: (<img src={savatcha} />),
         label: (
-            <Link to={'/profile'}>
-                Ant Design
+            <Link to={'/'} className="no-underline">
+                Dars jadvali
             </Link>
         ),
     },
     {
-        key: 'link2',
-        icon: <LinkOutlined />,
+        key: 'Baxolar reytingi',
+        icon: (<img src={rating} />),
         label: (
-            <Link to={'/profile'}>
-                Ant Design
+            <Link to={'/'} className="no-underline">
+                Baxolar reytingi
             </Link>
         ),
     },
     {
         key: 'link3',
-        icon: <LinkOutlined />,
+        icon: (<img src={attendance} />),
         label: (
-            <Link to={'/profile'}>
-                Ant Design
+            <Link to={'/'} className="no-underline">
+                Davomat
             </Link>
         ),
     },
     {
         key: 'link4',
-        icon: <LinkOutlined />,
+        icon: (<img src={infoUser} />),
         label: (
-            <Link to={'/profile'}>
-                Ant Design
+            <Link to={'/profile'} className="no-underline">
+                Shaxsiy malumotlar
             </Link>
         ),
     },
