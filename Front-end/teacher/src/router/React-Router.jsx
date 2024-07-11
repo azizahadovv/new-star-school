@@ -1,14 +1,27 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Home, PageNoteFound, REGISTER } from '../components'
+import { Home, ListOfClasses, ListOfClassesID, PROFIL, PageNoteFound, REGISTER } from '../components'
+import { LAYOUT } from '../template';
 
 function ReactRouter() {
+    const token = localStorage.getItem('token');
     return (
-        <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/register' element={<REGISTER />} />
-            <Route path='*' element={<PageNoteFound />} />
-        </Routes>
+        <div >
+            <Routes>
+                <Route path='/' element={<LAYOUT />} >
+                    <Route path='' element={<Home />} />
+                    <Route path='list-of-classes' element={<ListOfClasses />} />
+                    <Route path='list-of-classes/:id' element={<ListOfClassesID  />} />
+                    <Route path='profile' element={<PROFIL />} />
+                </Route>
+                <Route path='*' element={<PageNoteFound />} />
+                <Route path='/register' element={<REGISTER />} />
+            </Routes>
+
+            {/* </Routes> */}
+
+        </div >
+
     )
 }
 
