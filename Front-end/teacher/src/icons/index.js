@@ -19,3 +19,5 @@ export { default as EDIT } from './edit 1.svg'
 
 export { default as LISTCLASS } from './sinfJadvali.svg'
 export { default as LISTCLASSOUTLINE } from './sinf-jadvali-outline.svg'
+
+export { default as COACH } from './teacher-outline.svg'

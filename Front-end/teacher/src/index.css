@@ -5,79 +5,85 @@
 /* register  page */
 
 .shadowColor {
-    box-shadow: 0px 4px 40px 0px #34414F0D;
-    border-bottom: 1px solid rgb(164, 163, 163);
+  box-shadow: 0px 4px 40px 0px #34414f0d;
+  border-bottom: 1px solid rgb(164, 163, 163);
 }
 
 .shadow-section-top-class {
-    box-shadow: 0px 0px 40px 0px #34414F0D;
+  box-shadow: 0px 0px 40px 0px #34414f0d;
+}
+.grow-effect:hover {
+  transform: scale(1.02);
+  transition: all 1s ease;
+  -webkit-box-shadow: 1px 5px 31px 1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 1px 5px 31px 1px rgba(34, 60, 80, 0.2);
+  box-shadow: 1px 5px 31px 1px rgba(34, 60, 80, 0.2);
 }
 
 .border-card {
-    border-top: 3px solid #125DAC;
-    border-right: 1px solid #E1EAF1;
-    border-left: 1px solid #E1EAF1;
-    border-bottom: 1px solid #E1EAF1;
-    box-shadow: 0px 0px 60px 0px #34414F0D;
+  border-top: 3px solid #125dac;
+  border-right: 1px solid #e1eaf1;
+  border-left: 1px solid #e1eaf1;
+  border-bottom: 1px solid #e1eaf1;
+  box-shadow: 0px 0px 60px 0px #34414f0d;
 }
 
 .registerShadow-top {
-    border-top: 8px solid #34414F;
-    border-right: 1px solid #E1EAF1;
-    border-left: 1px solid #E1EAF1;
-    border-bottom: 1px solid #E1EAF1;
-    box-shadow: 0px 0px 60px 0px #34414F0D;
-
+  border-top: 8px solid #34414f;
+  border-right: 1px solid #e1eaf1;
+  border-left: 1px solid #e1eaf1;
+  border-bottom: 1px solid #e1eaf1;
+  box-shadow: 0px 0px 60px 0px #34414f0d;
 }
 
 .registerShadow-bottom {
-    border-radius: 16px;
-    border: 1px solid #E1EAF1;
-    box-shadow: 0px 0px 60px 0px #34414F0D;
+  border-radius: 16px;
+  border: 1px solid #e1eaf1;
+  box-shadow: 0px 0px 60px 0px #34414f0d;
 }
 
 .fontPoppins {
-    font-family: "Poppins", sans-serif
+  font-family: "Poppins", sans-serif;
 }
 
 .fontProDisplay {
-    font-family: 'GT Eesti Pro Display', arial;
+  font-family: "GT Eesti Pro Display", arial;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'GT Eesti Pro Display', arial;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "GT Eesti Pro Display", arial;
+  text-decoration: none;
 }
-html{
-    background-color: #ECf0f2;
+html {
+  background-color: #ecf0f2;
 }
 
 *::selection {
-    background-color: #000;
-    color: red;
+  background-color: #000;
+  color: red;
 }
 
 *::-webkit-scrollbar {
-    display: block;
-    overflow-x: hidden;
+  display: block;
+  overflow-x: hidden;
 }
 
 *::-webkit-scrollbar {
-    width: 7px;
-    height: 8px;
-    background-color: #fff;
-    /* or add it to the track */
+  width: 7px;
+  height: 8px;
+  background-color: #fff;
+  /* or add it to the track */
 }
 
 /* Add a thumb */
 *::-webkit-scrollbar-thumb {
-    background: #41C981;
-    border-radius: 10px;
+  background: #41c981;
+  border-radius: 10px;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
