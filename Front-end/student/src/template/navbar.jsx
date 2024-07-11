@@ -8,8 +8,8 @@ import { useState } from 'react'
 import { HomeText } from '../utils/UiFunctios'
 
 function Navbar() {
-  const [firstName, setFirstName] = useState("Ziyodullayev")
-  const [name, setName] = useState("To'lqin")
+  const [firstName, setFirstName] = useState("Usenov")
+  const [name, setName] = useState("Tohir")
   const dispatch = useDispatch()
   const toggle = useSelector(sel => sel.sidebarReduser.open)
   const myText = HomeText().props.children
@@ -37,7 +37,7 @@ function Navbar() {
                   <span className='minMobil:hidden tablet:block '>{firstName}.{name}</span>
                   <span className='minMobil:block tablet:hidden '>{firstName}.{name.slice(0, 1)}</span>
                 </span>
-                <span className='text-sm font-semibold text-textGray'>O‘quvchi</span>
+                <span className='text-sm font-semibold text-textGray'>O‘qituvchi</span>
               </div>
             </div>
           </div>

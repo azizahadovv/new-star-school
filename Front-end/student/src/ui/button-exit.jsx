@@ -14,7 +14,7 @@ function ButtonExit() {
                 navitagate('/register')
                 dispatch(exitSidebarBtn())
             }}
-            className='flex gap-2 items-center justify-center w-full bg-white border py-[10px] rounded-2xl'>
+            className='flex gap-2 items-center justify-center w-full bg-white border py-[10px] rounded-lg'>
             <img src={EXIT} alt="" />
             <span className='text-red'>Tizimdan chiqish</span>
         </button>
