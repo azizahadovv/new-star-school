@@ -6,12 +6,8 @@ export { default as logo } from './iconNSS.svg'
 export { default as infoUser } from './personal information.svg'
 export { default as infoUserOutline } from './user 1.svg'
 
-
-
-
 export { default as NOTFOUND } from './not found.png'
 export { default as openBar } from './openSidebar.svg'
-
 
 export { default as ICONIMG } from './iconImg.svg'
 export { default as EXIT } from './exit.svg'

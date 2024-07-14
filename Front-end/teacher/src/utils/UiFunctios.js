@@ -4,24 +4,9 @@ export function HomeText() {
         return (
             <span>New Star School</span>
         )
-    } else if (path === "/class-schedule") {
+    } else if (path === "/list-of-classes") {
         return (
-            <span>Dars Jadvali</span>
-        )
-    }
-    else if (path === "/grade-rating") {
-        return (
-            <span>Baxolar reytingi</span>
-        )
-    }
-    else if (path === "/atendance") {
-        return (
-            <span>Davomat</span>
-        )
-    }
-    else if (path === "/profile") {
-        return (
-            <span>Shaxsiy ma’lumotlar</span>
+            <span>Sinflar</span>
         )
     }
     else {

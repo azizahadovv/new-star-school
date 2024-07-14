@@ -45,7 +45,6 @@ function Navbar() {
         <div className={`tablet:w-1/4 mobil:w-1/2 minMobil:w-full h-screen fixed left-0 ${toggle ? "scale-up-hor-left block" : "hidden scale-down-hor-left"} `}>
           <SIDEBAR />
         </div>
-
       </div>
     </div>
   )

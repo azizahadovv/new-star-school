@@ -9,9 +9,11 @@
   border-bottom: 1px solid rgb(164, 163, 163);
 }
 
+
 .shadow-section-top-class {
   box-shadow: 0px 0px 40px 0px #34414f0d;
 }
+
 .grow-effect:hover {
   transform: scale(1.02);
   transition: all 1s ease;
@@ -22,6 +24,13 @@
 
 .border-card {
   border-top: 3px solid #125dac;
+  border-right: 1px solid #e1eaf1;
+  border-left: 1px solid #e1eaf1;
+  border-bottom: 1px solid #e1eaf1;
+  box-shadow: 0px 0px 60px 0px #34414f0d;
+}
+
+.border-btn {
   border-right: 1px solid #e1eaf1;
   border-left: 1px solid #e1eaf1;
   border-bottom: 1px solid #e1eaf1;
@@ -57,13 +66,14 @@
   font-family: "GT Eesti Pro Display", arial;
   text-decoration: none;
 }
+
 html {
   background-color: #ecf0f2;
 }
 
 *::selection {
-  background-color: #000;
-  color: red;
+  background-color: #3E4B57;
+  color: white;
 }
 
 *::-webkit-scrollbar {
@@ -72,16 +82,14 @@ html {
 }
 
 *::-webkit-scrollbar {
-  width: 7px;
-  height: 8px;
+  width: 4px;
+  height: 5px;
   background-color: #fff;
-  /* or add it to the track */
 }
 
-/* Add a thumb */
 *::-webkit-scrollbar-thumb {
-  background: #41c981;
-  border-radius: 10px;
+  background: #34414F;
+  border-radius: 15px;
 }
 
 li {
