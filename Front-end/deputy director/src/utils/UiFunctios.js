@@ -4,22 +4,31 @@ export function HomeText() {
         return (
             <span>New Star School</span>
         )
-    } else if (path === "/class-schedule") {
+    } else if (path === "/my-classes") {
+        return (
+            <span>Mening Sinflarim</span>
+        )
+    }
+    else if (path === "/class-schedule") {
         return (
             <span>Dars Jadvali</span>
         )
     }
-    else if (path === "/grade-rating") {
+    else if (path === "/list-of-classes") {
         return (
-            <span>Baxolar reytingi</span>
+            <span>Sinflar Ro'yxati</span>
         )
     }
-    else if (path === "/atendance") {
+    else if (path === "/teachers") {
         return (
-            <span>Davomat</span>
+            <span>O'qituvchilar</span>
         )
     }
-    else if (path === "/profile") {
+    else if (path === "/students") {
+        return (
+            <span>O'quvchilar</span>
+        )
+    } else if (path === "/profile") {
         return (
             <span>Shaxsiy ma’lumotlar</span>
         )

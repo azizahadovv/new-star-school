@@ -1,8 +1,10 @@
 import React from 'react'
 
-function Button({ name }) {
+function Button({ name, active = false, buttonFunction }) {
     return (
-        <div className='w-full bg-red-400w-full cursor-pointer bg-darkGray p-3 rounded-lg  text-center capitalize text-white outline-none no-underline'>{name}</div>
+        <button onClick={buttonFunction} className={`py-[10px] min-w-[100px] px-3 w-full ${active ? "bg-blue text-white" : "bg-lightGray text-textBlack"} border border-brGray rounded-xl mt-2`}>
+            {name}
+        </button>
     )
 }
 
