@@ -36,3 +36,5 @@ export { default as menuDots } from './menu-dots-vertical.svg'
 
 export { default as editBlue } from './editblue.svg'
 export { default as trash } from './trash.svg'
+
+export { default as ARRLEFT } from './arrow-narrow-left-alignment-svgrepo-com.svg'

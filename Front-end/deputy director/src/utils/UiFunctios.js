@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom"
+import { ARRLEFT } from "../icons"
+
 export function HomeText() {
+    const navigate = useNavigate()
     const path = window.location.pathname
     if (path === "/") {
         return (
@@ -35,7 +39,7 @@ export function HomeText() {
     }
     else {
         return (
-            <span></span>
+            <button onClick={() => navigate(-1)}><img src={ARRLEFT} /></button>
         )
     }
 }
