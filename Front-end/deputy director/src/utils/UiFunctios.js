@@ -6,36 +6,40 @@ export function HomeText() {
         )
     } else if (path === "/my-classes") {
         return (
-            <span>Mening Sinflarim</span>
+            <span>Mening Sinflarim </span>
         )
     }
     else if (path === "/class-schedule") {
         return (
-            <span>Dars Jadvali</span>
+            <span>Dars Jadvali </span>
         )
     }
     else if (path === "/list-of-classes") {
         return (
-            <span>Sinflar Ro'yxati</span>
+            <span>Sinflar Ro'yxati </span>
         )
     }
     else if (path === "/teachers") {
         return (
-            <span>O'qituvchilar</span>
+            <span>O'qituvchilar </span>
         )
     }
     else if (path === "/students") {
         return (
-            <span>O'quvchilar</span>
+            <span>O'quvchilar </span>
+        )
+    } else if (path === "/add-student") {   
+        return (
+            <span>O'quvchi Qo'shish </span>
         )
     } else if (path === "/profile") {
         return (
-            <span>Shaxsiy ma’lumotlar</span>
+            <span>Shaxsiy ma’lumotlar </span>
         )
     }
     else {
         return (
-            <span></span>
+            <span>New Star School</span>
         )
     }
 }
