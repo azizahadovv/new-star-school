@@ -88,7 +88,9 @@ li {
   list-style: none;
 }
 
-
+.width25{
+  min-width: 250px;
+}
 
 
 /* *****************************  addd classsssssssss ********************** */

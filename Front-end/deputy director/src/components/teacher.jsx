@@ -18,7 +18,7 @@ function Teacher() {
           <div className='tablet:w-3/12 minMobil:min-w-36'><SELECTSCINES /></div>
         </div>
         <div className='min-w-28'>
-          <BUTTON buttonFunction={() => navigate('/add-teacher')} active name={'O‘qituvchi qo‘shish'} />
+          <BUTTON buttonFunction={() => navigate('/add-user')} active name={'O‘qituvchi qo‘shish'} />
         </div>
       </div>
       <div className={`${styleTopBarUINoFlex} min-h-96 overflow-scroll p-3`}>

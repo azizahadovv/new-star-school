@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import {
   ADDSTUDENT,
+  ADDUSER,
   CLASSSCHEDULES,
   CLASSSCHEDULESID,
   Home,
@@ -32,7 +33,7 @@ function ReactRouter() {
           <Route path="teachers" element={<TEACHER />} />
           <Route path="students" element={<CLASSSCHEDULESID />} />
           <Route path="profile" element={<PROFIL />} />\
-          <Route path="add-student" element={<ADDSTUDENT />} />
+          <Route path="add-user" element={<ADDUSER />} />
         </Route>
         <Route path="*" element={<PageNoteFound />} />
         <Route path="/register" element={<REGISTER />} />
