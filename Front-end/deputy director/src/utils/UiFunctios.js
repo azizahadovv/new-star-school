@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom"
+import { ARRLEFT } from "../icons"
+
 export function HomeText() {
+    const navigate = useNavigate()
     const path = window.location.pathname
     if (path === "/") {
         return (
