@@ -1,14 +1,11 @@
-import React from 'react'
 import ReactRouter from './router/React-Router'
-import 'font-awesome/css/font-awesome.min.css';
-import Navbar from './template/navbar';
+import { useNavigate } from 'react-router-dom';
 function App() {
+  const navigate = useNavigate()
+  const token = localStorage.getItem('token');
   return (
-    <div className=' w-full h-full bg-[#e9e9e9]'>
-      <Navbar />
+    <div className='p-0 m-auto'>
       <ReactRouter />
-      <div className='w-full h-20'>
-        </div>   
     </div>
   )
 }

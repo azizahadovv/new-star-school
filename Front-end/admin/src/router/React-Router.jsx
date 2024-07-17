@@ -1,15 +1,47 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import { Home, PageNoteFound, REGISTER } from '../components'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import {
+  ADDSTUDENT,
+  ADDUSER,
+  CLASSSCHEDULES,
+  CLASSSCHEDULESID,
+  Home,
+  ListOfClasses,
+  ListOfClassesID,
+  MYCLASSES,
+  MYCLASSESID,
+  PROFIL,
+  PageNoteFound,
+  REGISTER,
+  TEACHER,
+} from "../components";
+import { LAYOUT } from "../template";
 
 function ReactRouter() {
-    return (
-        <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/register' element={<REGISTER />} />
-            <Route path='*' element={<PageNoteFound />} />
-        </Routes>
-    )
+  const token = localStorage.getItem("token");
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<LAYOUT />}>
+          <Route path="" element={<Home />} />
+          <Route path="my-classes" element={<MYCLASSES />} />
+          <Route path="my-classes/:id" element={<MYCLASSESID />} />
+          <Route path="list-of-classes" element={<ListOfClasses />} />
+          <Route path="list-of-classes/:id" element={<ListOfClassesID />} />
+          <Route path="class-schedule" element={<CLASSSCHEDULES />} />
+          <Route path="class-schedule/:id" element={<CLASSSCHEDULESID />} />
+          <Route path="teachers" element={<TEACHER />} />
+          <Route path="students" element={<CLASSSCHEDULESID />} />
+          <Route path="profile" element={<PROFIL />} />\
+          <Route path="add-user" element={<ADDUSER />} />
+        </Route>
+        <Route path="*" element={<PageNoteFound />} />
+        <Route path="/register" element={<REGISTER />} />
+      </Routes>
+
+      {/* </Routes> */}
+    </div>
+  );
 }
 
-export default ReactRouter
+export default ReactRouter;
