@@ -14,12 +14,33 @@ function Sidebar() {
       </div>
       <div className="flex justify-center flex-col items-stretch">
         <div className="flex flex-col justify-center items-stretch gap-3">
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/my-classes'} img={myclass} img2={myclassoutline} name={"Dars jadvali"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/class-schedule'} img={DARSJADVALI} img2={DARSJADVALIOUTLINE} name={"Sinflar ro'yhati"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/list-of-classes'} img={LISTCLASS} img2={LISTCLASSOUTLINE} name={"O‘qituvchilar"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/teachers'} img={TEACHER} img2={TEACHEROUTLIN} name={"O‘quvchilar"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/students'} img={SUBJECT} img2={SUBJECTOUTLINE} name={"Fanlar"} />
+          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/class-schedule'} img={DARSJADVALI} img2={DARSJADVALIOUTLINE} name={"Dars jadvali"} />
+          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/list-of-classes'} img={LISTCLASS} img2={LISTCLASSOUTLINE} name={"Sinflar ro'yhati"} />
+          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/teachers'} img={TEACHER} img2={TEACHEROUTLIN} name={"O‘qituvchilar"} />
+          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/students'} img={STUDENT} img2={STUDENTOUTLINE} name={"O‘quvchilar"} />
+          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/my-classes'} img={SUBJECT} img2={SUBJECTOUTLINE} name={"Fanlar"} />
           <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/profile'} img={infoUser} img2={infoUserOutline} name={"Shaxsiy ma’lumotlar"} />
+       
+       
+       {/* 
+       
+       
+       myclass
+       
+       
+       
+       
+       
+       */}
+       
+       
+       
+       
+       
+       
+       
+       
+       
         </div>
         <div className='w-full minMobil:block tablet:hidden mt-5'>
           <LANGUAGEPOTION />

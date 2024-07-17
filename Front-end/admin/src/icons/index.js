@@ -18,6 +18,9 @@ export { default as myclass } from './my-classes.svg'
 export { default as NOTFOUND } from './not found.png'
 export { default as openBar } from './openSidebar.svg'
 
+export { default as STUDENT } from './student.svg'
+export { default as STUDENTOUTLINE } from './student-outline.svg'
+
 export { default as ICONIMG } from './iconImg.svg'
 export { default as EXIT } from './exit.svg'
 export { default as EDIT } from './edit 1.svg'
@@ -40,3 +43,5 @@ export { default as arrowRight } from './arrow.svg'
 
 export { default as SUBJECTOUTLINE } from './subject-outline.svg'
 export { default as SUBJECT } from './subject.svg'
+
+export { default as GreenIconStudent } from './studGreen.svg'

@@ -14,7 +14,7 @@ function MyClassesId() {
                 <BUTTON name={'Baholash'} active={true} />
             </div>
             <div className={`${styleTopBarUINoFlex} min-h-96 p-3`}>
-                <CLASSSCHEDULETABLE />
+                
             </div>
         </div>
     )

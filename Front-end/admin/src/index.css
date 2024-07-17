@@ -92,7 +92,22 @@ li {
   min-width: 250px;
 }
 
+.border-t-4-color{
+  border-top: 4px solid #125dac;
+  border-left: 2px solid #E1EAF1;
+  border-right: 2px solid #E1EAF1;
+  border-bottom: 2px solid #E1EAF1;
+}
 
+.br-color{
+  border: 2px solid #E1EAF1;
+
+}
+.rotate-90-a{
+  transform: rotate(-90deg);
+  padding: 10px;
+  font-size: 10px;
+}
 /* *****************************  addd classsssssssss ********************** */
 
 
