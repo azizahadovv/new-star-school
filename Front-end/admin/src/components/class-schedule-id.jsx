@@ -23,8 +23,16 @@ function ClassScheduleID() {
       </div>
 
       <div
-        className={`${styleTopBarUINoFlex} min-h-96 flex items-center justify-center overflow-scroll`}>
-          <CREATESCHEDULECLASSES/>
+        className={`${styleTopBarUINoFlex} min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}>
+          <CREATESCHEDULECLASSES />
+          <CREATESCHEDULECLASSES weekday="Seshanba" active/>
+          <CREATESCHEDULECLASSES weekday="Seshanba" active/>
+          <CREATESCHEDULECLASSES weekday="Seshanba" active/>
+          <CREATESCHEDULECLASSES weekday="Seshanba" active/>
+          <CREATESCHEDULECLASSES weekday="Seshanba" active/>
+
+
+
         </div>
     </div>
   );

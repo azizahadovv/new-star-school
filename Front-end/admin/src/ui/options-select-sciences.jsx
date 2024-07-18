@@ -2,7 +2,7 @@ function OptionsSelect() {
     return (
         <select className="form-select" aria-label="Disabled select example">
             <option hidden selected>Fanni tanlang</option>
-            <option value="all">Hammasi</option>
+            <option defaultValue="all">Hammasi</option>
             <option value="1">Chet tili</option>
             <option value="2">Ona tili</option>
             <option value="3">Algebra</option>

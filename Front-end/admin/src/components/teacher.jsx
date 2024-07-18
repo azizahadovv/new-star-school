@@ -9,6 +9,8 @@ import { showActiveModal } from '../slice/addclass'
 function Teacher() {
   const navigate = useNavigate()
   const visible = useSelector(sel => sel.addclass.activeModal)
+  const open = useSelector(sel => sel.sidebarReduser.open)
+
   const dispatch = useDispatch()
   return (
     <div className={`${Container}`}>
@@ -22,7 +24,7 @@ function Teacher() {
         </div>
       </div>
       <div className={`${styleTopBarUINoFlex} min-h-96 overflow-scroll p-3`}>
-        <table class="table table-hover">
+        <table className={`table table-hover ${open ? 'hidden' : 'flex'}`}>
           <thead>
             <tr>
               <th>№</th>

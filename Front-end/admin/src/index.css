@@ -108,8 +108,11 @@ li {
   padding: 10px;
   font-size: 10px;
 }
-/* *****************************  addd classsssssssss ********************** */
+.bg-border-color{
+  border: 1px dashed #B1CADC
+}
 
+/* *****************************  addd classsssssssss ********************** */
 
 .slide-top {
 	-webkit-animation: slide-top .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

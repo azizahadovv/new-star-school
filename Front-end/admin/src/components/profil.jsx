@@ -1,10 +1,12 @@
+import { useSelector } from "react-redux"
 import { Container, styleTopBarUINoFlex } from "../constanta/style"
 import { EDIT, ICONIMG, userIcon } from "../icons"
 import { BUTTONEXIT } from "../ui"
 
 function Profil() {
+    const open = useSelector(sel => sel.sidebarReduser.open)
     return (
-        <div className={`${Container} flex items-start justify-center tablet:flex-row minMobil:flex-col`}>
+        <div className={`${Container} flex items-start justify-center tablet:flex-row minMobil:flex-col ${open ? 'hidden' : 'flex'}`}>
             <div className={`minMobil:w-full flex items-center justify-start flex-col gap-1 tablet:w-[310px] px-2 `}>
                 <div className={`${styleTopBarUINoFlex} flex items-center flex-col justify-start gap-3 px-3 py-4`}>
                     <img className="rounded-lg" width={220} height={220} src={userIcon} alt="" />

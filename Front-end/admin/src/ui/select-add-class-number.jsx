@@ -4,7 +4,7 @@ function SelectClassNumber() {
     return (
         <select className="form-select w-50" aria-label="Default select example">
             <option selected hidden>Sinf tanlang</option>
-            <option value="1">1-sinf</option>
+            <option defaultValue="1">1-sinf</option>
             <option value="2">2-sinf</option>
             <option value="3">3-sinf</option>
             <option value="4">4-sinf</option>

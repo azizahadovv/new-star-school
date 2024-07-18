@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 function ListOfClassesID() {
   const navigate = useNavigate()
   const visible = useSelector(sel => sel.addclass.activeModal)
+  const open = useSelector(sel => sel.sidebarReduser.open)
+
   const dispatch = useDispatch()
   return (
     <div className={`${Container}`}>
@@ -26,7 +28,7 @@ function ListOfClassesID() {
         </div>
       </div>
 
-      <div className={`${styleTopBarUINoFlex} min-h-96 overflow-scroll p-3`}>
+      <div className={`${styleTopBarUINoFlex} ${open ? 'hidden' : 'block'} min-h-96 overflow-scroll p-3`}>
         <table class="table table-hover">
           <thead>
             <tr>

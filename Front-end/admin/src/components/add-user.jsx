@@ -7,13 +7,16 @@ import {
 import { Autocomplete, TextField } from "@mui/material";
 import { BUTTON } from "../ui";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function AddUser() {
   const navigate=useNavigate()
+  const open = useSelector(sel => sel.sidebarReduser.open)
+
   return (
     <div className={`${Container}`}>
       <div
-        className={`${styleTopBarUINoFlex} min-h-96 overflow-scroll p-3 flex items-start content-start justify-start flex-wrap gap-5`}
+        className={`${styleTopBarUINoFlex} ${open ? 'hidden' : 'flex'} min-h-96 overflow-scroll p-3 items-start content-start justify-start flex-wrap gap-5`}
       >
         <TextField
           required
