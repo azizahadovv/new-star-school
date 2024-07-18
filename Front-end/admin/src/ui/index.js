@@ -12,3 +12,6 @@ export { default as SELECTCLASSGROUP } from './select-add-class-group'
 export { default as ACTIVECLASSES } from './active-classes'
 export { default as SELECTSCINES } from './select-science'
 export { default as CREATESCHEDULECLASSES} from './create-schedule-classes'
+// ****************************************************************
+export { default as LOADER } from './loader'
+// ****************************************************************

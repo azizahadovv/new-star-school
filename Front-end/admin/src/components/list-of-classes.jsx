@@ -3,6 +3,7 @@ import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import {
   ACTIVECLASSES,
   BUTTON,
+  LOADER,
   SEARCH,
   SELECTCLASSGROUP,
   SELECTCLASSNUMBER,
@@ -18,14 +19,18 @@ function ListOfClasses() {
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [classesNumber, setClassesNumber] = useState("");
   const [classesGroup, setClassesGroup] = useState("");
-
   const visible = useSelector((sel) => sel.addclass.visible);
   const getclassData = useSelector((sel) => sel.addclass.class);
-  const postClassdata = useSelector((sel) => sel.addclass.classesData);
 
   useEffect(() => {
     getClasses();
   }, []);
+
+  const obj = {
+    name: `${classesNumber + " " + classesGroup}-sinf`,
+    grade: classesNumber,
+    groupLetter: classesGroup
+  }
 
   const getClasses = async () => {
     try {
@@ -35,17 +40,20 @@ function ListOfClasses() {
       console.log(error);
     }
   };
-console.log(postClassdata);
+
   const postClasses = async () => {
     try {
-      const datta = await functionsClasses.classPostData(postClassdata)
-      toast.success("Class yaratildi");
+      await functionsClasses.classPostData(obj)
+      dispatch(postClass(obj));
+      setClassesGroup("")
+      setClassesNumber("")
       getClasses()
+      toast.success("sinf yaratildi");
     } catch (error) {
-      toast.error("Bunday sinf mavjud",error);
+      toast.error("Bunday sinf mavjud", error);
     }
   };
-
+  console.log(getclassData);
   return (
     <div className={`${Container} py-2 overflow-scroll`}>
       <div
@@ -63,11 +71,10 @@ console.log(postClassdata);
         </div>
       </div>
       <div
-        className={`${
-          open ? "hidden" : "flex"
-        } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
+        className={`${open ? "hidden" : "flex"
+          } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
       >
-        {getclassData.map((res, id) => {
+        {!getclassData ? <LOADER /> : getclassData.map((res, id) => {
           return (
             <ACTIVECLASSES
               key={res.id}
@@ -97,12 +104,8 @@ console.log(postClassdata);
               name={"Saqlash"}
               active
               buttonFunction={() => {
-                dispatch(
-                  postClass({name:`${classesNumber+" "+classesGroup}-sinf`, grade: classesNumber, groupLetter: classesGroup })
-                );
+                postClasses()
                 dispatch(showModal());
-                postClasses("")
-                // toast.success("Sinf yaratildi!");
               }}
             />
           </div>

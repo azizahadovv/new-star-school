@@ -30,9 +30,6 @@ function ClassScheduleID() {
           <CREATESCHEDULECLASSES weekday="Seshanba" active/>
           <CREATESCHEDULECLASSES weekday="Seshanba" active/>
           <CREATESCHEDULECLASSES weekday="Seshanba" active/>
-
-
-
         </div>
     </div>
   );

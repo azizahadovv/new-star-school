@@ -13,6 +13,9 @@ export const itemsCenter = "d-flex align-items-center";
 export const activeEdit =
   "absolute min-w-32 min-h-16 border border-brGray rounded-lg p-2 slide-top bg-ligthWhite flex-col items-start justify-center gap-1";
 
+  export const flex =
+  "flex items-start justify-start flex-wrap gap-5";
+
 export const INPUT_CLASSES = {
   background: "#EEF3F7",
   borderRadius: "10px",
@@ -20,3 +23,5 @@ export const INPUT_CLASSES = {
   color: "#81909F",
   width: "350px"
 };
+
+
