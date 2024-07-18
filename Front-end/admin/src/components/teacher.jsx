@@ -4,7 +4,7 @@ import { BUTTON, SEARCH, SELECTSCINES } from '../ui'
 import { Link, useNavigate } from 'react-router-dom'
 import { arrowRight, editBlue, menuDots, trash } from '../icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { showActiveModal } from '../slice/addclass'
+import { showActiveModal } from '../slice/class'
 
 function Teacher() {
   const navigate = useNavigate()

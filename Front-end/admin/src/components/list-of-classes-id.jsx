@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { activeEdit, Container, styleTopBarUINoFlex } from "../constanta/style";
 import { BUTTON, SEARCH } from "../ui";
 import { arrowRight, editBlue, menuDots, trash } from "../icons";
-import { showActiveModal } from "../slice/addclass";
+import { showActiveModal } from "../slice/class";
 import { useDispatch, useSelector } from "react-redux";
 
 function ListOfClassesID() {

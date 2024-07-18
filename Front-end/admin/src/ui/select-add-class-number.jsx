@@ -1,10 +1,10 @@
 import React from 'react'
 
-function SelectClassNumber() {
+function SelectClassNumber({setClassesNumber}) {
     return (
-        <select className="form-select w-50" aria-label="Default select example">
+        <select onChange={(e)=>setClassesNumber(e.target.value)} className="form-select w-50" aria-label="Default select example">
             <option selected hidden>Sinf tanlang</option>
-            <option defaultValue="1">1-sinf</option>
+            <option value="1">1-sinf</option>
             <option value="2">2-sinf</option>
             <option value="3">3-sinf</option>
             <option value="4">4-sinf</option>

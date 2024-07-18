@@ -1,5 +1,1 @@
-import axios from "axios";
-
-axios.defaults.baseURL = ''
-
-export default axios;
+export const baseURL='http://31.128.44.234:8000/api'
