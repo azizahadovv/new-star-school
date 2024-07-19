@@ -7,6 +7,6 @@ export const store = configureStore({
         register: RegisterReduser,
         sidebarReduser,
         addclass
-
-    }
+    },
+    devTools:process.env.NODE_ENV !== 'production',
 })

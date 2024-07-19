@@ -45,3 +45,6 @@ export { default as SUBJECTOUTLINE } from './subject-outline.svg'
 export { default as SUBJECT } from './subject.svg'
 
 export { default as GreenIconStudent } from './studGreen.svg'
+
+export { default as img } from './img.svg'
+export { default as file } from './file-file-type.svg'

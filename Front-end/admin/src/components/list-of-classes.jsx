@@ -29,31 +29,44 @@ function ListOfClasses() {
   const obj = {
     name: `${classesNumber + " " + classesGroup}-sinf`,
     grade: classesNumber,
-    groupLetter: classesGroup
-  }
-
+    groupLetter: classesGroup,
+  };
   const getClasses = async () => {
     try {
-      const classesData = await functionsClasses.getClasses()
+      const classesData = await functionsClasses.getClasses();
       dispatch(setClasses(classesData));
     } catch (error) {
       console.log(error);
     }
   };
+  const removeItem = async (id) => {
+    let question = prompt(
+      "sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering barcha ma'lumotlar o'chirib yuboriladi!"
+    );
+    try {
+      if (question === "YES") {
+        await functionsClasses.removeClass(id);
+        toast.success("sinf o'chirildi");
+      } else toast.error("malumotlar o'chirilmadi qayta urinib ko'ring");
+      getClasses();
+    } catch (error) {}
+  };
 
   const postClasses = async () => {
     try {
-      await functionsClasses.classPostData(obj)
-      dispatch(postClass(obj));
-      setClassesGroup("")
-      setClassesNumber("")
-      getClasses()
-      toast.success("sinf yaratildi");
+      if (obj.grade != "" && obj.groupLetter != "") {
+        await functionsClasses.classPostData(obj);
+        dispatch(postClass(obj));
+        setClassesGroup("");
+        setClassesNumber("");
+        getClasses();
+        toast.success("sinf yaratildi");
+      } else toast.info("Iltimos barcha qatorlarni to'ldiring");
     } catch (error) {
+      console.log(error);
       toast.error("Bunday sinf mavjud", error);
     }
   };
-  console.log(getclassData);
   return (
     <div className={`${Container} py-2 overflow-scroll`}>
       <div
@@ -71,20 +84,27 @@ function ListOfClasses() {
         </div>
       </div>
       <div
-        className={`${open ? "hidden" : "flex"
-          } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
+        className={`${
+          open ? "hidden" : "flex"
+        } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
       >
-        {!getclassData ? <LOADER /> : getclassData.map((res, id) => {
-          return (
-            <ACTIVECLASSES
-              key={res.id}
-              size={res.size}
-              nameOfClass={res.name}
-              id={id + 1}
-              slug={res.id}
-            />
-          );
-        })}
+        {!getclassData ? (
+          <LOADER />
+        ) : (
+          getclassData.map((res, id) => {
+            return (
+              <ACTIVECLASSES
+                removeItem={removeItem}
+                key={id}
+                size={res.size}
+                nameOfClass={res.name}
+                id={res.id}
+                slug={res.id}
+                active={res.active}
+              />
+            );
+          })
+        )}
       </div>
       <Rodal
         height={200}
@@ -104,7 +124,7 @@ function ListOfClasses() {
               name={"Saqlash"}
               active
               buttonFunction={() => {
-                postClasses()
+                postClasses();
                 dispatch(showModal());
               }}
             />
