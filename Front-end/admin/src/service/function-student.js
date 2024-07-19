@@ -2,9 +2,9 @@ import axios from "axios";
 import { baseURL } from "./api";
 
 const studentFunction={
-    async studentPostData(classId,dataPost){
-        const {data} = await axios.post(`${baseURL}/classes/${classId}/students`, dataPost);
-        return data;
+    async studentPostData(classId,data){
+       const {datas}= await axios.post(`${baseURL}/classes/${classId}/students`,data);
+        return datas
     },
     async getStudent(){
         const {data} = await axios.get(`${baseURL}/students`);

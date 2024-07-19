@@ -7,7 +7,7 @@ export function setLocalData(key,data){
 }
 export function getLocalData(data){
     try {
-       localStorage.setItem(data)
+       return localStorage.setItem(data)
     } catch (error) {
         console.log(error+"\n Error Localstoreg setData");
     }

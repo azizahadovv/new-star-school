@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { file, img } from "../icons";
 import { getLocalData } from "../service/local-data";
+import studentFunction from "../service/function-student";
+import { ToastContainer, toast } from "react-toastify";
 
 function AddUser() {
   const navigate = useNavigate();
@@ -46,6 +48,23 @@ function AddUser() {
     password &&
     parentPhoneNumber &&
     image;
+  const obJData = {
+    firstName: firstName,
+    lastName: lastName,
+    patronymic: patronymic,
+    birthDate: birthDate,
+    gender: gender,
+    nationality: nationality,
+    country: country,
+    region: district,
+    district: district,
+    address: address,
+    phoneNumber: phoneNumber,
+    login: login,
+    password: password,
+    parentPhoneNumber: parentPhoneNumber,
+    image: image,
+  }
   function getImgBase64(e) {
     const reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
@@ -58,21 +77,47 @@ function AddUser() {
     };
   }
 
-  const AddStudent = async (id) => {
+  const AddStudent = async () => {
+    const id = localStorage.getItem('id')
+    console.log(id);
     try {
-      navigate(-1);
+      if (check) {
+        await studentFunction.studentPostData(id, obJData)
+        toast.success("Student Success")
+      } else {
+        console.log("error")
+      }
     } catch (error) {
       console.log(error);
+      toast.error("Error")
     }
   };
   return (
     <div className={`${Container}`}>
       <div
-        className={`${styleTopBarUINoFlex} ${
-          open ? "hidden" : "flex"
-        } min-h-96 overflow-scroll p-3 content-start ${flex}`}
+        className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
+          } min-h-96 overflow-scroll p-3 content-start ${flex}`}
       >
+        <div  className="flex flex-col items-center justify-between bg-border-color border-2 w-56 h-60 bg-lightGray">
+          <a title="O'quvchilarni excel file orqali yuklash uchun namuna"
+            href="../src/icons/arrow.svg"
+            download="google.svg"
+            className="h-25 flex items-center text-sm border-b "
+          >
+            Namuna Shablon yuklab olish
+          </a>
+          <label title="O'quvchilarni excel file orqali qo'shish" className="w-full h-75 p-3 cursor-pointer">
+            <div className="flex flex-col gap-2 items-center justify-center">
+              <img src={file} width={35} alt="img" />
+              <span className="text-sm capitalize text-textGray font-normal leading-5">
+                Fayl yuklang
+              </span>
+            </div>
+            <input hidden type="file" />
+          </label>
+        </div>
         <div className={`${flex}`}>
+
           <TextField
             value={firstName}
             onChange={(e) => setfirstName(e.target.value)}
@@ -219,29 +264,13 @@ function AddUser() {
             </div>
             <input onChange={(e) => getImgBase64(e)} hidden type="file" />
           </label>
-          <div className="flex flex-col items-center justify-between bg-border-color border-2 w-56 h-60 bg-lightGray">
-            <a
-              href="../src/icons/arrow.svg"
-              download="google.svg"
-              className="h-25 flex items-center text-sm border-b "
-            >
-              Namuna Shablon yuklab olish
-            </a>
-            <label className="w-full h-75 p-3 cursor-pointer">
-              <div className="flex flex-col gap-2 items-center justify-center">
-                <img src={file} width={35} alt="img" />
-                <span className="text-sm capitalize text-textGray font-normal leading-5">
-                  Fayl yuklang
-                </span>
-              </div>
-              <input hidden type="file" />
-            </label>
-          </div>
+
         </div>
         <div>
           <BUTTON buttonFunction={AddStudent} active name={"Saqlash"} />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
