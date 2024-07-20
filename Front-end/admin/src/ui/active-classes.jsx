@@ -8,7 +8,7 @@ function ActiveClasses({ nameOfClass, size, slug, id, removeItem }) {
       <div className="flex justify-between w-full">
         <Link
           to={slug.toString()}
-          onClick={() => setLocalData("id", id)}
+          onClick={() => setLocalData("ClassId", id)}
           className="uppercase no-underline w-full flex justify-between items-start px-1 text-blue"
         >
           {nameOfClass}

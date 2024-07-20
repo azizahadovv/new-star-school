@@ -5,6 +5,7 @@ import {
   CLASSSCHEDULES,
   CLASSSCHEDULESID,
   Home,
+  LISTOFSUBJECTS,
   ListOfClasses,
   ListOfClassesID,
   MYCLASSES,
@@ -24,8 +25,8 @@ function ReactRouter() {
       <Routes>
         <Route path="/" element={<LAYOUT />}>
           <Route path="" element={<Home />} />
-          <Route path="my-classes" element={<MYCLASSES />} />
-          <Route path="my-classes/:id" element={<MYCLASSESID />} />
+          <Route path="list-of-subjects" element={<LISTOFSUBJECTS />} />
+          <Route path="list-of-subjects/:id" element={<LISTOFSUBJECTS />} />
           <Route path="list-of-classes" element={<ListOfClasses />} />
           <Route path="list-of-classes/:id" element={<ListOfClassesID />} />
           <Route path="class-schedule" element={<CLASSSCHEDULES />} />

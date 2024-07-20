@@ -8,9 +8,9 @@ export function HomeText() {
         return (
             <span>New Star School</span>
         )
-    } else if (path === "/my-classes") {
+    } else if (path === "/list-of-subjects") {
         return (
-            <span>Mening Sinflarim </span>
+            <span>Fanlar  </span>
         )
     }
     else if (path === "/class-schedule") {

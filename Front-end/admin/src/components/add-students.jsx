@@ -64,49 +64,68 @@ function AddUser() {
     password: password,
     parentPhoneNumber: parentPhoneNumber,
     image: image,
-  }
+  };
   function getImgBase64(e) {
     const reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = () => {
       setImage(reader.result);
-      console.log("Image Success uploaded");
     };
     reader.onerror = (error) => {
-      console.error("Image Error", error);
+      toast.error("Image Error", error);
     };
   }
 
   const AddStudent = async () => {
-    const id = localStorage.getItem('id')
-    console.log(id);
+    const id = localStorage.getItem("ClassId");
     try {
       if (check) {
-        await studentFunction.studentPostData(id, obJData)
-        toast.success("Student Success")
+        await studentFunction.studentPostData(id, obJData);
+        toast.success("student successfully joined");
+        navigate(-1);
+        setfirstName("");
+        setLastName("");
+        setPatronymic("");
+        setBirthDate("");
+        setGender("");
+        setNationality("");
+        setCountry("");
+        setRegion("");
+        setDistrict("");
+        setAddress("");
+        setPhoneNumber("");
+        setLogin("");
+        setPassword("");
+        setParentPhoneNumber("");
+        setImage("");
       } else {
-        console.log("error")
+        console.log("error added student");
       }
     } catch (error) {
       console.log(error);
-      toast.error("Error")
+      toast.error("Error");
     }
   };
   return (
     <div className={`${Container}`}>
       <div
-        className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
-          } min-h-96 overflow-scroll p-3 content-start ${flex}`}
+        className={`${styleTopBarUINoFlex} ${
+          open ? "hidden" : "flex"
+        } min-h-96 overflow-scroll p-3 content-start ${flex}`}
       >
-        <div  className="flex flex-col items-center justify-between bg-border-color border-2 w-56 h-60 bg-lightGray">
-          <a title="O'quvchilarni excel file orqali yuklash uchun namuna"
+        <div className="flex flex-col items-center justify-between bg-border-color border-2 w-56 h-60 bg-lightGray">
+          <a
+            title="O'quvchilarni excel file orqali yuklash uchun namuna"
             href="../src/icons/arrow.svg"
             download="google.svg"
             className="h-25 flex items-center text-sm border-b "
           >
             Namuna Shablon yuklab olish
           </a>
-          <label title="O'quvchilarni excel file orqali qo'shish" className="w-full h-75 p-3 cursor-pointer">
+          <label
+            title="O'quvchilarni excel file orqali qo'shish"
+            className="w-full h-75 p-3 cursor-pointer"
+          >
             <div className="flex flex-col gap-2 items-center justify-center">
               <img src={file} width={35} alt="img" />
               <span className="text-sm capitalize text-textGray font-normal leading-5">
@@ -117,7 +136,6 @@ function AddUser() {
           </label>
         </div>
         <div className={`${flex}`}>
-
           <TextField
             value={firstName}
             onChange={(e) => setfirstName(e.target.value)}
@@ -264,7 +282,6 @@ function AddUser() {
             </div>
             <input onChange={(e) => getImgBase64(e)} hidden type="file" />
           </label>
-
         </div>
         <div>
           <BUTTON buttonFunction={AddStudent} active name={"Saqlash"} />
