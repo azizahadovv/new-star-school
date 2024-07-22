@@ -41,6 +41,11 @@ export function HomeText() {
             <span>Shaxsiy ma’lumotlar </span>
         )
     }
+    else if (path === "/add-teachers") {
+        return (
+            <span>O'qituvchi qo'shish </span>
+        )
+    }
     else {
         return (
             <span>New Star School</span>

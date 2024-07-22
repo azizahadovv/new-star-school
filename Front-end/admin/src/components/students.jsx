@@ -5,6 +5,7 @@ import { arrowRight, editBlue, menuDots, trash } from "../icons";
 import { useSelector } from "react-redux";
 import { SEARCH, SELECTCLASSNUMBER } from "../ui";
 import student_Page_Function from "../service/student";
+import { ToastContainer, toast } from "react-toastify";
 
 function Students() {
   const open = useSelector((sel) => sel.sidebarReduser.open);
@@ -14,16 +15,33 @@ function Students() {
   useEffect(() => {
     getStudents()
   }, [])
-
+  console.log(classesNumber);
   const getStudents = async () => {
     try {
       const students = await student_Page_Function.get_All_Student()
       setStudents(students)
-      console.log(students);
     } catch (error) {
 
     }
   }
+
+  const removeStudent = async (id, name) => {
+    const verification = window.confirm(`Are you sure you want to delete ${name}?`);
+    try {
+      if (verification) {
+        await student_Page_Function.remove_Student(id)
+        toast.success(`${name} has been deleted`)
+        getStudents()
+      } else {
+        toast.info("O'chirish uchun xabar berilmadi")
+      }
+    } catch (error) {
+      toast.error(error)
+    }
+  }
+
+
+
 
   return (
     <div className={`${Container}`}>
@@ -57,7 +75,7 @@ function Students() {
                   <th scope="row">{item.id}</th>
                   <td className="relative">
                     <p className="min-w-max h-full">
-                      {item.lastName + ' ' + item.firstName+ ' ' + item.patronymic}
+                      {item.lastName + ' ' + item.firstName + ' ' + item.patronymic}
                     </p>
                   </td>
                   <td>
@@ -96,7 +114,7 @@ function Students() {
                             <img src={editBlue} width={18} alt="editBlue" />
                             Tahrirlash
                           </button>
-                          <button className="dropdown-item d-flex align-items-center gap-2">
+                          <button onClick={() => removeStudent(item.id, item.lastName + ' ' + item.firstName + ' ' + item.patronymic)} className="dropdown-item d-flex align-items-center gap-2">
                             <img src={trash} width={20} alt="trash" />
                             O‘chirish
                           </button>
@@ -110,6 +128,7 @@ function Students() {
           </tbody>
         </table>
       </div>
+      <ToastContainer />
     </div>
   );
 }

@@ -139,17 +139,12 @@ li {
             transform: translateY(-20px);
   }
 }
-
-
-
-
-
-
-
+.hoverClass:hover{
+  background-color: #41c981;
+  transition: all .7s;
+  color: #fff;
+}
 /* ***************************************** loader ****************************************************** */
-
-
-
 .dots-container {
   display: flex;
   align-items: center;
