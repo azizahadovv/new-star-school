@@ -4,7 +4,7 @@ import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import { BUTTON, SEARCH } from "../ui";
 import { arrowRight, editBlue, menuDots, trash } from "../icons";
 import { useSelector } from "react-redux";
-import studentFunction from "../service/function-student";
+import studentFunction from "../service/function-class-student";
 import { toast, ToastContainer } from "react-toastify";
 
 function ListOfClassesID() {
