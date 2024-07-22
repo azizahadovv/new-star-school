@@ -26,6 +26,14 @@ const studentFunction = {
     const { data } = await axios.delete(`${baseURL}/students/${id}`);
     return data;
   },
+  async removeStudentInClass(studentId, classId) {
+    try {
+      await axios.delete(`${baseURL}/classes/${classId}/students/${studentId}`);
+      return "Students removed successfully";
+    } catch (error) {
+      console.log("Error axios url \n" + error);
+    }
+  },
 };
 
 export default studentFunction;

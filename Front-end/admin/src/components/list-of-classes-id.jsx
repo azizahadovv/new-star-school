@@ -25,6 +25,23 @@ function ListOfClassesID() {
     }
   };
 
+  const deleteStudentInClass = async (id, name) => {
+    const classId = localStorage.getItem("ClassId");
+    const prompt = window.confirm(`Are you sure you want to delete ${name}?`);
+    try {
+      if (prompt) {
+        await studentFunction.removeStudentInClass(id, classId);
+        getStudentsData();
+        toast.success(`student named ${name} was deleted`);
+      }else{
+        toast.info("Operation cancelled");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message, "Error");
+    }
+  };
+
   return (
     <div className={`${Container}`}>
       <div
@@ -111,7 +128,19 @@ function ListOfClassesID() {
                             <img src={editBlue} width={18} alt="editBlue" />
                             Tahrirlash
                           </button>
-                          <button className="dropdown-item d-flex align-items-center gap-2">
+                          <button
+                            onClick={() =>
+                              deleteStudentInClass(
+                                item.id,
+                                item.lastName +
+                                  " " +
+                                  item.firstName +
+                                  " " +
+                                  item.patronymic
+                              )
+                            }
+                            className="dropdown-item d-flex align-items-center gap-2"
+                          >
                             <img src={trash} width={20} alt="trash" />
                             O‘chirish
                           </button>
