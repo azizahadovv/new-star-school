@@ -9,6 +9,21 @@ const studentFunction = {
     );
     return datas;
   },
+  async studentPostCSV(classId, data) {
+    try {
+      const { datas } = await axios.post(
+        `${baseURL}/classes/${classId}/students/csv`,
+        data
+      );
+      return datas;
+    } catch (error) {
+      console.log("file error" + " " + error);
+    }
+  },
+
+  async removeStudent(studentId) {
+    await axios.delete(`${baseURL}/students/${studentId}`);
+  },
   async getStudent() {
     const x = localStorage.getItem("ClassId");
     try {

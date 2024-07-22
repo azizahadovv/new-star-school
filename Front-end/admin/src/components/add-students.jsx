@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { file, img } from "../icons";
 import { getLocalData } from "../service/local-data";
-import studentFunction from "../service/function-student";
+import studentFunction from "../service/function-class-student";
 import { ToastContainer, toast } from "react-toastify";
 
 function AddUser() {
@@ -31,7 +31,8 @@ function AddUser() {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [parentPhoneNumber, setParentPhoneNumber] = React.useState("");
-  const [image, setImage] = React.useState("");
+  const id = localStorage.getItem('ClassId')
+  // const [image, setImage] = React.useState("");
   const check =
     firstName &&
     lastName &&
@@ -46,8 +47,8 @@ function AddUser() {
     phoneNumber &&
     login &&
     password &&
-    parentPhoneNumber &&
-    image;
+    parentPhoneNumber
+  // image;
   const obJData = {
     firstName: firstName,
     lastName: lastName,
@@ -63,79 +64,75 @@ function AddUser() {
     login: login,
     password: password,
     parentPhoneNumber: parentPhoneNumber,
-    image: image,
-  };
-  function getImgBase64(e) {
-    const reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = () => {
-      setImage(reader.result);
-    };
-    reader.onerror = (error) => {
-      toast.error("Image Error", error);
-    };
+    // image: image,
   }
 
+  const excelUpload = async (e) => {
+    const formData = new FormData();
+    formData.append('file', e);
+    try {
+      await studentFunction.studentPostCSV(id, formData)
+      toast.success("Students added via excel file have been added successfully")
+    } catch (error) {
+      toast.error("Error Image" + error)
+    }
+  }
+  // function getImgBase64(e) {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(e.target.files[0]);
+  //   reader.onload = () => {
+  //     setImage(reader.result);
+  //     console.log("Image Success uploaded");
+  //   };
+  //   reader.onerror = (error) => {
+  //     console.error("Image Error", error);
+  //   };
+  // }
+
   const AddStudent = async () => {
-    const id = localStorage.getItem("ClassId");
     try {
       if (check) {
-        await studentFunction.studentPostData(id, obJData);
-        toast.success("student successfully joined");
-        navigate(-1);
-        setfirstName("");
-        setLastName("");
-        setPatronymic("");
-        setBirthDate("");
-        setGender("");
-        setNationality("");
-        setCountry("");
-        setRegion("");
-        setDistrict("");
-        setAddress("");
-        setPhoneNumber("");
-        setLogin("");
-        setPassword("");
-        setParentPhoneNumber("");
-        setImage("");
+        await studentFunction.studentPostData(id, obJData)
+        toast.success("Student Success")
       } else {
-        console.log("error added student");
+        toast.info("Iltimos barcha qatorlarni to'ldiring")
       }
     } catch (error) {
-      console.log(error);
-      toast.error("Error");
+      toast.error("Error")
     }
   };
   return (
     <div className={`${Container}`}>
+
+      <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3`}>
+        <div className="min-w-[150px]">
+          <BUTTON buttonFunction={() => navigate(-1)} active name={"ortga"} />
+        </div>
+      </div>
       <div
-        className={`${styleTopBarUINoFlex} ${
-          open ? "hidden" : "flex"
-        } min-h-96 overflow-scroll p-3 content-start ${flex}`}
+        className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
+          } min-h-96 overflow-scroll p-3 content-start ${flex}`}
       >
         <div className="flex flex-col items-center justify-between bg-border-color border-2 w-56 h-60 bg-lightGray">
-          <a
-            title="O'quvchilarni excel file orqali yuklash uchun namuna"
+          <a title="O'quvchilarni excel file orqali yuklash uchun namuna"
             href="../src/icons/arrow.svg"
             download="google.svg"
             className="h-25 flex items-center text-sm border-b "
           >
             Namuna Shablon yuklab olish
           </a>
-          <label
-            title="O'quvchilarni excel file orqali qo'shish"
-            className="w-full h-75 p-3 cursor-pointer"
-          >
+          <label title="O'quvchilarni excel file orqali qo'shish" className="w-full h-75 p-3 cursor-pointer">
             <div className="flex flex-col gap-2 items-center justify-center">
               <img src={file} width={35} alt="img" />
               <span className="text-sm capitalize text-textGray font-normal leading-5">
                 Fayl yuklang
               </span>
             </div>
-            <input hidden type="file" />
+            <input onChange={(e) => (excelUpload(e.target.files[0]))} hidden type="file" />
           </label>
         </div>
         <div className={`${flex}`}>
+
           <TextField
             value={firstName}
             onChange={(e) => setfirstName(e.target.value)}
@@ -176,7 +173,7 @@ function AddUser() {
             style={{ height: "55px", maxWidth: "350px" }}
             aria-label="Default select example"
           >
-            <option value="" selected hidden>
+            <option value="" hidden>
               Gender *
             </option>
             <option value="male">Erkak</option>
@@ -191,7 +188,7 @@ function AddUser() {
             style={{ height: "55px", maxWidth: "350px" }}
             aria-label="Default select example"
           >
-            <option selected hidden>
+            <option hidden>
               Millati *
             </option>
             <option value="uzbek">O'zbek</option>
@@ -267,7 +264,7 @@ function AddUser() {
             label="Parol"
             sx={INPUT_CLASSES}
           />
-          <label className="flex items-center justify-center bg-border-color border-2 w-56 h-60 bg-lightGray">
+          {/* <label className="flex items-center justify-center bg-border-color border-2 w-56 h-60 bg-lightGray">
             <div className="flex flex-col gap-2 items-center justify-center">
               {image ? (
                 <img className="w-52 h-56" src={image} alt="image" />
@@ -281,7 +278,7 @@ function AddUser() {
               )}
             </div>
             <input onChange={(e) => getImgBase64(e)} hidden type="file" />
-          </label>
+          </label> */}
         </div>
         <div>
           <BUTTON buttonFunction={AddStudent} active name={"Saqlash"} />
