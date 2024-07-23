@@ -1,1 +1,1 @@
-export const baseURL='http://31.128.44.234:8000/api'
+export const baseURL='https://nss.ix.tc/api'

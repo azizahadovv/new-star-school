@@ -19,6 +19,8 @@ function ListOfClasses() {
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [classesNumber, setClassesNumber] = useState("");
   const [classesGroup, setClassesGroup] = useState("");
+  const [change, setChange] = useState("")
+  const [changeId, setChangeId] = useState('')
   const visible = useSelector((sel) => sel.addclass.visible);
   const getclassData = useSelector((sel) => sel.addclass.class);
 
@@ -41,7 +43,7 @@ function ListOfClasses() {
   };
   const removeItem = async (id) => {
     let question = prompt(
-      "sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering barcha ma'lumotlar o'chirib yuboriladi!"
+      "sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!"
     );
     try {
       if (question === "YES") {
@@ -49,24 +51,49 @@ function ListOfClasses() {
         toast.success("sinf o'chirildi");
       } else toast.error("malumotlar o'chirilmadi qayta urinib ko'ring");
       getClasses();
-    } catch (error) {}
+    } catch (error) { }
   };
-
   const postClasses = async () => {
     try {
       if (obj.grade != "" && obj.groupLetter != "") {
-        await functionsClasses.classPostData(obj);
-        dispatch(postClass(obj));
-        setClassesGroup("");
-        setClassesNumber("");
-        getClasses();
-        toast.success("sinf yaratildi");
+        if (change == "") {
+          await functionsClasses.classPostData(obj);
+          dispatch(postClass(obj));
+          setClassesGroup("");
+          setClassesNumber("");
+          getClasses();
+          setChange('')
+          toast.success("sinf yaratildi");
+        } else {
+          try {
+            await functionsClasses.changeClassName(changeId, obj)
+            console.log("success", "change");
+            getClasses();
+            setClassesGroup("");
+            setClassesNumber("");
+            setChange('')
+
+          } catch (error) {
+            console.log("error change", error);
+          }
+        }
       } else toast.info("Iltimos barcha qatorlarni to'ldiring");
     } catch (error) {
       console.log(error);
       toast.error("Bunday sinf mavjud", error);
     }
   };
+
+  const changeClass = async (data) => {
+    setClassesGroup(data.groupLetter)
+    setClassesNumber(data.grade)
+    setChangeId(data.id)
+    setChange(data)
+    dispatch(showModal());
+  }
+
+
+
   return (
     <div className={`${Container} py-2 overflow-scroll`}>
       <div
@@ -84,9 +111,8 @@ function ListOfClasses() {
         </div>
       </div>
       <div
-        className={`${
-          open ? "hidden" : "flex"
-        } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
+        className={`${open ? "hidden" : "flex"
+          } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
       >
         {!getclassData ? (
           <LOADER />
@@ -95,7 +121,9 @@ function ListOfClasses() {
             return (
               <ACTIVECLASSES
                 removeItem={removeItem}
+                changeClass={changeClass}
                 key={id}
+                res={res}
                 size={res.size}
                 nameOfClass={res.name}
                 id={res.id}
@@ -117,8 +145,8 @@ function ListOfClasses() {
           </p>
           <div className="flex flex-col items-start justify-between h-28">
             <div className="flex items-center justify-between w-full gap-3">
-              <SELECTCLASSNUMBER setClassesNumber={setClassesNumber} />
-              <SELECTCLASSGROUP setClassesGroup={setClassesGroup} />
+              <SELECTCLASSNUMBER classesNumber={classesNumber} setClassesNumber={setClassesNumber} />
+              <SELECTCLASSGROUP classesGroup={classesGroup} setClassesGroup={setClassesGroup} />
             </div>
             <BUTTON
               name={"Saqlash"}

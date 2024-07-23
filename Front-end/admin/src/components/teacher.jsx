@@ -1,17 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, activeEdit, styleTopBarUINoFlex } from '../constanta/style'
 import { BUTTON, SEARCH, SELECTSCINES } from '../ui'
 import { Link, useNavigate } from 'react-router-dom'
 import { arrowRight, editBlue, menuDots, trash } from '../icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { showActiveModal } from '../slice/class'
+import teacherController from '../service/teacher'
 
 function Teacher() {
   const navigate = useNavigate()
   const visible = useSelector(sel => sel.addclass.activeModal)
   const open = useSelector(sel => sel.sidebarReduser.open)
-
   const dispatch = useDispatch()
+  const [dataTeachers, setDataTeachers] = useState([])
+
+  useEffect(() => {
+    getTeachers();
+  }, []);
+
+  const getTeachers = async () => {
+    try {
+      const teachersData = await teacherController.getTeacher()
+      setDataTeachers(teachersData);
+      console.log(teachersData);
+    } catch (error) {
+      console.log('getTeachers error', error);
+    }
+  }
+
+
+
   return (
     <div className={`${Container}`}>
       <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-between tablet:px-3 minMobil:px-1 overflow-scroll`}>
@@ -53,10 +71,30 @@ function Teacher() {
               <td>
                 <div className='w-[150px] flex items-center justify-between relative'>
                   <Link to={''} className='flex items-center justify-center gap-2 no-underline'>Batafsil <img src={arrowRight} alt="" /></Link>
-                  <button onClick={() => dispatch(showActiveModal())}><img src={menuDots} width={25} className=' p-1' alt="menuDots" /></button>
-                  <div className={`${activeEdit} ${visible ? 'block' : 'hidden'} absolute top-0 -right-36`}>
-                    <button className='flex items-stretch justify-center gap-2 border-b border-brGray'><img src={editBlue} width={18} alt="editBlue" />Tahrirlash</button>
-                    <button className='flex items-stretch justify-center gap-2'><img src={trash} width={20} alt="trash" />O‘chirish</button>
+                  <div className="dropdown">
+                    <button
+                      className="flex items-center justify-center"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <img
+                        src={menuDots}
+                        width={23}
+                        className=" p-1"
+                        alt="menuDots"
+                      />
+                    </button>
+                    <div className={`dropdown-menu`}>
+                    <button className="dropdown-item d-flex align-items-center gap-2">
+                        <img src={editBlue} width={20} alt="trash" />
+                        Tahrirlash
+                      </button>
+                      <button className="dropdown-item d-flex align-items-center gap-2">
+                        <img src={trash} width={20} alt="trash" />
+                        O‘chirish
+                      </button>
+                    </div>
                   </div>
                 </div>
               </td>

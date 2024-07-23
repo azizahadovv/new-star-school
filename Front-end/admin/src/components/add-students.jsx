@@ -73,27 +73,17 @@ function AddUser() {
     try {
       await studentFunction.studentPostCSV(id, formData)
       toast.success("Students added via excel file have been added successfully")
+      navigate(-1)
     } catch (error) {
       toast.error("Error Image" + error)
     }
   }
-  // function getImgBase64(e) {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(e.target.files[0]);
-  //   reader.onload = () => {
-  //     setImage(reader.result);
-  //     console.log("Image Success uploaded");
-  //   };
-  //   reader.onerror = (error) => {
-  //     console.error("Image Error", error);
-  //   };
-  // }
-
   const AddStudent = async () => {
     try {
       if (check) {
         await studentFunction.studentPostData(id, obJData)
         toast.success("Student Success")
+        navigate(-1)
       } else {
         toast.info("Iltimos barcha qatorlarni to'ldiring")
       }

@@ -11,10 +11,18 @@ const student_Page_Function = {
             console.log("Error getting student data");
         }
     },
+    async get_student_in_Id(studentId) {
+        try {
+            const { data } = await axios.get(`${baseURL}/students/${studentId}`);
+            return data;
+        } catch (error) {
+            console.log(` Error get_student_in_Id  ${error}`);
+        }
+    },
     async remove_Student(id) {
         try {
             await axios.delete(`${baseURL}/students/${id}`);
-            console.log("successfully removed"+id);
+            console.log("successfully removed" + id);
             return
         } catch (error) {
             console.log("error removed \n" + error);

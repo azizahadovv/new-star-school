@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { arrowRight, editBlue, menuDots, trash } from "../icons";
 import { useSelector } from "react-redux";
 import { SEARCH, SELECTCLASSNUMBER } from "../ui";
@@ -9,13 +9,12 @@ import { ToastContainer, toast } from "react-toastify";
 
 function Students() {
   const open = useSelector((sel) => sel.sidebarReduser.open);
+  const navigate = useNavigate()
   const [classesNumber, setClassesNumber] = useState('')
   const [students, setStudents] = useState([])
-
   useEffect(() => {
     getStudents()
   }, [])
-  console.log(classesNumber);
   const getStudents = async () => {
     try {
       const students = await student_Page_Function.get_All_Student()
@@ -24,7 +23,6 @@ function Students() {
 
     }
   }
-
   const removeStudent = async (id, name) => {
     const verification = window.confirm(`Are you sure you want to delete ${name}?`);
     try {
@@ -39,10 +37,6 @@ function Students() {
       toast.error(error)
     }
   }
-
-
-
-
   return (
     <div className={`${Container}`}>
       <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3`}>
@@ -72,7 +66,7 @@ function Students() {
             {students?.map((item, id) => {
               return (
                 <tr key={id}>
-                  <th scope="row">{item.id}</th>
+                  <th scope="row">{id + 1}</th>
                   <td className="relative">
                     <p className="min-w-max h-full">
                       {item.lastName + ' ' + item.firstName + ' ' + item.patronymic}
@@ -89,12 +83,15 @@ function Students() {
                   </td>
                   <td>
                     <div className="min-w-max h-full leading-5 flex items-center justify-between relative">
-                      <Link
-                        to={""}
-                        className="flex items-center justify-center gap-2 no-underline"
+                      <button onClick={() => {
+                        navigate(`/students/${item.id}`)
+                        localStorage.setItem("StudentId", item.id)
+                      }}
+                        to={`/students/${1}`}
+                        className="flex items-center justify-center gap-2 text-blue"
                       >
-                        Batafsil <img width={7} src={arrowRight} alt="arrowRight" />
-                      </Link>
+                        Batafsil <img width={7} src={arrowRight} alt="arrow" />
+                      </button>
                       <div className="dropdown">
                         <button
                           className="flex items-center justify-center"
@@ -110,10 +107,6 @@ function Students() {
                           />
                         </button>
                         <div className={`dropdown-menu`}>
-                          <button className="dropdown-item d-flex align-items-center  gap-2 border-b border-brGray">
-                            <img src={editBlue} width={18} alt="editBlue" />
-                            Tahrirlash
-                          </button>
                           <button onClick={() => removeStudent(item.id, item.lastName + ' ' + item.firstName + ' ' + item.patronymic)} className="dropdown-item d-flex align-items-center gap-2">
                             <img src={trash} width={20} alt="trash" />
                             O‘chirish

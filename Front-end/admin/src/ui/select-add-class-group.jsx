@@ -1,8 +1,9 @@
 import React from "react";
 
-function SelectClassGroup({ setClassesGroup }) {
+function SelectClassGroup({ setClassesGroup, classesGroup }) {
   return (
     <select
+      value={classesGroup}
       onChange={(e) => setClassesGroup(e.target.value)}
       className="form-select w-50"
       aria-label="Default select example"

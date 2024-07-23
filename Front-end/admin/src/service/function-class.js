@@ -13,6 +13,10 @@ const functionsClasses = {
     await axios.delete(`${baseURL}/classes/${id}`);
     return "Class deleted successfully";
   },
+  async changeClassName(id, data) {
+    await axios.put(`${baseURL}/classes/${id}`, data);
+    return;
+  }
 
 };
 export default functionsClasses;
