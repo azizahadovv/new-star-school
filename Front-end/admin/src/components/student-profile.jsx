@@ -21,7 +21,7 @@ function StudentProfile() {
     return (
         <div className={`${Container} flex tablet:items-start minMobil:items-center tablet:justify-start minMobil:justify-center gap-3 flex-wrap`}>
             <div className={`${styleTopBarUINoFlex} w-[300px] h-[380px] p-3 rounded-3xl flex items-center justify-between flex-col`}>
-                <div className='w-full h-[80%] flex items-center justify-center rounded-xl overflow-hidden'>
+                <div className='w-full h-[80%] flex items-center justify-center rounded-xl overflow-hidden cursor-pointer'>
                     {
                         dataStudent.image === null ? <div className='w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase'>
                             <span className='text-6xl text-white flex items-center justify-center'>{dataStudent.firstName.charAt(0) + "." + dataStudent.lastName.charAt(0)}</span>

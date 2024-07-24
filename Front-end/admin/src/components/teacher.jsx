@@ -22,7 +22,6 @@ function Teacher() {
     try {
       const teachersData = await teacherController.getTeacher()
       setDataTeachers(teachersData);
-      console.log(teachersData);
     } catch (error) {
       console.log('getTeachers error', error);
     }

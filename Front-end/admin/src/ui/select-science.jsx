@@ -1,12 +1,25 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import subjectFunction from "../service/subjects";
 
 function SelectScience() {
+  const [subject, setSubject] = useState([])
+  useEffect(() => {
+    getSubjectFunction()
+   }, [])
+
+   const getSubjectFunction = async () => {
+    const response = await subjectFunction.getSubjects()
+    setSubject(response)
+  }
   return (
     <select className="form-select" aria-label="Default select example">
-      <option>Fanni tanlang</option>
-      <option defaultValue="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      <option hidden>Fanni tanlang</option>
+      <option value="all">Hammasi</option>
+      {
+        subject.map((item) => (
+          <option key={item.id} value={item.name}>{item.name}</option>
+        ))
+      }
     </select>
   );
 }

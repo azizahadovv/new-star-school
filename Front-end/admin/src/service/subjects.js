@@ -23,7 +23,6 @@ const subjectFunction = {
     async changeSubject(id, changeData) {
         try {
             const { data } = await axios.put(`${baseURL}/subjects/${id}`, changeData);
-            console.log("o'zgerdi \n" + data);
             return data;
         } catch (error) {
             console.log("add subject error \n" + error);

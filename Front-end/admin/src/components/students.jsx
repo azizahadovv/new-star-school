@@ -87,7 +87,6 @@ function Students() {
                         navigate(`/students/${item.id}`)
                         localStorage.setItem("StudentId", item.id)
                       }}
-                        to={`/students/${1}`}
                         className="flex items-center justify-center gap-2 text-blue"
                       >
                         Batafsil <img width={7} src={arrowRight} alt="arrow" />

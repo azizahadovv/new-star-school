@@ -33,7 +33,7 @@ function ListOfClassesID() {
         await studentFunction.removeStudentInClass(id, classId);
         getStudentsData();
         toast.success(`student named ${name} was deleted`);
-      }else{
+      } else {
         toast.info("Operation cancelled");
       }
     } catch (error) {
@@ -62,9 +62,8 @@ function ListOfClassesID() {
       </div>
 
       <div
-        className={`${styleTopBarUINoFlex} ${
-          open ? "hidden" : "block"
-        } min-h-96 overflow-scroll p-3`}
+        className={`${styleTopBarUINoFlex} ${open ? "hidden" : "block"
+          } min-h-96 overflow-scroll p-3`}
       >
         <table className="table table-hover">
           <thead>
@@ -104,12 +103,14 @@ function ListOfClassesID() {
                   </td>
                   <td>
                     <div className="w-[150px] flex items-center justify-between relative">
-                      <Link
-                        to={""}
-                        className="flex items-center justify-center gap-2 no-underline"
+                      <button onClick={() => {
+                        navigate(`/students/${item.id}`)
+                        localStorage.setItem("StudentId", item.id)
+                      }}
+                        className="flex items-center justify-center gap-2 text-blue"
                       >
-                        Batafsil <img src={arrowRight} alt="" />
-                      </Link>
+                        Batafsil <img width={7} src={arrowRight} alt="arrow" />
+                      </button>
                       <div className="dropdown">
                         <button
                           type="button"
@@ -133,10 +134,10 @@ function ListOfClassesID() {
                               deleteStudentInClass(
                                 item.id,
                                 item.lastName +
-                                  " " +
-                                  item.firstName +
-                                  " " +
-                                  item.patronymic
+                                " " +
+                                item.firstName +
+                                " " +
+                                item.patronymic
                               )
                             }
                             className="dropdown-item d-flex align-items-center gap-2"
