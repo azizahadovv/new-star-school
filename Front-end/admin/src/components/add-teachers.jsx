@@ -1,18 +1,20 @@
 import * as React from "react";
 import { TextField } from '@mui/material'
 import { Container, INPUT_CLASSES, flex, styleTopBarUINoFlex } from '../constanta/style'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { BUTTON, GENDER, LEVEL, NATIONALITY, SUBJECTTEACHER } from "../ui";
 import { ToastContainer, toast } from "react-toastify";
 import { ICONIMG } from "../icons";
 import subjectFunction from "../service/subjects";
 import teacherController from "../service/teacher";
+import { type } from "@testing-library/user-event/dist/type";
 
 function AddTeacher() {
   const [subjectList, setSubjectList] = React.useState([])
   const navigate = useNavigate();
   const open = useSelector((sel) => sel.sidebarReduser.open);
+  const { id } = useParams()
   const [firstName, setfirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [patronymic, setPatronymic] = React.useState("");
@@ -64,6 +66,7 @@ function AddTeacher() {
   }
   React.useEffect(() => {
     getSubjectFunction()
+    changeuserDataTeacher()
   }, [])
 
   const getSubjectFunction = async () => {
@@ -73,9 +76,15 @@ function AddTeacher() {
   const saveDataTeacher = async () => {
     if (check) {
       try {
-        await teacherController.postTeacherInSubjectId(`${subjectTeacherId}`, objectData)
-        toast.success("Teacher successfully created");
-        navigate(-1);
+        if (id === undefined) {
+          await teacherController.postTeacherInSubjectId(`${subjectTeacherId}`, objectData)
+          toast.success("Teacher successfully created");
+          navigate(-1);
+        } else {
+          await teacherController.putTeacher(id, subjectTeacherId, objectData)
+          toast.success("success updateTeacher");
+          navigate(-1)
+        }
       } catch (error) {
         console.log(`Error add teacher line 38: ${error}`);
       }
@@ -83,6 +92,36 @@ function AddTeacher() {
       toast.error(`Please fill in all lines`)
     }
   };
+
+  const changeuserDataTeacher = async () => {
+    if (id) {
+      try {
+        const response = await teacherController.getTeacherInId(id)
+        setfirstName(response.firstName)
+        setLastName(response.lastName)
+        setPatronymic(response.patronymic)
+        setBirthDate(response.birthDate)
+        setGender(response.gender)
+        setNationality(response.nationality)
+        setCountry(response.country)
+        setRegion(response.region)
+        setDistrict(response.district)
+        setAddress(response.address)
+        setPhoneNumber(response.phoneNumber)
+        setLogin(response.login)
+        setPassword(response.password)
+        setParentPhoneNumber(response.parentPhoneNumber)
+        setSubjectTeacherId(response.subjectId)
+      } catch (error) {
+        navigate(-2)
+        console.log(`Error get teacher by id line 126: ${error}`);
+      }
+    }
+    else {
+      console.log("no update request");
+    }
+  }
+
 
 
   return (
@@ -96,24 +135,26 @@ function AddTeacher() {
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
           } min-h-96 overflow-scroll p-3 content-start ${flex}`}
       >
-        <div className="flex flex-col items-center justify-between  bg-border-color border-2 w-56 h-60 bg-lightGray">
-          <a title="O'quvchilarni excel file orqali yuklash uchun namuna"
-            href=""
-            download="google.svg"
-            className="h-25 flex items-center text-sm border-b "
-          >
-            Namuna Shablon yuklab olish
-          </a>
-          <label title="O'quvchilarni excel file orqali qo'shish" className="w-full h-75 p-3 cursor-pointer">
-            <div className="flex flex-col gap-2 items-center justify-center">
-              <img src={ICONIMG} width={35} alt="img" />
-              <span className="text-sm capitalize text-textGray font-normal leading-5">
-                Fayl yuklang
-              </span>
-            </div>
-            <input hidden type="file" />
-          </label>
-        </div>
+        {
+          !id ? <div className="flex flex-col items-center justify-between  bg-border-color border-2 w-56 h-60 bg-lightGray">
+            <a title="O'quvchilarni excel file orqali yuklash uchun namuna"
+              href=""
+              download="google.svg"
+              className="h-25 flex items-center text-sm border-b "
+            >
+              Namuna Shablon yuklab olish
+            </a>
+            <label title="O'quvchilarni excel file orqali qo'shish" className="w-full h-75 p-3 cursor-pointer">
+              <div className="flex flex-col gap-2 items-center justify-center">
+                <img src={ICONIMG} width={35} alt="img" />
+                <span className="text-sm capitalize text-textGray font-normal leading-5">
+                  Fayl yuklang
+                </span>
+              </div>
+              <input hidden type="file" />
+            </label>
+          </div> : ''
+        }
         <div className={`${flex}`}>
           <TextField
             value={firstName}
@@ -192,7 +233,7 @@ function AddTeacher() {
           <TextField
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
-            type="number"
+            type="tel"
             required
             placeholder="Kiriting"
             label="Telefon raqam"
@@ -201,7 +242,7 @@ function AddTeacher() {
           <TextField
             value={parentPhoneNumber}
             onChange={(e) => setParentPhoneNumber(e.target.value)}
-            type="number"
+            type="tel"
             required
             placeholder="Kiriting"
             label="Qo'shimcha telefon raqam"

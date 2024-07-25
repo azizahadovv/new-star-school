@@ -13,8 +13,6 @@ function Teacher() {
 
   useEffect(() => {
     getTeachers();
-    localStorage.removeItem('TeacherId')
-    localStorage.removeItem('TeacherEditId')
   }, []);
   const getTeachers = async () => {
     try {
@@ -104,7 +102,7 @@ function Teacher() {
                             />
                           </button>
                           <div className={`dropdown-menu`}>
-                            <button className="dropdown-item d-flex align-items-center gap-2">
+                            <button onClick={() => { navigate(`/add-teachers/${item.id}`) }} className="dropdown-item d-flex align-items-center gap-2">
                               <img src={editBlue} width={20} alt="trash" />
                               Tahrirlash
                             </button>
