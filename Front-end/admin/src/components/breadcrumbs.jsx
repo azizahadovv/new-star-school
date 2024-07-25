@@ -8,7 +8,7 @@ const Breadcrumbs = () => {
     let breadcrumbPath = "";
 
     return (
-        <div className="breadcrumbs">
+        <div className="breadcrumbs min-h-10 flex items-center justify-start my-1">
             {pathnames.map((name, index) => {
                 breadcrumbPath += `/${name}`;
                 const isLast = index === pathnames.length - 1;

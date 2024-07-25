@@ -17,6 +17,7 @@ import {
   STUDENTPROFILE,
   STUDENTS,
   TEACHER,
+  TEACHERPROFILE,
 } from "../components";
 import { LAYOUT } from "../template";
 
@@ -34,6 +35,7 @@ function ReactRouter() {
           <Route path="class-schedule" element={<CLASSSCHEDULES />} />
           <Route path="class-schedule/:id" element={<CLASSSCHEDULESID />} />
           <Route path="teachers" element={<TEACHER />} />
+          <Route path="teachers/:id" element={<TEACHERPROFILE />} />
           <Route path="students" element={<STUDENTS />} />
           <Route path="students/:id" element={<STUDENTPROFILE />} />
           <Route path="profile" element={<PROFIL />} />\

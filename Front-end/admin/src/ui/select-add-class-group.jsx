@@ -9,7 +9,7 @@ function SelectClassGroup({ setClassesGroup, classesGroup }) {
       aria-label="Default select example"
     >
       <option hidden>Sinf tanlang</option>
-      <option defaultValue="a">A</option>
+      <option value="a">A</option>
       <option value="b">B</option>
       <option value="c">C</option>
       <option value="d">D</option>

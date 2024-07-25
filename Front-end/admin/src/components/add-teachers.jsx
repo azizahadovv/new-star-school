@@ -3,11 +3,14 @@ import { TextField } from '@mui/material'
 import { Container, INPUT_CLASSES, flex, styleTopBarUINoFlex } from '../constanta/style'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { BUTTON } from "../ui";
-import { ToastContainer } from "react-toastify";
+import { BUTTON, GENDER, LEVEL, NATIONALITY, SUBJECTTEACHER } from "../ui";
+import { ToastContainer, toast } from "react-toastify";
 import { ICONIMG } from "../icons";
+import subjectFunction from "../service/subjects";
+import teacherController from "../service/teacher";
 
 function AddTeacher() {
+  const [subjectList, setSubjectList] = React.useState([])
   const navigate = useNavigate();
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [firstName, setfirstName] = React.useState("");
@@ -20,17 +23,71 @@ function AddTeacher() {
   const [region, setRegion] = React.useState("");
   const [district, setDistrict] = React.useState("");
   const [address, setAddress] = React.useState("");
+  const [level, setLevel] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [subjectTeacherId, setSubjectTeacherId] = React.useState('');
   const [parentPhoneNumber, setParentPhoneNumber] = React.useState("");
 
+  const check =
+    firstName &&
+    lastName &&
+    patronymic &&
+    birthDate &&
+    gender &&
+    nationality &&
+    country &&
+    region &&
+    district &&
+    address &&
+    phoneNumber &&
+    login &&
+    password &&
+    parentPhoneNumber
+
+  const objectData = {
+    firstName: firstName,
+    lastName: lastName,
+    patronymic: patronymic,
+    birthDate: birthDate,
+    gender: gender,
+    nationality: nationality,
+    country: country,
+    region: region,
+    district: district,
+    address: address,
+    phoneNumber: phoneNumber,
+    login: login,
+    password: password,
+    parentPhoneNumber: parentPhoneNumber,
+  }
+  React.useEffect(() => {
+    getSubjectFunction()
+  }, [])
+
+  const getSubjectFunction = async () => {
+    const response = await subjectFunction.getSubjects()
+    setSubjectList(response)
+  }
+  const saveDataTeacher = async () => {
+    if (check) {
+      try {
+        await teacherController.postTeacherInSubjectId(`${subjectTeacherId}`, objectData)
+        toast.success("Teacher successfully created");
+        navigate(-1);
+      } catch (error) {
+        console.log(`Error add teacher line 38: ${error}`);
+      }
+    } else {
+      toast.error(`Please fill in all lines`)
+    }
+  };
 
 
   return (
     <div className={`${Container}`}>
-
-      <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3`}>
+      <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start  px-3`}>
         <div className="min-w-[150px]">
           <BUTTON buttonFunction={() => navigate(-1)} active name={"ortga"} />
         </div>
@@ -39,7 +96,7 @@ function AddTeacher() {
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
           } min-h-96 overflow-scroll p-3 content-start ${flex}`}
       >
-        <div className="flex flex-col items-center justify-between bg-border-color border-2 w-56 h-60 bg-lightGray">
+        <div className="flex flex-col items-center justify-between  bg-border-color border-2 w-56 h-60 bg-lightGray">
           <a title="O'quvchilarni excel file orqali yuklash uchun namuna"
             href=""
             download="google.svg"
@@ -54,11 +111,10 @@ function AddTeacher() {
                 Fayl yuklang
               </span>
             </div>
-            <input onChange={{}} hidden type="file" />
+            <input hidden type="file" />
           </label>
         </div>
         <div className={`${flex}`}>
-
           <TextField
             value={firstName}
             onChange={(e) => setfirstName(e.target.value)}
@@ -91,38 +147,12 @@ function AddTeacher() {
             label="Tug‘ilgan sanasi"
             sx={INPUT_CLASSES}
           />
-          <select
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            required
-            className="form-select"
-            style={{ height: "55px", maxWidth: "350px" }}
-            aria-label="Default select example"
-          >
-            <option value="" hidden>
-              Gender *
-            </option>
-            <option value="male">Erkak</option>
-            <option value="female">Ayol</option>
-          </select>
+          <GENDER gender={gender} setGender={setGender} />
 
-          <select
-            value={nationality}
-            onChange={(e) => setNationality(e.target.value)}
-            required
-            className="form-select"
-            style={{ height: "55px", maxWidth: "350px" }}
-            aria-label="Default select example"
-          >
-            <option hidden>
-              Millati *
-            </option>
-            <option value="uzbek">O'zbek</option>
-            <option value="rus">Rus</option>
-          </select>
+          <NATIONALITY nationality={nationality} setNationality={setNationality} />
         </div>
         <div className="w-full h-[1px] bg-brGray"></div>
-        <div className={`${flex}`}>
+        <div className={`${flex} pb-5 border-b border-brGray`}>
           <TextField
             value={country}
             onChange={(e) => setCountry(e.target.value)}
@@ -155,6 +185,10 @@ function AddTeacher() {
             label="Uy manzili"
             sx={INPUT_CLASSES}
           />
+          <LEVEL level={level} setLevel={setLevel} />
+          <SUBJECTTEACHER subjectList={subjectList} setSubjectTeacherId={setSubjectTeacherId} subjectTeacherId={subjectTeacherId} />
+        </div>
+        <div className={`${flex} pb-5 border-b border-brGray`}>
           <TextField
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
@@ -190,24 +224,9 @@ function AddTeacher() {
             label="Parol"
             sx={INPUT_CLASSES}
           />
-          {/* <label className="flex items-center justify-center bg-border-color border-2 w-56 h-60 bg-lightGray">
-          <div className="flex flex-col gap-2 items-center justify-center">
-            {image ? (
-              <img className="w-52 h-56" src={image} alt="image" />
-            ) : (
-              <>
-                <img src={img} alt="img" />
-                <span className="text-sm capitalize text-textGray font-normal leading-5">
-                  Rasm yuklang
-                </span>
-              </>
-            )}
-          </div>
-          <input onChange={(e) => getImgBase64(e)} hidden type="file" />
-        </label> */}
         </div>
         <div>
-          <BUTTON buttonFunction={{}} active name={"Saqlash"} />
+          <BUTTON buttonFunction={() => saveDataTeacher(subjectTeacherId)} active name={"Saqlash"} />
         </div>
       </div>
       <ToastContainer />

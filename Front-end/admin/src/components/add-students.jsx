@@ -64,9 +64,7 @@ function AddUser() {
     login: login,
     password: password,
     parentPhoneNumber: parentPhoneNumber,
-    // image: image,
   }
-
   const excelUpload = async (e) => {
     const formData = new FormData();
     formData.append('file', e);
@@ -85,7 +83,7 @@ function AddUser() {
         toast.success("Student Success")
         navigate(-1)
       } else {
-        toast.info("Iltimos barcha qatorlarni to'ldiring")
+        toast.info("Please fill in all lines")
       }
     } catch (error) {
       toast.error("Error")
@@ -122,7 +120,6 @@ function AddUser() {
           </label>
         </div>
         <div className={`${flex}`}>
-
           <TextField
             value={firstName}
             onChange={(e) => setfirstName(e.target.value)}
@@ -254,21 +251,6 @@ function AddUser() {
             label="Parol"
             sx={INPUT_CLASSES}
           />
-          {/* <label className="flex items-center justify-center bg-border-color border-2 w-56 h-60 bg-lightGray">
-            <div className="flex flex-col gap-2 items-center justify-center">
-              {image ? (
-                <img className="w-52 h-56" src={image} alt="image" />
-              ) : (
-                <>
-                  <img src={img} alt="img" />
-                  <span className="text-sm capitalize text-textGray font-normal leading-5">
-                    Rasm yuklang
-                  </span>
-                </>
-              )}
-            </div>
-            <input onChange={(e) => getImgBase64(e)} hidden type="file" />
-          </label> */}
         </div>
         <div>
           <BUTTON buttonFunction={AddStudent} active name={"Saqlash"} />
