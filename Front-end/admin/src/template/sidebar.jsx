@@ -5,7 +5,6 @@ import { DARSJADVALI, DARSJADVALIOUTLINE, infoUser, infoUserOutline, LISTCLASS, 
 import { openVisible } from '../slice/sidebar';
 function Sidebar() {
   const dispatch = useDispatch()
-  const navitagate = useNavigate()
   return (
     <div className='p-3 d-flex flex-col gap-3 w-full h-screen bg-darkGray relative z-50'>
       <div className="offcanvas-header border-b border-white d-flex align-items-center justify-content-between py-3">

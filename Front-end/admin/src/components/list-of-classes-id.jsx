@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import { BUTTON, SEARCH } from "../ui";
-import { arrowRight, editBlue, menuDots, trash } from "../icons";
+import { arrowRight,menuDots, trash } from "../icons";
 import { useSelector } from "react-redux";
 import studentFunction from "../service/function-class-student";
 import { toast, ToastContainer } from "react-toastify";
@@ -125,10 +125,6 @@ function ListOfClassesID() {
                           />
                         </button>
                         <div className={`dropdown-menu`}>
-                          <button className="dropdown-item d-flex align-items-center  gap-2 border-b border-brGray">
-                            <img src={editBlue} width={18} alt="editBlue" />
-                            Tahrirlash
-                          </button>
                           <button
                             onClick={() =>
                               deleteStudentInClass(

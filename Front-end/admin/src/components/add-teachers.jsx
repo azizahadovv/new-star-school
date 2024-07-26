@@ -8,7 +8,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { ICONIMG } from "../icons";
 import subjectFunction from "../service/subjects";
 import teacherController from "../service/teacher";
-import { type } from "@testing-library/user-event/dist/type";
 
 function AddTeacher() {
   const [subjectList, setSubjectList] = React.useState([])
