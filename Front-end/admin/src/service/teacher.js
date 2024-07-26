@@ -11,9 +11,6 @@ const teacherController = {
     },
 
     async putTeacher(teacherId, subjectId, dataTeacher) {
-        console.log(teacherId);
-        console.log(subjectId);
-        console.log(dataTeacher);
         try {
             await axios.put(`${baseURL}/teachers/${teacherId}?subjectId=${subjectId}`, dataTeacher);
         } catch (error) {

@@ -35,12 +35,15 @@ function ReactRouter() {
           <Route path="class-schedule" element={<CLASSSCHEDULES />} />
           <Route path="class-schedule/:id" element={<CLASSSCHEDULESID />} />
           <Route path="teachers" element={<TEACHER />} />
+          <Route path="teacher-profile/:id" element={<TEACHERPROFILE />} />
           <Route path="add-teachers" element={<ADDTEACHERS />} />
           <Route path="add-teachers/:id" element={<ADDTEACHERS />} />
           <Route path="students" element={<STUDENTS />} />
           <Route path="students/:id" element={<STUDENTPROFILE />} />
           <Route path="profile" element={<PROFIL />} />\
           <Route path="add-student" element={<ADDSTUDENT />} />
+          <Route path="add-student/:id" element={<ADDSTUDENT />} />
+
 
         </Route>
         <Route path="*" element={<PageNoteFound />} />

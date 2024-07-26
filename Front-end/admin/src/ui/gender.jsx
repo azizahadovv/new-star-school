@@ -13,8 +13,8 @@ function Gender({ gender, setGender,style={ height: "55px", maxWidth: "350px" } 
             <option hidden>
                 Gender *
             </option>
-            <option value="male">Erkak</option>
-            <option value="female">Ayol</option>
+            <option value="Male">Erkak</option>
+            <option value="Female">Ayol</option>
         </select>
     )
 }

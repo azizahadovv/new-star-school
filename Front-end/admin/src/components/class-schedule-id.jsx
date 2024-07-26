@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import { BUTTON, CREATESCHEDULECLASSES } from "../ui";
 
 function ClassScheduleID() {
+  const [visible, setvisible] = useState(false);
   return (
     <div className={Container}>
       <div
@@ -26,10 +27,10 @@ function ClassScheduleID() {
         className={`${styleTopBarUINoFlex} min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}>
           <CREATESCHEDULECLASSES />
           <CREATESCHEDULECLASSES weekday="Seshanba" active/>
-          <CREATESCHEDULECLASSES weekday="Seshanba" active/>
-          <CREATESCHEDULECLASSES weekday="Seshanba" active/>
-          <CREATESCHEDULECLASSES weekday="Seshanba" active/>
-          <CREATESCHEDULECLASSES weekday="Seshanba" active/>
+          <CREATESCHEDULECLASSES weekday="Chorshanba" active/>
+          <CREATESCHEDULECLASSES weekday="Payshanba" active/>
+          <CREATESCHEDULECLASSES weekday="Juma" active/>
+          <CREATESCHEDULECLASSES weekday="Shanba" active/>
         </div>
     </div>
   );

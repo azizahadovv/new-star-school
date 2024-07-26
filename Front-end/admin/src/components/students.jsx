@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { arrowRight, editBlue, menuDots, trash } from "../icons";
 import { useSelector } from "react-redux";
 import { SEARCH, SELECTCLASSNUMBER } from "../ui";
@@ -20,7 +20,7 @@ function Students() {
       const students = await student_Page_Function.get_All_Student()
       setStudents(students)
     } catch (error) {
-
+      console.log("error get student" + error);
     }
   }
   const removeStudent = async (id, name) => {
@@ -44,7 +44,7 @@ function Students() {
           <SEARCH placeholder="O‘quvchi bo‘ylab izlash" />
         </div>
         <div className="w-96">
-          <SELECTCLASSNUMBER setClassesNumber={setClassesNumber} />
+          <SELECTCLASSNUMBER classesNumber={classesNumber} setClassesNumber={setClassesNumber} />
         </div>
       </div>
       <div
@@ -106,6 +106,10 @@ function Students() {
                           />
                         </button>
                         <div className={`dropdown-menu`}>
+                          <button onClick={() => { navigate(`/add-student/${item.id}`) }} className="dropdown-item d-flex align-items-center gap-2">
+                            <img src={editBlue} width={20} alt="trash" />
+                            Tahrirlash
+                          </button>
                           <button onClick={() => removeStudent(item.id, item.lastName + ' ' + item.firstName + ' ' + item.patronymic)} className="dropdown-item d-flex align-items-center gap-2">
                             <img src={trash} width={20} alt="trash" />
                             O‘chirish

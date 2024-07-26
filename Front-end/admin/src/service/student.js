@@ -19,6 +19,14 @@ const student_Page_Function = {
             console.log(` Error get_student_in_Id  ${error}`);
         }
     },
+    async Put_Student(id,dataStudent) {
+        try {
+            await axios.put(`${baseURL}/students/${id}`,dataStudent);
+            return
+        } catch (error) {
+            console.log("error removed \n" + error);
+        }
+    },
     async remove_Student(id) {
         try {
             await axios.delete(`${baseURL}/students/${id}`);

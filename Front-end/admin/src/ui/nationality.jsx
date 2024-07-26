@@ -13,8 +13,8 @@ function Nationality({ nationality, setNationality,style={ height: "55px", maxWi
             <option hidden>
                 Millati *
             </option>
-            <option value="uzbek">O'zbek</option>
-            <option value="rus">Rus</option>
+            <option value="Uzbek">O'zbek</option>
+            <option value="Rus">Rus</option>
         </select>
     )
 }

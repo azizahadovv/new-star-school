@@ -80,7 +80,7 @@ function Teacher() {
                     <td>
                       <div className='w-[150px] flex items-center justify-between relative'>
                         <button onClick={() => {
-                          navigate(`/teachers/${item.id}`)
+                          navigate(`/teacher-profile/${item.id}`)
                           localStorage.setItem("TeacherId", item.id)
                         }}
                           className="flex items-center justify-center gap-2 text-blue"

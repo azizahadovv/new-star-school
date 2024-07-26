@@ -15,7 +15,8 @@ export { default as CREATESCHEDULECLASSES } from './create-schedule-classes'
 export { default as GENDER } from './gender'
 export { default as NATIONALITY } from './nationality'
 export { default as LEVEL } from './level'
- export { default as SUBJECTTEACHER } from './subject-teacher'
+export { default as SUBJECTTEACHER } from './subject-teacher'
 // ****************************************************************
 export { default as LOADER } from './loader'
 // ****************************************************************
+export { default as LESSONTABLECARD } from './lesson-time-card'
