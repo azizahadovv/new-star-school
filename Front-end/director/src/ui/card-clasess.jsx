@@ -3,7 +3,7 @@ import { COACH } from "../icons";
 
 function CardClasess({ slug, nameOfClass = "1-a" }) {
   return (
-    <div className="w-[350px] h-20 border-card rounded-lg px-3 py-2 flex grow-effect">
+    <div className="w-[320px] h-20 border-card rounded-lg px-3 py-2 flex grow-effect">
       <Link
         to={slug} className="uppercase no-underline w-full flex flex-col text-blue"
       >

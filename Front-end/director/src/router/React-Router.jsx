@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Home, ListOfClasses, ListOfClassesID, PROFIL, PageNoteFound, REGISTER } from '../components'
+import { Home, ListOfClasses, ListOfClassesID, PERSONNEL, PROFIL, PageNoteFound, RATING, REGISTER, STUDENTS, TEACHERPROFILE, TEACHERS } from '../components'
 import { LAYOUT } from '../template';
 
 function ReactRouter() {
@@ -11,8 +11,15 @@ function ReactRouter() {
                 <Route path='/' element={<LAYOUT />} >
                     <Route path='' element={<Home />} />
                     <Route path='list-of-classes' element={<ListOfClasses />} />
-                    <Route path='list-of-classes/:id' element={<ListOfClassesID  />} />
-                    <Route path='profile' element={<PROFIL />} />
+                    <Route path='list-of-classes/:id' element={<ListOfClassesID />} />
+                    <Route path='personal-information' element={<PROFIL />} />
+                    <Route path='teachers' element={<TEACHERS />} />
+                    <Route path='teachers/:id' element={<TEACHERPROFILE />} />
+                    <Route path='students' element={<STUDENTS />} />
+                    <Route path='personnel' element={<PERSONNEL />} />
+                    <Route path='ratings' element={<RATING />} />
+
+
                 </Route>
                 <Route path='*' element={<PageNoteFound />} />
                 <Route path='/register' element={<REGISTER />} />

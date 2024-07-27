@@ -1,10 +1,21 @@
 import React from 'react'
 import { Container } from '../constanta/style'
+import { homeList } from '../constanta/const'
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
-    <div className={`p-6 min-h-[360px] rounded-lg ${Container}`}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veritatis voluptate asperiores eveniet eum officiis itaque aperiam, voluptatibus esse nisi similique ipsum repellendus blanditiis architecto veniam mollitia accusantium! Unde, et!xit neque
+    <div className={`p-6 min-h-[360px] rounded-lg ${Container} flex flex-wrap gap-4 tablet:items-start tablet:justify-start minMobil:items-center minMobil:justify-center`}>
+      {
+        homeList.map(item => <Link
+          to={item.path}
+          key={item.id}
+          className='shadow-home-page rounded-xl flex flex-col items-center justify-center gap-3 tablet:w-64 tablet:h-64 minMobil:w-72 minMobil:h-72 no-underline'
+        >
+          <img className='w-50' src={item.icon} alt="" />
+          <h3 className='w-44 text-center'>{item.title}</h3>
+        </Link>)
+      }
     </div>
   )
 }

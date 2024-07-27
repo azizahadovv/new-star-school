@@ -4,17 +4,16 @@ import { CARDCLASSES } from "../ui"
 
 function ListOfClasses() {
   return (
-    <div className={`${Container} py-5 flex items-start justify-center flex-wrap gap-4`}>
-        <CARDCLASSES slug={'njasnm-csd-dc-s'} />
-        <CARDCLASSES slug={'njasnm-csd-dc-s'} />
-        <CARDCLASSES slug={'njasnm-csd-dc-s'} />
-        <CARDCLASSES slug={'njasnm-csd-dc-s'} />
-        <CARDCLASSES slug={'njasnm-csd-dc-s'} />
-        <CARDCLASSES slug={'njasnm-csd-dc-s'} />
-        <CARDCLASSES slug={'njasnm-csd-dc-s'} />
-        <CARDCLASSES slug={'njasnm-csd-dc-s'} />
-        <CARDCLASSES slug={'njasnm-csd-dc-s'} />
-
+    <div className={`${Container} py-5 flex content-start items-start justify-start flex-wrap gap-4`}>
+      <CARDCLASSES slug={'njasnm-csd-dc-s'} />
+      <CARDCLASSES slug={'njasnm-csd-dc-s'} />
+      <CARDCLASSES slug={'njasnm-csd-dc-s'} />
+      <CARDCLASSES slug={'njasnm-csd-dc-s'} />
+      <CARDCLASSES slug={'njasnm-csd-dc-s'} />
+      <CARDCLASSES slug={'njasnm-csd-dc-s'} />
+      <CARDCLASSES slug={'njasnm-csd-dc-s'} />
+      <CARDCLASSES slug={'njasnm-csd-dc-s'} />
+      <CARDCLASSES slug={'njasnm-csd-dc-s'} />
     </div>
   )
 }
