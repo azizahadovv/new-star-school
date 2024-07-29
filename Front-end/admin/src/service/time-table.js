@@ -2,8 +2,8 @@ import axios from "axios"
 import { baseURL } from "./api"
 
 const TimeTable = {
-    async getTimeTableInId(id) {
-        const { data } = await axios.get(`${baseURL}/v1/timetables/${id}`)
+    async getTimeTableInId(classesId) {
+        const { data } = await axios.get(`${baseURL}/classes/classes/${classesId}/timetables`)
         return data
     },
     async getAllTimeTable() {
