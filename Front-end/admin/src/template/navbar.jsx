@@ -21,7 +21,7 @@ function Navbar() {
           <div>
             <div className={`minMobil:flex tablet:hidden items-center justify-center gap-3`}>
               <button onClick={() => (dispatch(openVisible()))} className='w-9 h-9 rounded-lg bg-lightGray border border-brGray flex items-center justify-center'>
-                <img className='w-4 h-4' src={openBar} alt="" />
+                <img className='w-4 h-4' src={openBar} alt="openBar" />
               </button>
             </div>
             <h1 className={`minMobil:hidden tablet:block font-bold text-2xl m-0 mt-1 leading-0 flex items-center justify-center text-textBlack ${toggle ? "hidden" : "block"}`}>{myText}</h1>

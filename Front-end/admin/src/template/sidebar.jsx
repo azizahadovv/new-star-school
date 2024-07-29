@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { BUTTONEXIT, BUTTONSIDEBAR, LANGUAGEPOTION } from '../ui';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { DARSJADVALI, DARSJADVALIOUTLINE, infoUser, infoUserOutline, LISTCLASS, LISTCLASSOUTLINE, logo, myclass, myclassoutline, STUDENT, STUDENTOUTLINE, SUBJECT, SUBJECTOUTLINE, TEACHER, TEACHEROUTLIN } from '../icons';
 import { openVisible } from '../slice/sidebar';
 function Sidebar() {

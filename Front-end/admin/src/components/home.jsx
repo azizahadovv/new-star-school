@@ -1,30 +1,23 @@
-import React from "react";
-import { Container, styleTopBarUINoFlex2 } from "../constanta/style";
-import { useSelector } from "react-redux";
-import { homeCard } from "../constanta/const";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Container } from '../constanta/style'
+import { homeCard } from '../constanta/const'
+import { Link } from 'react-router-dom'
 
 function Home() {
-  const open = useSelector((sel) => sel.sidebarReduser.open);
   return (
-    <div
-      className={`p-6 min-h-[360px] rounded-lg ${Container} ${open ? "hidden" : "flex"
-        }`}
-    >
-      <div className="flex tablet:items-start minMobil:items-center tablet:justify-start minMobil:justify-center gap-5 flex-wrap">
-        {
-          homeCard.map((item) => {
-            return (
-              <Link to={item.link} key={item.id} className={`${styleTopBarUINoFlex2} flex items-center hoverClass flex-col no-underline justify-center flex-wrap minMobil:w-full mobil:w-72 h-72 rounded-3xl gap-5  `}>
-                <img className="rounded-lg" width={120} height={120} src={item.img} alt="item.img" />
-                <h3 className="text-textBlack text-center">{item.title}</h3>
-              </Link>
-            )
-          })
-        }
-      </div>
+    <div className={`p-6 min-h-[360px] rounded-lg ${Container} flex flex-wrap gap-4 tablet:items-start tablet:justify-start minMobil:items-center minMobil:justify-center`}>
+      {
+        homeCard.map(item => <Link
+          to={item.link}
+          key={item.id}
+          className='shadow-home-page rounded-xl flex flex-col items-center justify-center gap-3 tablet:w-64 tablet:h-64 minMobil:w-72 minMobil:h-72 no-underline'
+        >
+          <img className='w-50' src={item.img} alt="" />
+          <h3 className='w-44 text-center'>{item.title}</h3>
+        </Link>)
+      }
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

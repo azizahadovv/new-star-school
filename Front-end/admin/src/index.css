@@ -12,6 +12,7 @@
 .shadow-section-top-class {
   box-shadow: 0px 0px 40px 0px #34414f0d;
 }
+
 .grow-effect:hover {
   transform: scale(1.02);
   transition: all 1s ease;
@@ -57,9 +58,29 @@
   font-family: "GT Eesti Pro Display", arial;
   text-decoration: none;
 }
+
 html {
   background-color: #FDFDFD;
 }
+
+.shadow-home-page {
+  box-shadow: 0px 0px 40px 0px #34414F0D;
+  border: 2px solid #252c330d;
+  background-color: white;
+  color: #07121D;
+
+}
+
+.shadow-home-page:hover {
+  transition: all .6s;
+  transform: scale(105%);
+  box-shadow: 0px 0px 40px 0px #34414F0D;
+  border: 2px solid #252c330d;
+  background-color: #41c981;
+  color: #fff;
+
+}
+
 
 *::selection {
   background-color: #000;
@@ -88,62 +109,69 @@ li {
   list-style: none;
 }
 
-.width25{
+.width25 {
   min-width: 250px;
 }
 
-.border-t-4-color{
+.border-t-4-color {
   border-top: 4px solid #125dac;
   border-left: 2px solid #E1EAF1;
   border-right: 2px solid #E1EAF1;
   border-bottom: 2px solid #E1EAF1;
 }
 
-.br-color{
+.br-color {
   border: 2px solid #E1EAF1;
 
 }
-.rotate-90-a{
+
+.rotate-90-a {
   transform: rotate(-90deg);
   padding: 10px;
   font-size: 10px;
 }
-.bg-border-color{
+
+.bg-border-color {
   border: 1px dashed #B1CADC
 }
 
 /* *****************************  addd classsssssssss ********************** */
 
 .slide-top {
-	-webkit-animation: slide-top .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-top .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: slide-top .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-top .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
- @-webkit-keyframes slide-top {
+@-webkit-keyframes slide-top {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
+
   100% {
     -webkit-transform: translateY(-10px);
-            transform: translateY(-10px);
+    transform: translateY(-10px);
   }
 }
+
 @keyframes slide-top {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
+
   100% {
     -webkit-transform: translateY(-25px);
-            transform: translateY(-20px);
+    transform: translateY(-20px);
   }
 }
-.hoverClass:hover{
+
+.hoverClass:hover {
   background-color: #41c981;
   transition: all .7s;
   color: #fff;
 }
+
 /* ***************************************** loader ****************************************************** */
 .dots-container {
   display: flex;
