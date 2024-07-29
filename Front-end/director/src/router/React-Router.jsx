@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Home, ListOfClasses, ListOfClassesID, PERSONNEL, PROFIL, PageNoteFound, RATING, REGISTER, STUDENTS, TEACHERPROFILE, TEACHERS } from '../components'
+import { Home, ListOfClasses, ListOfClassesID, PERSONNEL, PROFIL, PageNoteFound, RATING, REGISTER, STUDENTPROFILE, STUDENTS, TEACHERPROFILE, TEACHERS } from '../components'
 import { LAYOUT } from '../template';
 
 function ReactRouter() {
@@ -16,6 +16,7 @@ function ReactRouter() {
                     <Route path='teachers' element={<TEACHERS />} />
                     <Route path='teachers/:id' element={<TEACHERPROFILE />} />
                     <Route path='students' element={<STUDENTS />} />
+                    <Route path='students/:id' element={<STUDENTPROFILE />} />
                     <Route path='personnel' element={<PERSONNEL />} />
                     <Route path='ratings' element={<RATING />} />
 
