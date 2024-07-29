@@ -40,6 +40,15 @@ const teacherController = {
         } catch (error) {
             console.log(`Error delete teacher \n ${error}`);
         }
+    },
+    async getTeacherInSubjectId(subjectId) {
+        try {
+            const { data } = await axios.get(`${baseURL}/teachers/subject/${subjectId}`);
+            console.log(data)
+            return data;
+        } catch (error) {
+            console.log(`Error get techer \n ${error}`);
+        }
     }
 
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import subjectFunction from '../service/subjects'
 
-function SubjectTeacher({ subjectTeacherId, setSubjectTeacherId, style = { height: "55px", maxWidth: "350px" } }) {
+function SubjectTeacher({ subjectTeacherId, setSubjectTeacherId, style = { height: "55px", maxWidth: "350px" } ,placeholder='Qaysi fandan dars beradi *' }) {
     const [subjectList, setSubjectList] = React.useState([])
     React.useEffect(() => {
         getSubjectFunction()
@@ -18,10 +18,10 @@ function SubjectTeacher({ subjectTeacherId, setSubjectTeacherId, style = { heigh
             required
             className="form-select"
             style={style}
-            aria-label="Default select example"
+            
         >
             <option hidden>
-                Qaysi fandan dars beradi *
+                {placeholder}
             </option>
             {
                 subjectList.map((subject) => {

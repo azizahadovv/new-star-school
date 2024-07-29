@@ -6,7 +6,7 @@ function SelectClassGroup({ setClassesGroup, classesGroup }) {
       value={classesGroup}
       onChange={(e) => setClassesGroup(e.target.value)}
       className="form-select w-50"
-      aria-label="Default select example"
+    
     >
       <option hidden>Sinf tanlang</option>
       <option value="a">A</option>

@@ -12,7 +12,7 @@ function SelectScience() {
     setSubject(response)
   }
   return (
-    <select className="form-select" aria-label="Default select example">
+    <select className="form-select">
       <option hidden>Fanni tanlang</option>
       <option value="all">Hammasi</option>
       {

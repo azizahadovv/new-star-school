@@ -8,7 +8,7 @@ function Level({ level, setLevel,style={ height: "55px", maxWidth: "350px" } }) 
             required
             className="form-select"
             style={style}
-            aria-label="Default select example"
+            
         >
             <option hidden>
                 Lavozimi *

@@ -21,14 +21,12 @@ function ClassSchedule() {
   }
   return (
     <div className={`${Container} ${open ? 'hidden' : 'flex'}`}>
-
       {
         !schedule ? <LOADER /> : <div className='flex items-start minMobil:justify-center content-start tablet:justify-start flex-wrap gap-4 minMobil:px-2'>
           {
             schedule.map(item => (
               <CARDCLASSES key={item.id} data={item} />
             ))
-
           }
         </div>
       }

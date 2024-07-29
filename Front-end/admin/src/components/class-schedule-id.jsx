@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import { BUTTON, CREATESCHEDULECLASSES } from "../ui";
 import { useSelector } from "react-redux";
+import TimeTable from "../service/time-table";
 
 function ClassScheduleID() {
   const [visible, setvisible] = useState(false);
   const open = useSelector((sel) => sel.sidebarReduser.open);
+
+  useEffect(() => {
+    getScheduleClasses();
+  }, []);
+
+  const getScheduleClasses = async () => {
+    try {
+      const response = await TimeTable.getAllTimeTable()
+      // console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <div className={`${Container}`}>
@@ -28,12 +43,12 @@ function ClassScheduleID() {
 
       <div
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"} min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}>
-        <CREATESCHEDULECLASSES />
-        <CREATESCHEDULECLASSES weekday="Seshanba" active />
+        <CREATESCHEDULECLASSES active={true} />
+        {/* <CREATESCHEDULECLASSES weekday="Seshanba" active />
         <CREATESCHEDULECLASSES weekday="Chorshanba" active />
         <CREATESCHEDULECLASSES weekday="Payshanba" active />
         <CREATESCHEDULECLASSES weekday="Juma" active />
-        <CREATESCHEDULECLASSES weekday="Shanba" active />
+        <CREATESCHEDULECLASSES weekday="Shanba" active /> */}
       </div>
     </div>
   );

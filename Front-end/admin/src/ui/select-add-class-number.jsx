@@ -6,7 +6,7 @@ function SelectClassNumber({ setClassesNumber, classesNumber }) {
       value={classesNumber}
       onChange={(e) => setClassesNumber(e.target.value)}
       className="form-select w-50"
-      aria-label="Default select example"
+
     >
       <option hidden>Sinf tanlang</option>
       <option value="1">1-sinf</option>

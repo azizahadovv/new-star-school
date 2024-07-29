@@ -8,7 +8,7 @@ function Nationality({ nationality, setNationality,style={ height: "55px", maxWi
             required
             className="form-select"
             style={style}
-            aria-label="Default select example"
+            
         >
             <option hidden>
                 Millati *
