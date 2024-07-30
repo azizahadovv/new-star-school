@@ -9,7 +9,7 @@ import teacherController from '../service/teacher'
 function Teacher() {
   const navigate = useNavigate()
   const open = useSelector(sel => sel.sidebarReduser.open)
-  const [dataTeachers, setDataTeachers] = useState(null)
+  const [dataTeachers, setDataTeachers] = useState([])
 
   useEffect(() => {
     getTeachers();
@@ -47,7 +47,7 @@ function Teacher() {
       </div>
       <div className={`${styleTopBarUINoFlex} min-h-96 overflow-scroll p-3`}>
         {
-          !dataTeachers ? <div className='flex items-center justify-center mt-5'>
+          dataTeachers.length === 0 ? <div className='flex items-center justify-center mt-5'>
             < LOADER />
           </div> : <table className={`table table-hover ${open ? 'hidden' : 'flex'}`}>
             <thead>
@@ -63,25 +63,25 @@ function Teacher() {
             <tbody>
               {
                 dataTeachers?.map((item, id) => {
-                  return <tr key={id}>
+                  return <tr key={item?.id}>
                     <th scope="row">{id + 1}</th>
                     <td>
-                      <p className='w-[270px]'>{item.firstName + " " + item.lastName + " " + item.patronymic}</p>
+                      <p className='w-[270px]'>{item?.firstName + " " + item?.lastName + " " + item?.patronymic}</p>
                     </td>
                     <td>
-                      <p className='w-[150px]'>{item.subject}</p>
+                      <p className='w-[150px]'>{item.subject.map(i => <span key={i.id}>{i.name}</span>)}</p>
                     </td>
                     <td>
-                      <p className='w-[110px]'>{item.birthDate}</p>
+                      <p className='w-[110px]'>{item?.birthDate}</p>
                     </td>
                     <td>
-                      <p className='min-w-max'>{item.phoneNumber}</p>
+                      <p className='min-w-max'>{item?.phoneNumber}</p>
                     </td>
                     <td>
                       <div className='w-[150px] flex items-center justify-between relative'>
                         <button onClick={() => {
-                          navigate(`/teacher-profile/${item.id}`)
-                          localStorage.setItem("TeacherId", item.id)
+                          navigate(`/teacher-profile/${item?.id}`)
+                          localStorage.setItem("TeacherId", item?.id)
                         }}
                           className="flex items-center justify-center gap-2 text-blue"
                         >
@@ -102,11 +102,11 @@ function Teacher() {
                             />
                           </button>
                           <div className={`dropdown-menu`}>
-                            <button onClick={() => { navigate(`/add-teachers/${item.id}`) }} className="dropdown-item d-flex align-items-center gap-2">
+                            <button onClick={() => { navigate(`/add-teachers/${item?.id}`) }} className="dropdown-item d-flex align-items-center gap-2">
                               <img src={editBlue} width={20} alt="trash" />
                               Tahrirlash
                             </button>
-                            <button onClick={() => remove_Teacher(item.id, item.firstName + " " + item.lastName + " " + item.patronymic)} className="dropdown-item d-flex align-items-center gap-2">
+                            <button onClick={() => remove_Teacher(item?.id, item?.firstName + " " + item?.lastName + " " + item?.patronymic)} className="dropdown-item d-flex align-items-center gap-2">
                               <img src={trash} width={20} alt="trash" />
                               O‘chirish
                             </button>

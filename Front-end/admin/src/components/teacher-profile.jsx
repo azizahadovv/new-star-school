@@ -6,7 +6,7 @@ import teacherController from '../service/teacher'
 import { useParams } from 'react-router-dom'
 
 function TeacherProfile() {
-    const [dataTeacher, setDataTeacher] = useState({})
+    const [dataTeacher, setDataTeacher] = useState(null)
     const { id } = useParams()
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function TeacherProfile() {
             <div className={`${styleTopBarUINoFlex} w-[300px] h-[380px] p-3 rounded-3xl flex items-center justify-between flex-col`}>
                 <div className='w-full h-[80%] flex items-center justify-center rounded-xl overflow-hidden cursor-pointer'>
                     {
-                        dataTeacher?.image === null || dataTeacher?.image==="" ? <div className='w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase'>
+                        dataTeacher?.image === null || dataTeacher?.image === "" ? <div className='w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase'>
                             <span className='text-6xl text-white flex items-center justify-center'>{dataTeacher?.firstName.charAt(0) + "." + dataTeacher?.lastName.charAt(0)}</span>
                         </div> : <img src={dataTeacher?.image} alt="" />
                     }
@@ -86,7 +86,9 @@ function TeacherProfile() {
                         </tr>
                         <tr>
                             <th className='w-50'>Fan o'qituvchisi:</th>
-                            <th className='w-50'>{dataTeacher?.subject}</th>
+                            <th className='w-50'>{dataTeacher?.subject.map((i) => {
+                                return i.name + "\n"
+                            })}</th>
                         </tr>
                         <tr>
                             <th className='w-50'>Login:</th>

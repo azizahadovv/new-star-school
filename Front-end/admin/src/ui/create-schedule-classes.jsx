@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { LESSONTABLECARD } from ".";
 
-function CreateScheduleClasses({ data,weekday }) {
-  const [visible1, setvisible1] = useState(false)
-  console.log(data);
+function CreateScheduleClasses({ data, weekday }) {
   return (
     <div className="w-[450px] min-h-96 border-t-4-color border-blue">
 
@@ -11,8 +9,8 @@ function CreateScheduleClasses({ data,weekday }) {
         <span className="text-center text-blue uppercase">{weekday}</span>
       </div>
       {
-        data?.map((item) => {
-          return <LESSONTABLECARD key={item.id} item={item} />
+        data?.map((item,id) => {
+          return <LESSONTABLECARD key={id} item={item} />
         })
       }
     </div>

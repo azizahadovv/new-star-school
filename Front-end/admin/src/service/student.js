@@ -36,9 +36,9 @@ const student_Page_Function = {
             console.log("error removed \n" + error);
         }
     },
-    async search_Student(keyword) {
+    async search_Student(keywordId, keywordName) {
         try {
-            const { data } = await axios.get(`${baseURL}/students/search?keyword=${keyword}`);
+            const { data } = await axios.get(`${baseURL}/students/search-by?classId=${keywordId}&name=${keywordName}`);
             return data
         } catch (error) {
             console.log(error.message);

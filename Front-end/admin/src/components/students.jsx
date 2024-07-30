@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import { useNavigate } from "react-router-dom";
-import { arrowRight, editBlue, menuDots, trash } from "../icons";
+import { arrowRight, editBlue, menuDots, searchImg, trash } from "../icons";
 import { useSelector } from "react-redux";
-import { LOADER, SEARCH, SELECTCLASSNUMBER } from "../ui";
+import { BUTTON, LOADER, SEARCH, SELECTCLASSNUMBER } from "../ui";
 import student_Page_Function from "../service/student";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -24,18 +24,15 @@ function Students() {
       console.log("error get student" + error);
     }
   }
-
   const searchStudent = async () => {
     try {
-      student_Page_Function.search_Student(searchValue).then((result) => {
+      student_Page_Function.search_Student(classesNumber, searchValue).then((result) => {
         setStudents(result);
       })
     } catch (error) {
       toast.error(error.message)
     }
   }
-
-
   const removeStudent = async (id, name) => {
     const verification = window.confirm(`Are you sure you want to delete ${name}?`);
     try {
@@ -53,11 +50,17 @@ function Students() {
   return (
     <div className={`${Container}`}>
       <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3`}>
-        <div className="w-96">
-          <SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} searchFunction={searchStudent} placeholder="O‘quvchi bo‘ylab izlash" />
+        <div className="min-w-[700px] flex items-start justify-start gap-3">
+          <div className="flex gap-3 min-w-[550px]">
+            <SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} searchFunction={searchStudent} placeholder="O‘quvchi bo‘ylab izlash" />
+            <SELECTCLASSNUMBER classesNumber={classesNumber} setClassesNumber={setClassesNumber} />
+          </div>
+          <button onClick={searchStudent} className="border border-brGray rounded-xl flex items-center justify-center gap-2 px-4 w-[120px] min-h-10">
+            <img src={searchImg} alt="searchImg" />
+            <span>izlash</span>
+          </button>
         </div>
         <div className="w-96">
-          <SELECTCLASSNUMBER classesNumber={classesNumber} setClassesNumber={setClassesNumber} />
         </div>
       </div>
       <div

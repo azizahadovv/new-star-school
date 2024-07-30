@@ -19,12 +19,11 @@ function ClassScheduleID() {
     try {
       const response = await TimeTable.getTimeTableInId(id)
       setSchedule(response)
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
   }
-  
+
   return (
     <div className={`${Container}`}>
       <div
