@@ -22,6 +22,8 @@ function SelectClassNumber({ setClassesNumber, classesNumber }) {
       className="form-select w-50"
     >
       <option hidden>Sinf tanlang</option>
+      <option value={""}>All Students</option>
+
       {
         classNumber == [] ? <option>Loading...</option> : classNumber.map((i) => {
           return <option key={i.id} value={i.id}>{i.name}</option>

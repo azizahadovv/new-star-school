@@ -44,12 +44,12 @@ function ClassScheduleID() {
       </div>
       <div
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"} min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}>
-        <CREATESCHEDULECLASSES weekday={"Dushanba"} data={schedule && schedule.MONDAY} />
-        <CREATESCHEDULECLASSES weekday={"Seshanba"} data={schedule && schedule.TUESDAY} />
-        <CREATESCHEDULECLASSES weekday={"Chorshanba"} data={schedule && schedule.WEDNESDAY} />
-        <CREATESCHEDULECLASSES weekday={"Payshanba"} data={schedule && schedule.THURSDAY} />
-        <CREATESCHEDULECLASSES weekday={"Juma"} data={schedule && schedule.FRIDAY} />
-        <CREATESCHEDULECLASSES weekday={"Shanba"} data={schedule && schedule.SATURDAY} />
+        <CREATESCHEDULECLASSES weekday={"Dushanba"} data={schedule && schedule?.MONDAY} />
+        <CREATESCHEDULECLASSES weekday={"Seshanba"} data={schedule && schedule?.TUESDAY} />
+        <CREATESCHEDULECLASSES weekday={"Chorshanba"} data={schedule && schedule?.WEDNESDAY} />
+        <CREATESCHEDULECLASSES weekday={"Payshanba"} data={schedule && schedule?.THURSDAY} />
+        <CREATESCHEDULECLASSES weekday={"Juma"} data={schedule && schedule?.FRIDAY} />
+        <CREATESCHEDULECLASSES weekday={"Shanba"} data={schedule && schedule?.SATURDAY} />
       </div>
     </div>
   );
