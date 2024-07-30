@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 function Students() {
   const open = useSelector((sel) => sel.sidebarReduser.open);
+  const [searchValue, setSearcheValue] = useState('')
   const navigate = useNavigate()
   const [classesNumber, setClassesNumber] = useState('')
   const [students, setStudents] = useState(null)
@@ -23,6 +24,18 @@ function Students() {
       console.log("error get student" + error);
     }
   }
+
+  const searchStudent = async () => {
+    try {
+      student_Page_Function.search_Student(searchValue).then((result) => {
+        setStudents(result);
+      })
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
+
   const removeStudent = async (id, name) => {
     const verification = window.confirm(`Are you sure you want to delete ${name}?`);
     try {
@@ -41,7 +54,7 @@ function Students() {
     <div className={`${Container}`}>
       <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3`}>
         <div className="w-96">
-          <SEARCH placeholder="O‘quvchi bo‘ylab izlash" />
+          <SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} searchFunction={searchStudent} placeholder="O‘quvchi bo‘ylab izlash" />
         </div>
         <div className="w-96">
           <SELECTCLASSNUMBER classesNumber={classesNumber} setClassesNumber={setClassesNumber} />

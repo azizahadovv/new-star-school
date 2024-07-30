@@ -19,9 +19,9 @@ const student_Page_Function = {
             console.log(` Error get_student_in_Id  ${error}`);
         }
     },
-    async Put_Student(id,dataStudent) {
+    async Put_Student(id, dataStudent) {
         try {
-            await axios.put(`${baseURL}/students/${id}`,dataStudent);
+            await axios.put(`${baseURL}/students/${id}`, dataStudent);
             return
         } catch (error) {
             console.log("error removed \n" + error);
@@ -34,6 +34,14 @@ const student_Page_Function = {
             return
         } catch (error) {
             console.log("error removed \n" + error);
+        }
+    },
+    async search_Student(keyword) {
+        try {
+            const { data } = await axios.get(`${baseURL}/students/search?keyword=${keyword}`);
+            return data
+        } catch (error) {
+            console.log(error.message);
         }
     }
 }
