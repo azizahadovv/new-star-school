@@ -49,19 +49,17 @@ function Students() {
   }
   return (
     <div className={`${Container}`}>
-      <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3`}>
-        <div className="min-w-[700px] flex items-start justify-start gap-3">
+      <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3 overflow-scroll`}>
+        <div className="min-w-max flex items-start justify-start gap-3 px-3">
           <div className="flex gap-3 min-w-[550px]">
             <SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} searchFunction={searchStudent} placeholder="O‘quvchi bo‘ylab izlash" />
             <SELECTCLASSNUMBER classesNumber={classesNumber} setClassesNumber={setClassesNumber} />
           </div>
-          <button onClick={searchStudent} className="border border-brGray rounded-xl flex items-center justify-center gap-2 px-4 w-[120px] min-h-10">
+          <button onClick={searchStudent} className="border border-brGray rounded-xl h-10 w-10 flex items-center justify-center">
             <img src={searchImg} alt="searchImg" />
-            <span>izlash</span>
           </button>
         </div>
-        <div className="w-96">
-        </div>
+      
       </div>
       <div
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "block"

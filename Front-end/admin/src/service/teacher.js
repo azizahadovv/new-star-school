@@ -2,6 +2,15 @@ import axios from "axios";
 import { baseURL } from "./api";
 
 const teacherController = {
+    async searchTeacher(techerName, subjectId) {
+        console.log(techerName, subjectId);
+        try {
+            const { data } = await axios.get(`${baseURL}/teachers/search?subjectId=${subjectId}&name=${techerName}`)
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
     async postTeacherInSubjectId(teacherSubjectId, dataTeacher) {
         try {
             await axios.post(`${baseURL}/teachers?subjectId=${teacherSubjectId}`, dataTeacher);

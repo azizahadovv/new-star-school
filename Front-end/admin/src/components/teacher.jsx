@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container, styleTopBarUINoFlex } from '../constanta/style'
 import { BUTTON, LOADER, SEARCH, SELECTSCINES } from '../ui'
 import { useNavigate } from 'react-router-dom'
-import { arrowRight, editBlue, menuDots, trash } from '../icons'
+import { arrowRight, editBlue, menuDots, searchImg, trash } from '../icons'
 import { useSelector } from 'react-redux'
 import teacherController from '../service/teacher'
 
@@ -10,6 +10,9 @@ function Teacher() {
   const navigate = useNavigate()
   const open = useSelector(sel => sel.sidebarReduser.open)
   const [dataTeachers, setDataTeachers] = useState([])
+  const [searchValue, setSearcheValue] = useState('')
+  const [value, setValue] = useState('')
+
 
   useEffect(() => {
     getTeachers();
@@ -34,12 +37,27 @@ function Teacher() {
       console.log('remove_Teacher error', error);
     }
   }
+
+  const searchTeacher = async () => {
+    try {
+      await teacherController.searchTeacher(searchValue, value).then((teacher) => {
+        setDataTeachers(teacher);
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   return (
     <div className={`${Container}`}>
-      <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-between tablet:px-3 minMobil:px-1 overflow-scroll`}>
-        <div className='tablet:w-1/2 minMobil:min-w-[350px] flex gap-3 mr-[150px]'>
-          <div className='tablet:w-2/3 minMobil:min-w-80'><SEARCH placeholder='O‘qituvchi bo‘ylab izlash' /></div>
-          <div className='tablet:w-3/12 minMobil:min-w-36'><SELECTSCINES /></div>
+      <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center tablet:justify-between minMobil:justify-center minMobil:py-3 flex-wrap tablet:px-3 minMobil:px-1 overflow-scroll`}>
+        <div className='min-w-max flex items-center justify-center gap-3 '>
+          <div className='tablet:w-2/3 minMobil:min-w-80'><SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} placeholder='O‘qituvchi bo‘ylab izlash' /></div>
+          <div className='tablet:w-3/12 minMobil:min-w-36'><SELECTSCINES value={value} setValue={setValue} /></div>
+          <button onClick={searchTeacher} className="border border-brGray rounded-xl h-10 w-10 flex items-center justify-center">
+            <img src={searchImg} alt="searchImg" />
+          </button>
         </div>
         <div className='min-w-28'>
           <BUTTON buttonFunction={() => navigate('/add-teachers')} active name={'O‘qituvchi qo‘shish'} />

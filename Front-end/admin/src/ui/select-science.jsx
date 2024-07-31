@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import subjectFunction from "../service/subjects";
 
-function SelectScience() {
+function SelectScience({ value, setValue }) {
   const [subject, setSubject] = useState([])
   useEffect(() => {
     getSubjectFunction()
-   }, [])
+  }, [])
 
-   const getSubjectFunction = async () => {
+  const getSubjectFunction = async () => {
     const response = await subjectFunction.getSubjects()
     setSubject(response)
   }
   return (
-    <select className="form-select">
+    <select value={value} onChange={(e) => setValue(e.target.value)} className="form-select">
       <option hidden>Fanni tanlang</option>
-      <option value="all">Hammasi</option>
+      <option value="">Hammasi</option>
       {
         subject.map((item) => (
-          <option key={item.id} value={item.name}>{item.name}</option>
+          <option key={item.id} value={item.id}>{item.name}</option>
         ))
       }
     </select>
