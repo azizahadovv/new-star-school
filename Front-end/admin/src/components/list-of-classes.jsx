@@ -29,7 +29,7 @@ function ListOfClasses() {
   }, []);
 
   const obj = {
-    name: `${classesNumber + " " + classesGroup}-sinf`,
+    name: `${classesNumber+classesGroup}-sinf`,
     grade: classesNumber,
     groupLetter: classesGroup,
   };
@@ -94,11 +94,8 @@ function ListOfClasses() {
   return (
     <div className={`${Container} py-2 overflow-scroll`}>
       <div
-        className={`${styleTopBarUINoFlex} w-full min-h-20 flex items-center justify-between px-3 overflow-scroll`}
+        className={`${styleTopBarUINoFlex} w-full min-h-20 flex items-center justify-end px-3 overflow-scroll`}
       >
-        <div className="tablet:min-w-2/6 minMobil:min-w-[300px]">
-          <SEARCH />
-        </div>
         <div>
           <BUTTON
             buttonFunction={() => dispatch(showModal())}

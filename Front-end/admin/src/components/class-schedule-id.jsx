@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
-import { BUTTON, CREATESCHEDULECLASSES } from "../ui";
+import { BUTTON, CREATESCHEDULECLASSES, LESSONTABLECARD, LOADER } from "../ui";
 import { useSelector } from "react-redux";
 import TimeTable from "../service/time-table";
 import { useParams } from "react-router-dom";
-
+import Rodal from 'rodal';
+// include styles
+import 'rodal/lib/rodal.css';
+import teacherController from "../service/teacher";
 function ClassScheduleID() {
-  const [schedule, setSchedule] = useState(null);
+  const [schedule, setSchedule] = useState([]);
   const [visible, setvisible] = useState(false);
+  const [dayOfWeekRodal, setdayOfWeekRodal] = useState("");
+
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const { id } = useParams()
 
@@ -19,6 +24,7 @@ function ClassScheduleID() {
     try {
       const response = await TimeTable.getTimeTableInId(id)
       setSchedule(response)
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -44,13 +50,42 @@ function ClassScheduleID() {
       </div>
       <div
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"} min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}>
-        <CREATESCHEDULECLASSES weekday={"Dushanba"} data={schedule && schedule?.MONDAY} />
-        <CREATESCHEDULECLASSES weekday={"Seshanba"} data={schedule && schedule?.TUESDAY} />
-        <CREATESCHEDULECLASSES weekday={"Chorshanba"} data={schedule && schedule?.WEDNESDAY} />
-        <CREATESCHEDULECLASSES weekday={"Payshanba"} data={schedule && schedule?.THURSDAY} />
-        <CREATESCHEDULECLASSES weekday={"Juma"} data={schedule && schedule?.FRIDAY} />
-        <CREATESCHEDULECLASSES weekday={"Shanba"} data={schedule && schedule?.SATURDAY} />
+        {
+          schedule.length == 0 ? <div>
+            <LOADER />
+          </div> : <div className="w-full flex items-center justify-between flex-wrap">
+            {
+              schedule.map((res) => {
+                return <div className="w-[450px] min-h-96 border-t-4-color border-blue">
+                  <div>
+                    <div className="w-full h-14 flex items-center justify-center border-b-2 border-brGray">
+                      <span className="text-center text-blue uppercase">{res?.dayOfWeek}</span>
+                    </div>
+                    {
+                      res?.schedule?.map((item, id) => {
+                        return <>
+                          <LESSONTABLECARD key={id} item={item} />
+                        </>
+                      })
+                    }
+                    <button onClick={() => {
+                      setvisible(!visible)
+                      setdayOfWeekRodal(res?.dayOfWeek)
+                    }} className="w-full h-14 flex py-1 items-center justify-center  bg-border-color px-2 bg-lightGray text-textGray">+</button>
+                  </div>
+                </div>
+              })
+            }
+          </div>
+        }
       </div>
+      <Rodal visible={visible} onClose={() => setvisible(!visible)}>
+        <div>{dayOfWeekRodal}</div>
+        <hr />
+        <div className="w-full  flex flex-col items-start justify-evenly ">
+          <button className="tablet:w-1/2 minMobil:w-full h-10 rounded-xl text-white bg-green">Saqlash</button>
+        </div>
+      </Rodal>
     </div>
   );
 }

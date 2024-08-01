@@ -18,7 +18,6 @@ function SubjectTeacher({ subjectTeacherId, setSubjectTeacherId, style = { heigh
             required
             className="form-select"
             style={style}
-            
         >
             <option hidden>
                 {placeholder}

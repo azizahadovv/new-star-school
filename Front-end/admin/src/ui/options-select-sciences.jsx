@@ -1,6 +1,6 @@
 function OptionsSelect() {
   return (
-    <select className="form-select" aria-label="Disabled select example">
+    <select className="form-select">
       <option hidden>Fanni tanlang</option>
       <option value="all">Hammasi</option>
       <option value="1">Chet tili</option>

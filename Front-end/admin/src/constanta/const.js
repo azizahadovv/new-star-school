@@ -6,8 +6,6 @@ export const homeCard = [
         title: "Dars jadvali",
         link:"/class-schedule"
     },
-
-    
     {
         id: 2,
         img: CARD2,

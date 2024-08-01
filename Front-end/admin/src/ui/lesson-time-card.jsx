@@ -1,10 +1,4 @@
 import { GreenIconStudent, editBlue, menuDots, trash } from "../icons";
-import React from 'react';
-import Rodal from 'rodal';
-// include styles
-import 'rodal/lib/rodal.css';
-import teacherController from "../service/teacher";
-
 function LessonTimeCard({ weekday, active, visible, setvisible, item }) {
     return (
         <>
@@ -12,7 +6,7 @@ function LessonTimeCard({ weekday, active, visible, setvisible, item }) {
                 <div className="w-14  h-full border bg-lightGray rotate-90-a flex items-center justify-center ">
                     <span className="text-nowrap text-sm text-textBlack">{item.startTime}</span>
                 </div>
-                {!active ? (
+                
                     <div className="w-full h-14 flex py-1 items-center justify-center px-2 border bg-lightGray">
                         <div className="w-full flex flex-col  h-full m-0 items-start justify-between">
                             <span className="w-full font-bold">{item.subjectName}</span>
@@ -45,22 +39,11 @@ function LessonTimeCard({ weekday, active, visible, setvisible, item }) {
                                 </button>
                             </div>
                         </div>
-                    </div>
-                ) : (
-                    <button onClick={() => (setvisible(!visible))} className="w-full h-14 flex py-1 items-center justify-center  bg-border-color px-2 bg-lightGray text-textGray">+</button>
-                )}
+                    </div>               
                 <div className="w-14 h-full border bg-lightGray rotate-90-a flex items-center justify-center p-3 py-[1px]">
                     <span className="text-nowrap text-sm text-textBlack">{item.endTime}</span>
                 </div>
-                <Rodal visible={visible} onClose={() => setvisible(!visible)}>
-                    <div>{item.dayOfWeek}</div>
-                    <hr />
-                    <div className="w-full h-[75%] flex flex-col items-start justify-evenly ">
-                        <button className="tablet:w-1/2 minMobil:w-full h-10 rounded-xl text-white bg-green">Saqlash</button>
-                    </div>
-                </Rodal>
             </div>
-
         </>
     )
 }

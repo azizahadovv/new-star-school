@@ -48,6 +48,8 @@ export { default as GreenIconStudent } from './studGreen.svg'
 
 export { default as img } from './img.svg'
 export { default as file } from './file-file-type.svg'
+export { default as GIFFILE } from './icons8-arrow.gif'
+
 
 
 export { default as CARD1 } from './card-schedule-1.svg'

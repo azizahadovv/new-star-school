@@ -3,7 +3,7 @@ import React from "react";
 function SelectClassNumberForRodal({ setClassesNumber, classesNumber }) {
   return (
     <select value={classesNumber} onChange={(e)=>setClassesNumber(e.target.value)} className="form-select" aria-label="Default select example">
-      <option selected hidden>Sinfni tanlang</option>
+      <option hidden>Sinfni tanlang</option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
