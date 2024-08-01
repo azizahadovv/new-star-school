@@ -7,9 +7,6 @@ import { exitSidebarBtn } from '../slice/register'
 function ButtonExit() {
     const navitagate = useNavigate()
     const dispatch = useDispatch()
-
-    
-
     return (
         <button
             onClick={() => {

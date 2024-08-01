@@ -6,7 +6,7 @@ import {
   LOADER,
   SEARCH,
   SELECTCLASSGROUP,
-  SELECTCLASSNUMBER,
+  SELECTCLASSNUMBERS,
 } from "../ui";
 import { postClass, setClasses, showModal } from "../slice/class";
 import Rodal from "rodal";
@@ -19,8 +19,8 @@ function ListOfClasses() {
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [classesNumber, setClassesNumber] = useState("");
   const [classesGroup, setClassesGroup] = useState("");
-  const [change, setChange] = useState("")
-  const [changeId, setChangeId] = useState('')
+  const [change, setChange] = useState("");
+  const [changeId, setChangeId] = useState("");
   const visible = useSelector((sel) => sel.addclass.visible);
   const getclassData = useSelector((sel) => sel.addclass.class);
 
@@ -51,7 +51,7 @@ function ListOfClasses() {
         toast.success("sinf o'chirildi");
       } else toast.error("malumotlar o'chirilmadi qayta urinib ko'ring");
       getClasses();
-    } catch (error) { }
+    } catch (error) {}
   };
   const postClasses = async () => {
     try {
@@ -62,17 +62,16 @@ function ListOfClasses() {
           setClassesGroup("");
           setClassesNumber("");
           getClasses();
-          setChange('')
+          setChange("");
           toast.success("sinf yaratildi");
         } else {
           try {
-            await functionsClasses.changeClassName(changeId, obj)
+            await functionsClasses.changeClassName(changeId, obj);
             console.log("success", "change");
             getClasses();
             setClassesGroup("");
             setClassesNumber("");
-            setChange('')
-
+            setChange("");
           } catch (error) {
             console.log("error change", error);
           }
@@ -85,14 +84,12 @@ function ListOfClasses() {
   };
 
   const changeClass = async (data) => {
-    setClassesGroup(data.groupLetter)
-    setClassesNumber(data.grade)
-    setChangeId(data.id)
-    setChange(data)
+    setClassesGroup(data.groupLetter);
+    setClassesNumber(data.grade);
+    setChangeId(data.id);
+    setChange(data);
     dispatch(showModal());
-  }
-
-
+  };
 
   return (
     <div className={`${Container} py-2 overflow-scroll`}>
@@ -111,8 +108,9 @@ function ListOfClasses() {
         </div>
       </div>
       <div
-        className={`${open ? "hidden" : "flex"
-          } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
+        className={`${
+          open ? "hidden" : "flex"
+        } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
       >
         {!getclassData ? (
           <LOADER />
@@ -145,8 +143,14 @@ function ListOfClasses() {
           </p>
           <div className="flex flex-col items-start justify-between h-28">
             <div className="flex items-center justify-between w-full gap-3">
-              <SELECTCLASSNUMBER classesNumber={classesNumber} setClassesNumber={setClassesNumber} />
-              <SELECTCLASSGROUP classesGroup={classesGroup} setClassesGroup={setClassesGroup} />
+              <SELECTCLASSNUMBERS
+                classesNumber={classesNumber}
+                setClassesNumber={setClassesNumber}
+              />
+              <SELECTCLASSGROUP
+                classesGroup={classesGroup}
+                setClassesGroup={setClassesGroup}
+              />
             </div>
             <BUTTON
               name={"Saqlash"}

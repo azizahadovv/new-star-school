@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import functionsClasses from "../service/function-class";
-import { LOADER } from ".";
 
 function SelectClassNumber({ setClassesNumber, classesNumber }) {
   const [classNumber, setclassNumber] = useState([])
