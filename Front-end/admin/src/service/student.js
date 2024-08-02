@@ -43,6 +43,14 @@ const student_Page_Function = {
         } catch (error) {
             console.log(error.message);
         }
+    },
+    async uploadFile(studentId, file) {
+        try {
+            await axios.post(`${baseURL}/students/${studentId}/upload-image`, file)
+            console.log("successfully uploaded");
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 

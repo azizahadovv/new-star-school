@@ -12,8 +12,6 @@ function Teacher() {
   const [dataTeachers, setDataTeachers] = useState([])
   const [searchValue, setSearcheValue] = useState('')
   const [value, setValue] = useState('')
-
-
   useEffect(() => {
     getTeachers();
   }, []);
@@ -53,7 +51,7 @@ function Teacher() {
     <div className={`${Container}`}>
       <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center tablet:justify-between minMobil:justify-center minMobil:py-3 flex-wrap tablet:px-3 minMobil:px-1 overflow-scroll`}>
         <div className='min-w-max flex items-center justify-center gap-3 '>
-          <div className='tablet:w-2/3 minMobil:min-w-80'><SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} placeholder='O‘qituvchi bo‘ylab izlash' /></div>
+          <div className='tablet:w-2/3 minMobil:min-w-80'><SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} placeholder='FI bo‘ylab izlash' /></div>
           <div className='tablet:w-3/12 minMobil:min-w-36'><SELECTSCINES value={value} setValue={setValue} /></div>
           <button onClick={searchTeacher} className="border border-brGray rounded-xl h-10 w-10 flex items-center justify-center">
             <img src={searchImg} alt="searchImg" />

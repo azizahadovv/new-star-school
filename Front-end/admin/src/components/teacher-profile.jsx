@@ -3,22 +3,36 @@ import { Container, styleTopBarUINoFlex } from '../constanta/style'
 import { BUTTON } from '../ui'
 import { ICONIMG } from '../icons'
 import teacherController from '../service/teacher'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 
 function TeacherProfile() {
     const [dataTeacher, setDataTeacher] = useState(null)
     const { id } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         get_datas_Student()
     }, [])
-
 
     const get_datas_Student = async () => {
         try {
             const response = await teacherController.getTeacherInId(id)
             setDataTeacher(response)
         } catch (error) {
+            console.log(error);
+            navigate(-1)
+        }
+    }
+    const saveImage = async (e) => {
+        const formData = new FormData();
+        formData.append('file', e);
+        try {
+            await teacherController.uploadImg(id, formData)
+            console.log("Uploaded file");
+            get_datas_Student()
+        } catch (error) {
+            toast.error("Pay attention to the file extension `PNG,JPG,SVG`")
             console.log(error);
         }
     }
@@ -32,7 +46,13 @@ function TeacherProfile() {
                         </div> : <img src={dataTeacher?.image} alt="" />
                     }
                 </div>
-                <BUTTON img={ICONIMG} name={'Tahrirlash'} />
+                <label className={`py-[10px] px-3 w-full ${"bg-lightGray text-textBlack"} border border-brGray rounded-xl mt-2 flex items-center justify-center gap-2 cursor-pointer`}>
+                    <input onChange={(e) => saveImage(e.target.files[0])} hidden type="file" />
+                    <span className='flex items-center justify-center gap-2'>
+                        <img src={ICONIMG} alt="" />
+                        Tahrirlash
+                    </span>
+                </label>
             </div>
             <div className={`${styleTopBarUINoFlex} tablet:w-3/4 minMobil:w-full min-h-20 px-3 py-2`}>
                 <div className='flex items-center justify-start min-h-16 border-b border-brGray mb-3'>
@@ -101,7 +121,7 @@ function TeacherProfile() {
                     </tbody>
                 </table>
             </div>
-
+            <ToastContainer />
         </div>
     )
 }

@@ -10,7 +10,7 @@ const teacherController = {
             console.log(error);
         }
     },
-    async postTeacherInSubjectId(teacherSubjectId, dataTeacher,role) {
+    async postTeacherInSubjectId(teacherSubjectId, dataTeacher, role) {
         try {
             await axios.post(`${baseURL}/teachers?subjectId=${teacherSubjectId}&role=${role}`, dataTeacher);
         } catch (error) {
@@ -55,6 +55,14 @@ const teacherController = {
             return data;
         } catch (error) {
             console.log(`Error get techer \n ${error}`);
+        }
+    },
+    async uploadImg(teacherId, file) {
+        try {
+            await axios.post(`${baseURL}/teachers/${teacherId}/upload-image`, file)
+            console.log("success upload");
+        } catch (error) {
+            console.log(error);
         }
     }
 

@@ -3,32 +3,62 @@ import { Container, styleTopBarUINoFlex } from '../constanta/style'
 import { BUTTON } from '../ui'
 import { ICONIMG } from '../icons'
 import student_Page_Function from '../service/student'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function StudentProfile() {
     const [dataStudent, setDataStudent] = useState({})
+    const { id } = useParams()
+    const navigate = useNavigate()
     useEffect(() => {
         get_datas_Student()
     }, [])
     const get_datas_Student = async () => {
-        const id = localStorage.getItem('StudentId')
         try {
             const response = await student_Page_Function.get_student_in_Id(id)
+            console.log(response);
             setDataStudent(response)
+        } catch (error) {
+            navigate(-2)
+            console.log(error);
+        }
+    }
+
+    console.log(id);
+
+    const saveImage = async (e) => {
+        const formData = new FormData();
+        formData.append('file', e);
+        try {
+            await student_Page_Function.uploadFile(id, formData)
+            console.log("Uploaded file");
+            get_datas_Student()
         } catch (error) {
             console.log(error);
         }
     }
+
+
+
     return (
         <div className={`${Container} flex tablet:items-start minMobil:items-center tablet:justify-start minMobil:justify-center gap-3 flex-wrap`}>
             <div className={`${styleTopBarUINoFlex} w-[300px] h-[380px] p-3 rounded-3xl flex items-center justify-between flex-col`}>
                 <div className='w-full h-[80%] flex items-center justify-center rounded-xl overflow-hidden cursor-pointer'>
                     {
                         dataStudent.image === null ? <div className='w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase'>
-                            <span className='text-6xl text-white flex items-center justify-center'>{dataStudent.firstName.charAt(0) + "." + dataStudent.lastName.charAt(0)}</span>
+                            <label className='text-6xl text-white flex items-center justify-center'>
+
+                                {dataStudent.firstName.charAt(0) + "." + dataStudent.lastName.charAt(0)}
+                            </label>
                         </div> : <img src={dataStudent.image} alt="" />
                     }
                 </div>
-                <BUTTON img={ICONIMG} name={'Tahrirlash'} />
+                <label className={`py-[10px] px-3 w-full ${"bg-lightGray text-textBlack"} border border-brGray rounded-xl mt-2 flex items-center justify-center gap-2 cursor-pointer`}>
+                    <input onChange={(e) => saveImage(e.target.files[0])} hidden type="file" />
+                    <span className='flex items-center justify-center gap-2'>
+                        <img src={ICONIMG} alt="" />
+                        Tahrirlash
+                    </span>
+                </label>
             </div>
 
             <div className={`${styleTopBarUINoFlex} tablet:w-3/4 minMobil:w-full min-h-20 px-3 py-2`}>
