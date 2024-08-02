@@ -1,8 +1,5 @@
 import axios from "axios"
 import { baseURL } from "./api"
-
-
-
 const subjectFunction = {
     async getSubjects() {
         try {

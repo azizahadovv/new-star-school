@@ -67,7 +67,7 @@ function AddTeacher() {
     getSubjectFunction()
     changeuserDataTeacher()
   }, [])
-
+console.log(level);
   const getSubjectFunction = async () => {
     const response = await subjectFunction.getSubjects()
     setSubjectList(response)
@@ -76,7 +76,7 @@ function AddTeacher() {
     if (check) {
       try {
         if (id === undefined) {
-          await teacherController.postTeacherInSubjectId(`${subjectTeacherId}`, objectData)
+          await teacherController.postTeacherInSubjectId(subjectTeacherId,objectData,level)
           toast.success("Teacher successfully created");
           navigate(-1);
         } else {
@@ -126,34 +126,11 @@ function AddTeacher() {
   return (
     <div className={`${Container}`}>
       <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start  px-3`}>
-        <div className="min-w-[150px]">
-          <BUTTON buttonFunction={() => navigate(-1)} active name={"ortga"} />
-        </div>
       </div>
       <div
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
           } min-h-96 overflow-scroll p-3 content-start ${flex}`}
       >
-        {
-          !id ? <div className="flex flex-col items-center justify-between  bg-border-color border-2 w-56 h-60 bg-lightGray">
-            <a title="O'quvchilarni excel file orqali yuklash uchun namuna"
-              href=""
-              download="google.svg"
-              className="h-25 flex items-center text-sm border-b "
-            >
-              Namuna Shablon yuklab olish
-            </a>
-            <label title="O'quvchilarni excel file orqali qo'shish" className="w-full h-75 p-3 cursor-pointer">
-              <div className="flex flex-col gap-2 items-center justify-center">
-                <img src={ICONIMG} width={35} alt="img" />
-                <span className="text-sm capitalize text-textGray font-normal leading-5">
-                  Fayl yuklang
-                </span>
-              </div>
-              <input hidden type="file" />
-            </label>
-          </div> : ''
-        }
         <div className={`${flex}`}>
           <TextField
             value={firstName}

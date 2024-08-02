@@ -1,10 +1,10 @@
 import { GreenIconStudent, editBlue, menuDots, trash } from "../icons";
-function LessonTimeCard({ weekday, active, visible, setvisible, item }) {
+function LessonTimeCard({item,functionDelete }) {
     return (
         <>
             <div className="w-full h-16 border-b-2 p-1 border-brGray m-0 flex items-center justify-start">
                 <div className="w-14  h-full border bg-lightGray rotate-90-a flex items-center justify-center ">
-                    <span className="text-nowrap text-sm text-textBlack">{item.startTime}</span>
+                    <span className="text-nowrap text-sm text-textBlack">{item?.startTime?.slice(0,item?.endTime?.length-3)}</span>
                 </div>
                 
                     <div className="w-full h-14 flex py-1 items-center justify-center px-2 border bg-lightGray">
@@ -33,7 +33,7 @@ function LessonTimeCard({ weekday, active, visible, setvisible, item }) {
                                     <img src={editBlue} width={20} alt="trash" />
                                     Tahrirlash
                                 </button>
-                                <button className="dropdown-item d-flex align-items-center gap-2">
+                                <button onClick={()=>functionDelete(item)} className="dropdown-item d-flex align-items-center gap-2">
                                     <img src={trash} width={20} alt="trash" />
                                     O‘chirish
                                 </button>
@@ -41,7 +41,7 @@ function LessonTimeCard({ weekday, active, visible, setvisible, item }) {
                         </div>
                     </div>               
                 <div className="w-14 h-full border bg-lightGray rotate-90-a flex items-center justify-center p-3 py-[1px]">
-                    <span className="text-nowrap text-sm text-textBlack">{item.endTime}</span>
+                    <span className="text-nowrap text-sm text-textBlack">{item?.endTime?.slice(0,item?.endTime?.length-3)}</span>
                 </div>
             </div>
         </>

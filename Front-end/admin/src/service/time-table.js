@@ -18,6 +18,14 @@ const TimeTable = {
             console.log(error);
         }
     },
+    async TrashData(dataId) {
+        try {
+            await axios.delete(`${baseURL}/v1/timetables/${dataId}`)
+            console.log("Data successfully deleted");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 export default TimeTable

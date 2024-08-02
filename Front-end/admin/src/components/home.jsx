@@ -14,10 +14,6 @@ function Home() {
         >
           <img className='w-50' src={item.img} alt="" />
           <h3 className='w-44 text-center'>{item.title}</h3>
-
-
-
-          
         </Link>)
       }
     </div>

@@ -3,7 +3,6 @@ import { baseURL } from "./api";
 
 const teacherController = {
     async searchTeacher(techerName, subjectId) {
-        console.log(techerName, subjectId);
         try {
             const { data } = await axios.get(`${baseURL}/teachers/search?subjectId=${subjectId}&name=${techerName}`)
             return data;
@@ -11,9 +10,9 @@ const teacherController = {
             console.log(error);
         }
     },
-    async postTeacherInSubjectId(teacherSubjectId, dataTeacher) {
+    async postTeacherInSubjectId(teacherSubjectId, dataTeacher,role) {
         try {
-            await axios.post(`${baseURL}/teachers?subjectId=${teacherSubjectId}`, dataTeacher);
+            await axios.post(`${baseURL}/teachers?subjectId=${teacherSubjectId}&role=${role}`, dataTeacher);
         } catch (error) {
             console.log(`Error get techer \n ${error}`);
         }
@@ -53,7 +52,6 @@ const teacherController = {
     async getTeacherInSubjectId(subjectId) {
         try {
             const { data } = await axios.get(`${baseURL}/teachers/subject/${subjectId}`);
-            console.log(data)
             return data;
         } catch (error) {
             console.log(`Error get techer \n ${error}`);

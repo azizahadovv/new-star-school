@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
-import { BUTTON, CREATESCHEDULECLASSES, LESSONTABLECARD, LOADER } from "../ui";
+import {
+  BUTTON,
+  INPUT,
+  LESSONTABLECARD,
+  LOADER,
+  SELECTTEACHER,
+  SUBJECTINID,
+  TERM,
+} from "../ui";
 import { useSelector } from "react-redux";
 import TimeTable from "../service/time-table";
 import { useParams } from "react-router-dom";
-import Rodal from 'rodal';
-// include styles
-import 'rodal/lib/rodal.css';
-import teacherController from "../service/teacher";
+import Rodal from "rodal";
+import "rodal/lib/rodal.css";
+import { toast, ToastContainer } from "react-toastify";
 function ClassScheduleID() {
   const [schedule, setSchedule] = useState([]);
+  const [teacherData, setTeacherData] = useState([]);
   const [visible, setvisible] = useState(false);
+  const { id } = useParams();
   const [dayOfWeekRodal, setdayOfWeekRodal] = useState("");
-
+  const [endTime, setEndTime] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [subjectId, setSubjectId] = useState(null);
+  const [teacherId, setTeacherId] = useState(null);
+  const [termId, setTermId] = useState(1);
   const open = useSelector((sel) => sel.sidebarReduser.open);
-  const { id } = useParams()
 
   useEffect(() => {
     getScheduleClasses();
@@ -22,70 +34,171 @@ function ClassScheduleID() {
 
   const getScheduleClasses = async () => {
     try {
-      const response = await TimeTable.getTimeTableInId(id)
-      setSchedule(response)
-      console.log(response);
+      const response = await TimeTable.getTimeTableInId(id);
+      setSchedule(response);
     } catch (error) {
       console.log(error);
     }
+  };
+  function nullUsestate() {
+    setEndTime("");
+    setStartTime("");
+    setSubjectId("");
+    setTeacherId("");
+    setTermId(1);
+    setTeacherData([]);
   }
+  const checked = endTime && startTime && subjectId && teacherId && termId;
+  const addSchedule = async () => {
+    const data = {
+      classId: id,
+      dayOfWeek: dayOfWeekRodal,
+      endTime: endTime,
+      startTime: startTime,
+      subjectId: Number(subjectId),
+      teacherId: Number(teacherId),
+      termId: Number(termId),
+    };
+
+    try {
+      if (checked) {
+        await TimeTable.addTimeTable(data).then((res) => {
+          toast.success("Added successfully");
+          getScheduleClasses();
+          nullUsestate();
+          setvisible(false);
+        });
+      } else {
+        toast.info("Fill in all the lines");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message, "Error adding schedule");
+    }
+  };
+
+  const Trash_Data = async (item) => {
+    const x=window.confirm("Delete the data?") 
+    try {
+      if(x) {
+        await TimeTable.TrashData(item.id);
+      toast.success("Deleted successfully");
+      getScheduleClasses();
+      } else {
+        toast.info("Sizni xatolik qabul qilamiz")
+      }
+      
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message, "Error deleting schedule");
+    }
+  };
 
   return (
     <div className={`${Container}`}>
       <div
         className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-center overflow-scroll`}
       >
-        <div className="min-w-[140px]">
-          <BUTTON active name={"1-chorak"} />
-        </div>
-        <div className="min-w-[140px]">
-          <BUTTON name={"2-chorak"} />
-        </div>
-        <div className="min-w-[140px]">
-          <BUTTON name={"3-chorak"} />
-        </div>
-        <div className="min-w-[140px]">
-          <BUTTON name={"4-chorak"} />
-        </div>
+        <b className="text-center font-bold leading-6 text-4xl text-textBlack">
+          Dars jadvali
+        </b>
       </div>
       <div
-        className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"} min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}>
-        {
-          schedule.length == 0 ? <div>
+        className={`${styleTopBarUINoFlex} ${
+          open ? "hidden" : "flex"
+        } min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}
+      >
+        {schedule.length == 0 ? (
+          <div>
             <LOADER />
-          </div> : <div className="w-full flex items-center justify-between flex-wrap">
-            {
-              schedule.map((res) => {
-                return <div className="w-[450px] min-h-96 border-t-4-color border-blue">
+          </div>
+        ) : (
+          <div className="w-full flex items-center justify-evenly py-5 gap-5 flex-wrap">
+            {schedule.map((res, id) => {
+              return (
+                <div
+                  key={id}
+                  className="w-[450px] min-h-96 border-t-4-color border-blue"
+                >
                   <div>
                     <div className="w-full h-14 flex items-center justify-center border-b-2 border-brGray">
-                      <span className="text-center text-blue uppercase">{res?.dayOfWeek}</span>
+                      <span className="text-center text-blue uppercase">
+                        {res?.dayOfWeek}
+                      </span>
                     </div>
-                    {
-                      res?.schedule?.map((item, id) => {
-                        return <>
-                          <LESSONTABLECARD key={id} item={item} />
-                        </>
-                      })
-                    }
-                    <button onClick={() => {
-                      setvisible(!visible)
-                      setdayOfWeekRodal(res?.dayOfWeek)
-                    }} className="w-full h-14 flex py-1 items-center justify-center  bg-border-color px-2 bg-lightGray text-textGray">+</button>
+                    {res?.schedule?.map((item, id) => {
+                      return (
+                        <div key={id}>
+                          <LESSONTABLECARD functionDelete={Trash_Data} item={item} />
+                        </div>
+                      );
+                    })}
+                    <button
+                      onClick={() => {
+                        setvisible(!visible);
+                        setdayOfWeekRodal(res?.dayOfWeek);
+                      }}
+                      className="w-full h-14 flex py-1 items-center justify-center  bg-border-color px-2 bg-lightGray text-textGray"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
-              })
-            }
+              );
+            })}
           </div>
-        }
+        )}
       </div>
-      <Rodal visible={visible} onClose={() => setvisible(!visible)}>
+      <Rodal
+        height={440}
+        visible={visible}
+        onClose={() => setvisible(!visible)}
+      >
         <div>{dayOfWeekRodal}</div>
         <hr />
-        <div className="w-full  flex flex-col items-start justify-evenly ">
-          <button className="tablet:w-1/2 minMobil:w-full h-10 rounded-xl text-white bg-green">Saqlash</button>
+        <div className="flex flex-col items-stretch justify-center gap-3">
+          <TERM value={termId} setValue={setTermId} />
+          <div className="flex items-center gap-3 justify-between">
+            <div className="w-1/2">
+              <INPUT
+                value={startTime}
+                setValue={setStartTime}
+                typeINP={"time"}
+                titleInp={"Start"}
+                width={"100%"}
+              />
+            </div>
+            <div className="w-1/2">
+              <INPUT
+                value={endTime}
+                setValue={setEndTime}
+                typeINP={"time"}
+                titleInp={"End"}
+                width={"100%"}
+              />
+            </div>
+          </div>
+          <SUBJECTINID
+            setTeacherData={setTeacherData}
+            value={subjectId}
+            setValue={setSubjectId}
+          />
+          <SELECTTEACHER
+            value={teacherId}
+            setValue={setTeacherId}
+            teacherData={teacherData}
+          />
+        </div>
+        <div className="w-full my-3 flex flex-col items-start justify-evenly ">
+          <button
+            onClick={addSchedule}
+            className="minMobil:w-full h-14 rounded-xl text-white bg-green"
+          >
+            Saqlash
+          </button>
         </div>
       </Rodal>
+      <ToastContainer />
     </div>
   );
 }

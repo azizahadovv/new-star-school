@@ -134,7 +134,6 @@ function AddUser() {
   }
   return (
     <div className={`${Container}`}>
-
       <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3`}>
         <div className="min-w-[150px]">
           <BUTTON buttonFunction={() => navigate(-1)} active name={"ortga"} />

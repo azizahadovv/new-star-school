@@ -22,3 +22,6 @@ export { default as LOADER } from './loader'
 export { default as LESSONTABLECARD } from './lesson-time-card'
 
 export { default as SELECTCLASSNUMBERS } from './select-class-number-for-modal'
+export { default as TERM } from './term'
+export { default as SUBJECTINID } from './subject-in-Id'
+export { default as SELECTTEACHER } from './select-teacher'
