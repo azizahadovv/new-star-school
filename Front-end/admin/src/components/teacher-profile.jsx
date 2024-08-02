@@ -43,7 +43,7 @@ function TeacherProfile() {
                     {
                         dataTeacher?.image === null || dataTeacher?.image === "" ? <div className='w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase'>
                             <span className='text-6xl text-white flex items-center justify-center'>{dataTeacher?.firstName.charAt(0) + "." + dataTeacher?.lastName.charAt(0)}</span>
-                        </div> : <img className='rounded-full' src={dataTeacher?.image} alt="dataTeacher?.image" />
+                        </div> : <img className='rounded-full w-full h-full' src={dataTeacher?.image} alt="dataTeacher?.image" />
                     }
                 </div>
                 <label className={`py-[10px] px-3 w-full ${"bg-lightGray text-textBlack"} border border-brGray rounded-xl mt-2 flex items-center justify-center gap-2 cursor-pointer`}>
