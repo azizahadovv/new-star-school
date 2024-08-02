@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import subjectFunction from "../service/subjects";
 import teacherController from "../service/teacher";
 
-function SubjecdtInId({ value, setValue,setTeacherData }) {
+function SubjecdtInId({ value, setValue, setTeacherData }) {
   const [subject, setSubject] = useState([]);
   useEffect(() => {
     getSubjectFunction();
@@ -33,7 +33,7 @@ function SubjecdtInId({ value, setValue,setTeacherData }) {
       style={{ height: "50px" }}
       className="form-select m-0"
     >
-      <option value={""} hidden>Fanni tanlang</option>
+      <option value="" hidden>Fanni tanlang</option>
       <option>Hammasi</option>
       {subject.map((item) => (
         <option key={item.id} value={item.id}>

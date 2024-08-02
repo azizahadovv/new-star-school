@@ -11,7 +11,7 @@ function SelectTeacher({ value, setValue, teacherData }) {
     >
       <option hidden>O'qituvchini tanlang</option>
       {teacherData.length === 0 ? (
-        <option>Loading..</option>
+        <option>O'qituvchi mavjud emas</option>
       ) : (
         teacherData?.map((item) => (
           <option key={item.id} value={item.id}>

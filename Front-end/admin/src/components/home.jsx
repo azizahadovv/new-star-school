@@ -8,6 +8,7 @@ function Home() {
     <div className={`p-6 min-h-[360px] rounded-lg ${Container} flex flex-wrap gap-4 tablet:items-start tablet:justify-start minMobil:items-center minMobil:justify-center`}>
       {
         homeCard.map(item => <Link
+        title={item.title}
           to={item.link}
           key={item.id}
           className='shadow-home-page rounded-xl flex flex-col items-center justify-center gap-3 tablet:w-64 tablet:h-64 minMobil:w-72 minMobil:h-72 no-underline'

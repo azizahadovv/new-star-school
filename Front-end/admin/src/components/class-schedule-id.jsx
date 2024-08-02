@@ -26,11 +26,22 @@ function ClassScheduleID() {
   const [subjectId, setSubjectId] = useState(null);
   const [teacherId, setTeacherId] = useState(null);
   const [termId, setTermId] = useState(1);
+  const [updateId, setUpdateId] = useState('');
   const open = useSelector((sel) => sel.sidebarReduser.open);
 
   useEffect(() => {
     getScheduleClasses();
   }, []);
+
+
+  function nullUsestate() {
+    setEndTime("");
+    setStartTime("");
+    setSubjectId("");
+    setTeacherId("");
+    setTermId(1);
+    setTeacherData([]);
+  }
 
   const getScheduleClasses = async () => {
     try {
@@ -40,15 +51,10 @@ function ClassScheduleID() {
       console.log(error);
     }
   };
-  function nullUsestate() {
-    setEndTime("");
-    setStartTime("");
-    setSubjectId("");
-    setTeacherId("");
-    setTermId(1);
-    setTeacherData([]);
-  }
+
   const checked = endTime && startTime && subjectId && teacherId && termId;
+
+
   const addSchedule = async () => {
     const data = {
       classId: id,
@@ -59,15 +65,24 @@ function ClassScheduleID() {
       teacherId: Number(teacherId),
       termId: Number(termId),
     };
-
     try {
       if (checked) {
-        await TimeTable.addTimeTable(data).then((res) => {
-          toast.success("Added successfully");
-          getScheduleClasses();
-          nullUsestate();
-          setvisible(false);
-        });
+        if (updateId === "") {
+          await TimeTable.addTimeTable(data).then((res) => {
+            toast.success("Added successfully");
+            getScheduleClasses();
+            nullUsestate('');
+            setvisible(false);
+          });
+        }else{
+          await TimeTable.updateTimeTable(updateId, data).then((res) => {
+            toast.success("Updated successfully");
+            getScheduleClasses();
+            setvisible(false);
+            setUpdateId('');
+            nullUsestate()
+          });
+        }
       } else {
         toast.info("Fill in all the lines");
       }
@@ -78,21 +93,32 @@ function ClassScheduleID() {
   };
 
   const Trash_Data = async (item) => {
-    const x=window.confirm("Delete the data?") 
+    const x = window.confirm("Delete the data?")
     try {
-      if(x) {
+      if (x) {
         await TimeTable.TrashData(item.id);
-      toast.success("Deleted successfully");
-      getScheduleClasses();
+        toast.success("Deleted successfully");
       } else {
         toast.info("Sizni xatolik qabul qilamiz")
       }
-      
     } catch (error) {
       console.log(error);
       toast.error(error.message, "Error deleting schedule");
     }
   };
+
+  const updateSchedule = async (item) => {
+    setvisible(true)
+    setUpdateId(item.id);
+    setdayOfWeekRodal(item.dayOfWeek)
+    setEndTime(item.endTime);
+    setStartTime(item.startTime);
+    // setSubjectId();
+    setTeacherId(item.teacherId);
+    setTermId(item.termId);
+
+  }
+
 
   return (
     <div className={`${Container}`}>
@@ -104,21 +130,20 @@ function ClassScheduleID() {
         </b>
       </div>
       <div
-        className={`${styleTopBarUINoFlex} ${
-          open ? "hidden" : "flex"
-        } min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}
+        className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
+          } min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}
       >
         {schedule.length == 0 ? (
           <div>
             <LOADER />
           </div>
         ) : (
-          <div className="w-full flex items-center justify-evenly py-5 gap-5 flex-wrap">
+          <div className="w-full flex items-stretch justify-evenly py-5 gap-5 flex-wrap">
             {schedule.map((res, id) => {
               return (
                 <div
                   key={id}
-                  className="w-[450px] min-h-96 border-t-4-color border-blue"
+                  className="w-[550px] min-h-96 border-t-4-color rounded-sm border-blue"
                 >
                   <div>
                     <div className="w-full h-14 flex items-center justify-center border-b-2 border-brGray">
@@ -129,11 +154,12 @@ function ClassScheduleID() {
                     {res?.schedule?.map((item, id) => {
                       return (
                         <div key={id}>
-                          <LESSONTABLECARD functionDelete={Trash_Data} item={item} />
+                          <LESSONTABLECARD functionEdit={updateSchedule} functionDelete={Trash_Data} item={item} />
                         </div>
                       );
                     })}
-                    <button
+                    <div className="p-1 ">
+                      <button
                       onClick={() => {
                         setvisible(!visible);
                         setdayOfWeekRodal(res?.dayOfWeek);
@@ -142,6 +168,8 @@ function ClassScheduleID() {
                     >
                       +
                     </button>
+                    </div>
+                    
                   </div>
                 </div>
               );

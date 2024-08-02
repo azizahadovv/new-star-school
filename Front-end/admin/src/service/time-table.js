@@ -25,6 +25,14 @@ const TimeTable = {
         } catch (error) {
             console.log(error);
         }
+    },
+    async updateTimeTable(dataId, data) {
+        try {
+            await axios.put(`${baseURL}/v1/timetables/${dataId}`, data)
+            console.log("Data successfully updated");
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
