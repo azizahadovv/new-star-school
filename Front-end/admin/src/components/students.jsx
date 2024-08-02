@@ -59,7 +59,7 @@ function Students() {
             <img src={searchImg} alt="searchImg" />
           </button>
         </div>
-      
+
       </div>
       <div
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "block"
@@ -82,8 +82,9 @@ function Students() {
                 return (
                   <tr key={id}>
                     <th scope="row">{id + 1}</th>
-                    <td className="relative">
-                      <p className="min-w-max h-full">
+                    <td>
+                      <p className="min-w-max h-full flex items-center justify-start gap-2 min-h-max text-lg font-normal">
+                        <img className='w-10 rounded-full' src={item?.image && item.image} alt="" />
                         {item.lastName + ' ' + item.firstName + ' ' + item.patronymic}
                       </p>
                     </td>

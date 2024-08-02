@@ -49,7 +49,7 @@ function StudentProfile() {
 
                                 {dataStudent.firstName.charAt(0) + "." + dataStudent.lastName.charAt(0)}
                             </label>
-                        </div> : <img src={dataStudent.image} alt="" />
+                        </div> : <img className='rounded-full' src={dataStudent.image} alt="" />
                     }
                 </div>
                 <label className={`py-[10px] px-3 w-full ${"bg-lightGray text-textBlack"} border border-brGray rounded-xl mt-2 flex items-center justify-center gap-2 cursor-pointer`}>
