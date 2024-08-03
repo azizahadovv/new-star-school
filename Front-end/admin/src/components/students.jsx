@@ -84,7 +84,7 @@ function Students() {
                     <th scope="row">{id + 1}</th>
                     <td>
                       <p className="min-w-max h-full flex items-center justify-start gap-2 min-h-max text-lg font-normal">
-                        <img className='w-10 h-10 bg-center rounded-full' src={item?.image && item.image} alt="" />
+                        <img className='w-10 h-10 bg-center rounded-full' hidden={item?.image?false:true} src={item?.image && item.image} alt="item?.image && item.image" />
                         {item.lastName + ' ' + item.firstName + ' ' + item.patronymic}
                       </p>
                     </td>

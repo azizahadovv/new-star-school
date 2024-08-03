@@ -32,5 +32,6 @@ export { default as STUDENTHOME } from './student.svg'
 export { default as PERSONNELHOME } from './personnel.svg'
 
 export { default as PERSONALINFORMATIONSHOME } from './personal-information.svg'
+export { default as GIFFILE } from './icons8-arrow.gif'
 
 // ******************************************************

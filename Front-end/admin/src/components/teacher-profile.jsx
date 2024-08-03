@@ -25,6 +25,11 @@ function TeacherProfile() {
         }
     }
     const saveImage = async (e) => {
+
+        if (!e.name.match(/\.(jpg|jpeg|png|gif|svg)$/)) {
+            toast.error("File extension should be jpg, jpeg, png, gif, svg")
+            return;
+        }
         const formData = new FormData();
         formData.append('file', e);
         try {
