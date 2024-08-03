@@ -8,8 +8,10 @@ import { ARROW } from "../icons";
 import { LOADER, SEARCH } from "../ui";
 import teacherControllers from "../service/teacher";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Teachers() {
+  const {t}=useTranslation()
   const navigate = useNavigate();
   const [dataTeachers, setDataTeachers] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -57,10 +59,10 @@ function Teachers() {
             <thead>
               <tr>
                 <th>№</th>
-                <th>O‘qituvchi</th>
-                <th>Fan</th>
-                <th>Tug’ilgan sanasi</th>
-                <th>Telefon raqam</th>
+                <th>{t("table_teacher")}</th>
+                <th>{t("table_subject")}</th>
+                <th>{t("table_birthday")}</th>
+                <th>{t("table_number")}</th>
                 <th></th>
               </tr>
             </thead>
@@ -106,7 +108,7 @@ function Teachers() {
                           }}
                           className="flex items-center justify-center gap-2 text-blue"
                         >
-                          Batafsil <img width={7} src={ARROW} alt="arrow" />
+                          {t("table_more")} <img width={7} src={ARROW} alt="arrow" />
                         </button>
                       </div>
                     </td>

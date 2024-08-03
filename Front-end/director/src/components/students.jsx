@@ -8,7 +8,9 @@ import { LOADER, SEARCH } from "../ui";
 import { ARROW } from "../icons";
 import { useNavigate } from "react-router-dom";
 import studentsController from "../service/student";
+import { useTranslation } from "react-i18next";
 function Students() {
+  const {t}=useTranslation()
   const navigate = useNavigate();
   const [dataStudents, setDataStudents] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -41,7 +43,7 @@ function Students() {
         <SEARCH
           value={searchValue}
           setValue={searcheStudent}
-          placeholder={"FISH bo'yicha qidiruv"}
+          placeholder={t("placeholder_search")}
         />
       </div>
       <div className={`${styleTopBarUINoFlex} min-h-96 overflow-scroll px-3 `}>
@@ -54,10 +56,10 @@ function Students() {
             <thead>
               <tr>
                 <th>№</th>
-                <th>O‘quvchi</th>
-                <th>Sinf</th>
-                <th>Tug’ilgan sanasi</th>
-                <th>Telefon raqam</th>
+                <th>{t("table_pupils")}</th>
+                <th>{t("table_classes")}</th>
+                <th>{t("table_birthday")}</th>
+                <th>{t("table_number")}</th>
                 <th></th>
               </tr>
             </thead>
@@ -98,7 +100,7 @@ function Students() {
                           onClick={() => navigate(`${item.id}`)}
                           className="flex items-center justify-center gap-2 text-blue"
                         >
-                          Batafsil <img width={7} src={ARROW} alt="arrow" />
+                          {t("table_more")} <img width={7} src={ARROW} alt="arrow" />
                         </button>
                       </div>
                     </td>

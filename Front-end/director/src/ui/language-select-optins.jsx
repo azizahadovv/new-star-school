@@ -1,12 +1,23 @@
-
+import React from "react";
+import i18n from "../i18next";
+import { withNamespaces } from "react-i18next";
 function LanguageOptins() {
-    return (
-        <select className="form-select" aria-label="Disabled select example" >
-            <option value='0'>O'zbek</option>
-            <option value="1">Rus</option>
-            <option value="2">Eng</option>
-        </select>
-    )
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
+  return (
+    <select
+      onChange={(e) => changeLanguage(e.target.value)}
+      className="form-select"
+    >
+      <option value="uz">O'zbek</option>
+      <option value="ru">Рус</option>
+      <option value="en">
+        Eng
+      </option>
+    </select>
+  );
 }
 
-export default LanguageOptins
+export default LanguageOptins;
