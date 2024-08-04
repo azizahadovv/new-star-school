@@ -1,7 +1,10 @@
 import React from 'react'
 import subjectFunction from '../service/subjects'
+import { useTranslation } from 'react-i18next'
 
-function SubjectTeacher({ subjectTeacherId, setSubjectTeacherId, style = { height: "55px", maxWidth: "350px" } ,placeholder='Qaysi fandan dars beradi *' }) {
+function SubjectTeacher({ subjectTeacherId, setSubjectTeacherId, style = { height: "55px", maxWidth: "350px" } ,placeholder}) {
+    const {t}=useTranslation()
+    placeholder=t("to_teach") 
     const [subjectList, setSubjectList] = React.useState([])
     React.useEffect(() => {
         getSubjectFunction()

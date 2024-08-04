@@ -4,7 +4,6 @@ import {
   ACTIVECLASSES,
   BUTTON,
   LOADER,
-  SEARCH,
   SELECTCLASSGROUP,
   SELECTCLASSNUMBERS,
 } from "../ui";
@@ -13,8 +12,10 @@ import Rodal from "rodal";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import functionsClasses from "../service/function-class";
+import { useTranslation } from "react-i18next";
 
 function ListOfClasses() {
+  const {t}=useTranslation()
   const dispatch = useDispatch();
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [classesNumber, setClassesNumber] = useState("");
@@ -99,7 +100,7 @@ function ListOfClasses() {
         <div>
           <BUTTON
             buttonFunction={() => dispatch(showModal())}
-            name={"Sinf yaratish"}
+            name={t("class_creation")}
             active
           />
         </div>
@@ -136,7 +137,7 @@ function ListOfClasses() {
       >
         <div className="w-full h-full">
           <p className="text-xl border-b border-brGray leading-10 font-bold text-textBlack">
-            Sinf yaratish
+            {t("class_creation")}
           </p>
           <div className="flex flex-col items-start justify-between h-28">
             <div className="flex items-center justify-between w-full gap-3">
@@ -150,7 +151,7 @@ function ListOfClasses() {
               />
             </div>
             <BUTTON
-              name={"Saqlash"}
+              name={t("save")}
               active
               buttonFunction={() => {
                 postClasses();

@@ -6,8 +6,10 @@ import { arrowRight,menuDots, trash } from "../icons";
 import { useSelector } from "react-redux";
 import studentFunction from "../service/function-class-student";
 import { toast, ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 function ListOfClassesID() {
+  const {t}=useTranslation()
   const navigate = useNavigate();
   const [dataStudent, setDataStudent] = useState();
   const open = useSelector((sel) => sel.sidebarReduser.open);
@@ -55,7 +57,7 @@ function ListOfClassesID() {
             buttonFunction={() => {
               navigate("/add-student");
             }}
-            name={"O‘quvchi qo‘shish"}
+            name={t("add_student")}
             active
           />
         </div>
@@ -69,11 +71,11 @@ function ListOfClassesID() {
           <thead>
             <tr>
               <th>№</th>
-              <th>O‘quvchi</th>
-              <th>login parol</th>
-              <th>Telefon raqam</th>
-              <th>Qo'shimcha</th>
-              <th>Active</th>
+              <th>{t("student_home")}</th>
+              <th>{t("login_parol")}</th>
+              <th>{t("phone_number")}</th>
+              <th>{t("additional_phone_number")}</th>
+              <th>{t("active_table")}</th>
             </tr>
           </thead>
           <tbody>
@@ -109,7 +111,7 @@ function ListOfClassesID() {
                       }}
                         className="flex items-center justify-center gap-2 text-blue"
                       >
-                        Batafsil <img width={7} src={arrowRight} alt="arrow" />
+                       {t("table_more")}<img width={7} src={arrowRight} alt="arrow" />
                       </button>
                       <div className="dropdown">
                         <button
@@ -139,7 +141,7 @@ function ListOfClassesID() {
                             className="dropdown-item d-flex align-items-center gap-2"
                           >
                             <img src={trash} width={20} alt="trash" />
-                            O‘chirish
+                            {t("delete")}
                           </button>
                         </div>
                       </div>

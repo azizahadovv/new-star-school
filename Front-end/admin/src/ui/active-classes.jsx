@@ -2,7 +2,9 @@ import React from "react";
 import { COACH, editBlue, menuDots, trash } from "../icons";
 import { Link } from "react-router-dom";
 import { setLocalData } from "../service/local-data";
+import { useTranslation } from "react-i18next";
 function ActiveClasses({ nameOfClass, size, slug, id, removeItem, res, changeClass }) {
+ const {t}=useTranslation()
   return (
     <div className="no-underline tabletIst:w-[320px] minMobil:w-full mobil:w-[280px] h-20 border-card rounded-lg px-3 py-1 flex flex-col items-start justify-between gap-1 grow-effect relative -z-1">
       <div className="flex justify-between w-full">
@@ -23,16 +25,16 @@ function ActiveClasses({ nameOfClass, size, slug, id, removeItem, res, changeCla
             <img src={menuDots} width={25} className=" p-1" alt="menuDots" />
           </button>
           <ul className="dropdown-menu bg-light">
-            <button onClick={() => changeClass(res)} className="dropdown-item d-flex align-items-start border-brGray">
+            <button onClick={() => changeClass(res)} className="dropdown-item d-flex align-items-start gap-2 border-brGray">
               <img src={editBlue} width={18} alt="editBlue" />
-              Tahrirlash
+              {t("edit")}
             </button>
             <button
               onClick={() => removeItem(id)}
-              className="dropdown-item d-flex align-items-start"
+              className="dropdown-item d-flex align-items-start gap-2"
             >
               <img src={trash} width={20} alt="trash" />
-              O‘chirish
+              {t("delete")}
             </button>
           </ul>
         </div>
@@ -41,7 +43,7 @@ function ActiveClasses({ nameOfClass, size, slug, id, removeItem, res, changeCla
         to={slug}
         className="text-textGray font-mono lowercase flex items-start justify-start mt-2 gap-2 text-lg no-underline w-full"
       >
-        <img src={COACH} alt="COACH" /> {size}ta o‘quvchi
+        <img src={COACH} alt="COACH" /> {size}{t("number_of_students")}
       </Link>
       <div className={"dropdown-menu dropdown-menu-dark"}></div>
     </div>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import {
-  BUTTON,
   INPUT,
   LESSONTABLECARD,
   LOADER,
@@ -15,7 +14,9 @@ import { useParams } from "react-router-dom";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { toast, ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 function ClassScheduleID() {
+  const {t}=useTranslation()
   const [schedule, setSchedule] = useState([]);
   const [teacherData, setTeacherData] = useState([]);
   const [visible, setvisible] = useState(false);
@@ -126,7 +127,7 @@ function ClassScheduleID() {
         className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-center overflow-scroll`}
       >
         <b className="text-center font-bold leading-6 text-4xl text-textBlack">
-          Dars jadvali
+         {t("class_schedule_home")}
         </b>
       </div>
       <div

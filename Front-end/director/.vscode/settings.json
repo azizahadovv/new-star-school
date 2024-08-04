@@ -1,8 +1,0 @@
-{
-    "files.autoSave": "afterDelay",
-    "screencastMode.keyboardOptions": {
-        "showCommandGroups": true
-    },
-    "workbench.editor.preventPinnedEditorClose": "keyboard",
-    "files.autoSaveWhenNoErrors": true
-}

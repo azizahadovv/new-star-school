@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function Level({
   level,
   setLevel,
   style = { height: "55px", maxWidth: "350px" },
 }) {
+  const {t}=useTranslation()
   return (
     <select
       value={level}
@@ -13,13 +15,13 @@ function Level({
       className="form-select"
       style={style}
     >
-      <option hidden>Lavozimi *</option>
+      <option hidden>{t("level")} *</option>
       <option selected value="TEACHER">
-        Oddiy o'qituvchi
+      {t("teacher_level")}
       </option>
-      <option value="DEPUTY_DIRECTOR">Director o'rinbosari</option>
-      <option value="DIRECTOR">Director</option>
-      <option value="ADMIN">Admin</option>
+      <option value="DEPUTY_DIRECTOR">{t("deputy_director")}</option>
+      <option value="DIRECTOR">{t("director")}</option>
+      <option value="ADMIN">{t("admin")}</option>
     </select>
   );
 }

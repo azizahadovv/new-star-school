@@ -3,11 +3,13 @@ import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import { useNavigate } from "react-router-dom";
 import { arrowRight, editBlue, menuDots, searchImg, trash } from "../icons";
 import { useSelector } from "react-redux";
-import { BUTTON, LOADER, SEARCH, SELECTCLASSNUMBER } from "../ui";
+import { LOADER, SEARCH, SELECTCLASSNUMBER } from "../ui";
 import student_Page_Function from "../service/student";
 import { ToastContainer, toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 function Students() {
+  const {t}=useTranslation()
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [searchValue, setSearcheValue] = useState('')
   const navigate = useNavigate()
@@ -70,11 +72,11 @@ function Students() {
             <thead>
               <tr>
                 <th>№</th>
-                <th>O‘quvchi</th>
-                <th>Sinf</th>
-                <th>Telefon raqam</th>
-                <th>Qo'shimcha</th>
-                <th>Active</th>
+                <th>{t("table_pupils")}</th>
+                <th>{t("table_classes")}</th>
+                <th>{t("table_number")}</th>
+                <th>{t("additional_phone_number")}</th>
+                <th>{t("active_table")}</th>
               </tr>
             </thead>
             <tbody>
@@ -105,7 +107,7 @@ function Students() {
                         }}
                           className="flex items-center justify-center gap-2 text-blue"
                         >
-                          Batafsil <img width={7} src={arrowRight} alt="arrow" />
+                          {t("table_more")} <img width={7} src={arrowRight} alt="arrow" />
                         </button>
                         <div className="dropdown">
                           <button
@@ -124,11 +126,11 @@ function Students() {
                           <div className={`dropdown-menu`}>
                             <button onClick={() => { navigate(`/add-student/${item.id}`) }} className="dropdown-item d-flex align-items-center gap-2">
                               <img src={editBlue} width={20} alt="trash" />
-                              Tahrirlash
+                              {t("edit")}
                             </button>
                             <button onClick={() => removeStudent(item.id, item.lastName + ' ' + item.firstName + ' ' + item.patronymic)} className="dropdown-item d-flex align-items-center gap-2">
                               <img src={trash} width={20} alt="trash" />
-                              O‘chirish
+                              {t("delete")}
                             </button>
                           </div>
                         </div>

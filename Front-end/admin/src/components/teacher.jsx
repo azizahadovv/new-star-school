@@ -5,8 +5,10 @@ import { useNavigate } from 'react-router-dom'
 import { arrowRight, editBlue, menuDots, searchImg, trash } from '../icons'
 import { useSelector } from 'react-redux'
 import teacherController from '../service/teacher'
+import { useTranslation } from 'react-i18next'
 
 function Teacher() {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const open = useSelector(sel => sel.sidebarReduser.open)
   const [dataTeachers, setDataTeachers] = useState([])
@@ -58,7 +60,7 @@ function Teacher() {
           </button>
         </div>
         <div className='min-w-28'>
-          <BUTTON buttonFunction={() => navigate('/add-teachers')} active name={'O‘qituvchi qo‘shish'} />
+          <BUTTON buttonFunction={() => navigate('/add-teachers')} active name={t("add_teacher")} />
         </div>
       </div>
       <div className={`${styleTopBarUINoFlex} min-h-96 overflow-scroll p-3`}>
@@ -69,11 +71,11 @@ function Teacher() {
             <thead>
               <tr>
                 <th>№</th>
-                <th>O‘qituvchi</th>
-                <th>Fan</th>
-                <th>Tug’ilgan sanasi</th>
-                <th>Telefon raqam</th>
-                <th>Active</th>
+                <th>{t("table_teacher")}</th>
+                <th>{t("table_subject")}</th>
+                <th>{t("birthday")}</th>
+                <th>{t("phone_number")}</th>
+                <th>{t("active_table")}</th>
               </tr>
             </thead>
             <tbody>
@@ -101,7 +103,7 @@ function Teacher() {
                         }}
                           className="flex items-center justify-center gap-2 text-blue"
                         >
-                          Batafsil <img width={7} src={arrowRight} alt="arrow" />
+                          {t("table_more")} <img width={7} src={arrowRight} alt="arrow" />
                         </button>
                         <div className="dropdown">
                           <button
@@ -120,11 +122,11 @@ function Teacher() {
                           <div className={`dropdown-menu`}>
                             <button onClick={() => { navigate(`/add-teachers/${item?.id}`) }} className="dropdown-item d-flex align-items-center gap-2">
                               <img src={editBlue} width={20} alt="trash" />
-                              Tahrirlash
+                              {t("edit")}
                             </button>
                             <button onClick={() => remove_Teacher(item?.id, item?.firstName + " " + item?.lastName + " " + item?.patronymic)} className="dropdown-item d-flex align-items-center gap-2">
                               <img src={trash} width={20} alt="trash" />
-                              O‘chirish
+                              {t("delete")}
                             </button>
                           </div>
                         </div>

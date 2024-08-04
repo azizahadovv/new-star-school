@@ -5,8 +5,10 @@ import { ICONIMG } from "../icons";
 import student_Page_Function from "../service/student";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 function StudentProfile() {
+  const { t } = useTranslation()
   const [dataStudent, setDataStudent] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,7 +18,6 @@ function StudentProfile() {
   const get_datas_Student = async () => {
     try {
       const response = await student_Page_Function.get_student_in_Id(id);
-      console.log(response);
       setDataStudent(response);
     } catch (error) {
       navigate(-2);
@@ -57,7 +58,7 @@ function StudentProfile() {
               </label>
             </div>
           ) : (
-            <img className="rounded-full" src={dataStudent.image} alt="" />
+            <img className="rounded-full" src={dataStudent.image} alt="dataStudent.image" />
           )}
         </div>
         <label
@@ -69,8 +70,8 @@ function StudentProfile() {
             type="file"
           />
           <span className="flex items-center justify-center gap-2">
-            <img src={ICONIMG} alt="" />
-            Tahrirlash
+            <img src={ICONIMG} alt="ICONIMG" />
+            {t("edit")}
           </span>
         </label>
       </div>
@@ -79,68 +80,68 @@ function StudentProfile() {
         className={`${styleTopBarUINoFlex} tablet:w-3/4 minMobil:w-full min-h-20 px-3 py-2`}
       >
         <div className="flex items-center justify-start min-h-16 border-b border-brGray mb-3">
-          <h3 className="text-blue font-bold">Shaxsiy ma’lumotlar</h3>
+          <h3 className="text-blue font-bold">{t("personal_information")}</h3>
         </div>
         <table className="table table-striped table-hover">
           <tbody>
             <tr>
-              <th className="w-50">Ismi:</th>
+              <th className="w-50">{t("firstName")}:</th>
               <th className="w-50">{dataStudent.firstName}</th>
-            </tr>{" "}
+            </tr>
             <tr>
-              <th className="w-50">Familiya:</th>
+              <th className="w-50">{t("lastName")}:</th>
               <th className="w-50">{dataStudent.lastName}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Otasining ismi:</th>
+              <th className="w-50">{t("patronymic")}:</th>
               <th className="w-50">{dataStudent.patronymic}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Tug‘ilgan sana:</th>
+              <th className="w-50">{t("birthday")}:</th>
               <th className="w-50">{dataStudent.birthDate}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Jins:</th>
+              <th className="w-50">{t("gender")}:</th>
               <th className="w-50">{dataStudent.gender}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Millat:</th>
+              <th className="w-50">{t("nation")}:</th>
               <th className="w-50">{dataStudent.nationality}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Davlat:</th>
+              <th className="w-50">{t("state")}:</th>
               <th className="w-50">{dataStudent.country}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Viloyat:</th>
+              <th className="w-50">{t("province")}:</th>
               <th className="w-50">{dataStudent.region}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Tuman:</th>
+              <th className="w-50">{t("district")}:</th>
               <th className="w-50">{dataStudent.district}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Uy manzili:</th>
+              <th className="w-50">{t("home_address")}:</th>
               <th className="w-50">{dataStudent.address}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Sinf:</th>
+              <th className="w-50">{t("table_classes")}:</th>
               <th className="w-50">{dataStudent.grade}</th>
             </tr>{" "}
             <tr>
-              <th className="w-50">Telefon raqam:</th>
+              <th className="w-50">{t("phone_nuber")}:</th>
               <th className="w-50">{dataStudent.phoneNumber}</th>
             </tr>
             <tr>
-              <th className="w-50">Ota-onasining telefon raqami:</th>
+              <th className="w-50">{t("additional_phone_number")}:</th>
               <th className="w-50">{dataStudent.parentPhoneNumber}</th>
             </tr>
             <tr>
-              <th className="w-50">Login:</th>
+              <th className="w-50">{t("login")}:</th>
               <th className="w-50">{dataStudent.login}</th>
             </tr>
             <tr>
-              <th className="w-50">Parol:</th>
+              <th className="w-50">{t("password")}:</th>
               <th className="w-50">{dataStudent.password}</th>
             </tr>
           </tbody>

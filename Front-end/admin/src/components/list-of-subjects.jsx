@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import Rodal from "rodal";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import { editBlue, menuDots, trash } from "../icons";
-import { BUTTON, INPUT, LOADER, SEARCH, SELECTCLASSGROUP, SELECTCLASSNUMBER } from "../ui";
+import { BUTTON, INPUT, LOADER, SEARCH } from "../ui";
 import subjectFunction from "../service/subjects";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { showModal } from "../slice/class";
+import { useTranslation } from "react-i18next";
 
 function ListOfSubjects() {
+  const {t}=useTranslation()
   const dispatch = useDispatch();
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const visible = useSelector((sel) => sel.addclass.visible);
@@ -16,7 +18,6 @@ function ListOfSubjects() {
   const [editControl, setEditControl] = useState('');
   const [idControl, setIdControl] = useState('');
   const [nameSubject, setNameSubject] = useState('');
-
   useEffect(() => {
     getSubjects();
   }, []);
@@ -93,10 +94,10 @@ function ListOfSubjects() {
           <SEARCH />
         </div>
         <div className="min-w-40">
-          <BUTTON buttonFunction={() => dispatch(showModal())} name={"Fan qo‘shish"} active />
+          <BUTTON buttonFunction={() => dispatch(showModal())} name={t("creating_sciences")} active />
         </div>
       </div>
-      <div className={`${styleTopBarUINoFlex} min-h-96 px-3`}>
+      <div className={`${styleTopBarUINoFlex} min-h-96 px-3 ${open?"hidden":"block"}`}>
         {!subject ? (
           <div className="flex items-center justify-center py-5">
             <LOADER />
@@ -106,7 +107,7 @@ function ListOfSubjects() {
             <thead>
               <tr>
                 <th>№</th>
-                <th>Fanning nomi</th>
+                <th>{t("name_subjects")}</th>
                 <th></th>
               </tr>
             </thead>
@@ -128,14 +129,14 @@ function ListOfSubjects() {
                       <ul className="dropdown-menu bg-light">
                         <button onClick={() => changeSubject(res)} className="dropdown-item d-flex align-items-start border-brGray">
                           <img src={editBlue} width={18} alt="editBlue" />
-                          Tahrirlash
+                          {t("edit")} 
                         </button>
                         <button
                           onClick={() => removeItem(res.id)}
                           className="dropdown-item d-flex align-items-start"
                         >
                           <img src={trash} width={20} alt="trash" />
-                          O‘chirish
+                          {t("delete")}
                         </button>
                       </ul>
                     </td>

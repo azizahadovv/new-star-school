@@ -8,8 +8,10 @@ import { ToastContainer, toast } from "react-toastify";
 import { ICONIMG } from "../icons";
 import subjectFunction from "../service/subjects";
 import teacherController from "../service/teacher";
+import { useTranslation } from "react-i18next";
 
 function AddTeacher() {
+  const {t}=useTranslation()
   const [subjectList, setSubjectList] = React.useState([])
   const navigate = useNavigate();
   const open = useSelector((sel) => sel.sidebarReduser.open);
@@ -67,7 +69,6 @@ function AddTeacher() {
     getSubjectFunction()
     changeuserDataTeacher()
   }, [])
-console.log(level);
   const getSubjectFunction = async () => {
     const response = await subjectFunction.getSubjects()
     setSubjectList(response)
@@ -136,24 +137,24 @@ console.log(level);
             value={firstName}
             onChange={(e) => setfirstName(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Ism"
+            placeholder={t("enter")}
+            label={t("firstName")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Familiya"
+            placeholder={t("enter")}
+            label={t("lastName")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={patronymic}
             onChange={(e) => setPatronymic(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Otasining ismi"
+            placeholder={t("enter")}
+            label={t("patronymic")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -161,7 +162,7 @@ console.log(level);
             onChange={(e) => setBirthDate(e.target.value)}
             required
             type="date"
-            label="Tug‘ilgan sanasi"
+            label={t("birthday")}
             sx={INPUT_CLASSES}
           />
           <GENDER gender={gender} setGender={setGender} />
@@ -174,32 +175,32 @@ console.log(level);
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Davlat"
+            placeholder={t("enter")}
+            label={t("state")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={region}
             onChange={(e) => setRegion(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Viloyat"
+            placeholder={t("enter")}
+            label={t("province")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={district}
             onChange={(e) => setDistrict(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Tuman"
+            placeholder={t("enter")}
+            label={t("district")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Uy manzili"
+            placeholder={t("enter")}
+            label={t("home_address")}
             sx={INPUT_CLASSES}
           />
           <LEVEL level={level} setLevel={setLevel} />
@@ -211,8 +212,8 @@ console.log(level);
             onChange={(e) => setPhoneNumber(e.target.value)}
             type="tel"
             required
-            placeholder="Kiriting"
-            label="Telefon raqam"
+            placeholder={t("enter")}
+            label={t("phone_number")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -220,16 +221,16 @@ console.log(level);
             onChange={(e) => setParentPhoneNumber(e.target.value)}
             type="tel"
             required
-            placeholder="Kiriting"
-            label="Qo'shimcha telefon raqam"
+            placeholder={t("enter")}
+            label={t("additional_phone_number")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={login}
             onChange={(e) => setLogin(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Login"
+            placeholder={t("enter")}
+            label={t("login")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -237,13 +238,13 @@ console.log(level);
             onChange={(e) => setPassword(e.target.value)}
             required
             type="password"
-            placeholder="Kiriting"
-            label="Parol"
+            placeholder={t("enter")}
+            label={t("password")}
             sx={INPUT_CLASSES}
           />
         </div>
         <div>
-          <BUTTON buttonFunction={() => saveDataTeacher(subjectTeacherId)} active name={"Saqlash"} />
+          <BUTTON buttonFunction={() => saveDataTeacher(subjectTeacherId)} active name={t("save")} />
         </div>
       </div>
       <ToastContainer />

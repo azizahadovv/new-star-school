@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function SelectTeacher({ value, setValue, teacherData }) {
+ const {t}=useTranslation()
   return (
     <select
       required={true}
@@ -9,9 +11,9 @@ function SelectTeacher({ value, setValue, teacherData }) {
       style={{ height: "50px" }}
       className="form-select"
     >
-      <option hidden>O'qituvchini tanlang</option>
+      <option hidden>{t("select_teacher")}</option>
       {teacherData.length === 0 ? (
-        <option>O'qituvchi mavjud emas</option>
+        <option>{t("hidden_teacher")}</option>
       ) : (
         teacherData?.map((item) => (
           <option key={item.id} value={item.id}>

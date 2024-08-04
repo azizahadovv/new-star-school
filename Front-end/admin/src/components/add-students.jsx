@@ -13,8 +13,10 @@ import { file } from "../icons";
 import studentFunction from "../service/function-class-student";
 import { ToastContainer, toast } from "react-toastify";
 import student_Page_Function from '../service/student'
+import { useTranslation } from "react-i18next";
 
 function AddUser() {
+  const {t}=useTranslation()
   const navigate = useNavigate();
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [firstName, setfirstName] = React.useState("");
@@ -125,7 +127,7 @@ function AddUser() {
         setParentPhoneNumber(response.parentPhoneNumber)
       } catch (error) {
         navigate(-2)
-        console.log(`Error get teacher by id line 126: ${error}`);
+        console.log(`Error get teacher by id line 130: ${error}`);
       }
     }
     else {
@@ -135,29 +137,18 @@ function AddUser() {
   return (
     <div className={`${Container}`}>
       <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3`}>
-        <div className="min-w-[150px]">
-          <BUTTON buttonFunction={() => navigate(-1)} active name={"ortga"} />
-        </div>
       </div>
       <div
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
           } min-h-96 overflow-scroll p-3 content-start ${flex}`}
       >
-
         {
-          !UrlData.id && <div className="flex flex-col items-center justify-between bg-border-color border-2 w-56 h-60 bg-lightGray">
-            <a title="O'quvchilarni excel file orqali yuklash uchun namuna"
-              href="../src/icons/arrow.svg"
-              download="google.svg"
-              className="h-25 flex items-center text-sm border-b "
-            >
-              Namuna Shablon yuklab olish
-            </a>
-            <label title="O'quvchilarni excel file orqali qo'shish" className="w-full h-75 p-3 cursor-pointer">
+          !UrlData.id && <div className="flex flex-col items-center justify-center bg-border-color border-2 w-56 h-60 bg-lightGray">
+            <label className="w-full h-75 p-3 cursor-pointer flex items-center justify-center">
               <div className="flex flex-col gap-2 items-center justify-center">
                 <img src={file} width={35} alt="img" />
                 <span className="text-sm capitalize text-textGray font-normal leading-5">
-                  Fayl yuklang
+                  {t("add_student_in_file")}
                 </span>
               </div>
               <input onChange={(e) => (excelUpload(e.target.files[0]))} hidden type="file" />
@@ -169,24 +160,24 @@ function AddUser() {
             value={firstName}
             onChange={(e) => setfirstName(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Ism"
+            placeholder={t("enter")}
+            label={t("firstName")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Familiya"
+            placeholder={t("enter")}
+            label={t("lastName")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={patronymic}
             onChange={(e) => setPatronymic(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Otasining ismi"
+            placeholder={t("enter")}
+            label={t("patronymic")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -194,7 +185,7 @@ function AddUser() {
             onChange={(e) => setBirthDate(e.target.value)}
             required
             type="date"
-            label="Tug‘ilgan sanasi"
+            label={t("birthday")}
             sx={INPUT_CLASSES}
           />
           <GENDER gender={gender} setGender={setGender} />
@@ -206,32 +197,32 @@ function AddUser() {
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Davlat"
+            placeholder={t("enter")}
+            label={t("state")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={region}
             onChange={(e) => setRegion(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Viloyat"
+            placeholder={t("enter")}
+            label={t("province")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={district}
             onChange={(e) => setDistrict(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Tuman"
+            placeholder={t("enter")}
+            label={t("district")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Uy manzili"
+            placeholder={t("enter")}
+            label={t("home_address")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -239,8 +230,8 @@ function AddUser() {
             onChange={(e) => setPhoneNumber(e.target.value)}
             type="tel"
             required
-            placeholder="Kiriting"
-            label="Telefon raqam"
+            placeholder={t("enter")}
+            label={t("phone_number")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -248,16 +239,16 @@ function AddUser() {
             onChange={(e) => setParentPhoneNumber(e.target.value)}
             type="tel"
             required
-            placeholder="Kiriting"
-            label="Qo'shimcha telefon raqam"
+            placeholder={t("enter")}
+            label={t("additional_phone_number")}
             sx={INPUT_CLASSES}
           />
           <TextField
             value={login}
             onChange={(e) => setLogin(e.target.value)}
             required
-            placeholder="Kiriting"
-            label="Login"
+            placeholder={t("enter")}
+            label={t("login")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -265,13 +256,13 @@ function AddUser() {
             onChange={(e) => setPassword(e.target.value)}
             required
             type="password"
-            placeholder="Kiriting"
-            label="Parol"
+            placeholder={t("enter")}
+            label={t("password")}
             sx={INPUT_CLASSES}
           />
         </div>
         <div>
-          <BUTTON buttonFunction={AddStudent} active name={"Saqlash"} />
+          <BUTTON buttonFunction={AddStudent} active name={t("save")} />
         </div>
       </div>
       <ToastContainer />

@@ -1,6 +1,8 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 function Gender({ gender, setGender,style={ height: "55px", maxWidth: "350px" } }) {
+    const { t } = useTranslation()
     return (
         <select
             value={gender}
@@ -11,10 +13,10 @@ function Gender({ gender, setGender,style={ height: "55px", maxWidth: "350px" } 
             
         >
             <option hidden>
-                Gender *
+                {t("gender")} *
             </option>
-            <option value="Male">Erkak</option>
-            <option value="Female">Ayol</option>
+            <option value="Male"> {t("male")}</option>
+            <option value="Female"> {t("female")}</option>
         </select>
     )
 }
