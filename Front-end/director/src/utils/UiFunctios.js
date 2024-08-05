@@ -1,32 +1,44 @@
+import { useTranslation } from "react-i18next"
+
 export function HomeText() {
+    const { t } = useTranslation()
     const path = window.location.pathname
     if (path === "/") {
         return (
             <span>New Star School</span>
         )
-    } else if (path === "/class-schedule") {
+    } else if (path === "/ratings") {
         return (
-            <span>Dars Jadvali</span>
+            <span>{t("rating_home")}</span>
         )
     }
-    else if (path === "/grade-rating") {
+    else if (path === "/teachers") {
         return (
-            <span>Baxolar reytingi</span>
+            <span>{t("teacher_home")}</span>
         )
     }
-    else if (path === "/atendance") {
+    else if (path === "/students") {
         return (
-            <span>Davomat</span>
+            <span>{t("student_home")}</span>
+        )
+    } else if (path === "/profile") {
+        return (
+            <span>{t("personal_information_home")}</span>
         )
     }
-    else if (path === "/profile") {
+    else if (path === "/personnel") {
         return (
-            <span>Shaxsiy ma’lumotlar</span>
+            <span>{t("personnel_home")}</span>
+        )
+    }
+    else if (path === "/personal-information") {
+        return (
+            <span>{t("personal_information_home")}</span>
         )
     }
     else {
         return (
-            <span></span>
+            <span>New Star School</span>
         )
     }
 }

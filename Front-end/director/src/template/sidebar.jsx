@@ -1,11 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { BUTTONEXIT, BUTTONSIDEBAR, LANGUAGEPOTION } from '../ui';
-import { Link, useNavigate } from 'react-router-dom';
-import { infoUser, infoUserOutline, LISTCLASS, LISTCLASSOUTLINE, logo } from '../icons';
+import { Link } from 'react-router-dom';
+import { logo } from '../icons';
 import { openVisible } from '../slice/sidebar';
+import { homeList2 } from '../constanta/const';
+import { useTranslation } from 'react-i18next';
 function Sidebar() {
   const dispatch = useDispatch()
-  const navitagate = useNavigate()
+  const { t } = useTranslation()
   return (
     <div className='p-3 d-flex flex-col gap-3 w-full h-screen bg-darkGray'>
       <div className="offcanvas-header border-b border-white d-flex align-items-center justify-content-between py-3">
@@ -14,8 +16,13 @@ function Sidebar() {
       </div>
       <div className="flex justify-center flex-col items-stretch">
         <div className="flex flex-col justify-center items-stretch gap-2">
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/list-of-classes'} img={LISTCLASS} img2={LISTCLASSOUTLINE} name={"Sinflar ro'yhati"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/personal-information'} img={infoUser} img2={infoUserOutline} name={"Shaxsiy malumotlar"} />
+          {
+            homeList2.map((item) => {
+              return <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={item.path} img={item.underline} img2={item.nounderline} name={t(item.title)} />
+            })
+          }
+
+
         </div>
         <div className='w-full minMobil:block tablet:hidden mt-5'>
           <LANGUAGEPOTION />

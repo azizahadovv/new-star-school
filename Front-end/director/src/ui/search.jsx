@@ -1,7 +1,10 @@
 import React from 'react'
 import { SEARCH } from '../icons'
+import { useTranslation } from 'react-i18next'
 
 function Search({ placeholder, value, setValue }) {
+    const {t}=useTranslation()
+    placeholder= t("search_in_name")
     return (
         <form className='tablet:min-w-96 minMobil:min-w-72 h-10 border border-brGray rounded-xl bg-lightGray flex items-center justify-between gap-2 py-1 px-2'>
             <button type='button' className='w-7 h-full flex items-center justify-center'><img src={SEARCH} alt="" /></button>

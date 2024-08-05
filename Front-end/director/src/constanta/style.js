@@ -21,5 +21,5 @@ export const INPUT_CLASSES = {
   borderRadius: "10px",
   border: "1px solid #E1EAF1",
   color: "#81909F",
-  width: "300px",
+  width: "360px",
 };
