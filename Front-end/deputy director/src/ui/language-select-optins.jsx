@@ -1,10 +1,23 @@
+import i18n from "../i18next";
 
 function LanguageOptins() {
+
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+        localStorage.setItem("language", lng);
+    };
+
     return (
-        <select className="form-select" aria-label="Disabled select example" >
-            <option value='0'>O'zbek</option>
-            <option value="1">Rus</option>
-            <option value="2">Eng</option>
+        <select
+            value={localStorage.getItem("language")} // activeLanguage o'rniga localStorage dan olingan tilni ishlatamiz
+            onChange={(e) => changeLanguage(e.target.value)}
+            className="form-select"
+        >
+            <option value="uz">O'zbek</option>
+            <option value="ru">Рус</option>
+            <option value="en">
+                Eng
+            </option>
         </select>
     )
 }

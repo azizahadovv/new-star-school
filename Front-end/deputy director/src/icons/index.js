@@ -40,3 +40,11 @@ export { default as trash } from './trash.svg'
 export { default as ARRLEFT } from './arrow-narrow-left-alignment-svgrepo-com.svg'
 
 export { default as arrowRight } from './arrow.svg'
+
+
+export { default as A1 } from './A1.svg'
+export { default as A2 } from './A2.svg'
+export { default as A3 } from './A3.svg'
+export { default as A4 } from './A4.svg'
+export { default as A5 } from './A5.svg'
+export { default as A6 } from './A6.svg'
