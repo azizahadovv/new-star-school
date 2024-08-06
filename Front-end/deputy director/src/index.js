@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 import 'rodal/lib/rodal.css';
 import 'react-toastify/dist/ReactToastify.css';
-import i18n from './i18next';
+import i18n from './i18n';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

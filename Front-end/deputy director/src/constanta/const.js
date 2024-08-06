@@ -1,36 +1,43 @@
-import { A1, A2, A3, A4, A5, A6 } from "../icons";
-
+import { CARD1, CARD2, CARD3, CARD4, CARD5, CARD6, myclassesss } from '../icons'
 export const homeCard = [
     {
+        id: 6,
+        img: myclassesss,
+        title: "My_classes_mark",
+        link:"/my-classes"
+    },
+    {
         id: 1,
-        title: 'home_my_classes',
-        icon: A1,
-        path: '/my-classes'
+        img: CARD1,
+        title: "class_schedule_home",
+        link:"/class-schedule"
     },
     {
         id: 2,
-        title: 'home_class_schedule',
-        icon: A2,
-        path: '/class-schedule'
-    }, {
+        img: CARD2,
+        title: "list_of_classes_home",
+        link:"/list-of-classes"
+    },
+    {
         id: 3,
-        title: 'home_table_classes',
-        icon: A3,
-        path: '/list-of-classes'
+        img: CARD3,
+        title: "teacher_home",
+        link:"/teachers"
     }, {
         id: 4,
-        title: 'home_teacher',
-        icon: A4,
-        path: '/teachers'
+        img: CARD4,
+        title: "student_home",
+        link:"/students"
     }, {
         id: 5,
-        title: 'home_students',
-        icon: A5,
-        path: '/students'
+        img: CARD5,
+        title: "sciences",
+        link:"/list-of-subjects"
     }, {
         id: 6,
-        title: 'home_profie',
-        icon: A6,
-        path: '/profile'
+        img: CARD6,
+        title: "personal_information_home",
+        link:"/profile"
     },
+    
 ]

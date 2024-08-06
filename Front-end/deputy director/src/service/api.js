@@ -1,5 +1,1 @@
-import axios from "axios";
-
-axios.defaults.baseURL = ''
-
-export default axios;
+export const baseURL='https://nss.ix.tc/api'

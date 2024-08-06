@@ -41,10 +41,23 @@ export { default as ARRLEFT } from './arrow-narrow-left-alignment-svgrepo-com.sv
 
 export { default as arrowRight } from './arrow.svg'
 
+export { default as SUBJECTOUTLINE } from './subject-outline.svg'
+export { default as SUBJECT } from './subject.svg'
 
-export { default as A1 } from './A1.svg'
-export { default as A2 } from './A2.svg'
-export { default as A3 } from './A3.svg'
-export { default as A4 } from './A4.svg'
-export { default as A5 } from './A5.svg'
-export { default as A6 } from './A6.svg'
+export { default as GreenIconStudent } from './studGreen.svg'
+
+export { default as img } from './img.svg'
+export { default as file } from './file-file-type.svg'
+export { default as GIFFILE } from './icons8-arrow.gif'
+
+
+
+export { default as CARD1 } from './card-schedule-1.svg'
+export { default as CARD2 } from './card-schedule-2.svg'
+export { default as CARD3 } from './card-schedule-3.svg'
+export { default as CARD4 } from './card-schedule-4.svg'
+export { default as CARD5 } from './card-schedule-5.svg'
+export { default as CARD6 } from './card-schedule-6.svg'
+
+
+export { default as myclassesss } from './my-class.svg'

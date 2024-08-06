@@ -11,3 +11,16 @@ export { default as SELECTCLASSNUMBER } from './select-add-class-number'
 export { default as SELECTCLASSGROUP } from './select-add-class-group'
 export { default as ACTIVECLASSES } from './active-classes'
 export { default as SELECTSCINES } from './select-science'
+export { default as GENDER } from './gender'
+export { default as NATIONALITY } from './nationality'
+export { default as LEVEL } from './level'
+export { default as SUBJECTTEACHER } from './subject-teacher'
+// ****************************************************************
+export { default as LOADER } from './loader'
+// ****************************************************************
+export { default as LESSONTABLECARD } from './lesson-time-card'
+
+export { default as SELECTCLASSNUMBERS } from './select-class-number-for-modal'
+export { default as TERM } from './term'
+export { default as SUBJECTINID } from './subject-in-Id'
+export { default as SELECTTEACHER } from './select-teacher'

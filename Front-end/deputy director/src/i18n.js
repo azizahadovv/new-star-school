@@ -21,7 +21,7 @@ i18n
   .init({
     resources,
     fallbackLng: "uz",
-    lng:localStorage.getItem("language"), 
+    lng:localStorage.getItem("lang"), 
     interpolation: {
       escapeValue: false, 
     },

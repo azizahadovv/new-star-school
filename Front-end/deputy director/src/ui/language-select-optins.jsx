@@ -1,15 +1,16 @@
-import i18n from "../i18next";
+import React from "react";
+import i18n from "../i18n";
+
 
 function LanguageOptins() {
-
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
-        localStorage.setItem("language", lng);
+        localStorage.setItem("lang", lng);  
     };
 
     return (
         <select
-            value={localStorage.getItem("language")} // activeLanguage o'rniga localStorage dan olingan tilni ishlatamiz
+            value={localStorage.getItem("lang")} // activeLanguage o'rniga localStorage dan olingan tilni ishlatamiz
             onChange={(e) => changeLanguage(e.target.value)}
             className="form-select"
         >

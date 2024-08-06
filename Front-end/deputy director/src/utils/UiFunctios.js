@@ -1,44 +1,50 @@
 import { useNavigate } from "react-router-dom"
 import { ARRLEFT } from "../icons"
+import { useTranslation } from "react-i18next"
 
 export function HomeText() {
-    const navigate = useNavigate()
+    const {t}=useTranslation()
     const path = window.location.pathname
     if (path === "/") {
         return (
             <span>New Star School</span>
         )
-    } else if (path === "/my-classes") {
+    } else if (path === "/list-of-subjects") {
         return (
-            <span>Mening Sinflarim </span>
+            <span>{t("sciences")}</span>
         )
     }
     else if (path === "/class-schedule") {
         return (
-            <span>Dars Jadvali </span>
+            <span>{t("class_schedule_home")}</span>
         )
     }
     else if (path === "/list-of-classes") {
         return (
-            <span>Sinflar Ro'yxati </span>
+            <span>{t("list_of_classes_home")}</span>
         )
     }
     else if (path === "/teachers") {
         return (
-            <span>O'qituvchilar </span>
+            <span>{t("teacher_home")}</span>
         )
     }
     else if (path === "/students") {
         return (
-            <span>O'quvchilar </span>
+            <span>{t("student_home")}</span>
         )
     } else if (path === "/add-student") {   
         return (
-            <span>O'quvchi Qo'shish </span>
+            <span>{t("add_student")}</span>
         )
     } else if (path === "/profile") {
         return (
-            <span>Shaxsiy ma’lumotlar </span>
+            <span>{t("personal_information_home")}</span>
+        )
+    }
+    else if (path === "/add-teachers") {
+        return (
+            <span>{t("add_teacher")}</span>
         )
     }
     else {
