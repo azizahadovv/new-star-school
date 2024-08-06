@@ -1,6 +1,6 @@
 
 export const Container =
-  "w-full min-h-[90dvh] tablet:px-10 minMobil:px-1 tablet:py-4 minMobil:py-1";
+  "w-full min-h-[100%] tablet:px-10 minMobil:px-1 tablet:py-4 minMobil:py-1";
   export const ContainerW =
   "w-full tablet:px-10 minMobil:px-1 minMobil:py-1";
   export const ContainerNoWidth =

@@ -37,7 +37,7 @@ const uzLang = {
   name_subjects: "Fanlar nomi",
   creating_sciences: "Fan qo'shish",
   exit: "Tizimdan chiqish",
-  My_classes_mark: 'Mening Sinflarim',
+  My_classes_mark: 'Mening sinflarim',
 
 
 

@@ -14,12 +14,12 @@ function SelectScience({ value, setValue }) {
     setSubject(response)
   }
   return (
-    <select value={value} onChange={(e) => setValue(e.target.value)} className="form-select w-100">
-      <option selected hidden>{t("select_science")}</option>
+    <select value={value} onChange={(e) => setValue(e?.target.value)} className="form-select w-100">
+      <option hidden>{t("select_science")}</option>
       <option value="">{t("all_science")}</option>
       {
         subject.map((item) => (
-          <option key={item.id} value={item.id}>{item.name}</option>
+          <option key={item.id} value={item?.id}>{item?.name}</option>
         ))
       }
     </select>

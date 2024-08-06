@@ -6,7 +6,7 @@ function Level({
   setLevel,
   style = { height: "55px", maxWidth: "350px" },
 }) {
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   return (
     <select
       value={level}
@@ -16,8 +16,8 @@ function Level({
       style={style}
     >
       <option hidden>{t("level")} *</option>
-      <option selected value="TEACHER">
-      {t("teacher_level")}
+      <option value="TEACHER">
+        {t("teacher_level")}
       </option>
       <option value="DEPUTY_DIRECTOR">{t("deputy_director")}</option>
       <option value="DIRECTOR">{t("director")}</option>

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 function SubjecdtInId({ value, setValue, setTeacherData }) {
   const [subject, setSubject] = useState([]);
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const { id } = useParams()
   useEffect(() => {
     getSubjectFunction();
@@ -27,7 +27,7 @@ function SubjecdtInId({ value, setValue, setTeacherData }) {
     }
   };
   const path = window.location.pathname
-  const xyz=path===`/class-schedule/${id}`
+  const xyz = path === `/class-schedule/${id}`
   return (
     <select required={true}
       value={value}
@@ -36,13 +36,13 @@ function SubjecdtInId({ value, setValue, setTeacherData }) {
         setValue(e.target.value);
       }}
       style={{ height: "50px" }}
-      className="form-select m-0"
+      className="form-select"
     >
       <option hidden>{t("select_science")}</option>
-      <option hidden={xyz?true:false} value="">{t("all_science")}</option>
+      <option hidden={xyz ? true : false}>{t("all_science")}</option>
       {subject.map((item) => (
-        <option key={item.id} value={item.id}>
-          {item.name}
+        <option key={item?.id} value={item?.id}>
+          {item?.name}
         </option>
       ))}
     </select>

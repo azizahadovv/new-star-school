@@ -9,7 +9,7 @@ function CardClasess({ data }) {
       <Link
         to={`${data.id}`} className="uppercase no-underline w-full flex flex-col text-blue"
       >
-        {data.name}
+        {data.grade + data.groupLetter} {t("table_classes")}
         <span className="text-textGray font-mono lowercase flex items-start justify-start mt-2 gap-2 text-lg"><img src={COACH} alt="COACH" /> {data.size} {t("number_of_students")}</span>
       </Link>
     </div>

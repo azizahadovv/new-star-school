@@ -6,7 +6,6 @@ import {
   CLASSSCHEDULES,
   CLASSSCHEDULESID,
   Home,
-  LISTOFSUBJECTS,
   ListOfClasses,
   ListOfClassesID,
   MYCLASSES,
@@ -28,8 +27,6 @@ function ReactRouter() {
       <Routes>
         <Route path="/" element={<LAYOUT />}>
           <Route path="" element={<Home />} />
-          <Route path="list-of-subjects" element={<LISTOFSUBJECTS />} />
-          <Route path="list-of-subjects/:id" element={<LISTOFSUBJECTS />} />
           <Route path="list-of-classes" element={<ListOfClasses />} />
           <Route path="list-of-classes/:id" element={<ListOfClassesID />} />
           <Route path="class-schedule" element={<CLASSSCHEDULES />} />
@@ -44,6 +41,7 @@ function ReactRouter() {
           <Route path="add-student" element={<ADDSTUDENT />} />
           <Route path="add-student/:id" element={<ADDSTUDENT />} />
           <Route path="my-classes" element={<MYCLASSES />} />
+          <Route path="my-classes/:id" element={<MYCLASSESID />} />
         </Route>
         <Route path="*" element={<PageNoteFound />} />
         <Route path="/register" element={<REGISTER />} />
