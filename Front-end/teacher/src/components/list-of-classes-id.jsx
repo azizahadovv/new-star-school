@@ -1,4 +1,3 @@
-import { Button } from 'bootstrap'
 import { Container, styleTopBarUINoFlex } from '../constanta/style'
 import { BUTTON, CLASSSCHEDULE } from '../ui'
 function ListOfClassesID({ arr }) {

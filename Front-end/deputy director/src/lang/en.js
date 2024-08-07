@@ -14,7 +14,7 @@ const enLang = {
   class_creation: "Class creation",
   login_parol: "Login~Password",
   search_in_name: "Search by First and Last Name",
-  back_out: "Orqaga chiqish",
+  back_out: "Back out",
 
   // ***************** Teacher Schedule*************************************
   table_pupils: "Pupils",
