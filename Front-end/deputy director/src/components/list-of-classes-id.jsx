@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import { BUTTON, SEARCH } from "../ui";
-import { arrowRight,menuDots, trash } from "../icons";
+import { arrowRight, menuDots, trash } from "../icons";
 import { useSelector } from "react-redux";
 import studentFunction from "../service/function-class-student";
 import { toast, ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import student_Page_Function from "../service/student";
 
 function ListOfClassesID() {
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate();
-  const [dataStudent, setDataStudent] = useState();
+  const [dataStudent, setDataStudent] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+  const { id } = useParams()
   const open = useSelector((sel) => sel.sidebarReduser.open);
   useEffect(() => {
     getStudentsData();
@@ -43,6 +46,15 @@ function ListOfClassesID() {
       toast.error(error.message, "Error");
     }
   };
+  const searcheStudentInName = async (name) => {
+    setSearchValue(name)
+    try {
+      const datas = await student_Page_Function.search_Student(id, name)
+      setDataStudent(datas);
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
 
   return (
     <div className={`${Container}`}>
@@ -50,7 +62,7 @@ function ListOfClassesID() {
         className={`${styleTopBarUINoFlex} h-20 w-full px-3 flex items-center justify-between`}
       >
         <div className="tablet:w-1/4">
-          <SEARCH />
+          <SEARCH searchValue={searchValue} setSearcheValue={searcheStudentInName} />
         </div>
         <div>
           <BUTTON
@@ -111,7 +123,7 @@ function ListOfClassesID() {
                       }}
                         className="flex items-center justify-center gap-2 text-blue"
                       >
-                       {t("table_more")}<img width={7} src={arrowRight} alt="arrow" />
+                        {t("table_more")}<img width={7} src={arrowRight} alt="arrow" />
                       </button>
                       <div className="dropdown">
                         <button
