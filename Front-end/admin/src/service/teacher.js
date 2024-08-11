@@ -49,9 +49,10 @@ const teacherController = {
             console.log(`Error delete teacher \n ${error}`);
         }
     },
-    async getTeacherInSubjectId(subjectId) {
+
+    async getTeacherInSubjectIdAndChaced(weekDay,startTime,endTime,subjectId) {
         try {
-            const { data } = await axios.get(`${baseURL}/teachers/subject/${subjectId}`);
+            const { data } = await axios.get(`${baseURL}/teachers/available?dayOfWeek=${weekDay}&startTime=${startTime}&endTime=${endTime}&subjectId=${subjectId}`);
             return data;
         } catch (error) {
             console.log(`Error get techer \n ${error}`);

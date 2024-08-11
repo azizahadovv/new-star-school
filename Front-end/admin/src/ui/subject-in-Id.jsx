@@ -4,9 +4,9 @@ import teacherController from "../service/teacher";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-function SubjecdtInId({ value, setValue, setTeacherData }) {
+function SubjecdtInId({ value, setValue, setTeacherData, startTime, endTime, weekDay }) {
   const [subject, setSubject] = useState([]);
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const { id } = useParams()
   useEffect(() => {
     getSubjectFunction();
@@ -19,7 +19,8 @@ function SubjecdtInId({ value, setValue, setTeacherData }) {
   const getTeacherInSubjectId = async (e) => {
     try {
       if (e !== "") {
-        const data = await teacherController.getTeacherInSubjectId(e);
+        const data = await teacherController.getTeacherInSubjectIdAndChaced(weekDay, startTime, endTime, e);
+        console.log(data);
         setTeacherData(data);
       }
     } catch (error) {
@@ -27,9 +28,10 @@ function SubjecdtInId({ value, setValue, setTeacherData }) {
     }
   };
   const path = window.location.pathname
-  const xyz=path===`/class-schedule/${id}`
+  const xyz = path === `/class-schedule/${id}`
   return (
-    <select required={true}
+    <select
+      required={true}
       value={value}
       onChange={(e) => {
         getTeacherInSubjectId(e.target.value);
@@ -39,7 +41,7 @@ function SubjecdtInId({ value, setValue, setTeacherData }) {
       className="form-select m-0"
     >
       <option hidden>{t("select_science")}</option>
-      <option hidden={xyz?true:false} value="">{t("all_science")}</option>
+      <option hidden={xyz && true} value="">{t("all_science")}</option>
       {subject.map((item) => (
         <option key={item.id} value={item.id}>
           {item.name}
