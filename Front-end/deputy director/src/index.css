@@ -81,7 +81,7 @@ html {
 
 }
 
-*::selection {
+::selection {
   background-color: #3E4B57;
   color: white;
 }
