@@ -1,10 +1,16 @@
-import { v4 as uuidv4 } from 'uuid';
+import { HOMECLASS, HOMEPERSONINFO } from "../icons";
 
-export const arr = [
+export const homeCard = [
     {
-        date: new Date(),
-        id: uuidv4(),
-        fullName: "John Smith",
-        mark: [5, 6, 7, 8, 9]
-    }
+        id: 1,
+        img: HOMECLASS,
+        title: "Sinflar",
+        link: "/list-of-classes"
+    },
+    {
+        id: 2,
+        img: HOMEPERSONINFO,
+        title: "Shaxsiy ma’lumotlar",
+        link: "/profile"
+    },
 ]

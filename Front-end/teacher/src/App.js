@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify';
 import ReactRouter from './router/React-Router'
 import { useNavigate } from 'react-router-dom';
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <div className='p-0 m-auto'>
       <ReactRouter />
+      <ToastContainer/>
     </div>
   )
 }

@@ -9,7 +9,6 @@
   border-bottom: 1px solid rgb(164, 163, 163);
 }
 
-
 .shadow-section-top-class {
   box-shadow: 0px 0px 40px 0px #34414f0d;
 }
@@ -72,7 +71,7 @@ html {
 }
 
 *::selection {
-  background-color: #3E4B57;
+  background-color: #3e4b57;
   color: white;
 }
 
@@ -88,10 +87,28 @@ html {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #34414F;
+  background: #34414f;
   border-radius: 15px;
 }
 
 li {
   list-style: none;
+}
+
+/* ********************************************* */
+
+.shadow-home-page {
+  box-shadow: 0px 0px 40px 0px #34414f0d;
+  border: 2px solid #252c330d;
+  background-color: white;
+  color: #07121d;
+}
+
+.shadow-home-page:hover {
+  transition: all 0.6s;
+  transform: scale(105%);
+  box-shadow: 0px 0px 40px 0px #34414f0d;
+  border: 2px solid #252c330d;
+  background-color: #41c981;
+  color: #fff;
 }

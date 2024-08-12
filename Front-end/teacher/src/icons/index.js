@@ -17,3 +17,7 @@ export { default as LISTCLASS } from './sinfJadvali.svg'
 export { default as LISTCLASSOUTLINE } from './sinf-jadvali-outline.svg'
 
 export { default as COACH } from './teacher-outline.svg'
+
+export { default as HOMECLASS } from './home-class.svg'
+export { default as HOMEPERSONINFO } from './home-person-info.svg'
+
