@@ -33,19 +33,9 @@ function ClassSchedule() {
                             O‘quvchilar
                         </th>
                         <th>
-                            <input type="date" value={data} className={`${bgLightGray} border-t-blue no-underline outline-none`} />
+                            <div className={`${bgLightGray} border-t-blue no-underline outline-none`} >{data}</div>
                         </th>
-                        <th>
-                            <input type="date" value="2001-01-01" className={`${bgLightGray} border-t-blue no-underline outline-none`} />
-                        </th> <th>
-                            <input type="date" value="2001-01-01" className={`${bgLightGray} border-t-blue no-underline outline-none`} />
-                        </th> <th>
-                            <input type="date" value="2001-01-01" className={`${bgLightGray} border-t-blue no-underline outline-none`} />
-                        </th> <th>
-                            <input type="date" value="2001-01-01" className={`${bgLightGray} border-t-blue no-underline outline-none`} />
-                        </th> <th>
-                            <input type="date" value="2001-01-01" className={`${bgLightGray} border-t-blue no-underline outline-none`} />
-                        </th>
+                      
                     </tr>
                 </thead>
                 <tbody>
@@ -62,22 +52,10 @@ function ClassSchedule() {
                                 <td>
                                     <input value={5} className={`${bgLightGrayMark} no-underline outline-none`} />
                                 </td>
-                                <td>
-                                    <input value={5} className={`${bgLightGrayMark} no-underline outline-none`} />
-                                </td> <td>
-                                    <input value={5} className={`${bgLightGrayMark} no-underline outline-none`} />
-                                </td> <td>
-                                    <input value={5} className={`${bgLightGrayMark} no-underline outline-none`} />
-                                </td> <td>
-                                    <input value={5} className={`${bgLightGrayMark} no-underline outline-none`} />
-                                </td> <td>
-                                    <input value={5} className={`${bgLightGrayMark} no-underline outline-none`} />
-                                </td>
+                             
                             </tr>
                         })
                     }
-
-
 
                 </tbody>
             </table>
