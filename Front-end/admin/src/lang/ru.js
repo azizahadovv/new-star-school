@@ -14,11 +14,11 @@ const ruLang = {
   class_creation: "Создать класс",
   login_parol: "Логин~Пароль",
   search_in_name: "Поиск по имени и фамилии",
-  back_out:"Orqaga chiqish",
+  back_out:"Шаг назад",
 
 
   // ***********************************************************************
-  table_pupils: "Студенты",
+  table_pupils: "Ученики",
   table_classes: "Kласс",
   table_teacher: "Учителя",
   table_subject: "Урок",
