@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { bgLightGray } from "../constanta/style"
 import classInId from "../service/class-in-id"
 import { useEffect, useState } from "react"
@@ -7,10 +7,9 @@ import gradeStudents from "../service/grade"
 
 function ClassSchedule() {
     const { id } = useParams()
+    const nav = useNavigate()
     const [studentsData, setStudentsData] = useState([])
-
-    const dateFront = `${new Date().getFullYear()}-${("0" + (new Date().getMonth() + 1)).slice(-2)}-${("0" + new Date().getDate()).slice(-2) + " " + new Date().getHours() + ":" + new Date().getMinutes()}`
-    const dateDB = new Date()
+    const dateFront = `${new Date().getFullYear()}.${("0" + (new Date().getMonth() + 1)).slice(-2)}.${("0" + new Date().getDate()).slice(-2) + " " + new Date().getHours() + ":" + new Date().getMinutes()}`
     const teacherId = 1;
 
     useEffect(() => {
@@ -25,8 +24,8 @@ function ClassSchedule() {
     const handleSubmit = async (values) => {
         const dataToSend = Object.keys(values.marks).map(studentId => ({
             studentId: Number(studentId),
-            teacherId: 1, // O'zgaruvchilarni kerakli qiymatlar bilan almashtiring
-            subjectId: 1,
+            teacherId: teacherId, // O'zgaruvchilarni kerakli qiymatlar bilan almashtiring
+            subjectId: teacherId,
             termId: 1,
             schoolClassId: Number(id), // URL'dan olingan sinf ID'sini qo'shamiz
             gradeValue: values.marks[studentId],
@@ -34,11 +33,11 @@ function ClassSchedule() {
         }));
         console.log("Prepared data:", dataToSend);
 
-        await gradeStudents.postGarde(dataToSend)
-
-
+        await gradeStudents.postGarde(dataToSend).then(() => {
+            values.marks = ""
+            nav(-1)
+        });
     }
-
 
     return (
         <div className="w-full overflow-scroll">

@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom"
+
 export function HomeText() {
     const path = window.location.pathname
     if (path === "/") {
         return (
-            <span>New Star School</span>
+            <Link to={'/'}>New Star School</Link>
         )
     } else if (path === "/list-of-classes") {
         return (
@@ -11,7 +13,7 @@ export function HomeText() {
     }
     else {
         return (
-            <span></span>
+            <Link to={'/'}>New Star School</Link>
         )
     }
 }
