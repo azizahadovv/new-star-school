@@ -2,7 +2,7 @@ const ruLang = {
   class_schedule_home: "Расписание занятий",
   list_of_classes_home: "Список классов",
   teacher_home: "Учителя",
-  student_home: "Студенты",
+  student_home: "Ученики",
   sciences: "Науки",
   personal_information_home: "Персональная информация",
   add_student: "Добавить ученика",

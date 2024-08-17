@@ -1,4 +1,3 @@
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 function Nationality({ nationality, setNationality,style={ height: "55px", maxWidth: "350px" } }) {
@@ -15,8 +14,8 @@ function Nationality({ nationality, setNationality,style={ height: "55px", maxWi
             <option hidden>
                 {t("nation")} *
             </option>
-            <option value="Uzbek">O'zbek</option>
-            <option value="Rus">Rus</option>
+            <option value="uzb">O'zbek</option>
+            <option value="rus">Rus</option>
         </select>
     )
 }

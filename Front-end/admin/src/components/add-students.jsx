@@ -16,7 +16,7 @@ import student_Page_Function from '../service/student'
 import { useTranslation } from "react-i18next";
 
 function AddUser() {
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate();
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [firstName, setfirstName] = React.useState("");

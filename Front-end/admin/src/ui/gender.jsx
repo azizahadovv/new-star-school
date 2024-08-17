@@ -15,10 +15,10 @@ function Gender({ gender, setGender,style={ height: "55px", maxWidth: "350px" } 
             <option hidden>
                 {t("gender")} *
             </option>
-            <option value="Male"> {t("male")}</option>
-            <option value="Female"> {t("female")}</option>
+            <option value="male"> {t("male")}</option>
+            <option value="female"> {t("female")}</option>
         </select>
-    )
+    )   
 }
 
 export default Gender
