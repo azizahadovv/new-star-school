@@ -1,6 +1,33 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { baseURL } from '../service/api';
 
-function SelectTerm({terms,handleChange,selectedOption}) {
+function SelectTerm({ selectedOption=1, setSelectedOption={} }) {
+
+  const [terms, setTermas] = useState([])  ;
+
+  // On component mount, load the selected option from localStorage
+  useEffect(() => {
+    gettermData()
+    const savedOption = localStorage.getItem('term');
+    if (savedOption) {
+      setSelectedOption(savedOption);
+    }
+  }, []);
+
+  function gettermData() {
+    axios.get(`${baseURL}terms`).then((res) => {
+      setTermas(res.data);
+    })
+  }
+
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    setSelectedOption(newValue);
+    localStorage.setItem('term', newValue);
+  };
+
+
   return (
     <select
       style={{ width: "350px" }}
