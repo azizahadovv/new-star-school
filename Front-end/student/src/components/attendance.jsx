@@ -1,12 +1,13 @@
-import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container, styleTopBarUI, styleTopBarUINoFlex } from '../constanta/style'
 import { SELECTOPTIOS, TEACHERSELECT } from '../ui'
 
 function Attendance() {
+  const { t } = useTranslation()
   return (
     <div className={`${Container}`}>
       <div className={`${styleTopBarUI} px-4 w-full min-h-16`}>
-        <div className='tablet:w-1/5 mobil:w-1/2 minMobil:w-full flex gap-2' l>
+        <div className='tablet:w-1/5 mobil:w-1/2 minMobil:w-full flex gap-2'>
           <SELECTOPTIOS />
         </div>
         <div className='tablet:w-1/5 mobil:w-1/2 minMobil:w-full flex gap-2'>
@@ -40,7 +41,6 @@ function Attendance() {
           </tbody>
         </table>
       </div>
-
     </div>
   )
 }

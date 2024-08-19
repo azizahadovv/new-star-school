@@ -1,8 +1,13 @@
 import React from 'react'
 import { Container, styleTopBarUI, styleTopBarUINoFlex } from '../constanta/style'
 import { SELECTOPTIOS } from '../ui'
+import { useTranslation } from 'react-i18next'
 
 function GradeRating() {
+  const { t } = useTranslation()
+
+
+
   return (
     <div className={`${Container}`}>
       <div className={`w-full h-16 px-4 ${styleTopBarUI}`}>
@@ -15,10 +20,10 @@ function GradeRating() {
           <thead>
             <tr className='text-textGray'>
               <th>№</th>
-              <th>Dars sanasi</th>
-              <th>Fan nomi</th>
-              <th>Ustoz</th>
-              <th>Baho</th>
+              <th>{t("class_date")}</th>
+              <th>{t("subject_name")}</th>
+              <th>{t("teachers_name")}</th>
+              <th>{t("grade")}</th>
             </tr>
           </thead>
           <tbody>

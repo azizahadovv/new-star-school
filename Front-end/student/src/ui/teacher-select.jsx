@@ -2,8 +2,8 @@ import React from 'react'
 
 function TeacherSelect() {
     return (
-        <select className="form-select" aria-label="Disabled select example">
-            <option hidden selected>Ustozni tanlang</option>
+        <select className="form-select">
+            <option hidden >Ustozni tanlang</option>
             <option value="all">Hammasi</option>
             <option value="1">Xurshida Umirzaqova</option>
             <option value="2">Sevinch Nurullayeva</option>

@@ -30,3 +30,10 @@ export { default as teacherIcon } from './teacherIcon.svg'
 export { default as ICONIMG } from './iconImg.svg'
 export { default as EXIT } from './exit.svg'
 export { default as EDIT } from './edit 1.svg'
+
+
+
+export { default as H1 } from './h1.svg'
+export { default as H2 } from './h2.svg'
+export { default as H3 } from './h3.svg'
+export { default as H4 } from './h4.svg'

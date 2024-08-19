@@ -6,8 +6,10 @@ import { openBar, userIcon } from '../icons'
 import { LANGUAGEPOTION } from '../ui'
 import { useState } from 'react'
 import { HomeText } from '../utils/UiFunctios'
+import { useTranslation } from 'react-i18next'
 
 function Navbar() {
+  const {t}=useTranslation()
   const [firstName, setFirstName] = useState("Usenov")
   const [name, setName] = useState("Tohir")
   const dispatch = useDispatch()
@@ -15,12 +17,12 @@ function Navbar() {
   const myText = HomeText().props.children
 
   return (
-    <div className='w-full shadowBG bg-white border-b border-brGray '>
+    <div className='w-full shadowBG bg-white border-b border-brGray'>
       <div className='flex tablet:mx-[50px] tabletIst:mx-[100px] minMobil:mx-2 relative'>
         <div className='w-full h-20 flex items-center justify-between'>
           <div className={`flex items-center justify-center gap-3`}>
-            <button onClick={() => (dispatch(openVisible()))} className='w-9 h-9 rounded-lg bg-lightGray border border-brGray flex items-center justify-center'>
-              <img className='w-4 h-4' src={openBar} alt="" />
+            <button onClick={() => (dispatch(openVisible()))} className='w-9 h-9 rounded-lg bg-lightGray border border-brGray flex items-center justify-center minMobil:flex tablet:hidden'>
+              <img className='w-4 h-4' src={openBar} alt="openBar" />
             </button>
             <h1 className={`minMobil:hidden tablet:block font-bold text-2xl m-0 mt-1 leading-0 flex items-center justify-center text-textBlack ${toggle ? "hidden" : "block"}`}>{myText}</h1>
           </div>
@@ -37,7 +39,7 @@ function Navbar() {
                   <span className='minMobil:hidden tablet:block '>{firstName}.{name}</span>
                   <span className='minMobil:block tablet:hidden '>{firstName}.{name.slice(0, 1)}</span>
                 </span>
-                <span className='text-sm font-semibold text-textGray'>O‘qituvchi</span>
+                <span className='text-sm font-semibold text-textGray'>{t("student_home")}</span>
               </div>
             </div>
           </div>

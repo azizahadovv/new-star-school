@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next"
+
 export function HomeText() {
+    const { t } = useTranslation()
     const path = window.location.pathname
     if (path === "/") {
         return (
@@ -6,22 +9,22 @@ export function HomeText() {
         )
     } else if (path === "/class-schedule") {
         return (
-            <span>Dars Jadvali</span>
+            <span>{t("class_schedule_home")}</span>
         )
     }
     else if (path === "/grade-rating") {
         return (
-            <span>Baxolar reytingi</span>
+            <span>{t("ratings_home")}</span>
         )
     }
     else if (path === "/atendance") {
         return (
-            <span>Davomat</span>
+            <span>{t("attendance")}</span>
         )
     }
     else if (path === "/profile") {
         return (
-            <span>Shaxsiy ma’lumotlar</span>
+            <span>{t("personal_information_home")}</span>
         )
     }
     else {
