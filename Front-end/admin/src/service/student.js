@@ -1,5 +1,6 @@
 import axios from "axios";
 import { baseURL } from "./api";
+import { toast } from "react-toastify";
 
 const student_Page_Function = {
     async get_All_Student() {
@@ -8,7 +9,7 @@ const student_Page_Function = {
             return data;
         }
         catch (error) {
-            console.log("Error getting student data");
+            toast.error("Error getting student data");
         }
     },
     async get_student_in_Id(studentId) {
@@ -16,7 +17,7 @@ const student_Page_Function = {
             const { data } = await axios.get(`${baseURL}/students/${studentId}`);
             return data;
         } catch (error) {
-            console.log(` Error get_student_in_Id  ${error}`);
+            toast.error(` Error get_student_in_Id  ${error}`);
         }
     },
     async Put_Student(id, dataStudent) {
@@ -24,16 +25,16 @@ const student_Page_Function = {
             await axios.put(`${baseURL}/students/${id}`, dataStudent);
             return
         } catch (error) {
-            console.log("error removed \n" + error);
+            toast.error("error removed \n" + error);
         }
     },
     async remove_Student(id) {
         try {
             await axios.delete(`${baseURL}/students/${id}`);
-            console.log("successfully removed" + id);
+            toast.error("successfully removed" + id);
             return
         } catch (error) {
-            console.log("error removed \n" + error);
+            toast.error("error removed \n" + error);
         }
     },
     async search_Student(keywordId, keywordName) {
@@ -41,15 +42,15 @@ const student_Page_Function = {
             const { data } = await axios.get(`${baseURL}/students/search-by?classId=${keywordId}&name=${keywordName}`);
             return data
         } catch (error) {
-            console.log(error.message);
+            toast.error(error.message);
         }
     },
     async uploadFile(studentId, file) {
         try {
             await axios.post(`${baseURL}/students/${studentId}/upload-image`, file)
-            console.log("successfully uploaded");
+            toast.error("successfully uploaded");
         } catch (error) {
-            console.log(error);
+            toast.error(error);
         }
     }
 }

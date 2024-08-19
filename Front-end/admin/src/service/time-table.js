@@ -1,5 +1,6 @@
 import axios from "axios"
 import { baseURL } from "./api"
+import { toast } from "react-toastify"
 
 const TimeTable = {
     async getTimeTableInId(classesId) {
@@ -13,25 +14,25 @@ const TimeTable = {
     async addTimeTable(data) {
         try {
             await axios.post(`${baseURL}/v1/timetables`, data)
-            console.log("sucessfully added");
+            toast.error("sucessfully added");
         } catch (error) {
-            console.log(error);
+            toast.error(error);
         }
     },
     async TrashData(dataId) {
         try {
             await axios.delete(`${baseURL}/v1/timetables/${dataId}`)
-            console.log("Data successfully deleted");
+            toast.error("Data successfully deleted");
         } catch (error) {
-            console.log(error);
+            toast.error(error);
         }
     },
     async updateTimeTable(dataId, data) {
         try {
             await axios.put(`${baseURL}/v1/timetables/${dataId}`, data)
-            console.log("Data successfully updated");
+            toast.error("Data successfully updated");
         } catch (error) {
-            console.log(error);
+            toast.error(error);
         }
     }
 }
