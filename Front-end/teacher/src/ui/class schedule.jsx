@@ -5,10 +5,12 @@ import { useEffect, useState } from "react"
 import { Formik, Form, Field } from "formik"
 import gradeStudents from "../service/grade"
 import { LOADER } from "."
+import { useTranslation } from "react-i18next"
 
 function ClassSchedule() {
     const { id } = useParams()
     const nav = useNavigate()
+    const { t } = useTranslation()
     const [studentsData, setStudentsData] = useState([])
     const dateFront = `${new Date().getFullYear()}.${("0" + (new Date().getMonth() + 1)).slice(-2)}.${("0" + new Date().getDate()).slice(-2) + " " + new Date().getHours() + ":" + new Date().getMinutes()}`
     const teacherId = 1;
@@ -22,14 +24,15 @@ function ClassSchedule() {
         setStudentsData(datas.students);
     }
     const handleSubmit = async (values) => {
+        console.log(values);
         const dataToSend = Object.keys(values.marks).map(studentId => ({
             studentId: Number(studentId),
-            teacherId: teacherId, // O'zgaruvchilarni kerakli qiymatlar bilan almashtiring
+            teacherId: teacherId,
             subjectId: teacherId,
             termId: Number(localStorage.getItem('term')),
-            schoolClassId: Number(id), // URL'dan olingan sinf ID'sini qo'shamiz
+            schoolClassId: Number(id),
             gradeValue: values.marks[studentId],
-            dateAssigned: new Date().toISOString() // Bugungi sanani ISO formatida qo'shamiz
+            dateAssigned: new Date().toISOString()
         }));
         await gradeStudents.postGarde(dataToSend).then(() => {
             values.marks = ""
@@ -56,7 +59,7 @@ function ClassSchedule() {
                                 <thead>
                                     <tr>
                                         <th>№</th>
-                                        <th>O‘quvchilar</th>
+                                        <th>{t("student_home")}</th>
                                         <th>
                                             <div className={`${bgLightGray} border-t-blue no-underline outline-none flex items-center justify-center`}>{dateFront}</div>
                                         </th>
@@ -74,10 +77,9 @@ function ClassSchedule() {
                                             </td>
                                             <td>
                                                 <Field as="select" name={`marks.${student.id}`} style={{ width: "150px" }} className="form-select">
-                                                    <option value='' hidden>Baholash</option>
-                                                    <option value='present'>Darsda bor</option>
-                                                    <option value='sababli'>Sababli</option>
-                                                    <option value='sababsiz'>Sababsiz</option>
+                                                    <option value='' hidden>{t("assessment")}</option>
+                                                    <option value='present'>{t("in_class")}</option>
+                                                    <option value='sababli'>{t("not_in_class")}</option>
                                                     <option value='5'>5</option>
                                                     <option value='4'>4</option>
                                                     <option value='3'>3</option>
@@ -86,12 +88,10 @@ function ClassSchedule() {
                                             </td>
                                         </tr>
                                     ))}
-
-
                                 </tbody>
                             </table>
                         }
-                        <button type="submit" className="btn btn-primary mt-4">Baholarni saqlash</button>
+                        <button type="submit" className="btn btn-primary mt-4">{t("save_grades")}</button>
                     </Form>
                 )}
             </Formik>

@@ -6,10 +6,14 @@ import { openBar, userIcon } from '../icons'
 import { LANGUAGEPOTION } from '../ui'
 import { useState } from 'react'
 import { HomeText } from '../utils/UiFunctios'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
+  const navigate=useNavigate()
   const [firstName, setFirstName] = useState("Usenov")
   const [name, setName] = useState("Tohir")
+  const {t}=useTranslation()
   const dispatch = useDispatch()
   const toggle = useSelector(sel => sel.sidebarReduser.open)
   const myText = HomeText().props.children
@@ -32,12 +36,12 @@ function Navbar() {
               <div className='w-12 h-12 rounded-full'>
                 <img className='rounded-full' src={userIcon} alt="userIcon" />
               </div>
-              <div className='flex items-start justify-center flex-col'>
+              <div onDoubleClick={()=>navigate('/profile')} className='flex items-start justify-center flex-col cursor-pointer'>
                 <span className='leading-7 text-lg font-bold'>
                   <span className='minMobil:hidden tablet:block '>{firstName}.{name}</span>
                   <span className='minMobil:block tablet:hidden '>{firstName}.{name.slice(0, 1)}</span>
                 </span>
-                <span className='text-sm font-semibold text-textGray'>O‘qituvchi</span>
+                <span className='text-sm font-semibold text-textGray'>{t("table_teacher")}</span>
               </div>
             </div>
           </div>

@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 
 export function HomeText() {
+    const { t } = useTranslation()
+
     const path = window.location.pathname
     if (path === "/") {
         return (
@@ -8,7 +11,7 @@ export function HomeText() {
         )
     } else if (path === "/list-of-classes") {
         return (
-            <span>Sinflar</span>
+            <span>{t("list_of_classes_home")}</span>
         )
     }
     else {

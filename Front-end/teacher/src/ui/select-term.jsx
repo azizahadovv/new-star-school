@@ -6,7 +6,6 @@ function SelectTerm({ selectedOption=1, setSelectedOption={} }) {
 
   const [terms, setTermas] = useState([])  ;
 
-  // On component mount, load the selected option from localStorage
   useEffect(() => {
     gettermData()
     const savedOption = localStorage.getItem('term');

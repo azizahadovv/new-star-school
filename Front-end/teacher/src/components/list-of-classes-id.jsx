@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Container, styleTopBarUINoFlex } from '../constanta/style'
 import { CLASSSCHEDULE, SELECTTERMS } from '../ui'
-import { baseURL } from '../service/api';
-import axios from 'axios';
 
 function ListOfClassesID() {
   const [selectedOption, setSelectedOption] = useState('')

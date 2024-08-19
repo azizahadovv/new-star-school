@@ -1,12 +1,24 @@
+import { useTranslation } from 'react-i18next';
 
 function LanguageOptins() {
-    return (
-        <select className="form-select" aria-label="Disabled select example" >
-            <option value='0'>O'zbek</option>
-            <option value="1">Rus</option>
-            <option value="2">Eng</option>
-        </select>
-    )
+  const { i18n } = useTranslation();  // useTranslation hookni chaqirish
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("lang", lng);
+  };
+
+  return (
+    <select
+      value={localStorage.getItem("lang")}
+      onChange={(e) => changeLanguage(e.target.value)}
+      className="form-select"
+    >
+      <option value="uz">O'zbek</option>
+      <option value="ru">Рус</option>
+      <option value="en">Eng</option>
+    </select>
+  );
 }
 
-export default LanguageOptins
+export default LanguageOptins;

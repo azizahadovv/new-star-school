@@ -3,10 +3,12 @@ import { Container, styleTopBarUINoFlex } from '../constanta/style'
 import { useParams } from 'react-router-dom'
 import MarkClass from '../service/mark'
 import { SELECTTERMS } from '../ui'
+import { useTranslation } from 'react-i18next'
 function MarkStudents() {
   const [selectedOption, setSelectedOption] = useState('')
   const [datas, setDatas] = useState([])
   const { id } = useParams()
+  const {t}=useTranslation()
 
   useEffect(() => {
     getMarkData()
@@ -41,7 +43,7 @@ function MarkStudents() {
           <thead className='table-hover'>
             <tr>
               <th className="py-2 px-4 border-b">№</th>
-              <th className="py-2 px-4 border-b">O'quvchilar</th>
+              <th className="py-2 px-4 border-b">{t("table_pupils")}</th>
               {dates?.map((date, index) => (
                 <th key={index} className="py-2 px-4 border-b">{date}</th>
               ))}
@@ -60,7 +62,7 @@ function MarkStudents() {
               </tr>
             ))}
           </tbody>
-        </table> : <div className='w-full h-full flex items-center justify-center mt-5 text-3xl'>Ma'lumot topilmadi</div>}
+        </table> : <div className='w-full h-full flex items-center justify-center mt-5 text-3xl'>{t("no_date")}</div>}
       </div>
     </div>
   )

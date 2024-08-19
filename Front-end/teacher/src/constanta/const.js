@@ -4,13 +4,13 @@ export const homeCard = [
     {
         id: 1,
         img: HOMECLASS,
-        title: "Sinflar",
+        title: "list_of_classes_home",
         link: "/list-of-classes"
     },
     {
         id: 2,
         img: HOMEPERSONINFO,
-        title: "Shaxsiy ma’lumotlar",
+        title: "personal_information",
         link: "/profile"
     },
 ]
