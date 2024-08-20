@@ -1,17 +1,22 @@
-import { useTranslation } from 'react-i18next'
+import React, { useEffect, useState } from 'react';
 import { Container, styleTopBarUI, styleTopBarUINoFlex } from '../constanta/style'
 import { SELECTOPTIOS, TEACHERSELECT } from '../ui'
-
+import { useTranslation } from 'react-i18next'
 function Attendance() {
   const { t } = useTranslation()
+  const [teacherData, setTeacherData] = useState([])
+  const [valueTeacher, setValueTeacher] = useState('')
+
+
+
   return (
     <div className={`${Container}`}>
       <div className={`${styleTopBarUI} px-4 w-full min-h-16`}>
         <div className='tablet:w-1/5 mobil:w-1/2 minMobil:w-full flex gap-2'>
-          <SELECTOPTIOS />
+          <SELECTOPTIOS teacherData={teacherData} setTeacherData={setTeacherData} />
         </div>
         <div className='tablet:w-1/5 mobil:w-1/2 minMobil:w-full flex gap-2'>
-          <TEACHERSELECT />
+          <TEACHERSELECT teacherData={teacherData} />
         </div>
       </div>
 
@@ -20,12 +25,11 @@ function Attendance() {
           <thead>
             <tr className='text-textGray'>
               <th>№</th>
-              <th>Chorak</th>
-              <th>Dars sanasi</th>
-              <th>Fan nomi</th>
-              <th>Sababli</th>
-              <th>Vaqt</th>
-              <th>Ustoz</th>
+              <th>{t("term")}</th>
+              <th>{t("date_lesson")}</th>
+              <th>{t("name_lesson")}</th>
+              <th>{t("lesson_duration")}</th>
+              <th>{t("teachers_name")}</th>
             </tr>
           </thead>
           <tbody>
@@ -34,7 +38,6 @@ function Attendance() {
               <td>1-chorak</td>
               <td>20-05-2024 08:00</td>
               <td>Chet tili</td>
-              <td>Ha</td>
               <td>45 daqiqa</td>
               <td>Xurshida Umirzaqova</td>
             </tr>

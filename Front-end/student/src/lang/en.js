@@ -24,8 +24,35 @@ const enLang = {
 
     // 
 
-    subject_name: "Choose a subject name",
+    subject_names: "Choose a subject name",
+    hidden_teacher: "Teacher's name",
+    all: "All",
 
+    // 
+
+    term: "Term",
+    date_lesson: "The date of the lesson",
+    name_lesson: "Subject name",
+    lesson_duration: "Lesson duration",
+
+    // 
+
+    exit:"Logout",
+    enter: "Enter",
+    lastName: "Last name",
+    firstName: "First name",
+    patronymic: "Patronymic",
+    birthday: "Birthday",
+    gender: "Gender",
+    nation: "Nation",
+    state: "State",
+    province: "Province",
+    district: "District",
+    home_address: "Home address",
+    phone_number: "Phone number",
+    additional_phone_number: "Additional",
+    login: "Login",
+    password: "Password"
 
 }
 

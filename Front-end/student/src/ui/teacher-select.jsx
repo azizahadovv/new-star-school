@@ -1,17 +1,32 @@
-import React from 'react'
+import React from "react";
+import { useTranslation } from "react-i18next";
 
-function TeacherSelect() {
+
+function TeacherSelect({ value, setValue, teacherData }) {
+    const path = window.location.pathname
+    const { t } = useTranslation()
+
+    console.log(path);
     return (
-        <select className="form-select">
-            <option hidden >Ustozni tanlang</option>
-            <option value="all">Hammasi</option>
-            <option value="1">Xurshida Umirzaqova</option>
-            <option value="2">Sevinch Nurullayeva</option>
-            <option value="3">Zarina Abdullayeva</option>
-            <option value="4">Xurshida Umirzaqova</option>
-            <option value="5">Jamshid Abdumalikov</option>
+        <select
+            required={true}
+            value={value}
+            onChange={(e) => setValue(Number(e.target.value))}
+            style={{ height: "35px" }}
+            className="form-select"
+        >
+            <option hidden>{t("hidden_teacher")}</option>
+            {teacherData?.length === 0 ? (
+                <option hidden={path === '/atendance' ? true : false}>{t("all")}</option>
+            ) : (
+                teacherData?.map((item) => (
+                    <option key={item.id} value={item.id}>
+                        {item.firstName} {item.lastName}
+                    </option>
+                ))
+            )}
         </select>
-    )
+    );
 }
 
-export default TeacherSelect
+export default TeacherSelect;

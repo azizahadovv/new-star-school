@@ -19,14 +19,37 @@ const ruLang = {
     class_date: "Дата урока",
     subject_name: "Название субъекта",
     teachers_name: "Имя учителя",
-    grade:"Оценки",
+    grade: "Оценки",
 
     // 
 
-    subject_name: "Выберите название предмета",
+    subject_names: "Выберите название предмета",
+    hidden_teacher: "Имя учителя",
+    all: "Все",
 
+    term: "Четверть",
+    date_lesson: "Дата урока",
+    name_lesson: "Имя субъекта",
+    lesson_duration: "Продолжительность урока",
 
-
+    // 
+    
+    exit:"Выйти",
+    enter: "Введите",
+    lastName: "Фамилия",
+    firstName: "Имя",
+    patronymic: "Отчество",
+    birthday: "День рождения",
+    gender: "Пол",
+    nation: "Нация",
+    state: "Состояние",
+    province: "Провинция",
+    district: "Округ",
+    home_address: "Домашний адрес",
+    phone_number: "Номер телефона",
+    additional_phone_number: "Дополнительный",
+    login: "Логин",
+    password: "Пароль"
 
 }
 

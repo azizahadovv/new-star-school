@@ -20,9 +20,34 @@ const uzLang = {
 
     // 
 
-    subject_name: "Fan nomini tanlang",
+    subject_names: "Fan nomini tanlang",
+    hidden_teacher: "O'qituvchi nomi",
+    all: "Hammasi",
 
+    // 
 
+    term: "Chorak",
+    date_lesson: "Dars sanasi",
+    name_lesson: "Fan nomi",
+    lesson_duration: "Dars davomiyligi",
+
+    // 
+    exit: "Tizimdan chiqish",
+    enter: "Kiriting",
+    firstName: "Ismi",
+    lastName: "Familiya",
+    patronymic: "Otasining ismi",
+    birthday: "Tug‘ilgan kun",
+    gender: "Jins",
+    state: "Davlat",
+    nation: "Millat",
+    province: "Viloyat",
+    district: "Tuman",
+    home_address: "Uy manzili",
+    phone_number: "Telefon raqam",
+    additional_phone_number: "Qo'shimcha",
+    login: "Login",
+    password: "Parol"
 }
 
 
