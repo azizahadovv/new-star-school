@@ -62,8 +62,8 @@ const uzLang = {
   additional_phone_number: "Qo'shimcha",
   science_teacher: "Fan o'qituvchisi",
   login: "Login",
-  password: "Parol"
-
+  password: "Parol",
+  time_table:"Dars Jadvali"
 
 
 };

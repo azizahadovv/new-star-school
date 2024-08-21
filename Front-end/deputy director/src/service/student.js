@@ -1,5 +1,6 @@
 import axios from "axios";
 import { baseURL } from "./api";
+import { toast } from "react-toastify";
 
 const student_Page_Function = {
     async get_All_Student() {
@@ -9,6 +10,7 @@ const student_Page_Function = {
         }
         catch (error) {
             console.log("Error getting student data");
+            toast.error(error.message)
         }
     },
     async get_student_in_Id(studentId) {
@@ -16,6 +18,7 @@ const student_Page_Function = {
             const { data } = await axios.get(`${baseURL}/students/${studentId}`);
             return data;
         } catch (error) {
+            toast.error(error.message)
             console.log(` Error get_student_in_Id  ${error}`);
         }
     },
@@ -24,6 +27,7 @@ const student_Page_Function = {
             await axios.put(`${baseURL}/students/${id}`, dataStudent);
             return
         } catch (error) {
+            toast.error(error.message)
             console.log("error removed \n" + error);
         }
     },
@@ -33,6 +37,7 @@ const student_Page_Function = {
             console.log("successfully removed" + id);
             return
         } catch (error) {
+            toast.error(error.message)
             console.log("error removed \n" + error);
         }
     },
@@ -41,6 +46,7 @@ const student_Page_Function = {
             const { data } = await axios.get(`${baseURL}/students/search-by?classId=${keywordId}&name=${keywordName}`);
             return data
         } catch (error) {
+            toast.error(error.message)
             console.log(error.message);
         }
     },
@@ -49,6 +55,7 @@ const student_Page_Function = {
             await axios.post(`${baseURL}/students/${studentId}/upload-image`, file)
             console.log("successfully uploaded");
         } catch (error) {
+            toast.error(error.message)
             console.log(error);
         }
     }

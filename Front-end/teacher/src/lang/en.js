@@ -72,7 +72,9 @@ const enLang = {
   additional_phone_number: "Additional",
   science_teacher: "Science teacher",
   login: "Login",
-  password: "Password"
+  password: "Password",
+  time_table:"Lesson Schedule"
+
 };
 
 export default enLang;

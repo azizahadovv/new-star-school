@@ -1,21 +1,30 @@
 import axios from "axios"
 import { baseURL } from "./api"
+import { toast } from "react-toastify"
 
 const TimeTable = {
     async getTimeTableInId(classesId) {
-        const { data } = await axios.get(`${baseURL}/classes/classes/${classesId}/timetables`)
-        return data
+        try {
+            const { data } = await axios.get(`${baseURL}/classes/classes/${classesId}/timetables`)
+            return data
+        } catch (error) {
+            toast.error(error.message)
+        }
     },
     async getAllTimeTable() {
-        const { data } = await axios.get(`${baseURL}/v1/timetables`)
-        return data
+        try {
+            const { data } = await axios.get(`${baseURL}/v1/timetables`)
+            return data
+        } catch (error) {
+            toast.error(error.message)
+        }
     },
     async addTimeTable(data) {
         try {
             await axios.post(`${baseURL}/v1/timetables`, data)
             console.log("sucessfully added");
         } catch (error) {
-            console.log(error);
+            toast.error(error.message)
         }
     },
     async TrashData(dataId) {
@@ -23,7 +32,7 @@ const TimeTable = {
             await axios.delete(`${baseURL}/v1/timetables/${dataId}`)
             console.log("Data successfully deleted");
         } catch (error) {
-            console.log(error);
+            toast.error(error.message)
         }
     },
     async updateTimeTable(dataId, data) {
@@ -31,7 +40,7 @@ const TimeTable = {
             await axios.put(`${baseURL}/v1/timetables/${dataId}`, data)
             console.log("Data successfully updated");
         } catch (error) {
-            console.log(error);
+            toast.error(error.message)
         }
     }
 }

@@ -25,11 +25,11 @@ function ClassSchedule() {
             </div>
             <div className={`${styleTopBarUINoFlex} w-full min-h-96 flex items-center justify-evenly flex-wrap gap-3 p-3 `}>
                 {
-                    data.length == 0 ? <div>
+                    data?.length === 0 ? <div>
                         <LOADER />
                     </div> :
-                        data.map((item, idx) => {
-                            return <CARDSCHEDULE key={idx} weekDay={item.dayOfWeek} data={item.schedule} />
+                        data?.map((item, idx) => {
+                            return <CARDSCHEDULE key={idx} weekDay={item?.dayOfWeek} data={item?.schedule} />
                         })
                 }
             </div>

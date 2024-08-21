@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { baseURL } from '../service/api';
+import TermControl from '../service/term';
 
-function SelectTerm({ selectedOption=1, setSelectedOption={} }) {
+function SelectTerm({ selectedOption = 1, setSelectedOption = {} }) {
 
-  const [terms, setTermas] = useState([])  ;
+  const [terms, setTermas] = useState([]);
 
   useEffect(() => {
     gettermData()
@@ -14,10 +15,9 @@ function SelectTerm({ selectedOption=1, setSelectedOption={} }) {
     }
   }, []);
 
-  function gettermData() {
-    axios.get(`${baseURL}terms`).then((res) => {
-      setTermas(res.data);
-    })
+  const gettermData = async () => {
+    const datas = await TermControl.myTerm()
+    setTermas(datas);
   }
 
   const handleChange = (e) => {
@@ -37,7 +37,7 @@ function SelectTerm({ selectedOption=1, setSelectedOption={} }) {
     >
       {
         terms?.map((item) => {
-          return <option key={item.id} value={item.id} >{item.name}</option>
+          return <option key={item.id} value={item?.id} >{item.name}</option>
         })
       }
     </select>

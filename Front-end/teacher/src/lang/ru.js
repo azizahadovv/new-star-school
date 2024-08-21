@@ -73,7 +73,9 @@ const ruLang = {
   additional_phone_number: "Дополнительный",
   science_teacher: "Учитель естественных наук",
   login: "Логин",
-  password: "Пароль"
+  password: "Пароль",
+  time_table:"Расписание уроков"
+
 };
 
 export default ruLang;

@@ -66,9 +66,6 @@
   text-decoration: none;
 }
 
-html {
-  background-color: #ecf0f2;
-}
 
 *::selection {
   background-color: #3e4b57;
@@ -168,6 +165,14 @@ li {
     background-color: #b3d4fc;
     box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
   }
+}
+
+.border-card {
+  border-top: 3px solid #125DAC;
+  border-right: 1px solid #E1EAF1;
+  border-left: 1px solid #E1EAF1;
+  border-bottom: 1px solid #E1EAF1;
+  box-shadow: 0px 0px 60px 0px #34414F0D;
 }
 
 /* ************************************************************************************* */

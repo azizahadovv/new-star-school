@@ -62,7 +62,7 @@ function MarkStudents() {
               </tr>
             ))}
           </tbody>
-        </table> : <div className='w-full h-full flex items-center justify-center mt-5 text-3xl'>{t("no_date")}</div>}
+        </table> : <div className='w-full h-full flex items-center justify-center mt-5 text-3xl'>{t("no_dates")}</div>}
       </div>
     </div>
   )

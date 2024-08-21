@@ -22,3 +22,5 @@ export { default as HOMECLASS } from './home-class.svg'
 export { default as HOMEPERSONINFO } from './home-person-info.svg'
 
 export { default as MENUDOTS } from './menu-dots-vertical.svg'
+export { default as TEACHERTABLE } from './teacher-table.svg'
+export { default as teacherIcon } from './teacherIcon.svg'

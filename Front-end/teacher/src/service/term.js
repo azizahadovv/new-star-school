@@ -1,10 +1,10 @@
 import { toast } from 'react-toastify'
 import axios from './api'
 
-const classInId = {
-    async myClasses(classId) {
+const TermControl = {
+    async myTerm() {
         try {
-            const { data } = await axios.get(`classes/${classId}`)
+            const { data } = await axios.get(`v1/terms`)
             return data
         } catch (error) {
             toast.error(error.message)
@@ -13,4 +13,4 @@ const classInId = {
 }
 
 
-export default classInId
+export default TermControl

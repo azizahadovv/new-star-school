@@ -59,7 +59,7 @@ function ClassSchedule() {
                                 <thead>
                                     <tr>
                                         <th>№</th>
-                                        <th>{t("student_home")}</th>
+                                        <th>{t("table_pupils")}</th>
                                         <th>
                                             <div className={`${bgLightGray} border-t-blue no-underline outline-none flex items-center justify-center`}>{dateFront}</div>
                                         </th>
