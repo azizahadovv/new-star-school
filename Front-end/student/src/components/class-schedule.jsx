@@ -1,27 +1,37 @@
 import { useEffect, useState } from "react"
 import { styleTopBarUI, styleTopBarUINoFlex } from "../constanta/style"
-import { ButtonFrameSection, CARDSCHEDULE, LOADER } from "../ui"
+import { CARDSCHEDULE, LOADER, SELECTTERMS } from "../ui"
 import studentCotrol from '../service/student'
 
+
 function ClassSchedule() {
+    // Sahifa yangilanganida selectedOption qiymatini localStorage dan olish
+    const [selectedOption, setSelectedOption] = useState(localStorage.getItem('selectedOption') || '')
     const [data, setData] = useState([])
+
     useEffect(() => {
+        // selectedOption qiymati o'zgarganida yoki sahifa yangilanganida ma'lumotlarni olish
         getClassSchedule()
-    }, [])
+    }, [selectedOption])
 
     const getClassSchedule = async () => {
-        const datas = await studentCotrol.getStudentSchedule()
-        setData(datas);
-        console.log(datas);
+        const ids = localStorage.getItem('studentId')
+        if (ids && selectedOption) {
+            const datas = await studentCotrol.getStudentSchedule(ids, selectedOption)
+            setData(datas)
+            console.log(datas)
+        }
+    }
+
+    const handleOptionChange = (option) => {
+        setSelectedOption(option)
+        localStorage.setItem('selectedOption', option) // selectedOption qiymatini localStorage ga saqlash
     }
 
     return (
         <div className="w-full h-screen tablet:px-10 minMobil:px-1 ">
             <div className={`px-4 w-full min-h-16 ${styleTopBarUI}`}>
-                <ButtonFrameSection nameBtn={"1-chorak"} active={true} />
-                <ButtonFrameSection nameBtn={"2-chorak"} />
-                <ButtonFrameSection nameBtn={"3-chorak"} />
-                <ButtonFrameSection nameBtn={"4-chorak"} />
+                <SELECTTERMS selectedOption={selectedOption} setSelectedOption={handleOptionChange} />
             </div>
             <div className={`${styleTopBarUINoFlex} w-full min-h-96 flex items-center justify-evenly flex-wrap gap-3 p-3 `}>
                 {

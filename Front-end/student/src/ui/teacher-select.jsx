@@ -5,15 +5,13 @@ import { useTranslation } from "react-i18next";
 function TeacherSelect({ value, setValue, teacherData }) {
     const path = window.location.pathname
     const { t } = useTranslation()
-
-    console.log(path);
     return (
         <select
             required={true}
             value={value}
             onChange={(e) => setValue(Number(e.target.value))}
             style={{ height: "35px" }}
-            className="form-select"
+            className="form-select capitalize"
         >
             <option hidden>{t("hidden_teacher")}</option>
             {teacherData?.length === 0 ? (

@@ -1,19 +1,50 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, styleTopBarUI, styleTopBarUINoFlex } from '../constanta/style'
-import { SELECTOPTIOS, SELECTSIENCES } from '../ui'
+import { SELECTOPTIOS, SELECTSIENCES, SELECTTERMS, TEACHERSELECT } from '../ui'
 import { useTranslation } from 'react-i18next'
+import GradeCotrol from '../service/grade'
 
 function GradeRating() {
   const { t } = useTranslation()
-  const [value, setValue] = useState('')
+  // Sahifa yangilanganda qiymatlarni localStorage dan olish
+  const [termData, setTermData] = useState(localStorage.getItem('termData') || '');
+  const [valueTeacher, setValueTeacher] = useState(localStorage.getItem('valueTeacher') || '');
+  const [teacherData, setTeacherData] = useState([])
+  const [newData, setNewData] = useState([])
 
-  console.log(value);
+  useEffect(() => {
+    getData();
+  }, [termData, valueTeacher]); // termData va valueTeacher o'zgarganida getData qayta ishga tushadi
+
+
+  const getData = async () => {
+    const id = localStorage.getItem('studentId')
+    const data = await GradeCotrol.getTerms(id,termData,'GRADE',valueTeacher)
+    setNewData(data);
+  }
+console.log(newData);
+  const handleTermChange = (newTerm) => {
+    setTermData(newTerm);
+    localStorage.setItem('termData', newTerm); // termData'ni localStorage ga saqlash
+  }
+
+  const handleTeacherChange = (newTeacher) => {
+    setValueTeacher(newTeacher);
+    localStorage.setItem('valueTeacher', newTeacher); // valueTeacher'ni localStorage ga saqlash
+  }
+
 
   return (
     <div className={`${Container}`}>
-      <div className={`w-full h-16 px-4 ${styleTopBarUI}`}>
-        <div className='tablet:w-1/5 mobil:w-1/2 minMobil:w-full'>
-          <SELECTSIENCES value={value} setVals={setValue} />
+      <div className={`${styleTopBarUI} px-4 py-2 w-full min-h-16`}>
+        <div className='tablet:w-1/5 mobil:w-1/2 minMobil:w-full flex gap-2'>
+          <SELECTTERMS selectedOption={termData} setSelectedOption={handleTermChange} />
+        </div>
+        <div className='tablet:w-1/5 mobil:w-1/2 minMobil:w-full flex gap-2'>
+          <SELECTOPTIOS teacherData={teacherData} setTeacherData={setTeacherData} />
+        </div>
+        <div className='tablet:w-1/5 mobil:w-1/2 minMobil:w-full flex gap-2'>
+          <TEACHERSELECT value={valueTeacher} setValue={handleTeacherChange} teacherData={teacherData} />
         </div>
       </div>
       <div className={`min-h-96 flex items-start justify-start ${styleTopBarUINoFlex} px-2`}>

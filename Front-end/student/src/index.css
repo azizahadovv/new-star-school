@@ -5,50 +5,49 @@
 /* register  page */
 
 .shadowColor {
-    box-shadow: 0px 4px 40px 0px #34414F0D;
+    box-shadow: 0px 4px 40px 0px #34414f0d;
     border-bottom: 1px solid rgb(164, 163, 163);
 }
 
 .shadow-section-top-class {
-    box-shadow: 0px 0px 40px 0px #34414F0D;
+    box-shadow: 0px 0px 40px 0px #34414f0d;
 }
 
 .border-card {
-    border-top: 3px solid #125DAC;
-    border-right: 1px solid #E1EAF1;
-    border-left: 1px solid #E1EAF1;
-    border-bottom: 1px solid #E1EAF1;
-    box-shadow: 0px 0px 60px 0px #34414F0D;
+    border-top: 3px solid #125dac;
+    border-right: 1px solid #e1eaf1;
+    border-left: 1px solid #e1eaf1;
+    border-bottom: 1px solid #e1eaf1;
+    box-shadow: 0px 0px 60px 0px #34414f0d;
 }
 
 .registerShadow-top {
-    border-top: 8px solid #34414F;
-    border-right: 1px solid #E1EAF1;
-    border-left: 1px solid #E1EAF1;
-    border-bottom: 1px solid #E1EAF1;
-    box-shadow: 0px 0px 60px 0px #34414F0D;
-
+    border-top: 8px solid #34414f;
+    border-right: 1px solid #e1eaf1;
+    border-left: 1px solid #e1eaf1;
+    border-bottom: 1px solid #e1eaf1;
+    box-shadow: 0px 0px 60px 0px #34414f0d;
 }
 
 .registerShadow-bottom {
     border-radius: 16px;
-    border: 1px solid #E1EAF1;
-    box-shadow: 0px 0px 60px 0px #34414F0D;
+    border: 1px solid #e1eaf1;
+    box-shadow: 0px 0px 60px 0px #34414f0d;
 }
 
 .fontPoppins {
-    font-family: "Poppins", sans-serif
+    font-family: "Poppins", sans-serif;
 }
 
 .fontProDisplay {
-    font-family: 'GT Eesti Pro Display', arial;
+    font-family: "GT Eesti Pro Display", arial;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'GT Eesti Pro Display', arial;
+    font-family: "GT Eesti Pro Display", arial;
     text-decoration: none;
 }
 
@@ -58,7 +57,7 @@ html {
 }
 
 ::selection {
-    background-color: #3E4B57;
+    background-color: #3e4b57;
     color: white;
 }
 
@@ -74,7 +73,7 @@ html {
 }
 
 *::-webkit-scrollbar-thumb {
-    background: #34414F;
+    background: #34414f;
     border-radius: 15px;
 }
 
@@ -83,24 +82,20 @@ li {
 }
 
 .shadow-home-page {
-    box-shadow: 0px 0px 40px 0px #34414F0D;
+    box-shadow: 0px 0px 40px 0px #34414f0d;
     border: 2px solid #252c330d;
     background-color: white;
-    color: #07121D;
-
+    color: #07121d;
 }
 
 .shadow-home-page:hover {
-    transition: all .6s;
+    transition: all 0.6s;
     transform: scale(105%);
-    box-shadow: 0px 0px 40px 0px #34414F0D;
+    box-shadow: 0px 0px 40px 0px #34414f0d;
     border: 2px solid #252c330d;
     background-color: #41c981;
     color: #fff;
-
 }
-
-
 
 /* ***************************************** loader ****************************************************** */
 .dots-container {

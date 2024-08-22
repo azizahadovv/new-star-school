@@ -2,11 +2,11 @@ import { toast } from "react-toastify";
 import axios from "./api";
 
 const studentCotrol = {
-    async getStudentSchedule() {
-        const ids = localStorage.getItem('studentId')
+    async getStudentSchedule(studentId,termId='1') {
+        
         try {
-            if (ids != null || ids !== undefined || ids !== '') {
-                const { data } = await axios.get(`students/${ids}/timetable`);
+            if (studentId != null || studentId !== undefined || studentId !== '') {
+                const { data } = await axios.get(`v1/timetables/filter?termId=${termId}&studentId=${studentId}`);
                 return data;
             }
         } catch (error) {
