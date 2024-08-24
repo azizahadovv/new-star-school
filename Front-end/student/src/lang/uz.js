@@ -47,7 +47,13 @@ const uzLang = {
     phone_number: "Telefon raqam",
     additional_phone_number: "Qo'shimcha",
     login: "Login",
-    password: "Parol"
+    password: "Parol",
+
+    // 
+
+    no_data: "Hech qanday ma'lumot topilmadi"
+
+
 }
 
 

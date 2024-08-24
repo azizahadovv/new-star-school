@@ -2,10 +2,10 @@ const ruLang = {
     class_schedule_home: "Расписание занятий",
     ratings_home: "Рейтинг оценок",
     attendance: "Посещаемость",
-    student_home: "ученик",
+    student_home: "Ученик",
     sciences: "Науки",
     personal_information_home: "Персональная информация",
-    number_of_students: "учащихся",
+    number_of_students: "Учащихся",
     edit: "Редактировать",
     delete: "Удалить",
     save: "Сохранять",
@@ -49,7 +49,12 @@ const ruLang = {
     phone_number: "Номер телефона",
     additional_phone_number: "Дополнительный",
     login: "Логин",
-    password: "Пароль"
+    password: "Пароль",
+
+    // 
+
+    no_data: "Информация не найдена"
+
 
 }
 

@@ -9,7 +9,7 @@ const GradeCotrol = {
             const { data } = await axios.get(`v1/grades/filter/grades-and-attendance?studentId=${studentId}&termId=${termId}&filterType=${ATTENDANCE}&teacherId=${String(teacherId)}`);
             return data;
         } catch (error) {
-            toast.error(error?.message)
+            toast.error(error.message)
         }
     },
 

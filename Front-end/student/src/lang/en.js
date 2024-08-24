@@ -37,7 +37,7 @@ const enLang = {
 
     // 
 
-    exit:"Logout",
+    exit: "Logout",
     enter: "Enter",
     lastName: "Last name",
     firstName: "First name",
@@ -52,7 +52,13 @@ const enLang = {
     phone_number: "Phone number",
     additional_phone_number: "Additional",
     login: "Login",
-    password: "Password"
+    password: "Password",
+
+    // 
+
+    no_data: "No information found"
+
+
 
 }
 

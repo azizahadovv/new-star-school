@@ -20,7 +20,7 @@ i18n
     .use(initReactI18next)
     .init({
         resources,
-        fallbackLng: "en",
+        fallbackLng: "uz",
         lng: localStorage.getItem("lang"),
         interpolation: {
             escapeValue: false,

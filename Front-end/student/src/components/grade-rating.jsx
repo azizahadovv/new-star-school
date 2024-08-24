@@ -1,38 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import { Container, styleTopBarUI, styleTopBarUINoFlex } from '../constanta/style'
-import { SELECTOPTIOS, SELECTSIENCES, SELECTTERMS, TEACHERSELECT } from '../ui'
+import { LOADER, SELECTOPTIOS, SELECTTERMS, TEACHERSELECT } from '../ui'
 import { useTranslation } from 'react-i18next'
 import GradeCotrol from '../service/grade'
 
 function GradeRating() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
+
   // Sahifa yangilanganda qiymatlarni localStorage dan olish
   const [termData, setTermData] = useState(localStorage.getItem('termData') || '');
-  const [valueTeacher, setValueTeacher] = useState(localStorage.getItem('valueTeacher') || '');
-  const [teacherData, setTeacherData] = useState([])
-  const [newData, setNewData] = useState([])
+  const [valueTeacher, setValueTeacher] = useState(
+    localStorage.getItem('valueTeacher') ? localStorage.getItem('valueTeacher') : ''
+  );
+  const [teacherData, setTeacherData] = useState([]);
+  const [newData, setNewData] = useState([]);
 
   useEffect(() => {
     getData();
   }, [termData, valueTeacher]); // termData va valueTeacher o'zgarganida getData qayta ishga tushadi
 
 
+  console.log(valueTeacher);
+
   const getData = async () => {
-    const id = localStorage.getItem('studentId')
-    const data = await GradeCotrol.getTerms(id,termData,'GRADE',valueTeacher)
+    const id = localStorage.getItem('studentId');
+    const data = await GradeCotrol.getTerms(id, termData, 'GRADE', valueTeacher);
     setNewData(data);
   }
-console.log(newData);
+
   const handleTermChange = (newTerm) => {
     setTermData(newTerm);
     localStorage.setItem('termData', newTerm); // termData'ni localStorage ga saqlash
   }
 
   const handleTeacherChange = (newTeacher) => {
-    setValueTeacher(newTeacher);
-    localStorage.setItem('valueTeacher', newTeacher); // valueTeacher'ni localStorage ga saqlash
+    if (newTeacher && !isNaN(newTeacher)) { // NaN bo'lishining oldini olish uchun tekshirish
+      setValueTeacher(newTeacher);
+      localStorage.setItem('valueTeacher', newTeacher); // valueTeacher'ni localStorage ga saqlash
+    } else {
+      setValueTeacher(''); // Agar NaN bo'lsa, bo'sh qiymat berish
+    }
   }
 
+  console.log(newData);
 
   return (
     <div className={`${Container}`}>
@@ -48,49 +58,37 @@ console.log(newData);
         </div>
       </div>
       <div className={`min-h-96 flex items-start justify-start ${styleTopBarUINoFlex} px-2`}>
-        <table className="table table-hover cursor-pointer">
-          <thead>
-            <tr className='text-textGray'>
-              <th>№</th>
-              <th>{t("class_date")}</th>
-              <th>{t("subject_name")}</th>
-              <th>{t("teachers_name")}</th>
-              <th>{t("grade")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>10-anba</td>
-              <td>Mahallik dars</td>
-              <td>100%</td>
-              <td>100%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      {/* ********************** pagination ************************* */}
-      <div className='w-full flex items-center justify-center'>
-        <nav aria-label="Page navigation example">
-          <ul className="pagination">
-            <li className="page-item">
-              <a className="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li className="page-item"><a className="page-link" href="#">1</a></li>
-            <li className="page-item"><a className="page-link" href="#">2</a></li>
-            <li className="page-item"><a className="page-link" href="#">3</a></li>
-            <li className="page-item">
-              <a className="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        {
+          newData.length === 0 ? <div className='w-full flex items-center justify-center min-h-52'>
+            <h1>{t("no_data")}</h1>
+          </div> : <table className="table table-hover cursor-pointer">
+            <thead>
+              <tr className='text-textGray'>
+                <th>№</th>
+                <th>{t("class_date")}</th>
+                <th>{t("subject_name")}</th>
+                <th>{t("teachers_name")}</th>
+                <th>{t("grade")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                newData.map((item, idx) => {
+                  return <tr key={idx}>
+                    <td className='capitalize'>{idx + 1}</td>
+                    <td className='capitalize'>{item.dateAssigned}</td>
+                    <td className='capitalize'>{item.subjectName}</td>
+                    <td className='capitalize'>{item.teacherName}</td>
+                    <td className='capitalize'>{item.gradeValue}</td>
+                  </tr>
+                })
+              }
+            </tbody>
+          </table>
+        }
       </div>
     </div>
   )
 }
 
-export default GradeRating
+export default GradeRating;

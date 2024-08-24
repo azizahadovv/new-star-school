@@ -48,22 +48,23 @@ function Attendance() {
       </div>
 
       <div className={`min-h-96 flex items-start justify-start ${styleTopBarUINoFlex} px-2 overflow-scroll`}>
-        <table className="table table-hover cursor-pointer">
-          <thead>
-            <tr className='text-textGray capitalize'>
-              <th>№</th>
-              <th>{t("term")}</th>
-              <th>{t("date_lesson")}</th>
-              <th>{t("name_lesson")}</th>
-              <th>{t("lesson_duration")}</th>
-              <th>{t("teachers_name")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              newData.length === 0 ? <tr>
-                <th>No Data...</th>
-              </tr> : newData.map((item, index) => (
+        {
+
+          newData.length === 0 ? <div className='w-full flex items-center justify-center min-h-52'>
+            <h1>{t("no_data")}</h1>
+          </div> : <table className="table table-hover cursor-pointer">
+            <thead>
+              <tr className='text-textGray capitalize'>
+                <th>№</th>
+                <th>{t("term")}</th>
+                <th>{t("date_lesson")}</th>
+                <th>{t("name_lesson")}</th>
+                <th>{t("lesson_duration")}</th>
+                <th>{t("teachers_name")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {newData.map((item, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{item.termName}</td>
@@ -73,9 +74,12 @@ function Attendance() {
                   <td>Xurshida Umirzaqova</td>
                 </tr>
               ))
-            }
-          </tbody>
-        </table>
+              }
+            </tbody>
+          </table>
+
+        }
+
       </div>
     </div>
   )
