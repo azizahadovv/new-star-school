@@ -42,6 +42,16 @@ const TimeTable = {
         } catch (error) {
             toast.error(error.message)
         }
+    },
+    async myClasses(teacherId, termId = 1) {
+        try {
+            if (teacherId != null || teacherId !== undefined || teacherId !== '') {
+                const { data } = await axios.get(`${baseURL}/v1/timetables/filter?termId=${termId}&teacherId=${teacherId}`)
+                return data
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
     }
 }
 

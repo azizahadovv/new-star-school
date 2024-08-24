@@ -5,11 +5,13 @@ import {
   ADDTEACHERS,
   CLASSSCHEDULES,
   CLASSSCHEDULESID,
+  GRADESSTUDENTS,
   Home,
   ListOfClasses,
   ListOfClassesID,
   MYCLASSES,
   MYCLASSESID,
+  MYSCHEDULE,
   PROFIL,
   PageNoteFound,
   REGISTER,
@@ -17,8 +19,10 @@ import {
   STUDENTS,
   TEACHER,
   TEACHERPROFILE,
+  VIEWSGRADE,
 } from "../components";
 import { LAYOUT } from "../template";
+import { CLASSSCHEDULETABLE } from "../ui";
 
 function ReactRouter() {
   const token = localStorage.getItem("token");
@@ -30,7 +34,7 @@ function ReactRouter() {
           <Route path="list-of-classes" element={<ListOfClasses />} />
           <Route path="list-of-classes/:id" element={<ListOfClassesID />} />
           <Route path="class-schedule" element={<CLASSSCHEDULES />} />
-          <Route path="class-schedule/:id" element={<CLASSSCHEDULESID />} />
+          <Route path="class-schedule/grade/:id" element={<CLASSSCHEDULESID />} />
           <Route path="teachers" element={<TEACHER />} />
           <Route path="teacher-profile/:id" element={<TEACHERPROFILE />} />
           <Route path="add-teachers" element={<ADDTEACHERS />} />
@@ -41,7 +45,12 @@ function ReactRouter() {
           <Route path="add-student" element={<ADDSTUDENT />} />
           <Route path="add-student/:id" element={<ADDSTUDENT />} />
           <Route path="my-classes" element={<MYCLASSES />} />
-          <Route path="my-classes/:id" element={<MYCLASSESID />} />
+
+          <Route path="my-classes/mark-students" element={<MYCLASSESID />} />
+          <Route path='my-classes/mark-students/grade/:id' element={<GRADESSTUDENTS />} />
+          <Route path='my-classes/mark-students/view-ratings/:id' element={<VIEWSGRADE />} />
+
+          <Route path="my-classes/my-schedule" element={<MYSCHEDULE />} />
         </Route>
         <Route path="*" element={<PageNoteFound />} />
         <Route path="/register" element={<REGISTER />} />

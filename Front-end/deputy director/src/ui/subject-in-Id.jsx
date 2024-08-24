@@ -6,11 +6,13 @@ import { useTranslation } from "react-i18next";
 
 function SubjecdtInId({ value, setValue, setTeacherData }) {
   const [subject, setSubject] = useState([]);
-  const { t } = useTranslation()
-  const { id } = useParams()
+  const { t } = useTranslation();
+  const { id } = useParams();
+
   useEffect(() => {
     getSubjectFunction();
   }, []);
+
   const getSubjectFunction = async () => {
     const response = await subjectFunction.getSubjects();
     setSubject(response);
@@ -26,11 +28,14 @@ function SubjecdtInId({ value, setValue, setTeacherData }) {
       console.log(error);
     }
   };
-  const path = window.location.pathname
-  const xyz = path === `/class-schedule/${id}`
+
+  const path = window.location.pathname;
+  const xyz = path === `/class-schedule/${id}`;
+
   return (
-    <select required={true}
-      value={value}
+    <select
+      required={true}
+      value={value || ""}
       onChange={(e) => {
         getTeacherInSubjectId(e.target.value);
         setValue(e.target.value);
@@ -39,7 +44,9 @@ function SubjecdtInId({ value, setValue, setTeacherData }) {
       className="form-select"
     >
       <option hidden>{t("select_science")}</option>
-      <option hidden={xyz ? true : false}>{t("all_science")}</option>
+      <option hidden={!xyz} value="">
+        {t("all_science")}
+      </option>
       {subject.map((item) => (
         <option key={item?.id} value={item?.id}>
           {item?.name}

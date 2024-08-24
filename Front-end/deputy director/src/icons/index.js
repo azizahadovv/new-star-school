@@ -48,8 +48,8 @@ export { default as GreenIconStudent } from './studGreen.svg'
 
 export { default as img } from './img.svg'
 export { default as file } from './file-file-type.svg'
-export { default as GIFFILE } from './icons8-arrow.gif'
-
+export { default as teacherIcon } from './teacherIcon.svg'
+export { default as MENUDOTS } from './menu-dots-vertical.svg'
 
 
 export { default as CARD1 } from './card-schedule-1.svg'
@@ -61,3 +61,7 @@ export { default as CARD6 } from './card-schedule-6.svg'
 
 
 export { default as myclassesss } from './my-class.svg'
+export { default as myschedule } from './my-schedule.svg'
+export { default as studentMark } from './marks.svg'
+export { default as HOME1 } from './home1.svg'
+export { default as HOME2 } from './home2.svg'

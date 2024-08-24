@@ -16,7 +16,7 @@ import "rodal/lib/rodal.css";
 import { toast, ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
 function ClassScheduleID() {
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const [schedule, setSchedule] = useState([]);
   const [teacherData, setTeacherData] = useState([]);
   const [visible, setvisible] = useState(false);
@@ -75,7 +75,7 @@ function ClassScheduleID() {
             nullUsestate('');
             setvisible(false);
           });
-        }else{
+        } else {
           await TimeTable.updateTimeTable(updateId, data).then((res) => {
             toast.success("Updated successfully");
             getScheduleClasses();
@@ -127,7 +127,7 @@ function ClassScheduleID() {
         className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-center overflow-scroll`}
       >
         <b className="text-center font-bold leading-6 text-4xl text-textBlack">
-         {t("class_schedule_home")}
+          {t("class_schedule_home")}
         </b>
       </div>
       <div
@@ -161,16 +161,16 @@ function ClassScheduleID() {
                     })}
                     <div className="p-1 ">
                       <button
-                      onClick={() => {
-                        setvisible(!visible);
-                        setdayOfWeekRodal(res?.dayOfWeek);
-                      }}
-                      className="w-full h-14 flex py-1 items-center justify-center  bg-border-color px-2 bg-lightGray text-textGray"
-                    >
-                      +
-                    </button>
+                        onClick={() => {
+                          setvisible(!visible);
+                          setdayOfWeekRodal(res?.dayOfWeek);
+                        }}
+                        className="w-full h-14 flex py-1 items-center justify-center  bg-border-color px-2 bg-lightGray text-textGray"
+                      >
+                        +
+                      </button>
                     </div>
-                    
+
                   </div>
                 </div>
               );
@@ -186,7 +186,7 @@ function ClassScheduleID() {
         <div>{dayOfWeekRodal}</div>
         <hr />
         <div className="flex flex-col items-stretch justify-center gap-3">
-          <TERM value={termId} setValue={setTermId} />
+          <TERM selectedOption={termId} setSelectedOption={setTermId} />
           <div className="flex items-center gap-3 justify-between">
             <div className="w-1/2">
               <INPUT
@@ -223,7 +223,7 @@ function ClassScheduleID() {
             onClick={addSchedule}
             className="minMobil:w-full h-14 rounded-xl text-white bg-green"
           >
-            Saqlash
+            {t('save')}
           </button>
         </div>
       </Rodal>

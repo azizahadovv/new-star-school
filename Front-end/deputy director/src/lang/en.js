@@ -65,7 +65,16 @@ const enLang = {
   additional_phone_number: "Additional",
   science_teacher: "Science teacher",
   login: "Login",
-  password: "Password"
+  password: "Password",
+  my_schedule: "My class schedule",
+  my_grade: "Assessment",
+  assessment: "Assessment",
+  view_prices: "View Ratings",
+  in_class: "There is in the lesson",
+  not_in_class: "Not in class",
+  save_grades:"Save grades",
+  no_dates:"No data found"
+
 };
 
 export default enLang;

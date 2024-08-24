@@ -2,7 +2,7 @@ const ruLang = {
   class_schedule_home: "Расписание занятий",
   list_of_classes_home: "Список классов",
   teacher_home: "Учителя",
-  student_home: "Ученики0",
+  student_home: "Ученики",
   sciences: "Предметы",
   personal_information_home: "Персональная информация",
   add_student: "Добавить ученика",
@@ -70,7 +70,15 @@ const ruLang = {
   additional_phone_number: "Дополнительный",
   science_teacher: "Учитель естественных наук",
   login: "Логин",
-  password: "Пароль"
+  password: "Пароль",
+  my_schedule: "Моё расписание занятий",
+  my_grade: "Оценка",
+  assessment: "Оценка",
+  view_prices: "просмотреть рейтинги",
+  in_class: "В уроке есть",
+  not_in_class: "Не в классе",
+  save_grades: "Сохранять оценки",
+  no_dates: "Данные не найдены"
 };
 
 export default ruLang;

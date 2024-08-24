@@ -65,9 +65,15 @@ const uzLang = {
   additional_phone_number: "Qo'shimcha",
   science_teacher: "Fan o'qituvchisi",
   login: "Login",
-  password: "Parol"
-
-
+  password: "Parol",
+  my_schedule: "Dars jadvalim",
+  my_grade: "Baholash",
+  assessment: "Baxolash",
+  view_prices: "Baxolarni ko'rish",
+  in_class:"Darsda bor",
+  not_in_class:"Darsda yo'q",
+  save_grades:"Baholarni saqlash",
+  no_dates:"Malumot topilmadi"
 
 };
 

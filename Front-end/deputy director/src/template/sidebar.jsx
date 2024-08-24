@@ -1,10 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { BUTTONEXIT, BUTTONSIDEBAR, LANGUAGEPOTION } from '../ui';
 import { Link } from 'react-router-dom';
-import { DARSJADVALI, DARSJADVALIOUTLINE, infoUser, infoUserOutline, LISTCLASS, LISTCLASSOUTLINE, logo, myclass, myclassoutline, STUDENT, STUDENTOUTLINE, SUBJECT, SUBJECTOUTLINE, TEACHER, TEACHEROUTLIN } from '../icons';
+import { logo } from '../icons';
 import { openVisible } from '../slice/sidebar';
+import { homeCard2 } from '../constanta/const';
+import { useTranslation } from 'react-i18next';
 function Sidebar() {
   const dispatch = useDispatch()
+  const { t } = useTranslation();
   return (
     <div className='p-3 d-flex flex-col gap-3 w-full h-screen bg-darkGray relative z-50'>
       <div className="offcanvas-header border-b border-white d-flex align-items-center justify-content-between py-3">
@@ -13,12 +16,9 @@ function Sidebar() {
       </div>
       <div className="flex justify-center flex-col items-stretch">
         <div className="flex flex-col justify-center items-stretch gap-3">
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/class-schedule'} img={DARSJADVALI} img2={DARSJADVALIOUTLINE} name={"Dars jadvali"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/list-of-classes'} img={LISTCLASS} img2={LISTCLASSOUTLINE} name={"Sinflar ro'yhati"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/teachers'} img={TEACHER} img2={TEACHEROUTLIN} name={"O‘qituvchilar"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/students'} img={STUDENT} img2={STUDENTOUTLINE} name={"O‘quvchilar"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/list-of-subjects'} img={SUBJECT} img2={SUBJECTOUTLINE} name={"Fanlar"} />
-          <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={'/profile'} img={infoUser} img2={infoUserOutline} name={"Shaxsiy ma’lumotlar"} />
+          {
+            homeCard2.map(item => <BUTTONSIDEBAR key={item.id} barVisible={() => dispatch(openVisible())} slug={item.link} img={item.img1} img2={item.img2} name={t(item.title)} />)
+          }
         </div>
         <div className='w-full minMobil:block tablet:hidden mt-5'>
           <LANGUAGEPOTION />
