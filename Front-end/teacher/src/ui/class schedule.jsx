@@ -29,11 +29,13 @@ function ClassSchedule() {
             studentId: Number(studentId),
             teacherId: teacherId,
             subjectId: teacherId,
-            termId: Number(localStorage.getItem('term')),
+            termId: Number(localStorage.getItem('term')) !== 0 && Number(localStorage.getItem('term')) !== '' ? Number(localStorage.getItem('term')) : 1,
             schoolClassId: Number(id),
             gradeValue: values.marks[studentId],
             dateAssigned: new Date().toISOString()
         }));
+
+        console.log(dataToSend);
         await gradeStudents.postGarde(dataToSend).then(() => {
             values.marks = ""
             nav(-1)

@@ -1,6 +1,5 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react'
-import { baseURL } from '../service/api';
 import TermControl from '../service/term';
 
 function SelectTerm({ selectedOption = 1, setSelectedOption = {} }) {

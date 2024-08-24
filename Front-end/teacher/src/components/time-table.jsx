@@ -16,7 +16,6 @@ function TimeTable() {
     const ids = localStorage.getItem('teacherId')
     const datas = await TeacherSchedule.myClasses(ids, selectedOption)
     setDatas(datas)
-    console.log(datas)
   }
 
   return (

@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { COACH, MENUDOTS } from "../icons";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 function CardClasess({ data }) {
+  const toggle = useSelector(sel => sel.sidebarReduser.open)
   const { t } = useTranslation()
   return (
-    <div className="tabletIst:w-[330px] minMobil:w-full mobil:w-[250px] h-20 border-card rounded-lg px-3 py-2 flex">
-      <div
-        to={`${data.id}`} className="uppercase no-underline w-full flex flex-col text-blue"
+    <div className={`tabletIst:w-[330px] minMobil:w-full mobil:w-[250px] h-20 border-card rounded-lg px-3 py-2 flex ${!toggle ? "block" : "hidden"}`}>
+      <div className="uppercase no-underline w-full flex flex-col text-blue"
       >
 
         <div className="flex items-center justify-between">
@@ -25,7 +26,7 @@ function CardClasess({ data }) {
         <Link to={`grade/${String(data.id)}`} className="text-textGray font-mono lowercase flex items-start justify-start mt-2 gap-2 text-lg w-full no-underline"><img src={COACH} alt="COACH" /> {data.size}{t("number_of_students")}</Link>
       </div>
 
-    </div>
+    </ div>
   );
 }
 
