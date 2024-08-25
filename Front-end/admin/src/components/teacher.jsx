@@ -67,7 +67,7 @@ function Teacher() {
         {
           dataTeachers.length === 0 ? <div className='flex items-center justify-center mt-5'>
             < LOADER />
-          </div> : <table className={`table table-hover ${open ? 'hidden' : 'flex'}`}>
+          </div> : <table className={`table table-hover capitalize ${open ? 'hidden' : 'flex'}`}>
             <thead>
               <tr>
                 <th>№</th>
@@ -87,7 +87,7 @@ function Teacher() {
                       <p className='w-[270px] flex items-center justify-start gap-2 min-h-max text-lg font-normal'> <img className='w-10 rounded-full' src={item?.image && item.image} alt="" />{item?.firstName + " " + item?.lastName + " " + item?.patronymic}</p>
                     </td>
                     <td>
-                      <p className='w-[150px]'>{item.subject.map(i => <span key={i.id}>{i.name}</span>)}</p>
+                      <p className='w-[150px]'>{item.subject.map(i => <span key={i.id}>{i.name}-</span>)}</p>
                     </td>
                     <td>
                       <p className='w-[110px]'>{item?.birthDate}</p>
