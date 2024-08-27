@@ -5,12 +5,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { BUTTON, GENDER, LEVEL, NATIONALITY, SUBJECTTEACHER } from "../ui";
 import { ToastContainer, toast } from "react-toastify";
+import { ICONIMG } from "../icons";
 import subjectFunction from "../service/subjects";
 import teacherController from "../service/teacher";
 import { useTranslation } from "react-i18next";
 
 function AddTeacher() {
-  const { t } = useTranslation()
+  const {t}=useTranslation()
   const [subjectList, setSubjectList] = React.useState([])
   const navigate = useNavigate();
   const open = useSelector((sel) => sel.sidebarReduser.open);
@@ -30,6 +31,7 @@ function AddTeacher() {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [subjectTeacherId, setSubjectTeacherId] = React.useState('');
+  const [parentPhoneNumber, setParentPhoneNumber] = React.useState("");
 
   const check =
     firstName &&
@@ -44,7 +46,8 @@ function AddTeacher() {
     address &&
     phoneNumber &&
     login &&
-    password
+    password &&
+    parentPhoneNumber
 
   const objectData = {
     firstName: firstName,
@@ -60,6 +63,7 @@ function AddTeacher() {
     phoneNumber: phoneNumber,
     login: login,
     password: password,
+    parentPhoneNumber: parentPhoneNumber,
   }
   React.useEffect(() => {
     getSubjectFunction()
@@ -73,7 +77,7 @@ function AddTeacher() {
     if (check) {
       try {
         if (id === undefined) {
-          await teacherController.postTeacherInSubjectId(subjectTeacherId, objectData, level)
+          await teacherController.postTeacherInSubjectId(subjectTeacherId,objectData,level)
           toast.success("Teacher successfully created");
           navigate(-1);
         } else {
@@ -93,7 +97,6 @@ function AddTeacher() {
     if (id) {
       try {
         const response = await teacherController.getTeacherInId(id)
-        console.log(response.nationality);
         setfirstName(response.firstName)
         setLastName(response.lastName)
         setPatronymic(response.patronymic)
@@ -107,6 +110,7 @@ function AddTeacher() {
         setPhoneNumber(response.phoneNumber)
         setLogin(response.login)
         setPassword(response.password)
+        setParentPhoneNumber(response.parentPhoneNumber)
         setSubjectTeacherId(response.subjectId)
       } catch (error) {
         navigate(-2)
@@ -210,6 +214,15 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("phone_number")}
+            sx={INPUT_CLASSES}
+          />
+          <TextField
+            value={parentPhoneNumber}
+            onChange={(e) => setParentPhoneNumber(e.target.value)}
+            type="tel"
+            required
+            placeholder={t("enter")}
+            label={t("additional_phone_number")}
             sx={INPUT_CLASSES}
           />
           <TextField

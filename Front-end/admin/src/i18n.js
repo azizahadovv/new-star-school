@@ -1,7 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import ruLang from "./lang/ru";
 import enLang from "./lang/en";
+import ruLang from "./lang/ru";
 import uzLang from "./lang/uz";
 
 const resources = {
@@ -21,9 +21,9 @@ i18n
   .init({
     resources,
     fallbackLng: "uz",
-    lng: localStorage.getItem("lang"),
+    lng:localStorage.getItem("lang"), 
     interpolation: {
-      escapeValue: false,
+      escapeValue: false, 
     },
   });
 

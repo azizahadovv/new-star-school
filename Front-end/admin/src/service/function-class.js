@@ -1,38 +1,21 @@
 import axios from "axios";
 import { baseURL } from "./api";
-import { toast } from "react-toastify";
 const functionsClasses = {
   async getClasses() {
-    try {
-      const { data } = await axios.get(`${baseURL}/classes`);
-      return data;
-    } catch (error) {
-      toast.error(error.message)
-    }
+    const { data } = await axios.get(`${baseURL}/classes`);
+    return data;
   },
   async classPostData(dataPost) {
-    try {
-      const { data } = await axios.post(`${baseURL}/classes`, dataPost);
-      return data;
-    } catch (error) {
-      toast.error(error.message)
-    }
+    const { data } = await axios.post(`${baseURL}/classes`, dataPost);
+    return data;
   },
   async removeClass(id) {
-    try {
-      await axios.delete(`${baseURL}/classes/${id}`);
-      return "Class deleted successfully";
-    } catch (error) {
-      toast.error(error.message)
-    }
+    await axios.delete(`${baseURL}/classes/${id}`);
+    return "Class deleted successfully";
   },
   async changeClassName(id, data) {
-    try {
-      await axios.put(`${baseURL}/classes/${id}`, data);
-      return;
-    } catch (error) {
-      toast.error(error.message)
-    }
+    await axios.put(`${baseURL}/classes/${id}`, data);
+    return;
   }
 
 };

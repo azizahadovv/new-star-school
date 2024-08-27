@@ -6,12 +6,10 @@ import { openBar, userIcon } from '../icons'
 import { LANGUAGEPOTION } from '../ui'
 import { useState } from 'react'
 import { HomeText } from '../utils/UiFunctios'
-import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
   const [firstName, setFirstName] = useState("Usenov")
   const [name, setName] = useState("Tohir")
-  const nav=useNavigate()
   const dispatch = useDispatch()
   const toggle = useSelector(sel => sel.sidebarReduser.open)
   const myText = HomeText().props.children
@@ -33,7 +31,7 @@ function Navbar() {
             <div className='tablet:block minMobil:hidden'>
               <LANGUAGEPOTION />
             </div>
-            <div onDoubleClick={()=>nav('profile')} className='flex items-center justify-center gap-2 cursor-pointer'>
+            <div className='flex items-center justify-center gap-2'>
               <div className='w-12 h-12 rounded-full'>
                 <img className='rounded-full' src={userIcon} alt="userIcon" />
               </div>

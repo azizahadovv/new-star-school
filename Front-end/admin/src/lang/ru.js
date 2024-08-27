@@ -2,7 +2,7 @@ const ruLang = {
   class_schedule_home: "Расписание занятий",
   list_of_classes_home: "Список классов",
   teacher_home: "Учителя",
-  student_home: "Ученики",
+  student_home: "Студенты",
   sciences: "Науки",
   personal_information_home: "Персональная информация",
   add_student: "Добавить ученика",
@@ -14,11 +14,11 @@ const ruLang = {
   class_creation: "Создать класс",
   login_parol: "Логин~Пароль",
   search_in_name: "Поиск по имени и фамилии",
-  back_out:"Шаг назад",
+  back_out:"Orqaga chiqish",
 
 
   // ***********************************************************************
-  table_pupils: "Ученики",
+  table_pupils: "Студенты",
   table_classes: "Kласс",
   table_teacher: "Учителя",
   table_subject: "Урок",

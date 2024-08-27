@@ -1,6 +1,5 @@
 import axios from "axios";
 import { baseURL } from "./api";
-import { toast } from "react-toastify";
 
 const studentFunction = {
   async studentPostData(classId, data) {
@@ -18,8 +17,7 @@ const studentFunction = {
       );
       return datas;
     } catch (error) {
-      toast.error("file error" + " " + error);
-      
+      console.log("file error" + " " + error);
     }
   },
 
@@ -32,7 +30,7 @@ const studentFunction = {
       const { data } = await axios.get(`${baseURL}/classes/` + x);
       return data;
     } catch (error) {
-      toast.error("Error getting student axios data");
+      console.log("Error getting student axios data");
     }
   },
   async studentPutActie(id, dataActive) {
@@ -48,7 +46,7 @@ const studentFunction = {
       await axios.delete(`${baseURL}/classes/${classId}/students/${studentId}`);
       return "Students removed successfully";
     } catch (error) {
-      toast.error("Error axios url \n" + error);
+      console.log("Error axios url \n" + error);
     }
   },
 };

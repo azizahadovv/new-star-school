@@ -10,7 +10,7 @@ import { showModal } from "../slice/class";
 import { useTranslation } from "react-i18next";
 
 function ListOfSubjects() {
-  const { t } = useTranslation()
+  const {t}=useTranslation()
   const dispatch = useDispatch();
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const visible = useSelector((sel) => sel.addclass.visible);
@@ -88,13 +88,16 @@ function ListOfSubjects() {
   return (
     <div className={`${Container}`}>
       <div
-        className={`${styleTopBarUINoFlex} min-h-20 px-3 flex items-center justify-end overflow-scroll`}
+        className={`${styleTopBarUINoFlex} min-h-20 px-3 flex items-center justify-between overflow-scroll`}
       >
+        <div className="min-w-[300px]">
+          <SEARCH />
+        </div>
         <div className="min-w-40">
           <BUTTON buttonFunction={() => dispatch(showModal())} name={t("creating_sciences")} active />
         </div>
       </div>
-      <div className={`${styleTopBarUINoFlex} min-h-96 px-3 ${open ? "hidden" : "block"}`}>
+      <div className={`${styleTopBarUINoFlex} min-h-96 px-3 ${open?"hidden":"block"}`}>
         {!subject ? (
           <div className="flex items-center justify-center py-5">
             <LOADER />
@@ -126,7 +129,7 @@ function ListOfSubjects() {
                       <ul className="dropdown-menu bg-light">
                         <button onClick={() => changeSubject(res)} className="dropdown-item d-flex align-items-start border-brGray">
                           <img src={editBlue} width={18} alt="editBlue" />
-                          {t("edit")}
+                          {t("edit")} 
                         </button>
                         <button
                           onClick={() => removeItem(res.id)}

@@ -81,9 +81,10 @@ html {
 
 }
 
-::selection {
-  background-color: #3E4B57;
-  color: white;
+
+*::selection {
+  background-color: #000;
+  color: red;
 }
 
 *::-webkit-scrollbar {
@@ -92,16 +93,17 @@ html {
 }
 
 *::-webkit-scrollbar {
-  width: 4px;
-  height: 5px;
+  width: 7px;
+  height: 8px;
   background-color: #fff;
+  /* or add it to the track */
 }
 
+/* Add a thumb */
 *::-webkit-scrollbar-thumb {
-  background: #34414F;
-  border-radius: 15px;
+  background: #41c981;
+  border-radius: 10px;
 }
-
 
 li {
   list-style: none;

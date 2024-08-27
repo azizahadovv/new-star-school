@@ -9,14 +9,14 @@ function Level({
   const {t}=useTranslation()
   return (
     <select
-      value={level|| ''}
+      value={level}
       onChange={(e) => setLevel(e.target.value)}
       required
       className="form-select"
       style={style}
     >
       <option hidden>{t("level")} *</option>
-      <option value="TEACHER">
+      <option selected value="TEACHER">
       {t("teacher_level")}
       </option>
       <option value="DEPUTY_DIRECTOR">{t("deputy_director")}</option>
