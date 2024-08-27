@@ -6,7 +6,7 @@ import functionsClasses from '../service/function-class'
 
 function ClassSchedule() {
   const open = useSelector(sel => sel.sidebarReduser.open)
-  const [schedule, setSchedule] = useState(null)
+  const [schedule, setSchedule] = useState([])
   useEffect(() => {
     getClass()
   }, [])
@@ -22,7 +22,7 @@ function ClassSchedule() {
   return (
     <div className={`${Container} ${open ? 'hidden' : 'flex'}`}>
       {
-        !schedule ? <LOADER /> : <div className='flex items-start minMobil:justify-center content-start tablet:justify-start flex-wrap gap-4 minMobil:px-2'>
+        schedule.length === 0 ? <LOADER /> : <div className='flex items-start minMobil:justify-center content-start tablet:justify-start flex-wrap gap-4 minMobil:px-2'>
           {
             schedule.map(item => (
               <CARDCLASSES key={item.id} data={item} />

@@ -12,12 +12,12 @@ function SelectTeacher({ value, setValue, teacherData }) {
       className="form-select"
     >
       <option hidden>{t("select_teacher")}</option>
-      {teacherData.length === 0 ? (
+      {teacherData?.length === 0 ? (
         <option>{t("hidden_teacher")}</option>
       ) : (
         teacherData?.map((item) => (
-          <option key={item.id} value={item.id}>
-            {item.firstName} {item.lastName}
+          <option key={item?.id} value={item.id}>
+            {item?.firstName} {item?.lastName}
           </option>
         ))
       )}

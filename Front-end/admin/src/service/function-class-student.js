@@ -1,10 +1,9 @@
-import axios from "axios";
-import { baseURL } from "./api";
+import axios from './api'
 
 const studentFunction = {
   async studentPostData(classId, data) {
     const { datas } = await axios.post(
-      `${baseURL}/classes/${classId}/students`,
+      `classes/${classId}/students`,
       data
     );
     return datas;
@@ -12,7 +11,7 @@ const studentFunction = {
   async studentPostCSV(classId, data) {
     try {
       const { datas } = await axios.post(
-        `${baseURL}/classes/${classId}/students/csv`,
+        `classes/${classId}/students/csv`,
         data
       );
       return datas;
@@ -22,28 +21,28 @@ const studentFunction = {
   },
 
   async removeStudent(studentId) {
-    await axios.delete(`${baseURL}/students/${studentId}`);
+    await axios.delete(`students/${studentId}`);
   },
   async getStudent() {
     const x = localStorage.getItem("ClassId");
     try {
-      const { data } = await axios.get(`${baseURL}/classes/` + x);
+      const { data } = await axios.get(`classes/` + x);
       return data;
     } catch (error) {
       console.log("Error getting student axios data");
     }
   },
   async studentPutActie(id, dataActive) {
-    const { data } = await axios.put(`${baseURL}/students/${id}`, dataActive);
+    const { data } = await axios.put(`students/${id}`, dataActive);
     return data;
   },
   async studentDeleteActie(id) {
-    const { data } = await axios.delete(`${baseURL}/students/${id}`);
+    const { data } = await axios.delete(`students/${id}`);
     return data;
   },
   async removeStudentInClass(studentId, classId) {
     try {
-      await axios.delete(`${baseURL}/classes/${classId}/students/${studentId}`);
+      await axios.delete(`classes/${classId}/students/${studentId}`);
       return "Students removed successfully";
     } catch (error) {
       console.log("Error axios url \n" + error);

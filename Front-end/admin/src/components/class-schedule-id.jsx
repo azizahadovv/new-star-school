@@ -15,31 +15,31 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { toast, ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
+
 function ClassScheduleID() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const [schedule, setSchedule] = useState([]);
   const [teacherData, setTeacherData] = useState([]);
-  const [visible, setvisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const { id } = useParams();
-  const [dayOfWeekRodal, setdayOfWeekRodal] = useState("");
+  const [dayOfWeekRodal, setDayOfWeekRodal] = useState("");
   const [endTime, setEndTime] = useState("");
   const [startTime, setStartTime] = useState("");
-  const [subjectId, setSubjectId] = useState([]);
-  const [teacherId, setTeacherId] = useState([]);
+  const [subjectId, setSubjectId] = useState('');
+  const [teacherId, setTeacherId] = useState('');
   const [termId, setTermId] = useState(1);
   const [updateId, setUpdateId] = useState('');
-  const open = useSelector((sel) => sel.sidebarReduser.open);
+  const open = useSelector((sel) => sel?.sidebarReduser?.open ?? false);
 
   useEffect(() => {
     getScheduleClasses();
   }, []);
 
-
   function nullUsestate() {
     setEndTime("");
     setStartTime("");
-    setSubjectId("");
-    setTeacherId("");
+    setSubjectId('');
+    setTeacherId('');
     setTermId(1);
     setTeacherData([]);
   }
@@ -47,140 +47,114 @@ function ClassScheduleID() {
   const getScheduleClasses = async () => {
     try {
       const response = await TimeTable.getTimeTableInId(id);
-      setSchedule(response);
+      setSchedule(response ?? []);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching schedule:", error);
     }
   };
 
-  const checked = endTime && startTime && subjectId && teacherId && termId;
-
-
+  
   const addSchedule = async () => {
+    const isFormValid = endTime && startTime && subjectId !== null && teacherId !== null && termId;
+    if (!isFormValid) {
+      toast.info(t("Fill in all the lines"));
+      return;
+    }
+
     const data = {
       classId: id,
       dayOfWeek: dayOfWeekRodal,
-      endTime: endTime,
-      startTime: startTime,
+      endTime,
+      startTime,
       subjectId: Number(subjectId),
       teacherId: Number(teacherId),
       termId: Number(termId),
     };
+
     try {
-      if (checked) {
-        if (updateId === "") {
-          await TimeTable.addTimeTable(data).then((res) => {
-            toast.success("Added successfully");
-            getScheduleClasses();
-            nullUsestate('');
-            setvisible(false);
-          });
-        } else {
-          await TimeTable.updateTimeTable(updateId, data).then((res) => {
-            toast.success("Updated successfully");
-            getScheduleClasses();
-            setvisible(false);
-            setUpdateId('');
-            nullUsestate()
-          });
-        }
+      if (!updateId) {
+        await TimeTable.addTimeTable(data);
       } else {
-        toast.info("Fill in all the lines");
+        await TimeTable.updateTimeTable(updateId, data);
+        toast.success(t("Updated successfully"));
       }
+      getScheduleClasses();
+      setVisible(false);
+      nullUsestate();
     } catch (error) {
-      console.log(error);
-      toast.error(error.message, "Error adding schedule");
+      toast.error(t("Error adding schedule"));
     }
   };
 
   const Trash_Data = async (item) => {
-    const x = window.confirm("Delete the data?")
+    const confirmDelete = window.confirm(t("Delete the data?"));
+    if (!confirmDelete) return;
+
     try {
-      if (x) {
-        await TimeTable.TrashData(item.id);
-        toast.success("Deleted successfully");
-      } else {
-        toast.info("Sizni xatolik qabul qilamiz")
-      }
+      await TimeTable.TrashData(item.id);
+      toast.success(t("Deleted successfully"));
+      getScheduleClasses();
     } catch (error) {
-      console.log(error);
-      toast.error(error.message, "Error deleting schedule");
+      console.error("Error deleting schedule:", error);
+      toast.error(t("Error deleting schedule"));
     }
   };
 
-  const updateSchedule = async (item) => {
-    setvisible(true)
-    setUpdateId(item.id);
-    setdayOfWeekRodal(item.dayOfWeek)
-    setEndTime(item.endTime);
-    setStartTime(item.startTime);
-    setTeacherId(item.teacherId);
-    setTermId(item.termId);
-
-  }
-
+  const updateSchedule = (item) => {
+    setVisible(true);
+    setUpdateId(item?.id ?? '');
+    setEndTime(item?.endTime ?? "");
+    setStartTime(item?.startTime ?? "");
+    setTeacherId(item?.teacherId ?? null);
+    setTermId(item?.termId ?? 1);
+  };
 
   return (
     <div className={`${Container}`}>
-      <div
-        className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-center overflow-scroll`}
-      >
+      <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-center overflow-scroll`}>
         <b className="text-center font-bold leading-6 text-4xl text-textBlack">
           {t("class_schedule_home")}
         </b>
       </div>
-      <div
-        className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
-          } min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}
-      >
-        {schedule.length == 0 ? (
-          <div>
-            <LOADER />
-          </div>
+      <div className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"} min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}>
+        {schedule?.length === 0 ? (
+          <LOADER />
         ) : (
           <div className="w-full flex items-stretch justify-evenly py-5 gap-5 flex-wrap">
-            {schedule?.map((res, id) => {
-              return (
-                <div
-                  key={id}
-                  className="w-[550px] min-h-96 border-t-4-color rounded-sm border-blue"
-                >
-                  <div>
-                    <div className="w-full h-14 flex items-center justify-center border-b-2 border-brGray">
-                      <span className="text-center text-blue uppercase">
-                        {res?.dayOfWeek}
-                      </span>
+            {schedule?.map((res, id) => (
+              <div key={id} className="w-[550px] min-h-96 border-t-4-color rounded-sm border-blue">
+                <div>
+                  <div className="w-full h-14 flex items-center justify-center border-b-2 border-brGray">
+                    <span className="text-center text-blue uppercase">
+                      {res?.dayOfWeek}
+                    </span>
+                  </div>
+                  {res?.schedule?.map((item, id) => (
+                    <div key={id}>
+                      <LESSONTABLECARD functionEdit={updateSchedule} functionDelete={Trash_Data} item={item} />
                     </div>
-                    {res?.schedule?.map((item, id) => {
-                      return (
-                        <div key={id}>
-                          <LESSONTABLECARD functionEdit={updateSchedule} functionDelete={Trash_Data} item={item} />
-                        </div>
-                      );
-                    })}
-                    <div className="p-1 ">
-                      <button
-                        onClick={() => {
-                          setvisible(!visible);
-                          setdayOfWeekRodal(res?.dayOfWeek);
-                        }}
-                        className="w-full h-14 flex py-1 items-center justify-center  bg-border-color px-2 bg-lightGray text-textGray"
-                      >
-                        +
-                      </button>
-                    </div>
-
+                  ))}
+                  <div className="p-1 ">
+                    <button
+                      onClick={() => {
+                        setVisible(!visible);
+                        setDayOfWeekRodal(res?.dayOfWeek ?? "");
+                      }}
+                      className="w-full h-14 flex py-1 items-center justify-center bg-border-color px-2 bg-lightGray text-textGray"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         )}
       </div>
       <Rodal
         height={440}
         visible={visible}
-        onClose={() => setvisible(!visible)}
+        onClose={() => setVisible(!visible)}
       >
         <div>{dayOfWeekRodal}</div>
         <hr />
@@ -212,11 +186,12 @@ function ClassScheduleID() {
             startTime={startTime}
             endTime={endTime}
             setTeacherData={setTeacherData}
-            value={subjectId}
+            value={subjectId || ""}
             setValue={setSubjectId}
           />
+
           <SELECTTEACHER
-            value={teacherId}
+            value={teacherId || ""}
             setValue={setTeacherId}
             teacherData={teacherData}
           />
@@ -226,7 +201,7 @@ function ClassScheduleID() {
             onClick={addSchedule}
             className="minMobil:w-full h-14 rounded-xl text-white bg-green"
           >
-            Saqlash
+            {t("save")}
           </button>
         </div>
       </Rodal>

@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 
 function TeacherProfile() {
-    const [dataTeacher, setDataTeacher] = useState(null)
+    const [dataTeacher, setDataTeacher] = useState([])
     const { id } = useParams()
     const navigate = useNavigate()
 

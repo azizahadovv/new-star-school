@@ -9,12 +9,12 @@ import { ToastContainer, toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 function Students() {
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [searchValue, setSearcheValue] = useState('')
   const navigate = useNavigate()
   const [classesNumber, setClassesNumber] = useState('')
-  const [students, setStudents] = useState(null)
+  const [students, setStudents] = useState([])
   useEffect(() => {
     getStudents()
   }, [])
@@ -68,7 +68,7 @@ function Students() {
           } min-h-96 overflow-scroll p-3`}
       >
         {
-          !students ? <div className="flex items-center justify-center min-h-32"> <LOADER /></div> : <table className="table table-hover">
+          students.length === 0 ? <div className="flex items-center justify-center min-h-32"> <LOADER /></div> : <table className="table table-hover">
             <thead>
               <tr>
                 <th>№</th>
@@ -86,7 +86,7 @@ function Students() {
                     <th scope="row">{id + 1}</th>
                     <td>
                       <p className="min-w-max h-full flex items-center justify-start gap-2 min-h-max text-lg font-normal">
-                        <img className='w-10 h-10 bg-center rounded-full' hidden={item?.image?false:true} src={item?.image && item.image} alt="item?.image && item.image" />
+                        <img className='w-10 h-10 bg-center rounded-full' hidden={item?.image ? false : true} src={item?.image && item.image} alt="item?.image && item.image" />
                         {item.lastName + ' ' + item.firstName + ' ' + item.patronymic}
                       </p>
                     </td>

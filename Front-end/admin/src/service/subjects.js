@@ -1,9 +1,9 @@
-import axios from "axios"
-import { baseURL } from "./api"
+import axios from './api'
+
 const subjectFunction = {
     async getSubjects() {
         try {
-            const { data } = await axios.get(`${baseURL}/subjects`);
+            const { data } = await axios.get(`subjects`);
             return data;
         } catch (error) {
             console.log(" get subject error \n" + error);
@@ -11,7 +11,7 @@ const subjectFunction = {
     },
     async addSubject(dataPost) {
         try {
-            const { data } = await axios.post(`${baseURL}/subjects`, dataPost);
+            const { data } = await axios.post(`subjects`, dataPost);
             return data;
         } catch (error) {
             console.log("add subject error \n" + error);
@@ -19,7 +19,7 @@ const subjectFunction = {
     },
     async changeSubject(id, changeData) {
         try {
-            const { data } = await axios.put(`${baseURL}/subjects/${id}`, changeData);
+            const { data } = await axios.put(`subjects/${id}`, changeData);
             return data;
         } catch (error) {
             console.log("add subject error \n" + error);
@@ -28,7 +28,7 @@ const subjectFunction = {
 
     async removeSubject(subjectId) {
         try {
-            await axios.delete(`${baseURL}/subjects/${subjectId}`);
+            await axios.delete(`subjects/${subjectId}`);
             return;
         } catch (error) {
             console.log("error remove subjects \n" + error);

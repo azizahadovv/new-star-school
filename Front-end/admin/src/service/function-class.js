@@ -1,20 +1,20 @@
-import axios from "axios";
-import { baseURL } from "./api";
+import axios from './api'
+
 const functionsClasses = {
   async getClasses() {
-    const { data } = await axios.get(`${baseURL}/classes`);
+    const { data } = await axios.get(`classes`);
     return data;
   },
   async classPostData(dataPost) {
-    const { data } = await axios.post(`${baseURL}/classes`, dataPost);
+    const { data } = await axios.post(`classes`, dataPost);
     return data;
   },
   async removeClass(id) {
-    await axios.delete(`${baseURL}/classes/${id}`);
+    await axios.delete(`classes/${id}`);
     return "Class deleted successfully";
   },
   async changeClassName(id, data) {
-    await axios.put(`${baseURL}/classes/${id}`, data);
+    await axios.put(`classes/${id}`, data);
     return;
   }
 
