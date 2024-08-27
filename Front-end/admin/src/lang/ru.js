@@ -14,7 +14,7 @@ const ruLang = {
   class_creation: "Создать класс",
   login_parol: "Логин~Пароль",
   search_in_name: "Поиск по имени и фамилии",
-  back_out: "Шаг назад",
+  back_out:"Шаг назад",
 
 
   // ***********************************************************************
@@ -28,24 +28,24 @@ const ruLang = {
   placeholder_search: "Поиск по имени",
   active_table: "Активный",
   add_student_in_file: "Загрузить файл",
-  male: "Мужской",
-  female: "Женский",
+  male:"Мужской",
+  female:"Женский",
 
   level: "Должность",
-  teacher_level: "Учитель",
-  director: "Директор",
-  deputy_director: "Заместитель директора",
+  teacher_level:"Учитель",
+  director:"Директор",
+  deputy_director:"Заместитель директора",
   admin: "Администратор",
   to_teach: "Какой предмет он преподает *",
   all_science: "Все",
-  select_science: "Выбрать предмет",
-  select_teacher: "Выберите учителя",
-  hidden_teacher: "Учитель недоступен",
+  select_science:"Выбрать предмет",
+  select_teacher:"Выберите учителя",
+  hidden_teacher:"Учитель недоступен",
   term: "Четверть",
-  All_student_select: "Все ученики",
+  All_student_select:"Все ученики",
   name_subjects: "Название предметов",
-  creating_sciences: "Создание предмета",
-  exit: "Выйти",
+  creating_sciences:"Создание предмета",
+  exit:"Выйти",
 
 
 
@@ -68,10 +68,7 @@ const ruLang = {
   additional_phone_number: "Дополнительный",
   science_teacher: "Учитель естественных наук",
   login: "Логин",
-  add_subject: "Добавить тему",
-  password: "Пароль",
-  page_not_found: "Страница не найдена"
-
+  password: "Пароль"
 };
 
 export default ruLang;

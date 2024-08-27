@@ -65,9 +65,8 @@ const uzLang = {
   additional_phone_number: "Qo'shimcha",
   science_teacher: "Fan o'qituvchisi",
   login: "Login",
-  password: "Parol",
-  add_subject: "Fan qo‘shish",
-  page_not_found: "Sahifa topilmadi"
+  password: "Parol"
+
 
 
 };

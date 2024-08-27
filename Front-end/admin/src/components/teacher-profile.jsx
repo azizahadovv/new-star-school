@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Container, styleTopBarUINoFlex } from '../constanta/style'
+import { BUTTON } from '../ui'
 import { ICONIMG } from '../icons'
 import teacherController from '../service/teacher'
 import { useNavigate, useParams } from 'react-router-dom'

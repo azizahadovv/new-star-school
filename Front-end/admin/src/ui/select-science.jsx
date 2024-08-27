@@ -18,7 +18,7 @@ function SelectScience({ value, setValue }) {
       <option hidden>{t("select_science")}</option>
       <option value="">{t("all_science")}</option>
       {
-        subject?.map((item) => (
+        subject.map((item) => (
           <option key={item.id} value={item.id}>{item.name}</option>
         ))
       }

@@ -134,13 +134,13 @@ function ClassScheduleID() {
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
           } min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}
       >
-        {schedule?.length == 0 ? (
+        {schedule.length == 0 ? (
           <div>
             <LOADER />
           </div>
         ) : (
           <div className="w-full flex items-stretch justify-evenly py-5 gap-5 flex-wrap">
-            {schedule?.map((res, id) => {
+            {schedule.map((res, id) => {
               return (
                 <div
                   key={id}

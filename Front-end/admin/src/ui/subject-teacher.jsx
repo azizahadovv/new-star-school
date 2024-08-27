@@ -26,7 +26,7 @@ function SubjectTeacher({ subjectTeacherId, setSubjectTeacherId, style = { heigh
                 {placeholder}
             </option>
             {
-                subjectList?.map((subject) => {
+                subjectList.map((subject) => {
                     return (
                         <option key={subject.id} value={subject.id}>{subject.name}</option>
                     )

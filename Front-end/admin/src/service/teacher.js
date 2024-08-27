@@ -1,12 +1,11 @@
-
-
+import axios from "axios";
+import { baseURL } from "./api";
 import { toast } from "react-toastify";
-import axios from "./api";
 
 const teacherController = {
     async searchTeacher(techerName, subjectId) {
         try {
-            const { data } = await axios.get(`teachers/search?subjectId=${subjectId}&name=${techerName}`)
+            const { data } = await axios.get(`${baseURL}/teachers/search?subjectId=${subjectId}&name=${techerName}`)
             return data;
         } catch (error) {
             toast.error(error);
@@ -14,7 +13,7 @@ const teacherController = {
     },
     async postTeacherInSubjectId(teacherSubjectId, dataTeacher, role) {
         try {
-            await axios.post(`teachers?subjectId=${teacherSubjectId}&role=${role}`, dataTeacher);
+            await axios.post(`${baseURL}/teachers?subjectId=${teacherSubjectId}&role=${role}`, dataTeacher);
         } catch (error) {
             toast.error(`Error get techer \n ${error}`);
         }
@@ -22,7 +21,7 @@ const teacherController = {
 
     async putTeacher(teacherId, subjectId, dataTeacher) {
         try {
-            await axios.put(`teachers/${teacherId}?subjectId=${subjectId}`, dataTeacher);
+            await axios.put(`${baseURL}/teachers/${teacherId}?subjectId=${subjectId}`, dataTeacher);
         } catch (error) {
             toast.error(`Error put teacher \n ${error}`);
         }
@@ -30,7 +29,7 @@ const teacherController = {
 
     async getTeacher() {
         try {
-            const { data } = await axios.get(`teachers`);
+            const { data } = await axios.get(`${baseURL}/teachers`);
             return data;
         } catch (error) {
             toast.error(`Error get techer \n ${error}`);
@@ -38,7 +37,7 @@ const teacherController = {
     },
     async getTeacherInId(teacherId) {
         try {
-            const { data } = await axios.get(`teachers/${teacherId}`);
+            const { data } = await axios.get(`${baseURL}/teachers/${teacherId}`);
             return data;
         } catch (error) {
             toast.error(`Error get techer \n ${error}`);
@@ -46,7 +45,7 @@ const teacherController = {
     },
     async removeTeacher(teacherId) {
         try {
-            await axios.delete(`teachers/${teacherId}`);
+            await axios.delete(`${baseURL}/teachers/${teacherId}`);
         } catch (error) {
             toast.error(`Error delete teacher \n ${error}`);
         }
@@ -54,7 +53,7 @@ const teacherController = {
 
     async getTeacherInSubjectIdAndChaced(weekDay,startTime,endTime,subjectId) {
         try {
-            const { data } = await axios.get(`teachers/available?dayOfWeek=${weekDay}&startTime=${startTime}&endTime=${endTime}&subjectId=${subjectId}`);
+            const { data } = await axios.get(`${baseURL}/teachers/available?dayOfWeek=${weekDay}&startTime=${startTime}&endTime=${endTime}&subjectId=${subjectId}`);
             return data;
         } catch (error) {
             toast.error(`Error get techer \n ${error}`);
@@ -62,7 +61,7 @@ const teacherController = {
     },
     async uploadImg(teacherId, file) {
         try {
-            await axios.post(`teachers/${teacherId}/upload-image`, file)
+            await axios.post(`${baseURL}/teachers/${teacherId}/upload-image`, file)
             toast.error("success upload");
         } catch (error) {
             toast.error(error);

@@ -42,7 +42,7 @@ function SubjecdtInId({ value, setValue, setTeacherData, startTime, endTime, wee
     >
       <option hidden>{t("select_science")}</option>
       <option hidden={xyz && true} value="">{t("all_science")}</option>
-      {subject?.map((item) => (
+      {subject.map((item) => (
         <option key={item.id} value={item.id}>
           {item.name}
         </option>

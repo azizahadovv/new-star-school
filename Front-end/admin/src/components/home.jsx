@@ -9,7 +9,7 @@ function Home() {
   return (
     <div className={`p-6 min-h-[360px] rounded-lg ${Container} flex flex-wrap gap-4 tablet:items-start tablet:justify-start minMobil:items-center minMobil:justify-center`}>
       {
-        homeCard?.map(item => <Link
+        homeCard.map(item => <Link
         title={t(item.title)}
           to={item.link}
           key={item.id}

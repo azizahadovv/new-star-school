@@ -24,8 +24,8 @@ function SelectClassNumber({ setClassesNumber, classesNumber }) {
     >
       <option value={""}>{t("All_student_select")}</option>
       {
-        classNumber == [] ? <option>Loading...</option> : classNumber?.map((i) => {
-          return <option key={i.id} value={i?.id}>{i?.name}</option>
+        classNumber == [] ? <option>Loading...</option> : classNumber.map((i) => {
+          return <option key={i.id} value={i.id}>{i.name}</option>
         })
       }
     </select>

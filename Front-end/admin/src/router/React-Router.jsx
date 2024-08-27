@@ -9,6 +9,8 @@ import {
   LISTOFSUBJECTS,
   ListOfClasses,
   ListOfClassesID,
+  MYCLASSES,
+  MYCLASSESID,
   PROFIL,
   PageNoteFound,
   REGISTER,

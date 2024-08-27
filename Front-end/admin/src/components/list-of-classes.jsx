@@ -113,7 +113,7 @@ function ListOfClasses() {
         {!getclassData ? (
           <LOADER />
         ) : (
-          getclassData?.map((res, id) => {
+          getclassData.map((res, id) => {
             return (
               <ACTIVECLASSES
                 removeItem={removeItem}

@@ -14,7 +14,7 @@ function ListOfSubjects() {
   const dispatch = useDispatch();
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const visible = useSelector((sel) => sel.addclass.visible);
-  const [subject, setSubject] = useState([]);
+  const [subject, setSubject] = useState(null);
   const [editControl, setEditControl] = useState('');
   const [idControl, setIdControl] = useState('');
   const [nameSubject, setNameSubject] = useState('');
@@ -75,7 +75,7 @@ function ListOfSubjects() {
     try {
       if (deleted) {
         await subjectFunction.removeSubject(id);
-        toast.success("Deleted successfully")
+        toast.success("deleted successfully")
         getSubjects();
       } else {
         toast.info("was not deleted")
@@ -95,7 +95,7 @@ function ListOfSubjects() {
         </div>
       </div>
       <div className={`${styleTopBarUINoFlex} min-h-96 px-3 ${open ? "hidden" : "block"}`}>
-        {subject.length === 0 ? (
+        {!subject ? (
           <div className="flex items-center justify-center py-5">
             <LOADER />
           </div>
@@ -110,7 +110,7 @@ function ListOfSubjects() {
             </thead>
             <tbody>
               {
-                subject?.map((res, id) => {
+                subject.map((res, id) => {
                   return <tr key={res.id}>
                     <td>{id + 1}</td>
                     <td>{res.name}</td>
@@ -150,14 +150,14 @@ function ListOfSubjects() {
         >
           <div className="w-full h-full">
             <p className="text-xl border-b border-brGray leading-10 font-bold text-textBlack">
-              {t("add_subject")}
+              Fan qo‘shish
             </p>
             <div className="flex flex-col items-start justify-between h-28">
               <div className="flex items-center justify-between w-full gap-3">
                 <INPUT value={nameSubject} setValue={setNameSubject} width={370} placeholder={'Nomini kiriting'} />
               </div>
               <BUTTON
-                name={t("save")}
+                name={"Saqlash"}
                 active
                 buttonFunction={postSubjects}
               />
@@ -171,3 +171,20 @@ function ListOfSubjects() {
 }
 
 export default ListOfSubjects;
+
+
+
+
+/* 
+**************************qo'shish
+
+
+*/
+
+/* 
+**************************** edit qilish
+
+
+
+
+*/

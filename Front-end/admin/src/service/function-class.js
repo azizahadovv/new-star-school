@@ -1,11 +1,10 @@
-
-
+import axios from "axios";
+import { baseURL } from "./api";
 import { toast } from "react-toastify";
-import axios from "./api";
 const functionsClasses = {
   async getClasses() {
     try {
-      const { data } = await axios.get(`classes`);
+      const { data } = await axios.get(`${baseURL}/classes`);
       return data;
     } catch (error) {
       toast.error(error.message)
@@ -13,7 +12,7 @@ const functionsClasses = {
   },
   async classPostData(dataPost) {
     try {
-      const { data } = await axios.post(`classes`, dataPost);
+      const { data } = await axios.post(`${baseURL}/classes`, dataPost);
       return data;
     } catch (error) {
       toast.error(error.message)
@@ -21,7 +20,7 @@ const functionsClasses = {
   },
   async removeClass(id) {
     try {
-      await axios.delete(`classes/${id}`);
+      await axios.delete(`${baseURL}/classes/${id}`);
       return "Class deleted successfully";
     } catch (error) {
       toast.error(error.message)
@@ -29,7 +28,7 @@ const functionsClasses = {
   },
   async changeClassName(id, data) {
     try {
-      await axios.put(`classes/${id}`, data);
+      await axios.put(`${baseURL}/classes/${id}`, data);
       return;
     } catch (error) {
       toast.error(error.message)
