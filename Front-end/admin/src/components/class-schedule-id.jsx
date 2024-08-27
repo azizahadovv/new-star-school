@@ -24,8 +24,8 @@ function ClassScheduleID() {
   const [dayOfWeekRodal, setdayOfWeekRodal] = useState("");
   const [endTime, setEndTime] = useState("");
   const [startTime, setStartTime] = useState("");
-  const [subjectId, setSubjectId] = useState(null);
-  const [teacherId, setTeacherId] = useState(null);
+  const [subjectId, setSubjectId] = useState([]);
+  const [teacherId, setTeacherId] = useState([]);
   const [termId, setTermId] = useState(1);
   const [updateId, setUpdateId] = useState('');
   const open = useSelector((sel) => sel.sidebarReduser.open);
@@ -114,7 +114,6 @@ function ClassScheduleID() {
     setdayOfWeekRodal(item.dayOfWeek)
     setEndTime(item.endTime);
     setStartTime(item.startTime);
-    // setSubjectId();
     setTeacherId(item.teacherId);
     setTermId(item.termId);
 
@@ -140,7 +139,7 @@ function ClassScheduleID() {
           </div>
         ) : (
           <div className="w-full flex items-stretch justify-evenly py-5 gap-5 flex-wrap">
-            {schedule.map((res, id) => {
+            {schedule?.map((res, id) => {
               return (
                 <div
                   key={id}

@@ -1,5 +1,6 @@
 import axios from "axios"
 import { baseURL } from "./api"
+import { toast } from "react-toastify"
 
 const TimeTable = {
     async getTimeTableInId(classesId) {
@@ -13,7 +14,7 @@ const TimeTable = {
     async addTimeTable(data) {
         try {
             await axios.post(`${baseURL}/v1/timetables`, data)
-            console.log("sucessfully added");
+            toast.success("sucessfully added");
         } catch (error) {
             console.log(error);
         }

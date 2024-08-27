@@ -20,7 +20,6 @@ function SubjecdtInId({ value, setValue, setTeacherData, startTime, endTime, wee
     try {
       if (e !== "") {
         const data = await teacherController.getTeacherInSubjectIdAndChaced(weekDay, startTime, endTime, e);
-        console.log(data);
         setTeacherData(data);
       }
     } catch (error) {
@@ -41,7 +40,7 @@ function SubjecdtInId({ value, setValue, setTeacherData, startTime, endTime, wee
       className="form-select m-0"
     >
       <option hidden>{t("select_science")}</option>
-      <option hidden={xyz && true} value="">{t("all_science")}</option>
+      <option hidden={xyz && true} defaultValue={''}>{t("all_science")}</option>
       {subject.map((item) => (
         <option key={item.id} value={item.id}>
           {item.name}
