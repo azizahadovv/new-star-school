@@ -52,6 +52,6 @@ export { default as infoUserOutline } from './user 1.svg'
 
 
 export { default as PERSONALINFORMATIONSHOME } from './personal-information.svg'
-export { default as GIFFILE } from './icons8-arrow.gif'
+
 
 // ******************************************************

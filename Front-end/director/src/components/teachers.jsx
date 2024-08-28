@@ -11,9 +11,9 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 function Teachers() {
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate();
-  const [dataTeachers, setDataTeachers] = useState(null);
+  const [dataTeachers, setDataTeachers] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     getTeachers();
@@ -50,7 +50,7 @@ function Teachers() {
       <div
         className={`min-h-96 overflow-scroll flex flex-col items-start justify-start ${styleTopBarUINoFlex} p-3 overflow-scroll`}
       >
-        {!dataTeachers ? (
+        {dataTeachers?.length === 0 ? (
           <div className="flex items-center justify-center min-h-40 w-full  m-5">
             <LOADER />
           </div>
@@ -78,31 +78,31 @@ function Teachers() {
                         <img
                           className="w-10 h-10 rounded-full"
                           hidden={!item.image}
-                          src={item.image && item?.image}
+                          src={item?.image && item?.image}
                           alt=""
                         />
-                        {item.firstName +
+                        {item?.firstName +
                           " " +
-                          item.lastName +
+                          item?.lastName +
                           " " +
-                          item.patronymic}
+                          item?.patronymic}
                       </p>
                     </td>
                     <td>
                       <p className="w-[150px]">
-                        {item?.subject.map((i) => i.name)}
+                        {item?.subject.map((i) => i.name + ', ')}
                       </p>
                     </td>
                     <td>
-                      <p className="w-[110px]">{item.birthDate}</p>
+                      <p className="w-[110px]">{item?.birthDate}</p>
                     </td>
                     <td>
-                      <p className="min-w-[85px]">{item.phoneNumber}</p>
+                      <p className="min-w-[85px]">{item?.phoneNumber}</p>
                     </td>
                     <td>
                       <div className="w-[150px] flex items-center justify-between relative">
                         <button
-                           onClick={() => {
+                          onClick={() => {
                             navigate(`/teachers/${item?.id}`)
                             localStorage.setItem("TeacherId", item?.id)
                           }}

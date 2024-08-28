@@ -18,11 +18,9 @@ function Sidebar() {
         <div className="flex flex-col justify-center items-stretch gap-2">
           {
             homeList2.map((item) => {
-              return <BUTTONSIDEBAR barVisible={() => dispatch(openVisible())} slug={item.path} img={item.underline} img2={item.nounderline} name={t(item.title)} />
+              return <BUTTONSIDEBAR key={item.id} barVisible={() => dispatch(openVisible())} slug={item.path} img={item.underline} img2={item.nounderline} name={t(item.title)} />
             })
           }
-
-
         </div>
         <div className='w-full minMobil:block tablet:hidden mt-5'>
           <LANGUAGEPOTION />

@@ -4,14 +4,6 @@
 
 /* register  page */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "GT Eesti Pro Display", arial;
-  text-decoration: none;
-}
-
 html {
   background-color: #f4f7f9;
 }
@@ -86,9 +78,18 @@ html {
 }
 
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "GT Eesti Pro Display", arial;
+  text-decoration: none;
+}
+
+
 *::selection {
-  background-color: #000;
-  color: red;
+  background-color: #3e4b57;
+  color: white;
 }
 
 *::-webkit-scrollbar {
@@ -97,16 +98,14 @@ html {
 }
 
 *::-webkit-scrollbar {
-  width: 7px;
-  height: 8px;
+  width: 4px;
+  height: 5px;
   background-color: #fff;
-  /* or add it to the track */
 }
 
-/* Add a thumb */
 *::-webkit-scrollbar-thumb {
-  background: #41c981;
-  border-radius: 10px;
+  background: #34414f;
+  border-radius: 15px;
 }
 
 li {

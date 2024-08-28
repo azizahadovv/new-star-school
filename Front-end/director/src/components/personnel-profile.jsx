@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import Rodal from 'rodal'
 import { TextField } from '@mui/material'
 import { BUTTON, SELECTJOB } from '../ui'
+
 function ProfilePersonnel() {
     const [dataTeacher, setDataTeacher] = useState({})
     const [visible, setVisible] = useState(false)
@@ -27,7 +28,6 @@ function ProfilePersonnel() {
     }, [])
 
 
-
     const saveImage = async (e) => {
         if (!e.name.match(/\.(jpg|jpeg|png|gif|svg)$/)) {
             toast.error("File extension should be jpg, jpeg, png, gif, svg")
@@ -43,8 +43,6 @@ function ProfilePersonnel() {
             console.log(error);
         }
     }
-
-
 
     const get_datas_Persons = async () => {
         try {
@@ -90,9 +88,6 @@ function ProfilePersonnel() {
             toast.info(t("please_fill_all_fields"))
         }
     }
-
-
-
     return (
         <div className={`${Container} flex tablet:items-start minMobil:items-center tablet:justify-start minMobil:justify-center gap-3 flex-wrap`}>
             <div className={`${styleTopBarUINoFlex} w-[300px] h-[380px] p-3 rounded-3xl flex items-center justify-between flex-col`}>

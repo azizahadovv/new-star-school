@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom";
 import studentsController from "../service/student";
 import { useTranslation } from "react-i18next";
 function Students() {
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate();
-  const [dataStudents, setDataStudents] = useState(null);
+  const [dataStudents, setDataStudents] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     getStudents();
@@ -47,7 +47,7 @@ function Students() {
         />
       </div>
       <div className={`${styleTopBarUINoFlex} min-h-96 overflow-scroll px-3 `}>
-        {!dataStudents ? (
+        {!dataStudents.length === 0 ? (
           <div className="flex items-center justify-center min-h-40 w-full  my-5">
             <LOADER />
           </div>
@@ -64,7 +64,7 @@ function Students() {
               </tr>
             </thead>
             <tbody>
-              {dataStudents.map((item, id) => {
+              {dataStudents?.map((item, id) => {
                 return (
                   <tr key={id}>
                     <th scope="row" key={item.id}>
@@ -75,29 +75,29 @@ function Students() {
                         <img
                           hidden={!item.image}
                           className="w-10 h-10 rounded-full"
-                          src={item.image}
+                          src={item?.image}
                           alt="##"
                         />
-                        {item.firstName +
+                        {item?.firstName +
                           " " +
-                          item.lastName +
+                          item?.lastName +
                           " " +
-                          item.patronymic}
+                          item?.patronymic}
                       </p>
                     </td>
                     <td>
-                      <p className="w-[150px]">{item.grade}</p>
+                      <p className="w-[150px]">{item?.grade}</p>
                     </td>
                     <td>
-                      <p className="w-[110px]">{item.birthDate}</p>
+                      <p className="w-[110px]">{item?.birthDate}</p>
                     </td>
                     <td>
-                      <p className="min-w-[85px]">{item.phoneNumber}</p>
+                      <p className="min-w-[85px]">{item?.phoneNumber}</p>
                     </td>
                     <td>
                       <div className="w-[150px] flex items-center justify-between relative">
                         <button
-                          onClick={() => navigate(`${item.id}`)}
+                          onClick={() => navigate(`${item?.id}`)}
                           className="flex items-center justify-center gap-2 text-blue"
                         >
                           {t("table_more")} <img width={7} src={ARROW} alt="arrow" />
