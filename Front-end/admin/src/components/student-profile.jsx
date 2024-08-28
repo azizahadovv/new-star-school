@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
-import { BUTTON } from "../ui";
 import { ICONIMG } from "../icons";
 import student_Page_Function from "../service/student";
 import { useNavigate, useParams } from "react-router-dom";
@@ -34,7 +33,7 @@ function StudentProfile() {
     formData.append("file", e);
     try {
       await student_Page_Function.uploadFile(id, formData);
-      console.log("Uploaded file");
+      toast.success("Uploaded file");
       get_datas_Student();
     } catch (error) {
       console.log(error);
@@ -91,43 +90,43 @@ function StudentProfile() {
             <tr>
               <th className="w-50">{t("lastName")}:</th>
               <th className="w-50">{dataStudent.lastName}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("patronymic")}:</th>
               <th className="w-50">{dataStudent.patronymic}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("birthday")}:</th>
               <th className="w-50">{dataStudent.birthDate}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("gender")}:</th>
               <th className="w-50">{dataStudent.gender}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("nation")}:</th>
               <th className="w-50">{dataStudent.nationality}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("state")}:</th>
               <th className="w-50">{dataStudent.country}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("province")}:</th>
               <th className="w-50">{dataStudent.region}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("district")}:</th>
               <th className="w-50">{dataStudent.district}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("home_address")}:</th>
               <th className="w-50">{dataStudent.address}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("table_classes")}:</th>
               <th className="w-50">{dataStudent.grade}</th>
-            </tr>{" "}
+            </tr>
             <tr>
               <th className="w-50">{t("phone_nuber")}:</th>
               <th className="w-50">{dataStudent.phoneNumber}</th>
