@@ -15,7 +15,7 @@ import functionsClasses from "../service/function-class";
 import { useTranslation } from "react-i18next";
 
 function ListOfClasses() {
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const dispatch = useDispatch();
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [classesNumber, setClassesNumber] = useState("");
@@ -30,7 +30,7 @@ function ListOfClasses() {
   }, []);
 
   const obj = {
-    name: `${classesNumber+classesGroup}-sinf`,
+    name: `${classesNumber + classesGroup}-sinf`,
     grade: classesNumber,
     groupLetter: classesGroup,
   };
@@ -43,16 +43,16 @@ function ListOfClasses() {
     }
   };
   const removeItem = async (id) => {
-    let question = prompt(
-      "sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!"
-    );
+    let question = prompt(t("prompt_value"));
     try {
       if (question === "YES") {
         await functionsClasses.removeClass(id);
-        toast.success("sinf o'chirildi");
-      } else toast.error("malumotlar o'chirilmadi qayta urinib ko'ring");
+        toast.success("the class has been deleted");
+      }
       getClasses();
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error);
+    }
   };
   const postClasses = async () => {
     try {
@@ -64,11 +64,10 @@ function ListOfClasses() {
           setClassesNumber("");
           getClasses();
           setChange("");
-          toast.success("sinf yaratildi");
+          toast.success("Class created successfully");
         } else {
           try {
             await functionsClasses.changeClassName(changeId, obj);
-            console.log("success", "change");
             getClasses();
             setClassesGroup("");
             setClassesNumber("");
@@ -106,9 +105,8 @@ function ListOfClasses() {
         </div>
       </div>
       <div
-        className={`${
-          open ? "hidden" : "flex"
-        } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
+        className={`${open ? "hidden" : "flex"
+          } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
       >
         {!getclassData ? (
           <LOADER />
@@ -121,7 +119,7 @@ function ListOfClasses() {
                 key={id}
                 res={res}
                 size={res.size}
-                nameOfClass={res.name}
+                nameOfClass={res.grade + res.groupLetter}
                 id={res.id}
                 slug={res.id}
                 active={res.active}

@@ -21,6 +21,7 @@ const uzLang = {
   table_teacher: "O‘qituvchilar",
   table_subject: "Fan",
   table_birthday: "Tug’ilgan kun",
+  table_number: "Telefon raqam",
   table_more: "Batafsil",
   placeholder_search: "FISH bo'yicha qidiruv",
   active_table: "Faol",
@@ -37,7 +38,7 @@ const uzLang = {
   name_subjects: "Fanlar nomi",
   creating_sciences: "Fan qo'shish",
   exit: "Tizimdan chiqish",
-
+  no_teacher_subject:"Fanlar mavjud emas",
 
 
 
@@ -65,9 +66,9 @@ const uzLang = {
   additional_phone_number: "Qo'shimcha",
   science_teacher: "Fan o'qituvchisi",
   login: "Login",
-  password: "Parol"
-
-
+  password: "Parol",
+  prompt_value:"Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
+  delete_value:"Malumotlar o'chirilmadi qayta urinib ko'ring",
 
 };
 

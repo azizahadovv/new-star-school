@@ -5,9 +5,11 @@ import { ICONIMG } from '../icons'
 import teacherController from '../service/teacher'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
+import { useTranslation } from 'react-i18next'
 
 function TeacherProfile() {
-    const [dataTeacher, setDataTeacher] = useState([])
+    const { t } = useTranslation()
+    const [dataTeacher, setDataTeacher] = useState({})
     const { id } = useParams()
     const navigate = useNavigate()
 
@@ -21,7 +23,7 @@ function TeacherProfile() {
             setDataTeacher(response)
         } catch (error) {
             console.log(error);
-            navigate(-1)
+            navigate(-2)
         }
     }
     const saveImage = async (e) => {
@@ -34,13 +36,17 @@ function TeacherProfile() {
         formData.append('file', e);
         try {
             await teacherController.uploadImg(id, formData)
-            console.log("Uploaded file");
+            toast.success("Uploaded file");
             get_datas_Student()
         } catch (error) {
             toast.error("Pay attention to the file extension `PNG,JPG,SVG`")
-            console.log(error);
+            toast.error(error);
         }
     }
+
+    const subjectsTeacher = dataTeacher.subject || []
+
+    console.log(subjectsTeacher);
     return (
         <div className={`${Container} flex tablet:items-start minMobil:items-center tablet:justify-start minMobil:justify-center gap-3 flex-wrap`}>
             <div className={`${styleTopBarUINoFlex} w-[300px] h-[380px] p-3 rounded-3xl flex items-center justify-between flex-col`}>
@@ -55,7 +61,7 @@ function TeacherProfile() {
                     <input onChange={(e) => saveImage(e.target.files[0])} hidden type="file" />
                     <span className='flex items-center justify-center gap-2'>
                         <img src={ICONIMG} alt="" />
-                        Tahrirlash
+                        {t("edit")}
                     </span>
                 </label>
             </div>
@@ -111,9 +117,11 @@ function TeacherProfile() {
                         </tr>
                         <tr>
                             <th className='w-50'>Fan o'qituvchisi:</th>
-                            <th className='w-50'>{dataTeacher?.subject.map((i) => {
-                                return i.name + "\n"
-                            })}</th>
+                            <th className='w-50'>
+                                {subjectsTeacher.length > 0 ? subjectsTeacher.map((res) => (
+                                    <span key={res.id}>{res.name + "\n"}</span>
+                                )) : t("no_teacher_subject")}
+                            </th>
                         </tr>
                         <tr>
                             <th className='w-50'>Login:</th>

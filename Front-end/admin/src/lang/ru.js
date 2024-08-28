@@ -2,7 +2,7 @@ const ruLang = {
   class_schedule_home: "Расписание занятий",
   list_of_classes_home: "Список классов",
   teacher_home: "Учителя",
-  student_home: "Студенты",
+  student_home: "Ученики",
   sciences: "Науки",
   personal_information_home: "Персональная информация",
   add_student: "Добавить ученика",
@@ -14,11 +14,12 @@ const ruLang = {
   class_creation: "Создать класс",
   login_parol: "Логин~Пароль",
   search_in_name: "Поиск по имени и фамилии",
-  back_out:"Orqaga chiqish",
+  back_out: "Шаг назад",
+  no_teacher_subject:"Предметы недоступны",
 
 
   // ***********************************************************************
-  table_pupils: "Студенты",
+  table_pupils: "Ученики",
   table_classes: "Kласс",
   table_teacher: "Учителя",
   table_subject: "Урок",
@@ -28,24 +29,24 @@ const ruLang = {
   placeholder_search: "Поиск по имени",
   active_table: "Активный",
   add_student_in_file: "Загрузить файл",
-  male:"Мужской",
-  female:"Женский",
+  male: "Мужской",
+  female: "Женский",
 
   level: "Должность",
-  teacher_level:"Учитель",
-  director:"Директор",
-  deputy_director:"Заместитель директора",
+  teacher_level: "Учитель",
+  director: "Директор",
+  deputy_director: "Заместитель директора",
   admin: "Администратор",
   to_teach: "Какой предмет он преподает *",
   all_science: "Все",
-  select_science:"Выбрать предмет",
-  select_teacher:"Выберите учителя",
-  hidden_teacher:"Учитель недоступен",
+  select_science: "Выбрать предмет",
+  select_teacher: "Выберите учителя",
+  hidden_teacher: "Учитель недоступен",
   term: "Четверть",
-  All_student_select:"Все ученики",
+  All_student_select: "Все ученики",
   name_subjects: "Название предметов",
-  creating_sciences:"Создание предмета",
-  exit:"Выйти",
+  creating_sciences: "Создание предмета",
+  exit: "Выйти",
 
 
 
@@ -68,7 +69,10 @@ const ruLang = {
   additional_phone_number: "Дополнительный",
   science_teacher: "Учитель естественных наук",
   login: "Логин",
-  password: "Пароль"
+  password: "Пароль",
+  prompt_value: "Если вы хотите удалить все данные, относящиеся к классу, напишите «YES»,\n Обратите внимание, что все данные класса и данные учеников будут удалены!",
+  delete_value: "Не удалось удалить данные. Повторите попытку.",
+
 };
 
 export default ruLang;

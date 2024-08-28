@@ -6,8 +6,10 @@ import { openBar, userIcon } from '../icons'
 import { LANGUAGEPOTION } from '../ui'
 import { useState } from 'react'
 import { HomeText } from '../utils/UiFunctios'
+import { useTranslation } from 'react-i18next'
 
 function Navbar() {
+  const { t } = useTranslation()
   const [firstName, setFirstName] = useState("Usenov")
   const [name, setName] = useState("Tohir")
   const dispatch = useDispatch()
@@ -40,7 +42,7 @@ function Navbar() {
                   <span className='minMobil:hidden tablet:block '>{firstName}.{name}</span>
                   <span className='minMobil:block tablet:hidden '>{firstName}.{name.slice(0, 1)}</span>
                 </span>
-                <span className='text-sm font-semibold text-textGray'>Admin</span>
+                <span className='text-sm font-semibold text-textGray'>{t("admin")}</span>
               </div>
             </div>
           </div>
