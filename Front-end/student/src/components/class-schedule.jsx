@@ -19,7 +19,6 @@ function ClassSchedule() {
         if (ids && selectedOption) {
             const datas = await studentCotrol.getStudentSchedule(ids, selectedOption)
             setData(datas)
-            console.log(datas)
         }
     }
 

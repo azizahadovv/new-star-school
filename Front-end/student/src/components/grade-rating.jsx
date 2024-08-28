@@ -20,8 +20,6 @@ function GradeRating() {
   }, [termData, valueTeacher]); // termData va valueTeacher o'zgarganida getData qayta ishga tushadi
 
 
-  console.log(valueTeacher);
-
   const getData = async () => {
     const id = localStorage.getItem('studentId');
     const data = await GradeCotrol.getTerms(id, termData, 'GRADE', valueTeacher);
@@ -42,8 +40,6 @@ function GradeRating() {
     }
   }
 
-  console.log(newData);
-
   return (
     <div className={`${Container}`}>
       <div className={`${styleTopBarUI} px-4 py-2 w-full min-h-16`}>
@@ -59,7 +55,7 @@ function GradeRating() {
       </div>
       <div className={`min-h-96 flex items-start justify-start ${styleTopBarUINoFlex} px-2`}>
         {
-          newData.length === 0 ? <div className='w-full flex items-center justify-center min-h-52'>
+          newData?.length === 0 ? <div className='w-full flex items-center justify-center min-h-52'>
             <h1>{t("no_data")}</h1>
           </div> : <table className="table table-hover cursor-pointer">
             <thead>
@@ -73,13 +69,13 @@ function GradeRating() {
             </thead>
             <tbody>
               {
-                newData.map((item, idx) => {
+                newData?.map((item, idx) => {
                   return <tr key={idx}>
                     <td className='capitalize'>{idx + 1}</td>
-                    <td className='capitalize'>{item.dateAssigned}</td>
-                    <td className='capitalize'>{item.subjectName}</td>
-                    <td className='capitalize'>{item.teacherName}</td>
-                    <td className='capitalize'>{item.gradeValue}</td>
+                    <td className='capitalize'>{item?.dateAssigned}</td>
+                    <td className='capitalize'>{item?.subjectName}</td>
+                    <td className='capitalize'>{item?.teacherName}</td>
+                    <td className='capitalize'>{item?.gradeValue}</td>
                   </tr>
                 })
               }

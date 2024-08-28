@@ -49,8 +49,7 @@ function Attendance() {
 
       <div className={`min-h-96 flex items-start justify-start ${styleTopBarUINoFlex} px-2 overflow-scroll`}>
         {
-
-          newData.length === 0 ? <div className='w-full flex items-center justify-center min-h-52'>
+          newData?.length === 0 ? <div className='w-full flex items-center justify-center min-h-52'>
             <h1>{t("no_data")}</h1>
           </div> : <table className="table table-hover cursor-pointer">
             <thead>
@@ -59,19 +58,17 @@ function Attendance() {
                 <th>{t("term")}</th>
                 <th>{t("date_lesson")}</th>
                 <th>{t("name_lesson")}</th>
-                <th>{t("lesson_duration")}</th>
                 <th>{t("teachers_name")}</th>
               </tr>
             </thead>
             <tbody>
-              {newData.map((item, index) => (
-                <tr key={index}>
+              {newData?.map((item, index) => (
+                <tr key={index} >
                   <td>{index + 1}</td>
-                  <td>{item.termName}</td>
-                  <td>{item.dateAssigned}</td>
-                  <td>Chet tili</td>
-                  <td>45 daqiqa</td>
-                  <td>Xurshida Umirzaqova</td>
+                  <td>{item?.termName}</td>
+                  <td>{item?.dateAssigned}</td>
+                  <td>{item?.subjectName}</td>
+                  <td>{item?.teacherName}</td>
                 </tr>
               ))
               }
@@ -81,7 +78,7 @@ function Attendance() {
         }
 
       </div>
-    </div>
+    </div >
   )
 }
 
