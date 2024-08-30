@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 function SelectClassNumber({ setClassesNumber, classesNumber }) {
   const [classNumber, setclassNumber] = useState([])
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   useEffect(() => {
     getClassesNumber()
   }, [])
@@ -24,8 +24,8 @@ function SelectClassNumber({ setClassesNumber, classesNumber }) {
     >
       <option value={""}>{t("All_student_select")}</option>
       {
-        classNumber == [] ? <option>Loading...</option> : classNumber.map((i) => {
-          return <option key={i.id} value={i.id}>{i.name}</option>
+        classNumber.length === 0 ? <option>Loading...</option> : classNumber?.map((i) => {
+          return <option key={i?.id} value={i?.id}>{i?.name}</option>
         })
       }
     </select>
