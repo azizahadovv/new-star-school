@@ -10,77 +10,65 @@ import { useTranslation } from "react-i18next";
 import student_Page_Function from "../service/student";
 
 function ListOfClassesID() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [dataStudent, setDataStudent] = useState([]);
   const [searchValue, setSearchValue] = useState('');
-
-  const { id } = useParams()
+  const { id } = useParams();
   const open = useSelector((sel) => sel.sidebarReduser.open);
+
   useEffect(() => {
     getStudentsData();
   }, []);
 
   const getStudentsData = async () => {
     try {
-      const studentData = await studentFunction.getStudent();
-      setDataStudent(studentData.students);
+      const { students } = await studentFunction.getStudent();
+      setDataStudent(students);
     } catch (error) {
-      console.log("Error axios get student id ", error);
-      toast.error(error.message, "Error axios get student id ");
+      console.error("Error getting student data: ", error);
+      toast.error(error.message);
     }
   };
 
-  const deleteStudentInClass = async (id, name) => {
+  const deleteStudentInClass = async (studentId, studentName) => {
     const classId = localStorage.getItem("ClassId");
-    const prompt = window.confirm(`Are you sure you want to delete ${name}?`);
-    try {
-      if (prompt) {
-        await studentFunction.removeStudentInClass(id, classId);
+    if (window.confirm(`Are you sure you want to delete ${studentName}?`)) {
+      try {
+        await studentFunction.removeStudentInClass(studentId, classId);
         getStudentsData();
-        toast.success(`student named ${name} was deleted`);
-      } else {
-        toast.info("Operation cancelled");
+        toast.success(`Student named ${studentName} was deleted`);
+      } catch (error) {
+        console.error("Error deleting student: ", error);
+        toast.error(error.message);
       }
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message, "Error");
+    } else {
+      toast.info("Operation cancelled");
     }
   };
 
   const searcheStudentInName = async (name) => {
-    setSearchValue(name)
+    setSearchValue(name);
     try {
-      const datas = await student_Page_Function.search_Student(id, name)
+      const datas = await student_Page_Function.search_Student(id, name);
       setDataStudent(datas);
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
-  }
+  };
 
   return (
-    <div className={`${Container}`}>
-      <div
-        className={`${styleTopBarUINoFlex} h-20 w-full px-3 flex items-center justify-between`}
-      >
+    <div className={Container}>
+      <div className={`${styleTopBarUINoFlex} h-20 w-full px-3 flex items-center justify-between`}>
         <div className="tablet:w-1/4">
           <SEARCH searchValue={searchValue} setSearcheValue={searcheStudentInName} />
         </div>
         <div>
-          <BUTTON
-            buttonFunction={() => {
-              navigate("/add-student");
-            }}
-            name={t("add_student")}
-            active
-          />
+          <BUTTON buttonFunction={() => navigate("/add-student")} name={t("add_student")} active />
         </div>
       </div>
 
-      <div
-        className={`${styleTopBarUINoFlex} ${open ? "hidden" : "block"
-          } min-h-96 overflow-scroll p-3`}
-      >
+      <div className={`${styleTopBarUINoFlex} ${open ? "hidden" : "block"} min-h-96 overflow-scroll p-3`}>
         <table className="table table-hover">
           <thead>
             <tr>
@@ -93,77 +81,44 @@ function ListOfClassesID() {
             </tr>
           </thead>
           <tbody>
-            {dataStudent?.map((item, id) => {
-              return (
-                <tr key={item.id}>
-                  <th scope="row">{id + 1}</th>
-                  <td className="relative">
-                    <p className="w-[270px] static left-0 top-0">
-                      {item.lastName +
-                        " " +
-                        item.firstName +
-                        " " +
-                        item.patronymic}
-                    </p>
-                  </td>
-                  <td>
-                    <p className="w-[150px]">
-                      {item.login + "--" + item.password}
-                    </p>
-                  </td>
-                  <td>
-                    <p className="w-[110px]">{item.phoneNumber}</p>
-                  </td>
-                  <td>
-                    <p className="min-w-max">{item.parentPhoneNumber}</p>
-                  </td>
-                  <td>
-                    <div className="w-[150px] flex items-center justify-between relative">
-                      <button onClick={() => {
-                        navigate(`/students/${item.id}`)
-                        localStorage.setItem("StudentId", item.id)
+            {dataStudent.map((item, index) => (
+              <tr key={item?.id}>
+                <th scope="row">{index + 1}</th>
+                <td className="relative">
+                  <p className="w-[270px]">{`${item?.lastName} ${item.firstName} ${item.patronymic}`}</p>
+                </td>
+                <td><p className="w-[150px]">{item?.login}</p></td>
+                <td><p className="w-[110px]">{item?.phoneNumber}</p></td>
+                <td><p className="min-w-max">{item?.parentPhoneNumber}</p></td>
+                <td>
+                  <div className="w-[150px] flex items-center justify-between relative">
+                    <button
+                      onClick={() => {
+                        navigate(`/students/${item?.id}`);
+                        localStorage.setItem("StudentId", item.id);
                       }}
-                        className="flex items-center justify-center gap-2 text-blue"
-                      >
-                        {t("table_more")}<img width={7} src={arrowRight} alt="arrow" />
+                      className="flex items-center justify-center gap-2 text-blue"
+                    >
+                      {t("table_more")}<img width={7} src={arrowRight} alt="arrow" />
+                    </button>
+                    <div className="dropdown">
+                      <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src={menuDots} width={25} className="p-1" alt="menuDots" />
                       </button>
-                      <div className="dropdown">
+                      <div className="dropdown-menu">
                         <button
-                          type="button"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
+                          onClick={() => deleteStudentInClass(item.id, `${item.lastName} ${item.firstName} ${item.patronymic}`)}
+                          className="dropdown-item d-flex align-items-center gap-2"
                         >
-                          <img
-                            src={menuDots}
-                            width={25}
-                            className=" p-1"
-                            alt="menuDots"
-                          />
+                          <img src={trash} width={20} alt="trash" />
+                          {t("delete")}
                         </button>
-                        <div className={`dropdown-menu`}>
-                          <button
-                            onClick={() =>
-                              deleteStudentInClass(
-                                item.id,
-                                item.lastName +
-                                " " +
-                                item.firstName +
-                                " " +
-                                item.patronymic
-                              )
-                            }
-                            className="dropdown-item d-flex align-items-center gap-2"
-                          >
-                            <img src={trash} width={20} alt="trash" />
-                            {t("delete")}
-                          </button>
-                        </div>
                       </div>
                     </div>
-                  </td>
-                </tr>
-              );
-            })}
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

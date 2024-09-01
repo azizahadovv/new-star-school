@@ -52,7 +52,6 @@ function Navbar() {
             <SIDEBAR />
           </div>
         </div>
-
       </div>
     </div>
   )

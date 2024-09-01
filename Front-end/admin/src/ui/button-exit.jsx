@@ -13,7 +13,7 @@ function ButtonExit() {
         <button
             onClick={() => {
                 navitagate('/register')
-                dispatch(exitSidebarBtn())
+                localStorage.removeItem('jwtToken')
             }}
             className='flex gap-2 items-center justify-center w-full bg-white border py-[10px] rounded-lg'>
             <img src={EXIT} alt="" />

@@ -12,7 +12,7 @@ const uzLang = {
   delete: "O'chirish",
   save: "Saqlash",
   class_creation: "Sinf yaratish",
-  login_parol: "Login~Parol",
+  login_parol: "Login",
   search_in_name: "Ism va Familiya bo'yicha izlang",
   back_out: "Orqaga chiqish",
   // *******************************************************************

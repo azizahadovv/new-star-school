@@ -1,10 +1,17 @@
 import axios from './api'
 
 
+const auth = {
+    headers: {
+      'accept': '*/*',
+      'Authorization': " " + 'Bearer ' + localStorage.getItem('jwtToken')
+    }
+  }
+
 const teacherController = {
     async searchTeacher(techerName, subjectId) {
         try {
-            const { data } = await axios.get(`teachers/search?subjectId=${subjectId}&name=${techerName}`)
+            const { data } = await axios.get(`teachers/search?subjectId=${subjectId}&name=${techerName}`, auth)
             return data;
         } catch (error) {
             console.log(error);
@@ -12,7 +19,7 @@ const teacherController = {
     },
     async postTeacherInSubjectId(teacherSubjectId, dataTeacher, role) {
         try {
-            await axios.post(`teachers?subjectId=${teacherSubjectId}&role=${role}`, dataTeacher);
+            await axios.post(`teachers?subjectId=${teacherSubjectId}&role=${role}`, dataTeacher, auth);
         } catch (error) {
             console.log(`Error get techer \n ${error}`);
         }
@@ -20,7 +27,7 @@ const teacherController = {
 
     async putTeacher(teacherId, subjectId, dataTeacher) {
         try {
-            await axios.put(`teachers/${teacherId}?subjectId=${subjectId}`, dataTeacher);
+            await axios.put(`teachers/${teacherId}?subjectId=${subjectId}`, dataTeacher, auth);
         } catch (error) {
             console.log(`Error put teacher \n ${error}`);
         }
@@ -28,7 +35,7 @@ const teacherController = {
 
     async getTeacher() {
         try {
-            const { data } = await axios.get(`teachers`);
+            const { data } = await axios.get(`teachers`, auth);
             return data;
         } catch (error) {
             console.log(`Error get techer \n ${error}`);
@@ -36,7 +43,7 @@ const teacherController = {
     },
     async getTeacherInId(teacherId) {
         try {
-            const { data } = await axios.get(`teachers/${teacherId}`);
+            const { data } = await axios.get(`teachers/${teacherId}`, auth);
             return data;
         } catch (error) {
             console.log(`Error get techer \n ${error}`);
@@ -44,15 +51,15 @@ const teacherController = {
     },
     async removeTeacher(teacherId) {
         try {
-            await axios.delete(`teachers/${teacherId}`);
+            await axios.delete(`teachers/${teacherId}`, auth);
         } catch (error) {
             console.log(`Error delete teacher \n ${error}`);
         }
     },
 
-    async getTeacherInSubjectIdAndChaced(weekDay,startTime,endTime,subjectId) {
+    async getTeacherInSubjectIdAndChaced(weekDay, startTime, endTime, subjectId) {
         try {
-            const { data } = await axios.get(`teachers/available?dayOfWeek=${weekDay}&startTime=${startTime}&endTime=${endTime}&subjectId=${subjectId}`);
+            const { data } = await axios.get(`teachers/available?dayOfWeek=${weekDay}&startTime=${startTime}&endTime=${endTime}&subjectId=${subjectId}`, auth);
             return data;
         } catch (error) {
             console.log(`Error get techer \n ${error}`);
@@ -60,7 +67,7 @@ const teacherController = {
     },
     async uploadImg(teacherId, file) {
         try {
-            await axios.post(`teachers/${teacherId}/upload-image`, file)
+            await axios.post(`teachers/${teacherId}/upload-image`, file, auth)
             console.log("success upload");
         } catch (error) {
             console.log(error);

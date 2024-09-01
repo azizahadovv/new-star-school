@@ -54,7 +54,7 @@ function Students() {
       <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-start px-3 overflow-scroll`}>
         <div className="min-w-max flex items-start justify-start gap-3 px-3">
           <div className="flex gap-3 min-w-[550px]">
-            <SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} searchFunction={searchStudent} placeholder="O‘quvchi bo‘ylab izlash" />
+            <SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} searchFunction={searchStudent} placeholder={t('placeholder_search')} />
             <SELECTCLASSNUMBER classesNumber={classesNumber} setClassesNumber={setClassesNumber} />
           </div>
           <button onClick={searchStudent} className="border border-brGray rounded-xl h-10 w-10 flex items-center justify-center">
