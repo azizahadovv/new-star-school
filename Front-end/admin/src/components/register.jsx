@@ -3,7 +3,10 @@ import { IconLight } from "../icons"
 import { BUTTON, INPUT } from "../ui"
 import { useDispatch } from "react-redux"
 import { registerBtn } from "../slice/register"
+import { useState } from "react"
 function Register() {
+  const [username, setUserName] = useState('')
+  const [password, setPassword] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
   return (
