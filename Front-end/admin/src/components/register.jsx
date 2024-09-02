@@ -69,8 +69,8 @@ function Register() {
               </Link>
             </div>
           </div>
-          <div className="w-full" onClick={submitButton}>
-            <BUTTON name="Kirish" />
+          <div className="w-full">
+            <BUTTON buttonFunction={() => submitButton()} name="Kirish" />
           </div>
         </div>
       </div>

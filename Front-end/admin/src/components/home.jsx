@@ -7,13 +7,14 @@ import { useTranslation } from 'react-i18next'
 function Home() {
   const { t } = useTranslation()
 
-  useEffect(() => {
-    const isRefreshed = sessionStorage.getItem('isRefreshed');
-    if (!isRefreshed && window.location.pathname === '/') {
-      sessionStorage.setItem('isRefreshed', 'true');
-      window.location.reload();
-    }
-  }, []);
+  // const isRefreshed = sessionStorage.getItem('isRefreshed');
+
+  // useEffect(() => {
+  //   if (!isRefreshed && window.location.pathname === '/') {
+  //     sessionStorage.setItem('isRefreshed', 'true');
+  //     window.location.reload();
+  //   } else return
+  // }, [isRefreshed]);
 
 
   return (
