@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { BUTTON, GENDER, LEVEL, NATIONALITY, SUBJECTTEACHER } from "../ui";
 import { ToastContainer, toast } from "react-toastify";
-import { ICONIMG } from "../icons";
 import subjectFunction from "../service/subjects";
 import teacherController from "../service/teacher";
 import { useTranslation } from "react-i18next";

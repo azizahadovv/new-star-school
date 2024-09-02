@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import ReactRouter from './router/React-Router'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { NETWORK } from './ui';
 function App() {
   const navigate = useNavigate()
   const token = localStorage.getItem('jwtToken');
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className='p-0 m-auto'>
+      <NETWORK/>
       <ReactRouter />
       <ToastContainer />
     </div>
