@@ -18,10 +18,9 @@ function NetworkChecker() {
             const start = new Date().getTime();
             try {
                 // So'rov yuborish (bu Google'ga HEAD so'rov)
-                await fetch("https://www.google.com", { method: 'HEAD' });
+                await fetch("https://nss.ix.tc/api/", { method: 'HEAD' });
                 const end = new Date().getTime();
                 const duration = end - start;
-
                 if (duration > 3000) { // Agar 3 soniyadan ko'p bo'lsa, past tezlik
                     toast.info("Your internet connection is slow.");
                 } else {

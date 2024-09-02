@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { IconLight } from "../icons";
 import { BUTTON, INPUT } from "../ui";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import student_register from "../service/register";
 import { toast } from "react-toastify"; // For notifications
 function Register() {
@@ -9,6 +9,11 @@ function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Sahifa yuklangan vaqtda sessionStorage ni tozalash
+    sessionStorage.clear();
+  }, []);
 
   const submitButton = async () => {
     try {

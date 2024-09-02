@@ -10,7 +10,7 @@
 
 # production
 /build
-
+/src/service/api
 .idea
 # misc
 .DS_Store

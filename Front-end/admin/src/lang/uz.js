@@ -38,7 +38,7 @@ const uzLang = {
   name_subjects: "Fanlar nomi",
   creating_sciences: "Fan qo'shish",
   exit: "Tizimdan chiqish",
-  no_teacher_subject:"Fanlar mavjud emas",
+  no_teacher_subject: "Fanlar mavjud emas",
 
 
 
@@ -67,9 +67,9 @@ const uzLang = {
   science_teacher: "Fan o'qituvchisi",
   login: "Login",
   password: "Parol",
-  prompt_value:"Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
-  delete_value:"Malumotlar o'chirilmadi qayta urinib ko'ring",
-
+  prompt_value: "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
+  delete_value: "Maʼlumotlar o'chirilmadi qayta urinib ko'ring",
+  no_date: "Hech qanday maʼlumot topilmadi."
 };
 
 export default uzLang;
