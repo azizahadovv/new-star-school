@@ -12,10 +12,10 @@ const enLang = {
   delete: "Delete",
   save: "Save",
   class_creation: "Class creation",
-  login_parol: "Login~Password",
+  login_parol: "Login",
   search_in_name: "Search by first and last name",
   back_out: "Back out",
-  no_teacher_subject:"Sciences are not available",
+  no_teacher_subject: "Sciences are not available",
 
   // ***************** Teacher Schedule*************************************
   table_pupils: "Pupils",

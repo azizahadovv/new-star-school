@@ -1,10 +1,19 @@
+import { toast } from 'react-toastify';
 import axios from './api'
+
+const auth = {
+  headers: {
+    'accept': '*/*',
+    'Authorization': " " + 'Bearer ' + localStorage.getItem('jwtToken')
+  }
+}
+
 
 const studentFunction = {
   async studentPostData(classId, data) {
     const { datas } = await axios.post(
       `classes/${classId}/students`,
-      data
+      data, auth
     );
     return datas;
   },
@@ -12,28 +21,28 @@ const studentFunction = {
     try {
       const { datas } = await axios.post(
         `classes/${classId}/students/csv`,
-        data
+        data, auth
       );
       return datas;
     } catch (error) {
-      console.log("file error" + " " + error);
+      toast.error(error.response.data.message);
     }
   },
 
   async removeStudent(studentId) {
-    await axios.delete(`students/${studentId}`);
+    await axios.delete(`students/${studentId}`, auth);
   },
   async getStudent() {
     const x = localStorage.getItem("ClassId");
     try {
-      const { data } = await axios.get(`classes/` + x);
+      const { data } = await axios.get(`classes/` + x, auth);
       return data;
     } catch (error) {
       console.log("Error getting student axios data");
     }
   },
   async studentPutActie(id, dataActive) {
-    const { data } = await axios.put(`students/${id}`, dataActive);
+    const { data } = await axios.put(`students/${id}`, dataActive, auth);
     return data;
   },
   async studentDeleteActie(id) {
@@ -42,7 +51,7 @@ const studentFunction = {
   },
   async removeStudentInClass(studentId, classId) {
     try {
-      await axios.delete(`classes/${classId}/students/${studentId}`);
+      await axios.delete(`classes/${classId}/students/${studentId}`, auth);
       return "Students removed successfully";
     } catch (error) {
       console.log("Error axios url \n" + error);
