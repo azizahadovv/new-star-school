@@ -19,8 +19,15 @@ const student_register = {
     },
     async refreshToken(datas) {
         try {
-            const { data } = await axios.post(`v1/auth/refresh-token`, datas, auth);
-            console.log(data);
+            const { data } = await axios.post(`v1/auth/refresh-token?refreshToken=${datas}`, auth);
+            return data;
+        } catch (error) {
+            toast.error("Error in student registration", error);
+        }
+    },
+    async ValidateToken(datas) {
+        try {
+            const { data } = await axios.get(`v1/auth/validate-token?token=${datas}`, auth);
             return data;
         } catch (error) {
             toast.error("Error in student registration", error);

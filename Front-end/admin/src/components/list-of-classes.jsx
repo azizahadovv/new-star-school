@@ -24,6 +24,8 @@ function ListOfClasses() {
   const [changeId, setChangeId] = useState("");
   const visible = useSelector((sel) => sel.addclass.visible);
   const getclassData = useSelector((sel) => sel.addclass.class);
+  const [classesData, setClassesData] = useState([])
+
 
   useEffect(() => {
     getClasses();
@@ -37,7 +39,7 @@ function ListOfClasses() {
   const getClasses = async () => {
     try {
       const classesData = await functionsClasses.getClasses();
-      dispatch(setClasses(classesData));
+      setClassesData(classesData)
     } catch (error) {
       console.log(error);
     }
@@ -108,21 +110,21 @@ function ListOfClasses() {
         className={`${open ? "hidden" : "flex"
           } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
       >
-        {!getclassData ? (
+        {classesData?.length === 0 ? (
           <LOADER />
         ) : (
-          getclassData.map((res, id) => {
+          classesData?.map((res, id) => {
             return (
               <ACTIVECLASSES
                 removeItem={removeItem}
                 changeClass={changeClass}
                 key={id}
                 res={res}
-                size={res.size}
-                nameOfClass={res.grade + res.groupLetter}
-                id={res.id}
-                slug={res.id}
-                active={res.active}
+                size={res?.size}
+                nameOfClass={res?.grade + res?.groupLetter}
+                id={res?.id}
+                slug={res?.id}
+                active={res?.active}
               />
             );
           })
@@ -159,7 +161,7 @@ function ListOfClasses() {
           </div>
         </div>
       </Rodal>
-      <ToastContainer />
+      
     </div>
   );
 }

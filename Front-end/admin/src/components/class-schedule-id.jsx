@@ -205,7 +205,7 @@ function ClassScheduleID() {
           </button>
         </div>
       </Rodal>
-      <ToastContainer />
+      
     </div>
   );
 }

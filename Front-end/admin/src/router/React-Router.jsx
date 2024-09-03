@@ -45,7 +45,7 @@ function ReactRouter() {
           <Route path="add-student/:id" element={<ADDSTUDENT />} />
         </Route>
         <Route path="*" element={<PageNoteFound />} />
-        <Route path="/register" element={<REGISTER />} />
+        <Route path="/login" element={<REGISTER />} />
       </Routes>
     </div>
   );

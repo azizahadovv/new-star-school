@@ -265,7 +265,7 @@ function AddUser() {
           <BUTTON buttonFunction={AddStudent} active name={t("save")} />
         </div>
       </div>
-      <ToastContainer />
+      
     </div>
   );
 }

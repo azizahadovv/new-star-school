@@ -69,7 +69,7 @@ const uzLang = {
   password: "Parol",
   prompt_value: "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
   delete_value: "Maʼlumotlar o'chirilmadi qayta urinib ko'ring",
-  no_date: "Hech qanday maʼlumot topilmadi."
+  no_date: "Hech qanday maʼlumot topilmadi, yoki sahifani yangilang..."
 };
 
 export default uzLang;

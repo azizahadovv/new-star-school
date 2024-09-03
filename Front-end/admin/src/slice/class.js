@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  visible: null,
+  visible: false,
   activeModal: false,
-  class: null,
+  class: [],
   isLoader: false,
-  error: null,
+  error: false,
   classesData: {},
   numberGroup: null,
 };

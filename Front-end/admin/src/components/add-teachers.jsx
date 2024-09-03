@@ -246,7 +246,7 @@ function AddTeacher() {
           <BUTTON buttonFunction={() => saveDataTeacher(subjectTeacherId)} active name={t("save")} />
         </div>
       </div>
-      <ToastContainer />
+      
     </div>
   )
 }

@@ -73,10 +73,11 @@ const teacherController = {
             console.log(error);
         }
     },
-    async getImage(imgURL) {
+    async getImage(imgId) {
         try {
-            await axios.get(`v1/files/${imgURL}`, auth)
+            const { data } = await axios.get(`v1/files/${imgId}`, auth)
             console.log("success upload");
+            return data
         } catch (error) {
             console.log(error);
         }

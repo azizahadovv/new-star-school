@@ -18,14 +18,14 @@ function Register() {
   const submitButton = async () => {
     try {
       const data = await student_register.registerStudent({ username, password });
-      console.log(data);
       // Token borligini tekshirish
       if (data?.jwtToken) {
         localStorage.setItem('jwtToken', data.jwtToken);
         localStorage.setItem('refreshToken', data.refreshToken);
+        sessionStorage.setItem('my-users-ids', data.userId);
         navigate('/');
       } else {
-        toast.error("Failed to retrieve JWT token.");
+        console.log("Failed to retrieve JWT token.");
       }
     } catch (error) {
       // console.error("Registration failed: ", error);

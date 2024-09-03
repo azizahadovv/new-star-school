@@ -48,7 +48,7 @@ function StudentProfile() {
         className={`${styleTopBarUINoFlex} w-[300px] h-[380px] p-3 rounded-3xl flex items-center justify-between flex-col`}
       >
         <div className="w-full h-[80%] flex items-center justify-center rounded-xl overflow-hidden cursor-pointer">
-          {dataStudent.image === null ? (
+          {dataStudent.imageUrl === null ? (
             <div className="w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase">
               <label className="text-6xl text-white flex items-center justify-center">
                 {dataStudent.firstName.charAt(0) +
@@ -57,7 +57,7 @@ function StudentProfile() {
               </label>
             </div>
           ) : (
-            <img className="rounded-full" src={dataStudent.image} alt="dataStudent.image" />
+            <img className="rounded-full" src={dataStudent?.imageUrl} alt="dataStudent.image" />
           )}
         </div>
         <label
@@ -138,10 +138,6 @@ function StudentProfile() {
             <tr>
               <th className="w-50">{t("login")}:</th>
               <th className="w-50">{dataStudent.login}</th>
-            </tr>
-            <tr>
-              <th className="w-50">{t("password")}:</th>
-              <th className="w-50">{dataStudent.password}</th>
             </tr>
           </tbody>
         </table>

@@ -168,7 +168,7 @@ function ListOfSubjects() {
           </div>
         </Rodal>
       </div>
-      <ToastContainer />
+      
     </div>
   );
 }

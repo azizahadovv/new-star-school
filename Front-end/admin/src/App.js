@@ -9,32 +9,52 @@ function App() {
   const token = localStorage.getItem('jwtToken');
   const refreshToken = localStorage.getItem('refreshToken');
 
+  const clearStorageAndRedirect = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    navigate('/login', { replace: true });
+  };
+
+  const refresh_Token = async () => {
+    try {
+      const datas = await student_register.refreshToken(refreshToken);
+      const isTokenValid = await student_register.ValidateToken(token);
+
+      if (!isTokenValid || !datas || datas.error) {
+        clearStorageAndRedirect();
+      } else {
+        updateTokens(datas.jwtToken, datas.refreshToken);
+      }
+    } catch (error) {
+      console.error('Failed to refresh token:', error);
+      clearStorageAndRedirect();
+    }
+  };
+
+  const updateTokens = (newToken, newRefreshToken) => {
+    localStorage.setItem('jwtToken', newToken);
+    localStorage.setItem('refreshToken', newRefreshToken);
+  };
+
+  const handle403Error = () => {
+    if (window.location.pathname === '/login') {
+      clearStorageAndRedirect();
+    }
+  };
+
   useEffect(() => {
-    if (!token) {
-
-
-      navigate('/register', { replace: true });
+    if (window.location.pathname === '/login' || !token) {
+      clearStorageAndRedirect();
     }
 
-    // Function to refresh the token
-    // const refresh_Token = async () => {
-    //   try {
-    //     const datas = await student_register.refreshToken(refreshToken);
-    //     console.log(datas.jwtToken);
-    //     if (datas && datas.jwtToken) {
-    //       console.log(datas.jwtToken);
-    //       localStorage.setItem('jwtToken', datas.jwtToken);
-    //     }
-    //   } catch (error) {
-    //     console.error('Failed to refresh token:', error);
-    //   }
-    // };
+    const intervalId = setInterval(refresh_Token, 3600000); // Run every hour
 
-    // // Run refresh_Token every hour
-    // const intervalId = setInterval(refresh_Token, 3600); // 3600000 ms = 1 hour
+    window.addEventListener('error', handle403Error);
 
-    // // Clean up the interval on component unmount
-    // return () => clearInterval(intervalId);
+    return () => {
+      clearInterval(intervalId);
+      window.removeEventListener('error', handle403Error);
+    };
   }, [token, navigate, refreshToken]);
 
   return (
