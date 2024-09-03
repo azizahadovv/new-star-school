@@ -1,21 +1,11 @@
 import React, { useEffect } from 'react'
 import { Container } from '../constanta/style'
 import { homeCard } from '../constanta/const'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 function Home() {
   const { t } = useTranslation()
-
-  // const isRefreshed = sessionStorage.getItem('isRefreshed');
-
-  // useEffect(() => {
-  //   if (!isRefreshed && window.location.pathname === '/') {
-  //     sessionStorage.setItem('isRefreshed', 'true');
-  //     window.location.reload();
-  //   } else return
-  // }, [isRefreshed]);
-
 
   return (
     <div className={`p-6 min-h-[360px] rounded-lg ${Container} flex flex-wrap gap-4 tablet:items-start tablet:justify-start minMobil:items-center minMobil:justify-center`}>

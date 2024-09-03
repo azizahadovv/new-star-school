@@ -3,10 +3,10 @@ import axios from './api'
 
 const auth = {
     headers: {
-      'accept': '*/*',
-      'Authorization': " " + 'Bearer ' + localStorage.getItem('jwtToken')
+        'accept': '*/*',
+        'Authorization': " " + 'Bearer ' + localStorage.getItem('jwtToken')
     }
-  }
+}
 
 const teacherController = {
     async searchTeacher(techerName, subjectId) {
@@ -68,6 +68,14 @@ const teacherController = {
     async uploadImg(teacherId, file) {
         try {
             await axios.post(`teachers/${teacherId}/upload-image`, file, auth)
+            console.log("success upload");
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    async getImage(imgURL) {
+        try {
+            await axios.get(`v1/files/${imgURL}`, auth)
             console.log("success upload");
         } catch (error) {
             console.log(error);

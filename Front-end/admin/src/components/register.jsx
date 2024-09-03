@@ -18,16 +18,18 @@ function Register() {
   const submitButton = async () => {
     try {
       const data = await student_register.registerStudent({ username, password });
+      console.log(data);
       // Token borligini tekshirish
       if (data?.jwtToken) {
         localStorage.setItem('jwtToken', data.jwtToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
         navigate('/');
       } else {
         toast.error("Failed to retrieve JWT token.");
       }
     } catch (error) {
-      console.error("Registration failed: ", error);
-      toast.error("Registration failed. Please try again.");
+      // console.error("Registration failed: ", error);
+      // toast.error("Registration failed. Please try again.");
     }
   };
 
@@ -64,9 +66,9 @@ function Register() {
                 <input id="checkbox_id" type="checkbox" />
                 <span className="minMobil:text-sm tablet:text-base">Eslab qolish</span>
               </label>
-              <Link className="minMobil:text-sm tablet:text-base text-red no-underline font-semibold">
+              <a href="#" className="minMobil:text-sm tablet:text-base text-red no-underline font-semibold">
                 Parolni unutdingizmi?
-              </Link>
+              </a>
             </div>
           </div>
           <div className="w-full">
