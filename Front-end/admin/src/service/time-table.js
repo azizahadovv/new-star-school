@@ -25,7 +25,7 @@ const TimeTable = {
             toast.success("sucessfully added");
             return
         } catch (error) {
-            console.log(error);
+            toast.error(error);
         }
     },
     async TrashData(dataId) {
@@ -33,15 +33,15 @@ const TimeTable = {
             await axios.delete(`v1/timetables/${dataId}`, auth);
             toast.success("Data successfully deleted");
         } catch (error) {
-            console.log(error);
+            toast.error(error);
         }
     },
     async updateTimeTable(dataId, data) {
         try {
             await axios.put(`v1/timetables/${dataId}`, data, auth)
-            console.log("Data successfully updated");
+            toast.error("Data successfully updated");
         } catch (error) {
-            console.log(error);
+            toast.error(error);
         }
     }
 }

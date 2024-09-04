@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import axios from './api'
 
 
@@ -16,7 +17,7 @@ const subjectFunction = {
             const { data } = await axios.get(`subjects`, auth);
             return data;
         } catch (error) {
-            console.log(" get subject error \n" + error);
+            toast.error(" get subject error \n" + error);
         }
     },
     async addSubject(dataPost) {
@@ -24,7 +25,7 @@ const subjectFunction = {
             const { data } = await axios.post(`subjects`, dataPost, auth);
             return data;
         } catch (error) {
-            console.log("add subject error \n" + error);
+            toast.error("add subject error \n" + error);
         }
     },
     async changeSubject(id, changeData) {
@@ -32,7 +33,7 @@ const subjectFunction = {
             const { data } = await axios.put(`subjects/${id}`, changeData, auth);
             return data;
         } catch (error) {
-            console.log("add subject error \n" + error);
+            toast.error("add subject error \n" + error);
         }
     },
 
@@ -41,7 +42,7 @@ const subjectFunction = {
             await axios.delete(`subjects/${subjectId}`, auth);
             return;
         } catch (error) {
-            console.log("error remove subjects \n" + error);
+            toast.error("error remove subjects \n" + error);
         }
     },
 

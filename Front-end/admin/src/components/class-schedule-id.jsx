@@ -53,7 +53,7 @@ function ClassScheduleID() {
     }
   };
 
-  
+
   const addSchedule = async () => {
     const isFormValid = endTime && startTime && subjectId !== null && teacherId !== null && termId;
     if (!isFormValid) {
@@ -205,7 +205,7 @@ function ClassScheduleID() {
           </button>
         </div>
       </Rodal>
-      
+
     </div>
   );
 }

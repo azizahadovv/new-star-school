@@ -26,21 +26,31 @@ function TeacherProfile() {
         }
     }
     const saveImage = async (e) => {
+        const maxFileSize = 3 * 1024 * 1024; // 3MB
+        const allowedExtensions = /\.(jpg|jpeg|png|gif|svg)$/i;
 
-        if (!e.name.match(/\.(jpg|jpeg|png|gif|svg)$/)) {
-            toast.error("File extension should be jpg, jpeg, png, gif, svg")
+        if (!allowedExtensions.test(e?.name)) {
+            toast.error("File extension should be jpg, jpeg, png, gif, svg");
             return;
         }
+
+        if (e.size > maxFileSize) {
+            toast.error("File size should not exceed 3MB");
+            return;
+        }
+
         const formData = new FormData();
         formData.append('file', e);
+
         try {
-            await teacherController.uploadImg(id, formData)
+            await teacherController.uploadImg(id, formData);
             toast.success("Uploaded file");
-            get_datas_Student()
+            get_datas_Student();
         } catch (error) {
-            toast.error("Pay attention to the file extension `PNG,JPG,SVG`")
+            toast.error("Error uploading file. Please ensure the file is a valid image.");
         }
     }
+
 
     const subjectsTeacher = dataTeacher.subject || []
 
@@ -127,7 +137,7 @@ function TeacherProfile() {
                     </tbody>
                 </table>
             </div>
-            
+
         </div>
     )
 }

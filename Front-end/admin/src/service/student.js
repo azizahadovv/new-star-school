@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import axios from './api'
 
 const auth = {
@@ -14,7 +15,7 @@ const student_Page_Function = {
             return data;
         }
         catch (error) {
-            console.log("Error getting student data");
+            toast.error("Error getting student data");
         }
     },
     async get_student_in_Id(studentId) {
@@ -22,7 +23,7 @@ const student_Page_Function = {
             const { data } = await axios.get(`students/${studentId}`, auth);
             return data;
         } catch (error) {
-            console.log(` Error get_student_in_Id  ${error}`);
+            toast.error(` Error get_student_in_Id  ${error}`);
         }
     },
     async Put_Student(id, dataStudent) {
@@ -30,16 +31,16 @@ const student_Page_Function = {
             await axios.put(`students/${id}`, dataStudent, auth);
             return
         } catch (error) {
-            console.log("error removed \n" + error);
+            toast.error("error removed \n" + error);
         }
     },
     async remove_Student(id) {
         try {
             await axios.delete(`students/${id}`, auth);
-            console.log("successfully removed" + id);
+            toast.error("successfully removed" + id);
             return
         } catch (error) {
-            console.log("error removed \n" + error);
+            toast.error("error removed \n" + error);
         }
     },
     async search_Student(keywordId, keywordName) {
@@ -47,15 +48,15 @@ const student_Page_Function = {
             const { data } = await axios.get(`students/search-by?classId=${keywordId}&name=${keywordName}`, auth);
             return data
         } catch (error) {
-            console.log(error.message);
+            toast.error(error.message);
         }
     },
     async uploadFile(studentId, file) {
         try {
             await axios.post(`students/${studentId}/upload-image`, file, auth)
-            console.log("successfully uploaded");
+            toast.error("successfully uploaded");
         } catch (error) {
-            console.log(error);
+            toast.error(error);
         }
     }
 }

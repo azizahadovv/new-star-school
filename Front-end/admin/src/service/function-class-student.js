@@ -38,7 +38,7 @@ const studentFunction = {
       const { data } = await axios.get(`classes/` + x, auth);
       return data;
     } catch (error) {
-      console.log("Error getting student axios data");
+      toast.error("Error getting student axios data");
     }
   },
   async studentPutActie(id, dataActive) {
@@ -54,7 +54,7 @@ const studentFunction = {
       await axios.delete(`classes/${classId}/students/${studentId}`, auth);
       return "Students removed successfully";
     } catch (error) {
-      console.log("Error axios url \n" + error);
+      toast.error("Error axios url \n" + error);
     }
   },
 };

@@ -88,11 +88,8 @@ function ListOfSubjects() {
   return (
     <div className={`${Container}`}>
       <div
-        className={`${styleTopBarUINoFlex} min-h-20 px-3 flex items-center justify-between overflow-scroll`}
+        className={`${styleTopBarUINoFlex} min-h-20 px-3 flex items-center justify-end overflow-scroll`}
       >
-        <div className="min-w-[300px]">
-          <SEARCH />
-        </div>
         <div className="min-w-40">
           <BUTTON buttonFunction={() => dispatch(showModal())} name={t("creating_sciences")} active />
         </div>
