@@ -88,7 +88,8 @@ function ListOfClassesID() {
                 {dataStudent?.map((item, index) => (
                   <tr key={item?.id}>
                     <th scope="row">{index + 1}</th>
-                    <td className="relative">
+                    <td className="flex items-start justify-start gap-2">
+                      <img className={`w-10 h-10 rounded-full ${!item?.imageUrl && 'hidden'}`} src={item?.imageUrl} alt="#" />
                       <p className="w-[270px]">{`${item?.lastName} ${item.firstName} ${item.patronymic}`}</p>
                     </td>
                     <td><p className="w-[150px]">{item?.login}</p></td>

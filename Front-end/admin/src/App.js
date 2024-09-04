@@ -47,6 +47,12 @@ function App() {
       clearStorageAndRedirect();
     }
 
+    // Sahifani faqat birinchi marta '/' sahifasiga tashrif buyurganda yangilash
+    if (window.location.pathname === '/' && !sessionStorage.getItem('refreshed')) {
+      sessionStorage.setItem('refreshed', 'true');
+      window.location.reload();
+    } else return
+
     const intervalId = setInterval(refresh_Token, 3600000); // Run every hour
 
     window.addEventListener('error', handle403Error);

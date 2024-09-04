@@ -84,7 +84,7 @@ function Teacher() {
                   return <tr key={item?.id}>
                     <th scope="row">{id + 1}</th>
                     <td>
-                      <p className='w-[270px] flex items-center justify-start gap-2 min-h-max text-lg font-normal'> <img className='w-10 rounded-full' src={item?.image && item.image} alt="" />{item?.firstName + " " + item?.lastName + " " + item?.patronymic}</p>
+                      <p className='w-[270px] flex items-center justify-start gap-2 min-h-max text-lg font-normal'>  <img className={`w-10 h-10 rounded-full ${!item?.imageUrl && 'hidden'}`} src={item?.imageUrl} alt="#" />{item?.firstName + " " + item?.lastName + " " + item?.patronymic}</p>
                     </td>
                     <td>
                       <p className='w-[150px]'>{item?.subject?.map(i => <span key={i?.id}>{i?.name}</span>)}</p>
