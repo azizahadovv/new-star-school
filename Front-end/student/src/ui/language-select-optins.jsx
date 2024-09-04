@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-function LanguageOptins() {
+function LanguageOptions() {
     const { i18n } = useTranslation();  // useTranslation hookni chaqirish
 
     const changeLanguage = (lng) => {
@@ -8,9 +8,11 @@ function LanguageOptins() {
         localStorage.setItem("lang", lng);
     };
 
+    const currentLang = localStorage.getItem("lang") || "";  // Null qiymatdan qochish uchun
+
     return (
         <select
-            value={localStorage.getItem("lang")}
+            value={currentLang}
             onChange={(e) => changeLanguage(e.target.value)}
             className="form-select"
         >
@@ -21,4 +23,4 @@ function LanguageOptins() {
     );
 }
 
-export default LanguageOptins;
+export default LanguageOptions;

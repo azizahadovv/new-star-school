@@ -12,7 +12,7 @@ function ButtonExit() {
     return (
         <button
             onClick={() => {
-                navitagate('/register')
+                navitagate('/login')
                 dispatch(exitSidebarBtn())
             }}
             className='flex gap-2 items-center justify-center w-full bg-white border py-[10px] rounded-lg'>

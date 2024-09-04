@@ -51,8 +51,8 @@ const uzLang = {
 
     // 
 
-    no_data: "Hech qanday ma'lumot topilmadi"
-
+    no_data: "Hech qanday ma'lumot topilmadi",
+class:"Sinf",
 
 }
 

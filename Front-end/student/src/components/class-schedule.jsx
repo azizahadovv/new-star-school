@@ -15,7 +15,7 @@ function ClassSchedule() {
     }, [selectedOption])
 
     const getClassSchedule = async () => {
-        const ids = localStorage.getItem('studentId')
+        const ids = sessionStorage.getItem('my-users-ids')
         if (ids && selectedOption) {
             const datas = await studentCotrol.getStudentSchedule(ids, selectedOption)
             setData(datas)

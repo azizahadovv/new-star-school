@@ -16,7 +16,7 @@ function ReactRouter() {
                     <Route path='profile' element={<PROFIL />} />
                 </Route>
                 <Route path='*' element={<PageNoteFound />} />
-                <Route path='/register' element={<REGISTER />} />
+                <Route path='/login' element={<REGISTER />} />
             </Routes>
 
             {/* </Routes> */}

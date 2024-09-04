@@ -56,7 +56,9 @@ const enLang = {
 
     // 
 
-    no_data: "No information found"
+    no_data: "No information found",
+    class:"Class",
+
 
 
 

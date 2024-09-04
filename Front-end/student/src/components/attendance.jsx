@@ -18,7 +18,7 @@ function Attendance() {
   }, [termData, valueTeacher]); // termData va valueTeacher o'zgarganida getData qayta ishga tushadi
 
   const getData = async () => {
-    const id = localStorage.getItem('studentId')
+    const id = sessionStorage.getItem('my-users-ids')
     const data = await GradeCotrol.getTerms(id, termData, 'ATTENDANCE', valueTeacher)
     setNewData(data);
   }

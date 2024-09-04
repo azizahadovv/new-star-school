@@ -1,14 +1,10 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 function Loader() {
+  const { t } = useTranslation()
   return (
-    <section className="dots-container">
-    <div className="dot"></div>
-    <div className="dot"></div>
-    <div className="dot"></div>
-    <div className="dot"></div>
-    <div className="dot"></div>
-  </section>
+    <h1>{t('no_data')}</h1>
   )
 }
 

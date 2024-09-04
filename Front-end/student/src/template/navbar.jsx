@@ -4,17 +4,43 @@ import './navbar.css'
 import { openVisible } from '../slice/sidebar'
 import { openBar, userIcon } from '../icons'
 import { LANGUAGEPOTION } from '../ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { HomeText } from '../utils/UiFunctios'
 import { useTranslation } from 'react-i18next'
+import studentCotrol from '../service/student'
 
 function Navbar() {
-  const {t}=useTranslation()
-  const [firstName, setFirstName] = useState("Usenov")
-  const [name, setName] = useState("Tohir")
+  const { t } = useTranslation()
+  const [firstName, setFirstName] = useState("")
+  const [name, setName] = useState("")
+  const [Image, setImage] = useState("")
+
   const dispatch = useDispatch()
   const toggle = useSelector(sel => sel.sidebarReduser.open)
   const myText = HomeText().props.children
+
+  const user_id = sessionStorage.getItem('my-users-ids');
+
+  useEffect(() => {
+    if (user_id) {
+      const fetchData = async () => {
+        try {
+          const data = await studentCotrol.getStudentInId(user_id);
+          if (data) {
+            setFirstName(data.firstName || "");
+            setName(data.lastName || "");
+            setImage(data.imageUrl || "");
+          }
+        } catch (error) {
+          console.error("Failed to fetch user data:", error);
+        }
+      };
+      fetchData();
+    }
+  }, [user_id]);
+
+
+
 
   return (
     <div className='w-full shadowBG bg-white border-b border-brGray'>
@@ -32,7 +58,7 @@ function Navbar() {
             </div>
             <div className='flex items-center justify-center gap-2'>
               <div className='w-12 h-12 rounded-full'>
-                <img className='rounded-full' src={userIcon} alt="userIcon" />
+                <img className='rounded-full w-11 h-11' src={Image !== '' ? Image : userIcon} alt="userIcon" />
               </div>
               <div className='flex items-start justify-center flex-col'>
                 <span className='leading-7 text-lg font-bold'>
