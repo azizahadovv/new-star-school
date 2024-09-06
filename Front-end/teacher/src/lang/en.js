@@ -73,7 +73,9 @@ const enLang = {
   science_teacher: "Science teacher",
   login: "Login",
   password: "Password",
-  time_table:"Lesson Schedule"
+  time_table:"Lesson Schedule",
+  error_no_grade:"The student was not evaluated."
+
 
 };
 

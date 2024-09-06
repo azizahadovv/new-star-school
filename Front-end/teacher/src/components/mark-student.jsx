@@ -7,16 +7,17 @@ import { useTranslation } from 'react-i18next'
 
 function MarkStudents() {
   const [selectedOption, setSelectedOption] = useState(localStorage.getItem('selectedOption') || '');
+  const [teacherId, setTeacherId] = useState(sessionStorage.getItem('my-users-ids') || '');
   const [datas, setDatas] = useState([])
   const { id } = useParams()
   const { t } = useTranslation()
 
   useEffect(() => {
     getMarkData();
-  }, [selectedOption, id]);
+  }, [selectedOption, id, teacherId]);
 
   const getMarkData = async () => {
-    const data = await MarkClass.getMarks(1, 1, id, selectedOption)
+    const data = await MarkClass.getMarks(teacherId, 7, id, selectedOption)
     setDatas(data)
   }
 
@@ -50,7 +51,7 @@ function MarkStudents() {
                 <th className="py-2 px-4 border-b">№</th>
                 <th className="py-2 px-4 border-b"><p className='min-w-[250px]'>{t("table_pupils")}</p></th>
                 {dates?.map((date, index) => (
-                  <th key={index} className="py-2 px-4 border-b"><p className='min-w-[100px]'>{date}</p></th>
+                  <th key={index} className="py-2 px-4 border-b"><p className='min-w-[100px]  text-center'>{date}</p></th>
                 ))}
               </tr>
             </thead>

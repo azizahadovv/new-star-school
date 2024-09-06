@@ -63,7 +63,8 @@ const uzLang = {
   science_teacher: "Fan o'qituvchisi",
   login: "Login",
   password: "Parol",
-  time_table:"Dars Jadvali"
+  time_table:"Dars Jadvali",
+  error_no_grade:"O'quvchi baholanmadi."
 
 
 };

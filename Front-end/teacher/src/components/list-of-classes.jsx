@@ -6,12 +6,13 @@ import teacherClass from "../service/teacher-class"
 
 function ListOfClasses() {
   const [datas, setDatas] = useState([])
+  const teacherId = sessionStorage.getItem('my-users-ids')
   useEffect(() => {
     data()
   }, [])
 
   const data = async () => {
-    const data = await teacherClass.myClasses('1')
+    const data = await teacherClass.myClasses(teacherId)
     setDatas(data);
   }
 

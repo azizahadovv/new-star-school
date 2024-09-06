@@ -17,7 +17,7 @@ function ReactRouter() {
                     <Route path='time-table' element={<TIMETABLE />} />
                 </Route>
                 <Route path='*' element={<PageNoteFound />} />
-                <Route path='/register' element={<REGISTER />} />
+                <Route path='/login' element={<REGISTER />} />
             </Routes>
         </div >
 
