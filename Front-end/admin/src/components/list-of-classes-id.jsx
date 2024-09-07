@@ -35,9 +35,8 @@ function ListOfClassesID() {
     const classId = localStorage.getItem("ClassId");
     if (window.confirm(`Are you sure you want to delete ${studentName}?`)) {
       try {
-        await studentFunction.removeStudentInClass(studentId, classId);
+        await studentFunction.removeStudentInClass(studentId, classId,studentName);
         getStudentsData();
-        toast.success(`Student named ${studentName} was deleted`);
       } catch (error) {
         console.error("Error deleting student: ", error);
         toast.error(error.message);

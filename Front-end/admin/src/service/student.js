@@ -34,10 +34,10 @@ const student_Page_Function = {
             toast.error("error removed \n" + error);
         }
     },
-    async remove_Student(id) {
+    async remove_Student(id, name) {
         try {
             await axios.delete(`students/${id}`, auth);
-            toast.error("successfully removed" + id);
+            toast.success(`${name} has been deleted`)
             return
         } catch (error) {
             toast.error("error removed \n" + error);

@@ -28,7 +28,7 @@ function Navbar() {
           if (data) {
             setFirstName(data.firstName || "");
             setName(data.lastName || "");
-            setImage(data.imageId || "");
+            setImage(data.imageUrl || "");
           }
         } catch (error) {
           console.error("Failed to fetch user data:", error);

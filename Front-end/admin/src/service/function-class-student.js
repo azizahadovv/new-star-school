@@ -49,10 +49,11 @@ const studentFunction = {
     const { data } = await axios.delete(`students/${id}`);
     return data;
   },
-  async removeStudentInClass(studentId, classId) {
+  async removeStudentInClass(studentId, classId, studentName) {
     try {
       await axios.delete(`classes/${classId}/students/${studentId}`, auth);
-      return "Students removed successfully";
+      toast.success(`Student named ${studentName} was deleted`);
+      return
     } catch (error) {
       toast.error("Error axios url \n" + error);
     }

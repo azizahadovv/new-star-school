@@ -1,6 +1,6 @@
 const uzLang = {
   class_schedule_home: "Dars jadvali",
-  list_of_classes_home: "Sinflar ro‘yhati",
+  list_of_classes_home: "Sinflar ro‘yxati",
   teacher_home: "O‘qituvchilar",
   student_home: "O'quvchilar",
   sciences: "Fanlar",
@@ -69,7 +69,8 @@ const uzLang = {
   password: "Parol",
   prompt_value: "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
   delete_value: "Maʼlumotlar o'chirilmadi qayta urinib ko'ring",
-  no_date: "Hech qanday maʼlumot topilmadi, yoki sahifani yangilang..."
+  no_date: "Hech qanday maʼlumot topilmadi, yoki sahifani yangilang...",
+  save_image:"Hozircha profil suratini o'zgartirib bo'lmaydi",
 };
 
 export default uzLang;

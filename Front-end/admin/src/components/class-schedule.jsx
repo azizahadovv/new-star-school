@@ -11,7 +11,7 @@ function ClassSchedule() {
   const [schedule, setSchedule] = useState([])
   useEffect(() => {
     getClass()
-  }, [schedule])
+  }, [])
 
   const getClass = async () => {
     try {
@@ -24,7 +24,7 @@ function ClassSchedule() {
   return (
     <div className={`${Container} ${open ? 'hidden' : 'flex'}`}>
       {
-        schedule.length === 0 ? <div>
+        schedule?.length === 0 ? <div>
           <h1>{t('no_date')}</h1>
         </div> : <div className=' w-full flex items-start minMobil:justify-center content-start tablet:justify-start flex-wrap gap-4 minMobil:px-2'>
           {

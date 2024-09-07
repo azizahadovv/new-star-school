@@ -14,7 +14,7 @@ const student_register = {
             const { data } = await axios.post(`v1/auth/login`, datas);
             return data;
         } catch (error) {
-            toast.error("Error in student registration", error);
+            toast.error("Error in Admin registration", error);
         }
     },
     async refreshToken(datas) {
@@ -22,7 +22,7 @@ const student_register = {
             const { data } = await axios.post(`v1/auth/refresh-token?refreshToken=${datas}`, auth);
             return data;
         } catch (error) {
-            toast.error("Error in student registration", error);
+            toast.error("Error in Admin registration", error);
         }
     },
     async ValidateToken(datas) {
@@ -30,7 +30,7 @@ const student_register = {
             const { data } = await axios.get(`v1/auth/validate-token?token=${datas}`, auth);
             return data;
         } catch (error) {
-            toast.error("Error in student registration", error);
+            toast.error("Error in Admin registration", error);
         }
     },
 };

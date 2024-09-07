@@ -35,22 +35,56 @@ function Profil() {
         }
     };
 
+
+
+    const saveImage = async (e) => {
+        const maxFileSize = 3 * 1024 * 1024; // 3MB
+        const allowedExtensions = /\.(jpg|jpeg|png|gif|svg)$/i;
+
+        if (!allowedExtensions.test(e?.name)) {
+            toast.error(t("file_extension_error"));
+            return;
+        }
+
+        if (e.size > maxFileSize) {
+            toast.error(t("file_size_error"));
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', e);
+
+        try {
+            await user_register.uploadImg(user_id, formData);
+            getUserDate(user_id); // Fayl yuklanganidan keyin yangilanadigan ma'lumotlar
+        } catch (error) {
+            toast.error(t("upload_error"));
+        }
+    };
+
+
+
     return (
-        <div className={`${Container} flex items-start justify-center tablet:flex-row minMobil:flex-col ${open ? 'hidden' : 'flex'}`}>
-            <div className={`minMobil:w-full flex items-center justify-start flex-col gap-1 tablet:w-[310px] px-2`}>
-                <div className={`${styleTopBarUINoFlex} flex items-center flex-col justify-start gap-3 px-3 py-4`}>
-                    <img className="rounded-lg" width={220} height={220} src={userData?.imageId ? userData?.imageId : userIcon} alt="IMAGE" />
-                    <button className="flex items-center justify-center w-full gap-1 border border-brGray py-2 rounded-lg bg-lightGray">
-                        <img src={ICONIMG} alt="" />
+        <div className={`${Container} flex tablet:items-start minMobil:items-center justify-center tablet:flex-row minMobil:flex-col ${open ? 'hidden' : 'flex'} gap-5`}>
+            <div className={`${styleTopBarUINoFlex} w-[300px] h-[380px] p-3 rounded-3xl flex items-center justify-between flex-col`}>
+                <div className='w-full h-[80%] flex items-center justify-center rounded-xl overflow-hidden cursor-pointer'>
+                    {
+                        userData?.imageUrl === null ? <div className='w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase'>
+                            <span className='text-6xl text-white flex items-center justify-center'>{userData?.firstName.charAt(0) + "." + userData?.lastName.charAt(0)}</span>
+                        </div> : <img className='rounded-full w-full h-full' src={userData?.imageUrl} alt="dataTeacher.image" />
+                    }
+                </div>
+                <label className={`py-[10px] px-3 w-full ${"bg-lightGray text-textBlack"} border border-brGray rounded-xl mt-2 flex items-center justify-center gap-2 cursor-pointer`}>
+                    <input onChange={(e) => saveImage(e.target.files[0])} hidden type="file" />
+                    <span className='flex items-center justify-center gap-2'>
+                        <img src={ICONIMG} alt="ICONIMG" />
                         {t("edit")}
-                    </button>
-                </div>
-                <div className="p-1 tablet:w-full minMobil:w-[310px]">
-                    <BUTTONEXIT />
-                </div>
+                    </span>
+                </label>
+                <BUTTONEXIT />
             </div>
             <div className="minMobil:w-full min-h-max tablet:max-w-full">
-                <div className={`flex flex-col min-h-96 items-start justify-start ${styleTopBarUINoFlex} p-3 overflow-scroll`}>
+                <div className={`flex flex-col min-h-96 items-start justify-start ${styleTopBarUINoFlex} p-3 overflow-scroll tablet:max-w-[85%]`}>
                     <h2 className="text-blue font-bold">{t("personal_information")}</h2>
                     {loading ? (
                         <p>{t("loading")}</p> // Add a loading state message

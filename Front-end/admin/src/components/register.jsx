@@ -18,20 +18,46 @@ function Register() {
   const submitButton = async () => {
     try {
       const data = await student_register.registerStudent({ username, password });
+
+      const roles = data.roles || [];
+
       // Token borligini tekshirish
       if (data?.jwtToken) {
-        localStorage.setItem('jwtToken', data.jwtToken);
-        localStorage.setItem('refreshToken', data.refreshToken);
-        sessionStorage.setItem('my-users-ids', data.userId);
-        navigate('/');
+        // Rollarni tekshirish
+        if (roles.includes('ADMIN')) {
+          localStorage.setItem('jwtToken', data.jwtToken);
+          localStorage.setItem('refreshToken', data.refreshToken);
+          sessionStorage.setItem('my-users-ids', data.userId);
+          toast.success("Admin foydalanuvchisi");
+          navigate('/');
+          // Admin uchun amallarni bu yerda bajarishingiz mumkin
+        }
+        if (roles.includes('TEACHER')) {
+          toast.error("Siz o'qituvchi platformasiga kirishingiz kerak!");
+          // O'qituvchi uchun amallarni bu yerda bajarishingiz mumkin
+        }
+        if (roles.includes('DEPUTY_DIRECTOR')) {
+          toast.error("Siz direktor o‘rinbosari platformasiga kirishingiz kerak!");
+          // O'qituvchi uchun amallarni bu yerda bajarishingiz mumkin
+        }
+        if (roles.includes('DIRECTOR')) {
+          toast.error("Siz direktor platformasiga kirishingiz kerak!");
+          // O'qituvchi uchun amallarni bu yerda bajarishingiz mumkin
+        }
+        if (roles.includes('STUDENT')) {
+          toast.error("Siz O‘quvchi platformasiga kirishingiz kerak!");
+          // O'qituvchi uchun amallarni bu yerda bajarishingiz mumkin
+        }
+
       } else {
         console.log("Failed to retrieve JWT token.");
       }
     } catch (error) {
-      // console.error("Registration failed: ", error);
+      console.error("Registration failed: ", error);
       // toast.error("Registration failed. Please try again.");
     }
   };
+
 
   return (
     <div className="w-full h-screen flex items-center justify-center bg-white">
