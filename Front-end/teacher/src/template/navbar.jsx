@@ -4,19 +4,33 @@ import './navbar.css'
 import { openVisible } from '../slice/sidebar'
 import { openBar, userIcon } from '../icons'
 import { LANGUAGEPOTION } from '../ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { HomeText } from '../utils/UiFunctios'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import user_register from '../service/user'
 
 function Navbar() {
-  const navigate=useNavigate()
-  const [firstName, setFirstName] = useState("Usenov")
-  const [name, setName] = useState("Tohir")
-  const {t}=useTranslation()
+  const navigate = useNavigate()
+  const [firstName, setFirstName] = useState("")
+  const [name, setName] = useState("")
+  const [image, setImage] = useState("")
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const toggle = useSelector(sel => sel.sidebarReduser.open)
   const myText = HomeText().props.children
+  const user_id = sessionStorage.getItem('my-users-ids')
+
+  useEffect(() => {
+    getUsersData()
+  }, [user_id])
+
+  const getUsersData = async () => {
+    const userData = await user_register.getUserData(user_id)
+    setFirstName(userData.lastName);
+    setName(userData.firstName);
+    setImage(userData.imageUrl);
+  }
 
   return (
     <div className='w-full shadowBG bg-white border-b border-brGray '>
@@ -34,9 +48,9 @@ function Navbar() {
             </div>
             <div className='flex items-center justify-center gap-2'>
               <div className='w-12 h-12 rounded-full'>
-                <img className='rounded-full' src={userIcon} alt="userIcon" />
+                <img className='rounded-full w-12 h-12' src={image ? image : userIcon} alt="userIcon" />
               </div>
-              <div onDoubleClick={()=>navigate('/profile')} className='flex items-start justify-center flex-col cursor-pointer'>
+              <div onDoubleClick={() => navigate('/profile')} className='flex items-start justify-center flex-col cursor-pointer'>
                 <span className='leading-7 text-lg font-bold'>
                   <span className='minMobil:hidden tablet:block '>{firstName}.{name}</span>
                   <span className='minMobil:block tablet:hidden '>{firstName}.{name.slice(0, 1)}</span>

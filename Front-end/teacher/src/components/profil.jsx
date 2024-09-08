@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
-import { EDIT, ICONIMG, userIcon } from "../icons";
+import { ICONIMG, userIcon } from "../icons";
 import { BUTTONEXIT } from "../ui";
 import { useTranslation } from "react-i18next";
 import user_register from "../service/user";
@@ -35,15 +35,43 @@ function Profil() {
         }
     };
 
+
+    const saveImage = async (e) => {
+        const maxFileSize = 3 * 1024 * 1024; // 3MB
+        const allowedExtensions = /\.(jpg|jpeg|png|gif|svg)$/i;
+
+        if (!allowedExtensions.test(e?.name)) {
+            toast.error(t("file_extension_error"));
+            return;
+        }
+
+        if (e.size > maxFileSize) {
+            toast.error(t("file_size_error"));
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', e);
+
+        try {
+            await user_register.uploadImg(user_id, formData);
+            getUserDate(user_id); // Fayl yuklanganidan keyin yangilanadigan ma'lumotlar
+        } catch (error) {
+            toast.error(t("upload_error"));
+        }
+    };
+
+
     return (
-        <div className={`${Container} flex items-start justify-center tablet:flex-row minMobil:flex-col ${open ? 'hidden' : 'flex'}`}>
-            <div className={`minMobil:w-full flex items-center justify-start flex-col gap-1 tablet:w-[310px] px-2`}>
-                <div className={`${styleTopBarUINoFlex} flex items-center flex-col justify-start gap-3 px-3 py-4`}>
-                    <img className="rounded-lg" width={220} height={220} src={userData?.imageId ? userData?.imageId : userIcon} alt="IMAGE" />
-                    <button className="flex items-center justify-center w-full gap-1 border border-brGray py-2 rounded-lg bg-lightGray">
+        <div className={`${Container} flex tablet:items-start minMobil:items-center justify-center tablet:flex-row minMobil:flex-col ${open ? 'hidden' : 'flex'}`}>
+            <div className={` flex items-center justify-start flex-col gap-1 tablet:w-[350px] px-2`}>
+                <div className={`${styleTopBarUINoFlex} flex items-center flex-col justify-start w-full gap-3 px-2 py-4`}>
+                    <img className="rounded-lg" width={220} height={220} src={userData?.imageUrl ? userData?.imageUrl : userIcon} alt="IMAGE" />
+                    <label className="flex items-center justify-center w-full gap-1 border border-brGray py-2 rounded-lg bg-lightGray cursor-pointer">
+                        <input onChange={(e) => saveImage(e.target.files[0])} hidden type="file" />
                         <img src={ICONIMG} alt="" />
                         {t("edit")}
-                    </button>
+                    </label>
                 </div>
                 <div className="p-1 tablet:w-full minMobil:w-[310px]">
                     <BUTTONEXIT />

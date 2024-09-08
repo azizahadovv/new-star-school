@@ -27,6 +27,14 @@ const user_register = {
             toast.error("Failed to retrieve user data. Please try again.");
             throw error; // Optional: re-throw the error if you want the caller to handle it
         }
+    },
+    async uploadImg(teacherId, file) {
+        try {
+            await axios.post(`teachers/${teacherId}/upload-image`, file, auth)
+            toast.success('Image uploaded successfully')
+        } catch (error) {
+            toast.error(error?.message)
+        }
     }
 };
 
