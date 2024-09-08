@@ -25,11 +25,7 @@ function Register() {
       if (data?.jwtToken) {
         // Rollarni tekshirish
         if (roles.includes('ADMIN')) {
-          localStorage.setItem('jwtToken', data.jwtToken);
-          localStorage.setItem('refreshToken', data.refreshToken);
-          sessionStorage.setItem('my-users-ids', data.userId);
-          toast.success("Admin foydalanuvchisi");
-          navigate('/');
+          toast.error("Siz Admin platformasiga kirishingiz kerak!");
           // Admin uchun amallarni bu yerda bajarishingiz mumkin
         }
         if (roles.includes('TEACHER')) {
@@ -45,10 +41,13 @@ function Register() {
           // O'qituvchi uchun amallarni bu yerda bajarishingiz mumkin
         }
         if (roles.includes('STUDENT')) {
-          toast.error("Siz O‘quvchi platformasiga kirishingiz kerak!");
+          localStorage.setItem('jwtToken', data.jwtToken);
+          localStorage.setItem('refreshToken', data.refreshToken);
+          sessionStorage.setItem('my-users-ids', data.userId);
+          toast.success("O'quvchi platformasiga xush kelibsiz!");
+          navigate('/');
           // O'qituvchi uchun amallarni bu yerda bajarishingiz mumkin
         }
-
       } else {
         console.log("Failed to retrieve JWT token.");
       }

@@ -24,7 +24,7 @@ function App() {
       const datas = await student_register.refreshToken(refreshToken);
       const isTokenValid = await student_register.ValidateToken(token);
 
-      if (!isTokenValid || !datas || datas.error) {
+      if (!isTokenValid || !datas || datas.error || !id) {
         // Token yangilanmagan yoki yaroqsiz bo'lsa login sahifasiga yo'naltirish
         clearStorageAndRedirect();
       } else {
