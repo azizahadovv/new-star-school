@@ -78,7 +78,8 @@ const ruLang = {
   in_class: "В уроке есть",
   not_in_class: "Не в классе",
   save_grades: "Сохранять оценки",
-  no_dates: "Данные не найдены"
+  no_dates: "Данные не найдены",
+  error_no_grade: "Учащийся не оценивался."
 };
 
 export default ruLang;

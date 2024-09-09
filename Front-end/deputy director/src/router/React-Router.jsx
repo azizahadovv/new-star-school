@@ -53,7 +53,7 @@ function ReactRouter() {
           <Route path="my-classes/my-schedule" element={<MYSCHEDULE />} />
         </Route>
         <Route path="*" element={<PageNoteFound />} />
-        <Route path="/register" element={<REGISTER />} />
+        <Route path="/login" element={<REGISTER />} />
       </Routes>
     </div>
   );

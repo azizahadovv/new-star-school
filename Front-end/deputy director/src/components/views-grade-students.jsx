@@ -43,7 +43,7 @@ function MarkStudents() {
                 <TERM selectedOption={selectedOption} setSelectedOption={handleOptionChange} />
             </div>
             <div className={`${styleTopBarUINoFlex} min-h-96 p-3 overflow-scroll`}>
-                {datas.length !== 0 ? (
+                {datas?.length !== 0 ? (
                     <table className="teble w-100">
                         <thead className='table-hover'>
                             <tr>

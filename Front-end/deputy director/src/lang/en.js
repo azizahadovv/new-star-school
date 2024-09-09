@@ -73,7 +73,8 @@ const enLang = {
   in_class: "There is in the lesson",
   not_in_class: "Not in class",
   save_grades:"Save grades",
-  no_dates:"No data found"
+  no_dates:"No data found",
+  error_no_grade:"The student was not evaluated."
 
 };
 

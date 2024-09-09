@@ -1,20 +1,28 @@
-import axios from "axios";
-import { baseURL } from "./api";
+import axios from "./api"
 import { toast } from "react-toastify";
+
+
+const auth = {
+  headers: {
+    'accept': '*/*',
+    'Authorization': " " + 'Bearer ' + localStorage.getItem('jwtToken')
+  }
+}
+
 
 const studentFunction = {
   async studentPostData(classId, data) {
     const { datas } = await axios.post(
-      `${baseURL}/classes/${classId}/students`,
-      data
+      `classes/${classId}/students`,
+      data, auth
     );
     return datas;
   },
   async studentPostCSV(classId, data) {
     try {
       const { datas } = await axios.post(
-        `${baseURL}/classes/${classId}/students/csv`,
-        data
+        `classes/${classId}/students/csv`,
+        data, auth
       );
       return datas;
     } catch (error) {
@@ -24,7 +32,7 @@ const studentFunction = {
 
   async removeStudent(studentId) {
     try {
-      await axios.delete(`${baseURL}/students/${studentId}`);
+      await axios.delete(`students/${studentId}`, auth);
     } catch (error) {
       toast.error(error.message)
     }
@@ -32,7 +40,7 @@ const studentFunction = {
   async getStudent() {
     const x = localStorage.getItem("ClassId");
     try {
-      const { data } = await axios.get(`${baseURL}/classes/` + x);
+      const { data } = await axios.get(`classes/` + x, auth);
       return data;
     } catch (error) {
       toast.error(error.message)
@@ -40,7 +48,7 @@ const studentFunction = {
   },
   async studentPutActie(id, dataActive) {
     try {
-      const { data } = await axios.put(`${baseURL}/students/${id}`, dataActive);
+      const { data } = await axios.put(`students/${id}`, dataActive, auth);
       return data;
     } catch (error) {
       toast.error(error.message)
@@ -48,7 +56,7 @@ const studentFunction = {
   },
   async studentDeleteActie(id) {
     try {
-      const { data } = await axios.delete(`${baseURL}/students/${id}`);
+      const { data } = await axios.delete(`students/${id}`, auth);
       return data;
     } catch (error) {
       toast.error(error.message)
@@ -57,7 +65,7 @@ const studentFunction = {
   },
   async removeStudentInClass(studentId, classId) {
     try {
-      await axios.delete(`${baseURL}/classes/${classId}/students/${studentId}`);
+      await axios.delete(`classes/${classId}/students/${studentId}`, auth);
       return "Students removed successfully";
     } catch (error) {
       toast.error(error.message)

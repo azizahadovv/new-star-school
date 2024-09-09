@@ -73,7 +73,8 @@ const uzLang = {
   in_class:"Darsda bor",
   not_in_class:"Darsda yo'q",
   save_grades:"Baholarni saqlash",
-  no_dates:"Malumot topilmadi"
+  no_dates:"Malumot topilmadi",
+  error_no_grade:"O'quvchi baholanmadi."
 
 };
 

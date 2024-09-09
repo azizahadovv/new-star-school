@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
-import { BUTTON } from "../ui";
 import { ICONIMG } from "../icons";
 import student_Page_Function from "../service/student";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,13 +7,15 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 function StudentProfile() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const [dataStudent, setDataStudent] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
+
   useEffect(() => {
     get_datas_Student();
   }, []);
+
   const get_datas_Student = async () => {
     try {
       const response = await student_Page_Function.get_student_in_Id(id);
@@ -49,16 +50,16 @@ function StudentProfile() {
         className={`${styleTopBarUINoFlex} w-[300px] h-[380px] p-3 rounded-3xl flex items-center justify-between flex-col`}
       >
         <div className="w-full h-[80%] flex items-center justify-center rounded-xl overflow-hidden cursor-pointer">
-          {dataStudent.image === null ? (
+          {dataStudent?.imageUrl === null ? (
             <div className="w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase">
               <label className="text-6xl text-white flex items-center justify-center">
-                {dataStudent.firstName.charAt(0) +
+                {dataStudent?.firstName.charAt(0) +
                   "." +
-                  dataStudent.lastName.charAt(0)}
+                  dataStudent?.lastName.charAt(0)}
               </label>
             </div>
           ) : (
-            <img className="rounded-full" src={dataStudent.image} alt="dataStudent.image" />
+            <img className="rounded-full w-full h-full" src={dataStudent?.imageUrl} alt="dataStudent.image" />
           )}
         </div>
         <label
@@ -86,63 +87,63 @@ function StudentProfile() {
           <tbody>
             <tr>
               <th className="w-50">{t("firstName")}:</th>
-              <th className="w-50">{dataStudent.firstName}</th>
+              <td className="w-50">{dataStudent?.firstName}</td>
             </tr>
             <tr>
               <th className="w-50">{t("lastName")}:</th>
-              <th className="w-50">{dataStudent.lastName}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.lastName}</td>
+            </tr>
             <tr>
               <th className="w-50">{t("patronymic")}:</th>
-              <th className="w-50">{dataStudent.patronymic}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.patronymic}</td>
+            </tr>
             <tr>
               <th className="w-50">{t("birthday")}:</th>
-              <th className="w-50">{dataStudent.birthDate}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.birthDate}</td>
+            </tr>
             <tr>
               <th className="w-50">{t("gender")}:</th>
-              <th className="w-50">{dataStudent.gender}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.gender}</td>
+            </tr>
             <tr>
               <th className="w-50">{t("nation")}:</th>
-              <th className="w-50">{dataStudent.nationality}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.nationality}</td>
+            </tr>
             <tr>
               <th className="w-50">{t("state")}:</th>
-              <th className="w-50">{dataStudent.country}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.country}</td>
+            </tr>
             <tr>
               <th className="w-50">{t("province")}:</th>
-              <th className="w-50">{dataStudent.region}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.region}</td>
+            </tr>
             <tr>
               <th className="w-50">{t("district")}:</th>
-              <th className="w-50">{dataStudent.district}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.district}</td>
+            </tr>
             <tr>
               <th className="w-50">{t("home_address")}:</th>
-              <th className="w-50">{dataStudent.address}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.address}</td>
+            </tr>
             <tr>
               <th className="w-50">{t("table_classes")}:</th>
-              <th className="w-50">{dataStudent.grade}</th>
-            </tr>{" "}
+              <td className="w-50">{dataStudent?.grade}</td>
+            </tr>
             <tr>
-              <th className="w-50">{t("phone_nuber")}:</th>
-              <th className="w-50">{dataStudent.phoneNumber}</th>
+              <th className="w-50">{t("phone_number")}:</th>
+              <td className="w-50">{dataStudent?.phoneNumber}</td>
             </tr>
             <tr>
               <th className="w-50">{t("additional_phone_number")}:</th>
-              <th className="w-50">{dataStudent.parentPhoneNumber}</th>
+              <td className="w-50">{dataStudent?.parentPhoneNumber}</td>
             </tr>
             <tr>
               <th className="w-50">{t("login")}:</th>
-              <th className="w-50">{dataStudent.login}</th>
+              <td className="w-50">{dataStudent?.login}</td>
             </tr>
             <tr>
               <th className="w-50">{t("password")}:</th>
-              <th className="w-50">{dataStudent.password}</th>
+              <td className="w-50">{dataStudent?.password}</td>
             </tr>
           </tbody>
         </table>

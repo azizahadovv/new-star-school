@@ -13,7 +13,7 @@ function MySchedule() {
   }, [selectedOption])
 
   const getDatas = async () => {
-    const ids = localStorage.getItem('teacherId')
+    const ids = sessionStorage.getItem('my-users-ids')
     const datas = await TimeTable.myClasses(ids, selectedOption)
     setDatas(datas)
   }

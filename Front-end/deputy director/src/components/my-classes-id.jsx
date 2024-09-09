@@ -19,7 +19,7 @@ function MyClassesId() {
     <div className={`${Container}`}>
       <div className={`flex content-start px-3 py-5 min-h-96 gap-5  minMobil:items-center tablet:justify-start minMobil:justify-center flex-wrap`}>
        {
-        data.map((item, index) => {
+        data?.map((item, index) => {
           return <CARDCLASSES key={index} data={item} />
         })
        }
