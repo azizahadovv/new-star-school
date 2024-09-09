@@ -15,7 +15,7 @@ const setupAxiosInterceptors = (clearStorageAndRedirect) => {
 
                 switch (status) {
                     case 400:
-                        toast.error("400 Bad Request:", error.response);
+                        toast.error("So‘rov yuborishdagi xatolik!!");
                         // 400 xatosi uchun mantiq (xato so'rov)
                         break;
 
@@ -26,9 +26,10 @@ const setupAxiosInterceptors = (clearStorageAndRedirect) => {
                         break;
 
                     case 403:
-                        toast.error("403 Forbidden:", error.response);
                         // 403 xatosi uchun mantiq (ruxsat etilmagan kirish)
-                        clearStorageAndRedirect();
+                        setTimeout(() => {
+                            clearStorageAndRedirect();
+                        }, 15000); // 15 soniyadan keyin clearStorageAndRedirect funksiyasini ishga tushirish
                         break;
 
                     case 404:
