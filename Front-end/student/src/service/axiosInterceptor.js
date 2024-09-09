@@ -15,9 +15,8 @@ const setupAxiosInterceptors = (clearStorageAndRedirect) => {
 
                 switch (status) {
                     case 400:
-                        toast.error("So‘rov yuborishda xatolik iltimos qaytib ro‘yxatdan o‘ting", error.response);
+                        toast.error("So‘rov yuborishdagi xatolik!!");
                         // 400 xatosi uchun mantiq (xato so'rov)
-                        clearStorageAndRedirect();
                         break;
 
                     case 401:
