@@ -4,15 +4,31 @@ import './navbar.css'
 import { openVisible } from '../slice/sidebar'
 import { openBar, userIcon } from '../icons'
 import { LANGUAGEPOTION } from '../ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { HomeText } from '../utils/UiFunctios'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+import user_register from '../service/user'
 
 function Navbar() {
-  const [firstName, setFirstName] = useState("Usenov")
-  const [name, setName] = useState("Tohir")
+  const [firstName, setFirstName] = useState("")
+  const [name, setName] = useState("")
+  const [image, setImage] = useState("")
   const dispatch = useDispatch()
   const toggle = useSelector(sel => sel.sidebarReduser.open)
   const myText = HomeText().props.children
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const id = sessionStorage.getItem('my-users-ids')
+
+  useEffect(() => { getUserData() }, [id, firstName, name])
+
+  const getUserData = async () => {
+    const res = await user_register.getUserData(id)
+    setFirstName(res.lastName)
+    setName(res.firstName)
+    setImage(res.imageUrl)
+  }
 
   return (
     <div className='w-full shadowBG bg-white border-b border-brGray '>
@@ -31,16 +47,16 @@ function Navbar() {
             <div className='tablet:block minMobil:hidden'>
               <LANGUAGEPOTION />
             </div>
-            <div className='flex items-center justify-center gap-2'>
+            <div className='flex items-center justify-center gap-2 cursor-pointer' onDoubleClick={() => (navigate('/profile'))} title={t('click')}>
               <div className='w-12 h-12 rounded-full'>
-                <img className='rounded-full' src={userIcon} alt="userIcon" />
+                <img className='rounded-full' src={image ? image : userIcon} alt="userIcon" />
               </div>
               <div className='flex items-start justify-center flex-col'>
                 <span className='leading-7 text-lg font-bold'>
                   <span className='minMobil:hidden tablet:block '>{firstName}.{name}</span>
                   <span className='minMobil:block tablet:hidden '>{firstName}.{name.slice(0, 1)}</span>
                 </span>
-                <span className='text-sm font-semibold text-textGray'>Admin</span>
+                <span className='text-[12px] font-semibold text-textGray'>{t("deputy_director")}</span>
               </div>
             </div>
           </div>

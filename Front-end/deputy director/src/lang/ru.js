@@ -12,7 +12,7 @@ const ruLang = {
   delete: "Удалить",
   save: "Сохранять",
   class_creation: "Создать класс",
-  login_parol: "Логин~Пароль",
+  login_parol: "Логин",
   search_in_name: "Поиск по имени и фамилии",
   back_out: "Вернуться назад ",
 
@@ -79,7 +79,8 @@ const ruLang = {
   not_in_class: "Не в классе",
   save_grades: "Сохранять оценки",
   no_dates: "Данные не найдены",
-  error_no_grade: "Учащийся не оценивался."
+  error_no_grade: "Учащийся не оценивался.",
+  click:"Нажмите дважды"
 };
 
 export default ruLang;

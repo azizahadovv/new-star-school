@@ -24,7 +24,7 @@ function App() {
       const datas = await student_register.refreshToken(refreshToken);
       const isTokenValid = await student_register.ValidateToken(token);
 
-      if (!isTokenValid || !datas || datas.error) {
+      if (!isTokenValid || !datas || datas.error || !id || id === '') {
         // Token yangilanmagan yoki yaroqsiz bo'lsa login sahifasiga yo'naltirish
         clearStorageAndRedirect();
       } else {
@@ -60,7 +60,7 @@ function App() {
     setupAxiosInterceptors(clearStorageAndRedirect);
 
     // Tokenni har bir soatda yangilash uchun interval
-    const intervalId = setInterval(refresh_Token, 360000); // 1 soatda bir marta
+    const intervalId = setInterval(refresh_Token, 36000); // 1 soatda bir marta
 
     // Komponent unmounted bo'lganda intervalni tozalash
     return () => {

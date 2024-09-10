@@ -12,7 +12,7 @@ const uzLang = {
   delete: "O'chirish",
   save: "Saqlash",
   class_creation: "Sinf yaratish",
-  login_parol: "Login~Parol",
+  login_parol: "Login",
   search_in_name: "Ism va Familiya bo'yicha izlang",
   back_out: "Orqaga chiqish",
   // *******************************************************************
@@ -74,7 +74,8 @@ const uzLang = {
   not_in_class:"Darsda yo'q",
   save_grades:"Baholarni saqlash",
   no_dates:"Malumot topilmadi",
-  error_no_grade:"O'quvchi baholanmadi."
+  error_no_grade:"O'quvchi baholanmadi.",
+  click:"Ikki marotaba bosing"
 
 };
 

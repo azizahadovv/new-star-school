@@ -12,7 +12,7 @@ const enLang = {
   delete: "Delete",
   save: "Save",
   class_creation: "Class creation",
-  login_parol: "Login~Password",
+  login_parol: "Login",
   search_in_name: "Search by First and Last Name",
   back_out: "Back out",
 
@@ -74,7 +74,8 @@ const enLang = {
   not_in_class: "Not in class",
   save_grades:"Save grades",
   no_dates:"No data found",
-  error_no_grade:"The student was not evaluated."
+  error_no_grade:"The student was not evaluated.",
+  click:"Double click"
 
 };
 

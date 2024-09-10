@@ -59,9 +59,9 @@ function ListOfClassesID() {
   return (
     <div className={`${Container}`}>
       <div
-        className={`${styleTopBarUINoFlex} h-20 w-full px-3 flex items-center justify-between`}
+        className={`${styleTopBarUINoFlex} min-h-20 w-full px-3 py-2 flex items-center tablet:justify-between minMobil:justify-center tablet:flex-row minMobil: flex-col overflow-scroll`}
       >
-        <div className="tablet:w-1/4">
+        <div className="min-w-[320px]">
           <SEARCH searchValue={searchValue} setSearcheValue={searcheStudentInName} />
         </div>
         <div>
@@ -106,7 +106,7 @@ function ListOfClassesID() {
                   </td>
                   <td>
                     <p className="w-[150px]">
-                      {item.login + "--" + item.password}
+                      {item.login}
                     </p>
                   </td>
                   <td>
