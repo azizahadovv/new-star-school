@@ -34,7 +34,7 @@ function Register() {
           sessionStorage.setItem('my-users-ids', data.userId);
           toast.success("Teacher foydalanuvchisi");
           navigate('/');
-          
+
           // O'qituvchi uchun amallarni bu yerda bajarishingiz mumkin
         }
         if (roles.includes('DEPUTY_DIRECTOR')) {
@@ -99,7 +99,7 @@ function Register() {
             </div>
           </div>
           <div className="w-full">
-            <BUTTON buttonFunction={() => submitButton()} name="Kirish" />
+            <BUTTON buttonFunction={() => submitButton()} name="Kirish" active color={'bg-darkGray'} />
           </div>
         </div>
       </div>

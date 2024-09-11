@@ -15,7 +15,7 @@ const user_register = {
             return data;
         } catch (error) {
             toast.error("Failed to retrieve user data. Please try again.");
-            throw error; // Optional: re-throw the error if you want the caller to handle it
+            return // Optional: re-throw the error if you want the caller to handle it
         }
     },
 

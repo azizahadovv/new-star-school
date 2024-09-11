@@ -27,9 +27,9 @@ function Navbar() {
 
   const getUsersData = async () => {
     const userData = await user_register.getUserData(user_id)
-    setFirstName(userData.lastName);
-    setName(userData.firstName);
-    setImage(userData.imageUrl);
+    setFirstName(userData?.lastName);
+    setName(userData?.firstName);
+    setImage(userData?.imageUrl);
   }
 
   return (
@@ -53,7 +53,7 @@ function Navbar() {
               <div onDoubleClick={() => navigate('/profile')} className='flex items-start justify-center flex-col cursor-pointer'>
                 <span className='leading-7 text-lg font-bold'>
                   <span className='minMobil:hidden tablet:block '>{firstName}.{name}</span>
-                  <span className='minMobil:block tablet:hidden '>{firstName}.{name.slice(0, 1)}</span>
+                  <span className='minMobil:block tablet:hidden '>{firstName}.{name?.slice(0, 1)}</span>
                 </span>
                 <span className='text-sm font-semibold text-textGray'>{t("table_teacher")}</span>
               </div>

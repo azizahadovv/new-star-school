@@ -20,6 +20,9 @@ function App() {
 
   // Tokenni yangilash funksiyasi
   const refresh_Token = async () => {
+    // Login sahifasida refresh token ishlamasligi uchun shart
+    if (window.location.pathname === '/login') return;
+
     try {
       const datas = await student_register.refreshToken(refreshToken);
       const isTokenValid = await student_register.ValidateToken(token);
@@ -32,9 +35,11 @@ function App() {
         updateTokens(datas.jwtToken, datas.refreshToken);
       }
     } catch (error) {
-      // Tokenni yangilashda xatolik sodir bo'lsa login sahifasiga yo'naltirish
-      console.error('Failed to refresh token:', error);
-      clearStorageAndRedirect();
+      // Login sahifasida xatoliklarni ko'rsatmaslik
+      if (window.location.pathname !== '/login') {
+        console.error('Failed to refresh token:', error);
+        clearStorageAndRedirect();
+      }
     }
   };
 

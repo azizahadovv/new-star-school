@@ -14,7 +14,7 @@ const classInId = {
             const { data } = await axios.get(`classes/${classId}`, auth)
             return data
         } catch (error) {
-            toast.error(error.message)
+            toast.error(error.response.data.message)
         }
     }
 }
