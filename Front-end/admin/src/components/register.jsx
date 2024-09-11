@@ -98,7 +98,7 @@ function Register() {
             </div>
           </div>
           <div className="w-full">
-            <BUTTON buttonFunction={() => submitButton()} name="Kirish" />
+            <BUTTON buttonFunction={() => submitButton()} name="Kirish" active color={'bg-darkGray'} />
           </div>
         </div>
       </div>

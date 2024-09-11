@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { HomeText } from '../utils/UiFunctios';
 import { useTranslation } from 'react-i18next';
 import user_register from '../service/user';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const { t } = useTranslation();
@@ -17,7 +18,7 @@ function Navbar() {
   const dispatch = useDispatch();
   const toggle = useSelector(state => state.sidebarReduser.open);
   const myText = HomeText().props.children;
-
+  const navigate = useNavigate()
   const user_id = sessionStorage.getItem('my-users-ids');
 
   useEffect(() => {
@@ -59,7 +60,7 @@ function Navbar() {
             <div className='tablet:block minMobil:hidden'>
               <LANGUAGEPOTION />
             </div>
-            <div className='flex items-center justify-center gap-2'>
+            <div className='flex items-center justify-center gap-2 cursor-pointer' onDoubleClick={() => navigate('/profile')}>
               <div className='w-12 h-12 rounded-full'>
                 <img className='rounded-full' src={image || userIcon} alt="User Icon" />
               </div>
