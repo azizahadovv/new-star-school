@@ -12,12 +12,13 @@ const auth = {
 
 const gradeStudents = {
     async postGarde(data) {
-        try {
-            await axios.post(`v1/grades`, data, auth)
-            toast.success("Successfully")
-        } catch (error) {
-            toast.error(error.message)
-        }
+        await axios.post(`v1/grades`, data, auth).then((res) => {
+            return toast.success("Successfully")
+        }).catch((err) => {
+            console.log(err);
+            return toast.error(err.response.data.message)
+        });
+
     }
 }
 

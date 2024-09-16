@@ -15,7 +15,7 @@ const student_register = {
             const { data } = await axios.post(`v1/auth/login`, datas);
             return data;
         } catch (error) {
-            toast.error("Error in student registration", error);
+            toast.error("Ro'yxatda o'tishda xatolik. Login yoki parol noto'g'ri!", error);
         }
     },
     async refreshToken(datas) {
