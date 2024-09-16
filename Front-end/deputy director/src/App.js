@@ -20,11 +20,14 @@ function App() {
 
   // Tokenni yangilash funksiyasi
   const refresh_Token = async () => {
+    // Login sahifasida refresh token ishlamasligi uchun shart
+    if (window.location.pathname === '/login') return;
+
     try {
       const datas = await student_register.refreshToken(refreshToken);
       const isTokenValid = await student_register.ValidateToken(token);
 
-      if (!isTokenValid || !datas || datas.error || !id || id === '') {
+      if (!isTokenValid || !datas || datas.error) {
         // Token yangilanmagan yoki yaroqsiz bo'lsa login sahifasiga yo'naltirish
         clearStorageAndRedirect();
       } else {
@@ -32,9 +35,11 @@ function App() {
         updateTokens(datas.jwtToken, datas.refreshToken);
       }
     } catch (error) {
-      // Tokenni yangilashda xatolik sodir bo'lsa login sahifasiga yo'naltirish
-      console.error('Failed to refresh token:', error);
-      clearStorageAndRedirect();
+      // Login sahifasida xatoliklarni ko'rsatmaslik
+      if (window.location.pathname !== '/login') {
+        console.error('Failed to refresh token:', error);
+        clearStorageAndRedirect();
+      }
     }
   };
 
@@ -60,7 +65,7 @@ function App() {
     setupAxiosInterceptors(clearStorageAndRedirect);
 
     // Tokenni har bir soatda yangilash uchun interval
-    const intervalId = setInterval(refresh_Token, 36000); // 1 soatda bir marta
+    const intervalId = setInterval(refresh_Token, 360000); // 1 soatda bir marta
 
     // Komponent unmounted bo'lganda intervalni tozalash
     return () => {

@@ -13,7 +13,7 @@ function ClassSchedule() {
     const { t } = useTranslation()
     const [studentsData, setStudentsData] = useState([])
     const [subjectId, setSubjectId] = useState('')
-    const dateFront = `${new Date().getFullYear()}.${("0" + (new Date().getMonth() + 1)).slice(-2)}.${("0" + new Date().getDate()).slice(-2) + " " + new Date().getHours() + ":" + new Date().getMinutes()}`
+    const dateFront = `${("0" + new Date().getDate()).slice(-2)}.${("0" + (new Date().getMonth() + 1)).slice(-2)}.${new Date().getFullYear().toString().slice(-2)}-${("0" + new Date().getHours()).slice(-2)}:${("0" + new Date().getMinutes()).slice(-2)}`;// natija: 16.09.24-09:34
     const teacherId = sessionStorage.getItem('my-users-ids')
 
     useEffect(() => {

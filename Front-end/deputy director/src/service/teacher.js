@@ -11,6 +11,15 @@ const auth = {
 
 
 const teacherController = {
+    async getClassesInTeacherId(idTecher) {
+        try {
+            const { data } = await axios.get(`teachers/${idTecher}/classes`, auth);
+            return data;
+        } catch (error) {
+            toast.error(error.message)
+        }
+    },
+
     async searchTeacher(techerName, subjectId) {
         try {
             const { data } = await axios.get(`teachers/search?subjectId=${subjectId}&name=${techerName}`, auth)
@@ -76,7 +85,7 @@ const teacherController = {
     async uploadImg(teacherId, file) {
         try {
             await axios.post(`teachers/${teacherId}/upload-image`, file, auth)
-            console.log("success upload");
+            toast.success("success upload");
         } catch (error) {
             toast.error(error.message)
         }

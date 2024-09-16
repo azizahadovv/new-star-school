@@ -30,6 +30,7 @@ const functionsClasses = {
   async removeClass(id) {
     try {
       await axios.delete(`classes/${id}`, auth);
+      toast.success("sinf o'chirildi");
     } catch (error) {
       toast.error(error.message)
     }

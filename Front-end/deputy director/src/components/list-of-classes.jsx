@@ -15,7 +15,7 @@ import functionsClasses from "../service/function-class";
 import { useTranslation } from "react-i18next";
 
 function ListOfClasses() {
-  const {t}=useTranslation()
+  const { t } = useTranslation()
   const dispatch = useDispatch();
   const open = useSelector((sel) => sel.sidebarReduser.open);
   const [classesNumber, setClassesNumber] = useState("");
@@ -30,7 +30,7 @@ function ListOfClasses() {
   }, []);
 
   const obj = {
-    name: `${classesNumber+classesGroup}-sinf`,
+    name: `${classesNumber + classesGroup}-sinf`,
     grade: classesNumber,
     groupLetter: classesGroup,
   };
@@ -46,13 +46,12 @@ function ListOfClasses() {
     let question = prompt(
       "sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!"
     );
-    try {
-      if (question === "YES") {
-        await functionsClasses.removeClass(id);
-        toast.success("sinf o'chirildi");
-      } else toast.error("malumotlar o'chirilmadi qayta urinib ko'ring");
-      getClasses();
-    } catch (error) {}
+
+    if (question === "YES") {
+      await functionsClasses.removeClass(id);
+    } else toast.error("malumotlar o'chirilmadi qayta urinib ko'ring");
+    getClasses();
+
   };
   const postClasses = async () => {
     try {
@@ -106,9 +105,8 @@ function ListOfClasses() {
         </div>
       </div>
       <div
-        className={`${
-          open ? "hidden" : "flex"
-        } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
+        className={`${open ? "hidden" : "flex"
+          } flex-1 items-start justify-start gap-3 flex-wrap py-3`}
       >
         {!getclassData ? (
           <LOADER />

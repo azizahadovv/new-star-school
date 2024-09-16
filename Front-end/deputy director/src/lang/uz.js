@@ -1,6 +1,6 @@
 const uzLang = {
   class_schedule_home: "Dars jadvali",
-  list_of_classes_home: "Sinflar ro‘yhati",
+  list_of_classes_home: "Sinflar ro‘yxati",
   teacher_home: "O‘qituvchilar",
   student_home: "O'quvchilar",
   sciences: "Fanlar",

@@ -131,10 +131,10 @@ function Profil() {
                             </tbody>
                         </table>
                     )}
-                    <button className="bg-blue px-4 py-2 text-white rounded-lg flex items-center justify-center gap-2 font-semibold">
+                    {/* <button className="bg-blue px-4 py-2 text-white rounded-lg flex items-center justify-center gap-2 font-semibold">
                         <img width={15} height={15} src={EDIT} alt="EDIT" />
                         {t("edit")}
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

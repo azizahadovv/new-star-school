@@ -33,21 +33,23 @@ function TeacherProfile() {
         formData.append('file', e);
         try {
             await teacherController.uploadImg(id, formData)
-            console.log("Uploaded file");
             get_datas_Student()
         } catch (error) {
             toast.error("Pay attention to the file extension `PNG,JPG,SVG`")
             console.log(error);
         }
     }
+
+
+    console.log(dataTeacher);
     return (
         <div className={`${Container} flex tablet:items-start minMobil:items-center tablet:justify-start minMobil:justify-center gap-3 flex-wrap`}>
             <div className={`${styleTopBarUINoFlex} w-[300px] h-[380px] p-3 rounded-3xl flex items-center justify-between flex-col`}>
                 <div className='w-full h-[80%] flex items-center justify-center rounded-xl overflow-hidden cursor-pointer'>
                     {
-                        dataTeacher?.image === null || dataTeacher?.image === "" ? <div className='w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase'>
+                        dataTeacher?.imageUrl === null || dataTeacher?.imageUrl === "" ? <div className='w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase'>
                             <span className='text-6xl text-white flex items-center justify-center'>{dataTeacher?.firstName.charAt(0) + "." + dataTeacher?.lastName.charAt(0)}</span>
-                        </div> : <img className='rounded-full w-full h-full' src={dataTeacher?.image} alt="dataTeacher?.image" />
+                        </div> : <img className='rounded-full w-full h-full' src={dataTeacher?.imageUrl} alt="dataTeacher?.image" />
                     }
                 </div>
                 <label className={`py-[10px] px-3 w-full ${"bg-lightGray text-textBlack"} border border-brGray rounded-xl mt-2 flex items-center justify-center gap-2 cursor-pointer`}>
@@ -111,16 +113,12 @@ function TeacherProfile() {
                         <tr>
                             <th className='w-50'>Fan o'qituvchisi:</th>
                             <th className='w-50'>{dataTeacher?.subject.map((i) => {
-                                return i.name + "\n"
+                                return i.name + ", "
                             })}</th>
                         </tr>
                         <tr>
                             <th className='w-50'>Login:</th>
                             <th className='w-50'>{dataTeacher?.login}</th>
-                        </tr>
-                        <tr>
-                            <th className='w-50'>Parol:</th>
-                            <th className='w-50'>{dataTeacher?.password}</th>
                         </tr>
                     </tbody>
                 </table>

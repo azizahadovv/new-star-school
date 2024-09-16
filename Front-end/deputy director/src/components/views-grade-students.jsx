@@ -15,11 +15,7 @@ function MarkStudents() {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            getMarkData(); // Polling every 10 seconds for real-time updates
-        }, 1000);
-
-        return () => clearInterval(interval); // Cleanup on unmount
+        getMarkData(); 
     }, [selectedOption, id, valueSubj]);
 
     const getMarkData = async () => {
