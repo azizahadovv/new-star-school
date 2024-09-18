@@ -50,7 +50,7 @@ const enLang = {
 
   // *********************************************** Shaxsiy ma’lumotlar **********************
   enter: "Enter",
-  editing: "Editing",
+  editing: "Archiving",
   personal_information: "Personal information",
   lastName: "Last name",
   firstName: "First name",
@@ -70,7 +70,8 @@ const enLang = {
   prompt_value: "If you want to delete all the data related to the class, write 'YES',\n Note that all the data of the class and the data of the students will be deleted!",
   delete_value: "Data could not be deleted, please try again",
   no_date: "No data found, or refresh the page...",
-  save_image: "Profile picture cannot be changed at the moment"
+  save_image: "Profile picture cannot be changed at the moment",
+  settings: "Settings"
 
 
 };

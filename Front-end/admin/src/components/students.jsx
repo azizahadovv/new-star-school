@@ -36,7 +36,7 @@ function Students() {
     }
   }
   const removeStudent = async (id, name) => {
-    const verification = window.confirm(`Are you sure you want to delete ${name}?`);
+    const verification = window.confirm(`Are you sure you want to archiving ${name}?`);
     try {
       if (verification) {
         await student_Page_Function.remove_Student(id,name)
@@ -129,7 +129,7 @@ function Students() {
                             </button>
                             <button onClick={() => removeStudent(item?.id, item?.lastName + ' ' + item?.firstName + ' ' + item?.patronymic)} className="dropdown-item d-flex align-items-center gap-2">
                               <img src={trash} width={20} alt="trash" />
-                              {t("delete")}
+                              {t("editing")}
                             </button>
                           </div>
                         </div>

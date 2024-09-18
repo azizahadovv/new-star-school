@@ -87,7 +87,7 @@ function ClassScheduleID() {
   };
 
   const Trash_Data = async (item) => {
-    const confirmDelete = window.confirm(t("Delete the data?"));
+    const confirmDelete = window.confirm(t("Archiving the data?"));
     if (!confirmDelete) return;
 
     try {
@@ -95,8 +95,8 @@ function ClassScheduleID() {
       toast.success(t("Deleted successfully"));
       getScheduleClasses();
     } catch (error) {
-      console.error("Error deleting schedule:", error);
-      toast.error(t("Error deleting schedule"));
+      console.error("Error archive schedule:", error);
+      toast.error(t("Error archive schedule"));
     }
   };
 

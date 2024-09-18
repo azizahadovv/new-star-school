@@ -44,7 +44,6 @@ function TeacherProfile() {
 
         try {
             await teacherController.uploadImg(id, formData);
-            toast.success("Uploaded file");
             get_datas_Student();
         } catch (error) {
             toast.error("Error uploading file. Please ensure the file is a valid image.");

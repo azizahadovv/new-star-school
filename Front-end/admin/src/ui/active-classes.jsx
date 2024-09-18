@@ -34,7 +34,7 @@ function ActiveClasses({ nameOfClass, size, slug, id, removeItem, res, changeCla
               className="dropdown-item d-flex align-items-start gap-2"
             >
               <img src={trash} width={20} alt="trash" />
-              {t("delete")}
+              {t("editing")}
             </button>
           </ul>
         </div>

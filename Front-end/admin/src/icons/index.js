@@ -35,7 +35,7 @@ export { default as searchImg } from './search.svg'
 export { default as menuDots } from './menu-dots-vertical.svg'
 
 export { default as editBlue } from './editblue.svg'
-export { default as trash } from './trash.svg'
+export { default as trash } from './trash.png'
 
 export { default as ARRLEFT } from './arrow-narrow-left-alignment-svgrepo-com.svg'
 
@@ -58,3 +58,4 @@ export { default as CARD3 } from './card-schedule-3.svg'
 export { default as CARD4 } from './card-schedule-4.svg'
 export { default as CARD5 } from './card-schedule-5.svg'
 export { default as CARD6 } from './card-schedule-6.svg'
+export { default as CARD7 } from './settingsHome.png'

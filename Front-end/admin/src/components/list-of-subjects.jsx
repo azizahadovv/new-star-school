@@ -71,11 +71,11 @@ function ListOfSubjects() {
   };
 
   const removeItem = async (id) => {
-    const deleted = window.confirm("do you really want to delete?")
+    const deleted = window.confirm("do you really want to Archiving?")
     try {
       if (deleted) {
         await subjectFunction.removeSubject(id);
-        toast.success("deleted successfully")
+        toast.success("Archive successfully")
         getSubjects();
       } else {
         toast.info("was not deleted")
@@ -133,7 +133,7 @@ function ListOfSubjects() {
                           className="dropdown-item d-flex align-items-start"
                         >
                           <img src={trash} width={20} alt="trash" />
-                          {t("delete")}
+                          {t("editing")}
                         </button>
                       </ul>
                     </td>

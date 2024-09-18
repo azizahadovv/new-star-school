@@ -5,7 +5,7 @@ import { BUTTON, LOADER, SEARCH } from "../ui";
 import { arrowRight, menuDots, trash } from "../icons";
 import { useSelector } from "react-redux";
 import studentFunction from "../service/function-class-student";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import student_Page_Function from "../service/student";
 
@@ -33,12 +33,12 @@ function ListOfClassesID() {
 
   const deleteStudentInClass = async (studentId, studentName) => {
     const classId = localStorage.getItem("ClassId");
-    if (window.confirm(`Are you sure you want to delete ${studentName}?`)) {
+    if (window.confirm(`Are you sure you want to Archiving ${studentName}?`)) {
       try {
-        await studentFunction.removeStudentInClass(studentId, classId,studentName);
+        await studentFunction.removeStudentInClass(studentId, classId, studentName);
         getStudentsData();
       } catch (error) {
-        console.error("Error deleting student: ", error);
+        console.error("Error Archiving student: ", error);
         toast.error(error.message);
       }
     } else {
@@ -115,7 +115,7 @@ function ListOfClassesID() {
                               className="dropdown-item d-flex align-items-center gap-2"
                             >
                               <img src={trash} width={20} alt="trash" />
-                              {t("delete")}
+                              {t("editing")}
                             </button>
                           </div>
                         </div>

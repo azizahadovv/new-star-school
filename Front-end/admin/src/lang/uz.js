@@ -39,7 +39,7 @@ const uzLang = {
   creating_sciences: "Fan qo'shish",
   exit: "Tizimdan chiqish",
   no_teacher_subject: "Fanlar mavjud emas",
-
+  settings: "Sozlamalar",
 
 
 
@@ -50,7 +50,7 @@ const uzLang = {
   admin: "Administrator",
   // 
   enter: "Kiriting",
-  editing: "Tahrirlash",
+  editing: "Arxivlash",
   personal_information: "Shaxsiy ma’lumotlar",
   firstName: "Ismi",
   lastName: "Familiya",
@@ -70,7 +70,7 @@ const uzLang = {
   prompt_value: "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
   delete_value: "Maʼlumotlar o'chirilmadi qayta urinib ko'ring",
   no_date: "Hech qanday maʼlumot topilmadi, yoki sahifani yangilang...",
-  save_image:"Hozircha profil suratini o'zgartirib bo'lmaydi",
+  save_image: "Hozircha profil suratini o'zgartirib bo'lmaydi",
 };
 
 export default uzLang;

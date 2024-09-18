@@ -1,14 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { GreenIconStudent, editBlue, menuDots, trash } from "../icons";
-function LessonTimeCard({ item, functionDelete,functionEdit }) {
-    const {t}=useTranslation()
+function LessonTimeCard({ item, functionDelete, functionEdit }) {
+    const { t } = useTranslation()
     return (
         <>
             <div className="w-full h-16 border-b-2 p-1 border-brGray m-0 flex items-center justify-start">
                 <div className="w-14 h-full border bg-lightGray rotate-90-a flex items-center justify-center p-3 py-[1px]">
                     <span className="text-nowrap text-sm text-textBlack">{item?.startTime?.slice(0, item?.endTime?.length - 3)}</span>
                 </div>
-
                 <div className="w-full h-14 flex py-1 items-center justify-center px-2 border bg-lightGray">
                     <div className="w-full flex flex-col  h-full m-0 items-start justify-between">
                         <span className="w-full font-bold">{item?.subjectName}</span>
@@ -30,14 +29,14 @@ function LessonTimeCard({ item, functionDelete,functionEdit }) {
                                 alt="menuDots"
                             />
                         </button>
-                        <div onClick={()=>functionEdit(item)} className={`dropdown-menu`}>
+                        <div onClick={() => functionEdit(item)} className={`dropdown-menu`}>
                             <button className="dropdown-item d-flex align-items-center gap-2">
                                 <img src={editBlue} width={20} alt="trash" />
                                 {t("edit")}
                             </button>
                             <button onClick={() => functionDelete(item)} className="dropdown-item d-flex align-items-center gap-2">
                                 <img src={trash} width={20} alt="trash" />
-                                {t("delete")}
+                                {t("editing")}
                             </button>
                         </div>
                     </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import {
   ADDSTUDENT,
@@ -9,11 +8,10 @@ import {
   LISTOFSUBJECTS,
   ListOfClasses,
   ListOfClassesID,
-  MYCLASSES,
-  MYCLASSESID,
   PROFIL,
   PageNoteFound,
   REGISTER,
+  SETING,
   STUDENTPROFILE,
   STUDENTS,
   TEACHER,
@@ -22,7 +20,6 @@ import {
 import { LAYOUT } from "../template";
 
 function ReactRouter() {
-  const token = localStorage.getItem("token");
   return (
     <div>
       <Routes>
@@ -40,8 +37,9 @@ function ReactRouter() {
           <Route path="add-teachers/:id" element={<ADDTEACHERS />} />
           <Route path="students" element={<STUDENTS />} />
           <Route path="students/:id" element={<STUDENTPROFILE />} />
-          <Route path="profile" element={<PROFIL />} />\
+          <Route path="profile" element={<PROFIL />} />
           <Route path="add-student" element={<ADDSTUDENT />} />
+          <Route path="settings" element={<SETING />} />
           <Route path="add-student/:id" element={<ADDSTUDENT />} />
         </Route>
         <Route path="*" element={<PageNoteFound />} />

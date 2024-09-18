@@ -70,8 +70,8 @@ function Profil() {
                 <div className='w-full h-[80%] flex items-center justify-center rounded-xl overflow-hidden cursor-pointer'>
                     {
                         userData?.imageUrl === null ? <div className='w-40 h-40 flex items-center justify-center rounded-full overflow-hidden bg-blue uppercase'>
-                            <span className='text-6xl text-white flex items-center justify-center'>{userData?.firstName.charAt(0) + "." + userData?.lastName.charAt(0)}</span>
-                        </div> : <img className='rounded-full w-full h-full' src={userData?.imageUrl} alt="dataTeacher.image" />
+                            <span className='text-6xl text-white flex items-center justify-center'>{userData?.firstName?.charAt(0) + "." + userData?.lastName?.charAt(0)}</span>
+                        </div> : <img className='rounded-full w-44 h-44' src={userData?.imageUrl} alt="dataTeacher.image" />
                     }
                 </div>
                 <label className={`py-[10px] px-3 w-full ${"bg-lightGray text-textBlack"} border border-brGray rounded-xl mt-2 flex items-center justify-center gap-2 cursor-pointer`}>

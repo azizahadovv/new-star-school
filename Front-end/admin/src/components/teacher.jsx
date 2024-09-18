@@ -126,7 +126,7 @@ function Teacher() {
                             </button>
                             <button onClick={() => remove_Teacher(item?.id, item?.firstName + " " + item?.lastName + " " + item?.patronymic)} className="dropdown-item d-flex align-items-center gap-2">
                               <img src={trash} width={20} alt="trash" />
-                              {t("delete")}
+                              {t("editing")}
                             </button>
                           </div>
                         </div>

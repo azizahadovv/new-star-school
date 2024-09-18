@@ -62,7 +62,7 @@ function Navbar() {
             </div>
             <div className='flex items-center justify-center gap-2 cursor-pointer' onDoubleClick={() => navigate('/profile')}>
               <div className='w-12 h-12 rounded-full'>
-                <img className='rounded-full' src={image || userIcon} alt="User Icon" />
+                <img className='rounded-full w-12 h-12' src={image || userIcon} alt="User Icon" />
               </div>
               <div className='flex items-start justify-center flex-col'>
                 <span className='leading-7 text-lg font-bold'>

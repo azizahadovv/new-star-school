@@ -1,4 +1,4 @@
-import { CARD1, CARD2, CARD3, CARD4, CARD5, CARD6, DARSJADVALI, DARSJADVALIOUTLINE, LISTCLASS, LISTCLASSOUTLINE, STUDENT, STUDENTOUTLINE, SUBJECT, SUBJECTOUTLINE, TEACHER, TEACHEROUTLIN, infoUser, infoUserOutline } from '../icons'
+import { CARD1, CARD2, CARD3, CARD4, CARD5, CARD6, CARD7, DARSJADVALI, DARSJADVALIOUTLINE, LISTCLASS, LISTCLASSOUTLINE, STUDENT, STUDENTOUTLINE, SUBJECT, SUBJECTOUTLINE, TEACHER, TEACHEROUTLIN, infoUser, infoUserOutline } from '../icons'
 export const homeCard = [
     {
         id: 1,
@@ -29,6 +29,11 @@ export const homeCard = [
         link: "/list-of-subjects"
     }, {
         id: 6,
+        img: CARD7,
+        title: "settings",
+        link: "/settings"
+    }, {
+        id: 7,
         img: CARD6,
         title: "personal_information_home",
         link: "/profile"
@@ -76,4 +81,11 @@ export const cardSidebar = [
         title: "personal_information_home",
         link: "/profile"
     },
+]
+
+
+export const archive = [
+    {
+
+    }
 ]

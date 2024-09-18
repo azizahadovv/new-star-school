@@ -14,7 +14,7 @@ function Home() {
           key={item.id}
           className='shadow-home-page rounded-xl flex flex-col items-center justify-center gap-3 tablet:w-64 tablet:h-64 minMobil:w-72 minMobil:h-72 no-underline'
         >
-          <img className='w-50' src={item.img} alt="image" />
+          <img className='w-50 rounded-full' src={item.img} alt="image" />
           <h3 className='w-44 text-center'>{t(item.title)}</h3>
         </Link>)
       }

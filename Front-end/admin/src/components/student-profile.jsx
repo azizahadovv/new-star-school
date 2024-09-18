@@ -33,7 +33,6 @@ function StudentProfile() {
     formData.append("file", e);
     try {
       await student_Page_Function.uploadFile(id, formData);
-      toast.success("Uploaded file");
       get_datas_Student();
     } catch (error) {
       console.log(error);
