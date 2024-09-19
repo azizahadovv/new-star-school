@@ -47,7 +47,6 @@ const enLang = {
   creating_sciences: "Creating sciences",
   exit: "Logout",
 
-
   // *********************************************** Shaxsiy ma’lumotlar **********************
   enter: "Enter",
   editing: "Archiving",
@@ -67,13 +66,14 @@ const enLang = {
   science_teacher: "Science teacher",
   login: "Login",
   password: "Password",
-  prompt_value: "If you want to delete all the data related to the class, write 'YES',\n Note that all the data of the class and the data of the students will be deleted!",
+  prompt_value:
+    "If you want to delete all the data related to the class, write 'YES',\n Note that all the data of the class and the data of the students will be deleted!",
   delete_value: "Data could not be deleted, please try again",
   no_date: "No data found, or refresh the page...",
   save_image: "Profile picture cannot be changed at the moment",
-  settings: "Settings"
-
-
+  settings: "Settings",
+  time_schedule: "Lesson times",
+  position: "Position",
 };
 
 export default enLang;

@@ -1,4 +1,6 @@
 import {
+  ArchiveHome,
+  ArchiveStudent,
   CARD1,
   CARD2,
   CARD3,
@@ -10,14 +12,18 @@ import {
   DARSJADVALIOUTLINE,
   LISTCLASS,
   LISTCLASSOUTLINE,
+  RANK,
   STUDENT,
   STUDENTOUTLINE,
   SUBJECT,
   SUBJECTOUTLINE,
   TEACHER,
   TEACHEROUTLIN,
+  TIMESCHEDULE,
   infoUser,
   infoUserOutline,
+  settings1,
+  settings2,
 } from "../icons";
 export const homeCard = [
   {
@@ -102,6 +108,13 @@ export const cardSidebar = [
   },
   {
     id: 6,
+    img1: settings1,
+    img2: settings2,
+    title: "settings",
+    link: "/settings",
+  },
+  {
+    id: 7,
     img1: infoUser,
     img2: infoUserOutline,
     title: "personal_information_home",
@@ -109,4 +122,34 @@ export const cardSidebar = [
   },
 ];
 
-export const archive = [{}];
+//
+// arxiv admin
+// arxiv student
+// arxiv teacher
+
+export const settings = [
+  {
+    id: 1,
+    img: TIMESCHEDULE,
+    title: "time_schedule",
+    link: "lesson-times",
+  },
+  {
+    id: 2,
+    img: RANK,
+    title: "position",
+    link: "rank",
+  },
+  {
+    id: 3,
+    img: ArchiveStudent,
+    title: "archive_home",
+    link: "archive",
+  },
+  {
+    id: 4,
+    img: ArchiveHome,
+    title: "archive_student",
+    link: "/settings",
+  },
+];

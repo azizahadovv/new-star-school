@@ -41,14 +41,12 @@ const uzLang = {
   no_teacher_subject: "Fanlar mavjud emas",
   settings: "Sozlamalar",
 
-
-
   level: "Lavozimi",
   teacher_level: "O'qituvchi",
   director: "Director",
   deputy_director: "Direktor o'rinbosari",
   admin: "Administrator",
-  // 
+  //
   enter: "Kiriting",
   editing: "Arxivlash",
   personal_information: "Shaxsiy ma’lumotlar",
@@ -67,10 +65,16 @@ const uzLang = {
   science_teacher: "Fan o'qituvchisi",
   login: "Login",
   password: "Parol",
-  prompt_value: "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
+  prompt_value:
+    "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
   delete_value: "Maʼlumotlar o'chirilmadi qayta urinib ko'ring",
   no_date: "Hech qanday maʼlumot topilmadi, yoki sahifani yangilang...",
   save_image: "Hozircha profil suratini o'zgartirib bo'lmaydi",
-};
+  time_schedule: "Dars vaqtlari",
+  position: "Lavozimlar",
+  archive_home: "Arxiv o'qituvchilar",
+  archive_student:"Arxiv o'quvchilar"
+}; 
+
 
 export default uzLang;
