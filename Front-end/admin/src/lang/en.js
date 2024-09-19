@@ -74,6 +74,13 @@ const enLang = {
   settings: "Settings",
   time_schedule: "Lesson times",
   position: "Position",
+  archive_admin: "Archive admins",
+  archive_home: "Archive teachers",
+  archive_student: "Archive students",
+  hour: "hour",
+
+
+
 };
 
 export default enLang;

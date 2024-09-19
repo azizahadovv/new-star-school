@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import {
   ADDSTUDENT,
   ADDTEACHERS,
+  ARCHIVELESSONTIME,
   CLASSSCHEDULES,
   CLASSSCHEDULESID,
   Home,
@@ -40,6 +41,12 @@ function ReactRouter() {
           <Route path="profile" element={<PROFIL />} />
           <Route path="add-student" element={<ADDSTUDENT />} />
           <Route path="settings" element={<SETING />} />
+          <Route path="settings/archive-lesson-times" element={<ARCHIVELESSONTIME />} />
+          {/* <Route path="settings" element={<SETING />} /> */}
+          {/* <Route path="settings" element={<SETING />} />
+          <Route path="settings" element={<SETING />} />
+          <Route path="settings" element={<SETING />} />
+          <Route path="settings" element={<SETING />} /> */}
           <Route path="add-student/:id" element={<ADDSTUDENT />} />
         </Route>
         <Route path="*" element={<PageNoteFound />} />

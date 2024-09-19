@@ -73,7 +73,12 @@ const ruLang = {
   save_image: "Пока невозможно изменить фото профиля",
   settings: "Настройки",
   time_schedule: "Время занятий",
-  position:"Позиция"
+  position: "Позиция",
+  "archive_admin": "Архив администраторы",
+  "archive_home": "Архив учителя",
+  "archive_student": "Архив ученики",
+  hour: "час",
+
 };
 
 export default ruLang;

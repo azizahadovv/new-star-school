@@ -72,9 +72,11 @@ const uzLang = {
   save_image: "Hozircha profil suratini o'zgartirib bo'lmaydi",
   time_schedule: "Dars vaqtlari",
   position: "Lavozimlar",
+  archive_admin: "Arxiv adminlar",
   archive_home: "Arxiv o'qituvchilar",
-  archive_student:"Arxiv o'quvchilar"
-}; 
+  archive_student: "Arxiv o'quvchilar",
+  hour: "soat",
+};
 
 
 export default uzLang;
