@@ -26,8 +26,7 @@ import {
     settings1,
     settings2,
 } from "../icons";
-export const homeCard = [
-    {
+export const homeCard = [{
         id: 1,
         img: CARD1,
         title: "class_schedule_home",
@@ -71,8 +70,7 @@ export const homeCard = [
     },
 ];
 
-export const cardSidebar = [
-    {
+export const cardSidebar = [{
         id: 1,
         img1: DARSJADVALI,
         img2: DARSJADVALIOUTLINE,
@@ -128,8 +126,7 @@ export const cardSidebar = [
 // arxiv student
 // arxiv teacher
 
-export const settings = [
-    {
+export const settings = [{
         id: 1,
         img: TIMESCHEDULE,
         title: "time_schedule",
@@ -139,7 +136,7 @@ export const settings = [
         id: 2,
         img: RANK,
         title: "position",
-        link: "archive-rank",
+        link: "position",
     },
     {
         id: 3,

@@ -2,13 +2,17 @@ import { Route, Routes } from "react-router-dom";
 import {
   ADDSTUDENT,
   ADDTEACHERS,
+  ARCHIVEADMIN,
   ARCHIVELESSONTIME,
+  ARCHIVESTUDENTS,
+  ARCHIVETEACHERS,
   CLASSSCHEDULES,
   CLASSSCHEDULESID,
   Home,
   LISTOFSUBJECTS,
   ListOfClasses,
   ListOfClassesID,
+  POSITIONS,
   PROFIL,
   PageNoteFound,
   REGISTER,
@@ -40,13 +44,24 @@ function ReactRouter() {
           <Route path="students/:id" element={<STUDENTPROFILE />} />
           <Route path="profile" element={<PROFIL />} />
           <Route path="add-student" element={<ADDSTUDENT />} />
+
+          {/* ****************************** */}
           <Route path="settings" element={<SETING />} />
+          {/*  */}
           <Route path="settings/archive-lesson-times" element={<ARCHIVELESSONTIME />} />
+          {/*  */}
+          <Route path="settings/position" element={<POSITIONS />} />
+          {/*  */}
+          <Route path="settings/archive-admins" element={<ARCHIVEADMIN />} />
+          {/*  */}
+          <Route path="settings/archive-teachers" element={<ARCHIVETEACHERS />} />
+          {/*  */}
+          <Route path="settings/archive-students" element={<ARCHIVESTUDENTS />} />
+          {/*  */}
           {/* <Route path="settings" element={<SETING />} /> */}
-          {/* <Route path="settings" element={<SETING />} />
-          <Route path="settings" element={<SETING />} />
-          <Route path="settings" element={<SETING />} />
-          <Route path="settings" element={<SETING />} /> */}
+
+          {/* ************************** */}
+
           <Route path="add-student/:id" element={<ADDSTUDENT />} />
         </Route>
         <Route path="*" element={<PageNoteFound />} />
