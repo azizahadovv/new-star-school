@@ -78,9 +78,9 @@ const enLang = {
   archive_home: "Archive teachers",
   archive_student: "Archive students",
   hour: "hour",
-
-
-
+  add_lesson_time: "Add lesson time",
+  select_hour: "Select time",
+  edit_lesson_time: "Edit lesson time",
 };
 
 export default enLang;

@@ -74,11 +74,13 @@ const ruLang = {
   settings: "Настройки",
   time_schedule: "Время занятий",
   position: "Позиция",
-  "archive_admin": "Архив администраторы",
-  "archive_home": "Архив учителя",
-  "archive_student": "Архив ученики",
+  archive_admin: "Архив администраторы",
+  archive_home: "Архив учителя",
+  archive_student: "Архив ученики",
   hour: "час",
-
+  add_lesson_time: "Добавить время урока",
+  select_hour: "Выберите время",
+  edit_lesson_time: "Редактировать время урока",
 };
 
 export default ruLang;

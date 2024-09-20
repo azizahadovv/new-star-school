@@ -76,7 +76,9 @@ const uzLang = {
   archive_home: "Arxiv o'qituvchilar",
   archive_student: "Arxiv o'quvchilar",
   hour: "soat",
+  add_lesson_time: "Dars vaqtini qo'shing",
+  select_hour: "Vaqtni tanlang",
+  edit_lesson_time: "Dars vaqtini tahrirlash",
 };
-
 
 export default uzLang;

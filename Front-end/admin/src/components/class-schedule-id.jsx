@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Container, styleTopBarUINoFlex } from "../constanta/style";
 import {
-  INPUT,
   LESSONTABLECARD,
   LOADER,
   SELECTTEACHER,
+  SELECTTIME,
   SUBJECTINID,
   TERM,
 } from "../ui";
@@ -13,7 +13,7 @@ import TimeTable from "../service/time-table";
 import { useParams } from "react-router-dom";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 function ClassScheduleID() {
@@ -23,12 +23,12 @@ function ClassScheduleID() {
   const [visible, setVisible] = useState(false);
   const { id } = useParams();
   const [dayOfWeekRodal, setDayOfWeekRodal] = useState("");
-  const [endTime, setEndTime] = useState("");
+  const [time, setTime] = useState("");
   const [startTime, setStartTime] = useState("");
-  const [subjectId, setSubjectId] = useState('');
-  const [teacherId, setTeacherId] = useState('');
+  const [subjectId, setSubjectId] = useState("");
+  const [teacherId, setTeacherId] = useState("");
   const [termId, setTermId] = useState(1);
-  const [updateId, setUpdateId] = useState('');
+  const [updateId, setUpdateId] = useState("");
   const open = useSelector((sel) => sel?.sidebarReduser?.open ?? false);
 
   useEffect(() => {
@@ -36,10 +36,10 @@ function ClassScheduleID() {
   }, []);
 
   function nullUsestate() {
-    setEndTime("");
+    setTime("");
     setStartTime("");
-    setSubjectId('');
-    setTeacherId('');
+    setSubjectId("");
+    setTeacherId("");
     setTermId(1);
     setTeacherData([]);
   }
@@ -53,9 +53,9 @@ function ClassScheduleID() {
     }
   };
 
-
   const addSchedule = async () => {
-    const isFormValid = endTime && startTime && subjectId !== null && teacherId !== null && termId;
+    const isFormValid =
+      time && subjectId !== null && teacherId !== null && termId;
     if (!isFormValid) {
       toast.info(t("Fill in all the lines"));
       return;
@@ -64,8 +64,7 @@ function ClassScheduleID() {
     const data = {
       classId: id,
       dayOfWeek: dayOfWeekRodal,
-      endTime,
-      startTime,
+      time,
       subjectId: Number(subjectId),
       teacherId: Number(teacherId),
       termId: Number(termId),
@@ -102,27 +101,35 @@ function ClassScheduleID() {
 
   const updateSchedule = (item) => {
     setVisible(true);
-    setUpdateId(item?.id ?? '');
-    setEndTime(item?.endTime ?? "");
-    setStartTime(item?.startTime ?? "");
+    setUpdateId(item?.id ?? "");
+    setTime(item?.endTime ?? "");
     setTeacherId(item?.teacherId ?? null);
     setTermId(item?.termId ?? 1);
   };
 
   return (
     <div className={`${Container}`}>
-      <div className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-center overflow-scroll`}>
+      <div
+        className={`${styleTopBarUINoFlex} min-h-20 flex items-center justify-center overflow-scroll`}
+      >
         <b className="text-center font-bold leading-6 text-4xl text-textBlack">
           {t("class_schedule_home")}
         </b>
       </div>
-      <div className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"} min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}>
+      <div
+        className={`${styleTopBarUINoFlex} ${
+          open ? "hidden" : "flex"
+        } min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}
+      >
         {schedule?.length === 0 ? (
           <LOADER />
         ) : (
           <div className="w-full flex items-stretch justify-evenly py-5 gap-5 flex-wrap">
             {schedule?.map((res, id) => (
-              <div key={id} className="w-[550px] min-h-96 border-t-4-color rounded-sm border-blue">
+              <div
+                key={id}
+                className="w-[550px] min-h-96 border-t-4-color rounded-sm border-blue"
+              >
                 <div>
                   <div className="w-full h-14 flex items-center justify-center border-b-2 border-brGray">
                     <span className="text-center text-blue uppercase">
@@ -131,7 +138,11 @@ function ClassScheduleID() {
                   </div>
                   {res?.schedule?.map((item, id) => (
                     <div key={id}>
-                      <LESSONTABLECARD functionEdit={updateSchedule} functionDelete={Trash_Data} item={item} />
+                      <LESSONTABLECARD
+                        functionEdit={updateSchedule}
+                        functionDelete={Trash_Data}
+                        item={item}
+                      />
                     </div>
                   ))}
                   <div className="p-1 ">
@@ -152,7 +163,7 @@ function ClassScheduleID() {
         )}
       </div>
       <Rodal
-        height={440}
+        height={380}
         visible={visible}
         onClose={() => setVisible(!visible)}
       >
@@ -161,30 +172,11 @@ function ClassScheduleID() {
         <div className="flex flex-col items-stretch justify-center gap-3">
           <TERM value={termId} setValue={setTermId} />
           <div className="flex items-center gap-3 justify-between">
-            <div className="w-1/2">
-              <INPUT
-                value={startTime}
-                setValue={setStartTime}
-                typeINP={"time"}
-                titleInp={"Start"}
-                width={"100%"}
-              />
-            </div>
-            <div className="w-1/2">
-              <INPUT
-                value={endTime}
-                setValue={setEndTime}
-                typeINP={"time"}
-                titleInp={"End"}
-                width={"100%"}
-              />
-            </div>
+            <SELECTTIME value={time || ""} setValue={setTime} />
           </div>
-
           <SUBJECTINID
             weekDay={dayOfWeekRodal}
-            startTime={startTime}
-            endTime={endTime}
+            startTime={time}
             setTeacherData={setTeacherData}
             value={subjectId || ""}
             setValue={setSubjectId}
@@ -205,7 +197,6 @@ function ClassScheduleID() {
           </button>
         </div>
       </Rodal>
-
     </div>
   );
 }
