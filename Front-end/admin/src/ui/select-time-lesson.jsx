@@ -2,7 +2,7 @@ import * as React from "react";
 import lesson_times from "../service/archive-lesson-times";
 import { useTranslation } from "react-i18next";
 
-function SelectTimeLesson({ value, setValue, disible }) {
+function SelectTimeLesson({ value, setValue }) {
   const [data, setData] = React.useState([]);
   const { t } = useTranslation();
   React.useEffect(() => {
@@ -18,9 +18,11 @@ function SelectTimeLesson({ value, setValue, disible }) {
     <select
       value={value}
       onChange={(e) => setValue(e.target.value)}
-      disabled={disible}
       className="form-select"
     >
+      <option hidden value={''}>
+        {t("select_times")}
+      </option>
       {data?.length === 0 ? (
         <option value="">{t("no_date")}</option>
       ) : (

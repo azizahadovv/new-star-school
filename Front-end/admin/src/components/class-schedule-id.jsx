@@ -24,7 +24,6 @@ function ClassScheduleID() {
   const { id } = useParams();
   const [dayOfWeekRodal, setDayOfWeekRodal] = useState("");
   const [time, setTime] = useState("");
-  const [startTime, setStartTime] = useState("");
   const [subjectId, setSubjectId] = useState("");
   const [teacherId, setTeacherId] = useState("");
   const [termId, setTermId] = useState(1);
@@ -37,7 +36,6 @@ function ClassScheduleID() {
 
   function nullUsestate() {
     setTime("");
-    setStartTime("");
     setSubjectId("");
     setTeacherId("");
     setTermId(1);
@@ -64,7 +62,7 @@ function ClassScheduleID() {
     const data = {
       classId: id,
       dayOfWeek: dayOfWeekRodal,
-      time,
+      schoolTimeId: Number(time),
       subjectId: Number(subjectId),
       teacherId: Number(teacherId),
       termId: Number(termId),
@@ -117,9 +115,8 @@ function ClassScheduleID() {
         </b>
       </div>
       <div
-        className={`${styleTopBarUINoFlex} ${
-          open ? "hidden" : "flex"
-        } min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}
+        className={`${styleTopBarUINoFlex} ${open ? "hidden" : "flex"
+          } min-h-96 flex items-center justify-center flex-wrap overflow-scroll`}
       >
         {schedule?.length === 0 ? (
           <LOADER />
@@ -163,7 +160,7 @@ function ClassScheduleID() {
         )}
       </div>
       <Rodal
-        height={380}
+        height={400}
         visible={visible}
         onClose={() => setVisible(!visible)}
       >
@@ -174,19 +171,23 @@ function ClassScheduleID() {
           <div className="flex items-center gap-3 justify-between">
             <SELECTTIME value={time || ""} setValue={setTime} />
           </div>
-          <SUBJECTINID
-            weekDay={dayOfWeekRodal}
-            startTime={time}
-            setTeacherData={setTeacherData}
-            value={subjectId || ""}
-            setValue={setSubjectId}
-          />
+          {
+            time !== '' && <SUBJECTINID
+              weekDay={dayOfWeekRodal}
+              time={time}
+              setTeacherData={setTeacherData}
+              value={subjectId || ""}
+              setValue={setSubjectId}
+            />
+          }
 
-          <SELECTTEACHER
-            value={teacherId || ""}
-            setValue={setTeacherId}
-            teacherData={teacherData}
-          />
+          {
+            teacherData !== "" && <SELECTTEACHER
+              value={teacherId || ""}
+              setValue={setTeacherId}
+              teacherData={teacherData}
+            />
+          }
         </div>
         <div className="w-full my-3 flex flex-col items-start justify-evenly ">
           <button

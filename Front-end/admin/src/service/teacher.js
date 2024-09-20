@@ -58,9 +58,9 @@ const teacherController = {
         }
     },
 
-    async getTeacherInSubjectIdAndChaced(weekDay, startTime, endTime, subjectId) {
+    async getTeacherInSubjectIdAndChaced(weekDay, schoolTimeId, subjectId) {
         try {
-            const { data } = await axios.get(`teachers/available?dayOfWeek=${weekDay}&startTime=${startTime}&endTime=${endTime}&subjectId=${subjectId}`, auth);
+            const { data } = await axios.get(`teachers/available?dayOfWeek=${weekDay}&schoolTimeId=${schoolTimeId}&subjectId=${subjectId}`, auth);
             return data;
         } catch (error) {
             toast.error(`Error get techer \n ${error}`);

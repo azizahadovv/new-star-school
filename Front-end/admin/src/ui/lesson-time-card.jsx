@@ -34,10 +34,10 @@ function LessonTimeCard({ item, functionDelete, functionEdit }) {
                                 <img src={editBlue} width={20} alt="trash" />
                                 {t("edit")}
                             </button>
-                            <button onClick={() => functionDelete(item)} className="dropdown-item d-flex align-items-center gap-2">
+                            {/* <button onClick={() => functionDelete(item)} className="dropdown-item d-flex align-items-center gap-2 hidden">
                                 <img src={trash} width={20} alt="trash" />
                                 {t("editing")}
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ import teacherController from "../service/teacher";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-function SubjecdtInId({ value, setValue, setTeacherData, startTime, endTime, weekDay }) {
+function SubjecdtInId({ value, setValue, setTeacherData, time, weekDay }) {
   const [subject, setSubject] = useState([]);
   const { t } = useTranslation()
   const { id } = useParams()
@@ -19,7 +19,7 @@ function SubjecdtInId({ value, setValue, setTeacherData, startTime, endTime, wee
   const getTeacherInSubjectId = async (e) => {
     try {
       if (e !== "") {
-        const data = await teacherController.getTeacherInSubjectIdAndChaced(weekDay, startTime, endTime, e);
+        const data = await teacherController.getTeacherInSubjectIdAndChaced(weekDay, time, e);
         setTeacherData(data);
       }
     } catch (error) {
