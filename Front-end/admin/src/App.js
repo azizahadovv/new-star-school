@@ -45,8 +45,13 @@ function App() {
   };
 
   useEffect(() => {
+    // Agar sahifa '/login' da bo'lsa, refresh va validate funksiyalarini ishlatmaslik
+    if (window.location.pathname === '/login') {
+      return;
+    }
+
     // Agar foydalanuvchi login qilmagan yoki tokenlar yo'q bo'lsa login sahifasiga yo'naltirish
-    if (window.location.pathname === '/login' || !token || !id) {
+    if (!token || !id) {
       clearStorageAndRedirect();
     }
 
@@ -60,7 +65,7 @@ function App() {
     setupAxiosInterceptors(clearStorageAndRedirect);
 
     // Tokenni har bir soatda yangilash uchun interval
-    const intervalId = setInterval(refresh_Token, 360000); // 1 soatda bir marta
+    const intervalId = setInterval(refresh_Token, 360000); // 3600000 ms = 1 soat
 
     // Komponent unmounted bo'lganda intervalni tozalash
     return () => {

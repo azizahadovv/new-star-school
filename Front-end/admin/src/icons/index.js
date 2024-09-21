@@ -70,3 +70,4 @@ export { default as RANK } from "./rank.png";
 export { default as ARCHIVEADMIN } from "./archive-admin.png";
 export { default as TRASHING } from "./trash-xmark.svg";
 export { default as PLUSS } from "./calendar-plus.svg";
+export { default as WINNER } from "./winner.png";

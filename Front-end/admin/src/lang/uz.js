@@ -24,7 +24,7 @@ const uzLang = {
   table_number: "Telefon raqam",
   table_more: "Batafsil",
   placeholder_search: "FISH bo'yicha qidiruv",
-  active_table: "Faol",
+  active_table: "Faollik",
   add_student_in_file: "Fayl yuklang",
   male: "Erkak",
   female: "Ayol",
@@ -65,7 +65,8 @@ const uzLang = {
   science_teacher: "Fan o'qituvchisi",
   login: "Login",
   password: "Parol",
-  prompt_value: "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
+  prompt_value:
+    "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
   delete_value: "Maʼlumotlar o'chirilmadi qayta urinib ko'ring",
   no_date: "Hech qanday maʼlumot topilmadi, yoki sahifani yangilang...",
   save_image: "Hozircha profil suratini o'zgartirib bo'lmaydi",
@@ -78,7 +79,7 @@ const uzLang = {
   add_lesson_time: "Dars vaqtini qo'shing",
   select_hour: "Vaqtni tanlang",
   edit_lesson_time: "Dars vaqtini tahrirlash",
-  select_times: "Dars vaqtini tanlang"
+  select_times: "Dars vaqtini tanlang",
 };
 
 export default uzLang;
