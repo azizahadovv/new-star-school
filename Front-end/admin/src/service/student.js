@@ -9,6 +9,21 @@ const auth = {
 }
 
 const student_Page_Function = {
+
+    async getArchivedUser() {
+        return await axios
+          .get(`students/archived`, auth)
+          .then(({ data }) => {
+            return data;
+          })
+          .catch((error) => {
+            return toast.error(`Error get archived user \n ${error.massage}`);
+          });
+      },
+
+
+
+
     async get_All_Student() {
         try {
             const { data } = await axios.get(`students`, auth);

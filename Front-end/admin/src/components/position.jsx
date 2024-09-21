@@ -24,12 +24,13 @@ function Position() {
   const [allUsers, setAllUsers] = React.useState([]);
   const [userRoles, setUserRoles] = React.useState([]);
   const [useName, setUseName] = React.useState("");
+  const [Ids, setIds] = React.useState("");
 
   React.useEffect(() => {
     getUsersData();
     const options = transformToOptions(DEFAULT_ROLES);
     setUserRoles(options);
-  }, []);
+  }, [Ids, selectedValues]);
 
   const getUsersData = async () => {
     const data = await teacherController.getTeacher();
@@ -38,6 +39,7 @@ function Position() {
 
   const fetchUserRoles = async (name, ids) => {
     setUseName(name);
+    setIds(ids);
     const datas = await teacherController.getTeacherInId(ids);
     const userRoles = datas.roles;
     setSelectedValues(userRoles);
@@ -55,7 +57,7 @@ function Position() {
   };
 
   const saveUserDatas = async () => {
-    await teacherController.editTeacherRoles(useName, selectedValues);
+    await teacherController.changePositionTeacher(Ids, selectedValues);
     setVisible(false);
     getUsersData();
   };
