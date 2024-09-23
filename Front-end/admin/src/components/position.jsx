@@ -56,7 +56,9 @@ function Position() {
   };
 
   const saveUserDatas = async () => {
-    await teacherController.changePositionTeacher(Ids, selectedValues);
+    const roleQueryString = selectedValues.map((role) => `role=${role}`).join('&');
+    console.log(roleQueryString);
+    await teacherController.changePositionTeacher(Ids, roleQueryString);
     setVisible(false);
     getUsersData();
   };

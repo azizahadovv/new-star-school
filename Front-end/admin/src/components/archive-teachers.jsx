@@ -59,12 +59,19 @@ function ArchiveTeachers() {
                     <td>{item.birthDate}</td>
                     <td>{item.phoneNumber}</td>
                     <td>
-                      {item?.subject?.map((subject) => (
-                        <span key={subject.id}>{subject?.name + ", "}</span>
+                      {item?.subject?.map((subject, index) => (
+                        <span key={subject.id}>
+                          {subject?.name}
+                          {index < item.subject.length - 1 ? ", " : ""}
+                        </span>
                       ))}
+
+
                     </td>
-                    <td>
-                      {item.isActive ? t("active_table") : t("inactive_table")}
+                    <td className="font-bold">
+                      <span className="text-red">
+                        {item.isActive ? t("active_table") : t("inactive_table")}
+                      </span>
                     </td>
                   </tr>
                 );

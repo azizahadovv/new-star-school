@@ -1,4 +1,6 @@
-import { toast } from "react-toastify";
+import {
+  toast
+} from "react-toastify";
 import axios from "./api";
 
 const auth = {
@@ -9,14 +11,30 @@ const auth = {
 };
 
 const Admin_user = {
-  async getUserData(userId) {
-    await axios
+  async getUserData() {
+    return await axios
       .get(`v1/admins/archived`, auth)
-      .then(({ data }) => {
+      .then(({
+        data
+      }) => {
         return data;
       })
       .catch((error) => {
-        toast.error(error?.message);
+        toast.error(error.message);
+        throw error; // Optional: re-throw the error if you want the caller to handle it
+      });
+  },
+
+  async getAllAdminData() {
+    return await axios
+      .get(`v1/admins`, auth)
+      .then(({
+        data
+      }) => {
+        return data;
+      })
+      .catch((error) => {
+        toast.error(error.message);
         throw error; // Optional: re-throw the error if you want the caller to handle it
       });
   },

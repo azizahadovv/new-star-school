@@ -8,6 +8,7 @@ import {
   ARCHIVETEACHERS,
   CLASSSCHEDULES,
   CLASSSCHEDULESID,
+  CREATEADMIN,
   Home,
   LISTOFSUBJECTS,
   ListOfClasses,
@@ -51,6 +52,8 @@ function ReactRouter() {
           <Route path="settings/archive-lesson-times" element={<ARCHIVELESSONTIME />} />
           {/*  */}
           <Route path="settings/position" element={<POSITIONS />} />
+          {/*  */}
+          <Route path="settings/create-admins" element={<CREATEADMIN />} />
           {/*  */}
           <Route path="settings/archive-admins" element={<ARCHIVEADMIN />} />
           {/*  */}

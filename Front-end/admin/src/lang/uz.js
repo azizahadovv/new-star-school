@@ -65,8 +65,7 @@ const uzLang = {
   science_teacher: "Fan o'qituvchisi",
   login: "Login",
   password: "Parol",
-  prompt_value:
-    "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
+  prompt_value: "Sinfga tegishli barcha ma'lumotlar o'chishini istasangiz 'YES' deb yozing,\n E'tibor bering sinfning barcha ma'lumotlar va o'quvchilari malumotlari o'chirib yuboriladi!",
   delete_value: "Maʼlumotlar o'chirilmadi qayta urinib ko'ring",
   no_date: "Hech qanday maʼlumot topilmadi, yoki sahifani yangilang...",
   save_image: "Hozircha profil suratini o'zgartirib bo'lmaydi",
@@ -80,6 +79,12 @@ const uzLang = {
   select_hour: "Vaqtni tanlang",
   edit_lesson_time: "Dars vaqtini tahrirlash",
   select_times: "Dars vaqtini tanlang",
+  inactive_table: "Arxivlangan",
+  create_admin: "Admin yaratish",
+  information_create_admin: "Administrator yaratish imkoniyati mavjud emas!  Iltimos +998978611199 raqamiga murojaat qiling.",
+  info_warning: "Aktiv",
+  info_danger: "Mavjud emas",
+
 };
 
 export default uzLang;

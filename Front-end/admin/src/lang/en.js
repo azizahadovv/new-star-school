@@ -62,8 +62,7 @@ const enLang = {
   science_teacher: "Subject teacher",
   login: "Login",
   password: "Password",
-  prompt_value:
-    "If you want to delete all data related to the class, type 'YES'.\n Note that all class data and student information will be deleted!",
+  prompt_value: "If you want to delete all data related to the class, type 'YES'.\n Note that all class data and student information will be deleted!",
   delete_value: "Data was not deleted, please try again",
   no_date: "No data found, or refresh the page...",
   save_image: "Profile picture cannot be changed at this time",
@@ -77,5 +76,12 @@ const enLang = {
   select_hour: "Select time",
   edit_lesson_time: "Edit lesson time",
   select_times: "Select lesson time",
+  inactive_table: "Archived",
+  create_admin: "Create admin",
+  information_create_admin: "Creating an administrator is not possible! Please contact +998978611199.",
+  "info_warning": "Active",
+  "info_danger": "Unavailable"
+
+
 };
 export default enLang;

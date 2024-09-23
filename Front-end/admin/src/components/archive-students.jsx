@@ -56,8 +56,10 @@ function ArchiveStudents() {
                     <td>{item.birthDate}</td>
                     <td>{item.phoneNumber}</td>
                     <td>{item?.grade}</td>
-                    <td>
-                      {item.isActive ? t("active_table") : t("inactive_table")}
+                    <td className="font-bold">
+                      <span className="text-red">
+                        {item.isActive ? t("active_table") : t("inactive_table")}
+                      </span>
                     </td>
                   </tr>
                 );

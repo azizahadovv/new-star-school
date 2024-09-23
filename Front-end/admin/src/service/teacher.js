@@ -1,4 +1,6 @@
-import { toast } from "react-toastify";
+import {
+  toast
+} from "react-toastify";
 import axios from "./api";
 
 const auth = {
@@ -12,7 +14,9 @@ const teacherController = {
   async getArchivedUser() {
     return await axios
       .get(`teachers/archived`, auth)
-      .then(({ data }) => {
+      .then(({
+        data
+      }) => {
         return data;
       })
       .catch((error) => {
@@ -21,19 +25,23 @@ const teacherController = {
   },
 
   async changePositionTeacher(teacherId, teacherRole) {
-    try {
-      await axios.put(
-        `teachers/${teacherId}/addRole?role=${teacherRole[0]}`,
-        auth
-      );
-    } catch (error) {
-      toast.error(`Error change position \n ${error}`);
-    }
+
+    return await axios.put(`teachers/${teacherId}/addRole?${teacherRole}`, {}, auth).then(({
+        data
+      }) => {
+        toast.success(`Successfully changed`, data)
+        return data;
+      })
+      .catch((error) => {
+        return toast.error(`Error get archived user \n ${error.massage}`);
+      });
   },
 
   async searchTeacher(techerName, subjectId) {
     try {
-      const { data } = await axios.get(
+      const {
+        data
+      } = await axios.get(
         `teachers/search?subjectId=${subjectId}&name=${techerName}`,
         auth
       );
@@ -68,7 +76,9 @@ const teacherController = {
 
   async getTeacher() {
     try {
-      const { data } = await axios.get(`teachers`, auth);
+      const {
+        data
+      } = await axios.get(`teachers`, auth);
       return data;
     } catch (error) {
       toast.error(`Error get techer \n ${error}`);
@@ -76,7 +86,9 @@ const teacherController = {
   },
   async getTeacherInId(teacherId) {
     try {
-      const { data } = await axios.get(`teachers/${teacherId}`, auth);
+      const {
+        data
+      } = await axios.get(`teachers/${teacherId}`, auth);
       return data;
     } catch (error) {
       toast.error(`Error get techer \n ${error}`);
@@ -93,7 +105,9 @@ const teacherController = {
 
   async getTeacherInSubjectIdAndChaced(weekDay, schoolTimeId, subjectId) {
     try {
-      const { data } = await axios.get(
+      const {
+        data
+      } = await axios.get(
         `teachers/available?dayOfWeek=${weekDay}&schoolTimeId=${schoolTimeId}&subjectId=${subjectId}`,
         auth
       );
@@ -112,7 +126,9 @@ const teacherController = {
   },
   async getImage(imgId) {
     try {
-      const { data } = await axios.get(`v1/files/${imgId}`, auth);
+      const {
+        data
+      } = await axios.get(`v1/files/${imgId}`, auth);
       toast.success("success upload");
       return data;
     } catch (error) {

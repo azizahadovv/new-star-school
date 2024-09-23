@@ -26,3 +26,5 @@ export { default as TERM } from './term'
 export { default as SUBJECTINID } from './subject-in-Id'
 export { default as SELECTTEACHER } from './select-teacher'
 export { default as SELECTTIME } from './select-time-lesson'
+
+export { default as RODAL } from './Rodal'

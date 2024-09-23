@@ -68,6 +68,7 @@ export { default as settings2 } from "./settings.svg";
 export { default as TIMESCHEDULE } from "./time-schedule.png";
 export { default as RANK } from "./rank.png";
 export { default as ARCHIVEADMIN } from "./archive-admin.png";
+export { default as CREATEADMIN } from "./create-admin.png";
 export { default as TRASHING } from "./trash-xmark.svg";
 export { default as PLUSS } from "./calendar-plus.svg";
 export { default as WINNER } from "./winner.png";

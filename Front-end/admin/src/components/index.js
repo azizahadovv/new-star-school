@@ -17,6 +17,7 @@ export { default as SETING } from './settings'
 export { default as ARCHIVELESSONTIME } from './archive-lesson-times'
 
 export { default as POSITIONS } from './position'
+export { default as CREATEADMIN } from './create-admins'
 export { default as ARCHIVEADMIN } from './archive-admins'
 export { default as ARCHIVETEACHERS } from './archive-teachers'
 export { default as ARCHIVESTUDENTS } from './archive-students'
