@@ -11,7 +11,6 @@ const animatedComponents = makeAnimated();
 
 const DEFAULT_ROLES = [
   "TEACHER",
-  "STUDENT",
   "DIRECTOR",
   "ADMIN",
   "DEPUTY_DIRECTOR",
