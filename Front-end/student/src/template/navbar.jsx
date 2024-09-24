@@ -8,13 +8,14 @@ import { useEffect, useState } from 'react'
 import { HomeText } from '../utils/UiFunctios'
 import { useTranslation } from 'react-i18next'
 import studentCotrol from '../service/student'
+import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
   const { t } = useTranslation()
   const [firstName, setFirstName] = useState("")
   const [name, setName] = useState("")
   const [Image, setImage] = useState("")
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const toggle = useSelector(sel => sel.sidebarReduser.open)
   const myText = HomeText().props.children
@@ -40,8 +41,6 @@ function Navbar() {
   }, [user_id]);
 
 
-
-
   return (
     <div className='w-full shadowBG bg-white border-b border-brGray'>
       <div className='flex tablet:mx-[50px] tabletIst:mx-[100px] minMobil:mx-2 relative'>
@@ -56,7 +55,7 @@ function Navbar() {
             <div className='tablet:block minMobil:hidden'>
               <LANGUAGEPOTION />
             </div>
-            <div className='flex items-center justify-center gap-2'>
+            <div className='flex items-center justify-center gap-2' onDoubleClick={() => navigate('/profile')}>
               <div className='w-12 h-12 rounded-full'>
                 <img className='rounded-full w-11 h-11' src={Image !== '' ? Image : userIcon} alt="userIcon" />
               </div>

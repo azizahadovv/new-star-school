@@ -23,7 +23,7 @@ function GradeRating() {
   const getData = async () => {
     const id = sessionStorage.getItem('my-users-ids')
     const data = await GradeCotrol.getTerms(id, termData, 'GRADE', valueTeacher);
-    setNewData(data);
+    setNewData(data.content || []);
   }
 
   const handleTermChange = (newTerm) => {

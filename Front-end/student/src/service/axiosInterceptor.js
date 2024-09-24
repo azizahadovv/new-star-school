@@ -1,6 +1,22 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+// Set to keep track of already shown errors
+const shownErrors = new Set();
+
+// Function to display a toast and avoid duplicates
+const showToast = (message) => {
+    if (!shownErrors.has(message)) {
+        toast.error(message);
+        shownErrors.add(message);
+
+        // Clear the error after a timeout to allow future occurrences
+        setTimeout(() => {
+            shownErrors.delete(message);
+        }, 5000); // 5 seconds timeout, adjust as needed
+    }
+};
+
 // Axios interceptorni sozlash
 const setupAxiosInterceptors = (clearStorageAndRedirect) => {
     axios.interceptors.response.use(
@@ -12,52 +28,52 @@ const setupAxiosInterceptors = (clearStorageAndRedirect) => {
             // Xato obyekti borligini tekshirish
             if (error.response) {
                 const status = error.response.status;
+                let errorMessage = '';
 
                 switch (status) {
                     case 400:
-                        toast.error("So‘rov yuborishdagi xatolik!!");
-                        // 400 xatosi uchun mantiq (xato so'rov)
+                        errorMessage = error.response.data.message;
+                        showToast(errorMessage);
                         break;
 
                     case 401:
-                        toast.error("401 Unauthorized:", error.response);
-                        // 401 xatosi uchun mantiq (auth xatoliklari, foydalanuvchi login qilish kerak)
+                        errorMessage = "Ro'yxatda o'tishda xatolik. Login yoki parol noto'g'ri!";
+                        showToast(errorMessage);
                         clearStorageAndRedirect();
                         break;
 
                     case 403:
-                        // 403 xatosi uchun mantiq (ruxsat etilmagan kirish)
+                        errorMessage = "403 Forbidden: Access denied.";
+                        showToast(errorMessage);
                         setTimeout(() => {
                             clearStorageAndRedirect();
-                        }, 15000); // 15 soniyadan keyin clearStorageAndRedirect funksiyasini ishga tushirish
+                        }, 15000);
                         break;
 
                     case 404:
-                        toast.error("404 Not Found:", error.response);
-                        // 404 xatosi uchun mantiq (sahifa yoki resurs topilmadi)
+                        errorMessage = "404 Not Found.";
+                        showToast(errorMessage);
                         break;
 
                     case 500:
-                        toast.error("500 Internal Server Error:", error.response);
-                        // 500 xatosi uchun mantiq (server xatosi)
+                        errorMessage = "500 Internal Server Error.";
+                        showToast(errorMessage);
                         break;
 
                     case 503:
-                        toast.error("503 Service Unavailable:", error.response);
-                        // 503 xatosi uchun mantiq (xizmat vaqtincha ishlamayapti)
+                        errorMessage = "503 Service Unavailable.";
+                        showToast(errorMessage);
                         break;
 
                     default:
-                        toast.error(`Xatolik status kodi: ${status}`, error.response);
-                        // Boshqa status kodlari uchun umumiy mantiq
+                        errorMessage = `Xatolik status kodi: ${status}`;
+                        showToast(errorMessage);
                         break;
                 }
             } else if (error.request) {
-                // Agar so'rov amalga oshirilgan bo'lsa, ammo javob kelmasa
-                toast.error("So'rov amalga oshirildi, lekin javob olinmadi:", error.request);
+                showToast("So'rov amalga oshirildi, lekin javob olinmadi.");
             } else {
-                // Xatolik so'rovni sozlash jarayonida yuz bergan bo'lsa
-                toast.error("So'rovni sozlashda xatolik yuz berdi:", error.message);
+                showToast("So'rovni sozlashda xatolik yuz berdi.");
             }
 
             // Xatoni qayta ishlash

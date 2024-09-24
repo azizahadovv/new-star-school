@@ -24,14 +24,12 @@ function OptionsSelect({ setTeacherData }) {
         setTeacherData(datas);
     }
 
-
-
     return (
         <select value={val} onChange={(e) => {
             setVal(e.target.value)
             getTeacherData(e.target.value)
         }} style={{ height: "35px" }} className="form-select" >
-            <option hidden>{t("subject_name")}</option>
+            <option value={''}>{t("all")}</option>
             {
                 datas?.map((d) => {
                     return <option key={d.id} value={d.id}>{d.name}</option>
