@@ -26,12 +26,12 @@ const teacherController = {
 
   async changePositionTeacher(teacherId, teacherRole) {
 
-    return await axios.put(`teachers/${teacherId}/addRole?${teacherRole}`, {}, auth).then(({
-        data
-      }) => {
-        toast.success(`Successfully changed`, data)
-        return data;
-      })
+    return await axios.put(`teachers/${teacherId}/assign-role?${teacherRole}`, {}, auth).then(({
+      data
+    }) => {
+      toast.success(`Successfully changed`, data)
+      return data;
+    })
       .catch((error) => {
         return toast.error(`Error get archived user \n ${error.massage}`);
       });
@@ -68,7 +68,7 @@ const teacherController = {
         `teachers/${teacherId}?subjectId=${subjectId}`,
         dataTeacher,
         auth
-      );
+      )
     } catch (error) {
       toast.error(`Error put teacher \n ${error}`);
     }
@@ -118,22 +118,22 @@ const teacherController = {
   },
   async uploadImg(teacherId, file) {
     try {
-      await axios.post(`teachers/${teacherId}/upload-image`, file, auth);
+      await axios.post(`teachers/${teacherId}/upload-image`, file, auth)
       toast.success("success upload");
     } catch (error) {
       toast.error(error);
     }
   },
   async getImage(imgId) {
-    try {
-      const {
-        data
-      } = await axios.get(`v1/files/${imgId}`, auth);
-      toast.success("success upload");
+    return await axios.get(`v1/files/${imgId}`, auth).then(({
+      data
+    }) => {
       return data;
-    } catch (error) {
-      toast.error(error);
-    }
+    })
+      .catch((error) => {
+        return toast.error(`Error get archived user \n ${error.massage}`);
+      });
+
   },
 };
 
