@@ -1,0 +1,67 @@
+/* ============================================================
+   Design Tokens — New Star School
+   Manba: New-Star-School-Dashboard-Hujjatlari/03-Design-Tokens.md
+   Bu fayl semantic CSS o'zgaruvchilarni e'lon qiladi (qo'shimcha qatlam).
+   Mavjud Tailwind ranglari (darkGray, textBlack, ...) saqlanadi.
+   ============================================================ */
+:root {
+  /* === Ranglar — primitive === */
+  --navy-900: #263039; --navy-700: #2C3A48; --navy-500: #34414F;
+  --navy-300: #475667; --navy-100: #81909F;
+  --green-500: #41C981; --green-600: #34B870; --green-100: #E7F8EF;
+  --blue-700: #0E4C8F; --blue-500: #125DAC; --blue-300: #3D7CC0;
+  --blue-100: #C3D6EA; --blue-50: #ECF2F8;
+  --grey-0: #FFFFFF; --grey-50: #F4F7F9; --grey-100: #ECF1F4;
+  --grey-200: #E1E7EC; --grey-400: #9AA7B2; --grey-600: #5B6B79;
+  --red-500: #C70909; --red-50: #FBE9E9; --amber-500: #E8A23C;
+
+  --accent-teal: #088395; --accent-coral: #E88D67; --accent-blue: #2A629A;
+  --accent-sea: #58A399; --accent-purple: #81689D; --accent-gold: #BCA37F;
+
+  /* === Semantic === */
+  --color-bg-app: var(--grey-50);
+  --color-bg-surface: var(--grey-0);
+  --color-bg-muted: var(--grey-100);
+  --color-bg-sidebar: var(--navy-500);
+  --color-text-primary: var(--navy-900);
+  --color-text-secondary: var(--grey-400);
+  --color-text-on-dark: var(--grey-0);
+  --color-text-link: var(--blue-500);
+  --color-border: var(--grey-200);
+  --color-primary: var(--blue-500);
+  --color-primary-hover: var(--blue-700);
+  --color-danger: var(--red-500);
+  --color-focus-ring: var(--blue-300);
+
+  /* === Spacing (4pt grid) === */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --space-12: 48px; --space-16: 64px;
+
+  /* === Radius === */
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 12px;
+  --radius-xl: 16px; --radius-full: 9999px;
+
+  /* === Shadow === */
+  --shadow-sm: 0 1px 2px rgba(38, 48, 57, .06);
+  --shadow-card: 0 2px 8px rgba(38, 48, 57, .06);
+  --shadow-md: 0 4px 12px rgba(38, 48, 57, .08);
+  --shadow-lg: 0 8px 24px rgba(38, 48, 57, .10);
+  --shadow-modal: 0 16px 48px rgba(38, 48, 57, .18);
+
+  /* === Typography === */
+  --font-base: 'Inter', 'Poppins', system-ui, sans-serif;
+  --fs-xs: 12px; --fs-sm: 13px; --fs-base: 14px;
+  --fs-md: 16px; --fs-lg: 20px; --fs-xl: 24px;
+  --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600; --fw-bold: 700;
+  --lh-tight: 1.25; --lh-base: 1.5;
+
+  /* === Motion === */
+  --dur-fast: 150ms; --dur-base: 220ms; --dur-slow: 350ms;
+  --ease-standard: cubic-bezier(.4, 0, .2, 1);
+  --ease-out: cubic-bezier(0, 0, .2, 1);
+
+  /* === Z-index === */
+  --z-sticky: 100; --z-dropdown: 200; --z-overlay: 900;
+  --z-modal: 1000; --z-toast: 1100;
+}
