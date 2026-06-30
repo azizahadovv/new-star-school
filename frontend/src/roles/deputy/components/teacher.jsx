@@ -67,7 +67,7 @@ function Teacher() {
         {
           dataTeachers.length === 0 ? <div className='flex items-center justify-center mt-5'>
             < LOADER />
-          </div> : <table className={`table table-hover ${open ? 'hidden' : 'flex'}`}>
+          </div> : <table className={`table table-hover table-cards ${open ? 'hidden' : 'flex'}`}>
             <thead>
               <tr>
                 <th>№</th>
@@ -83,19 +83,19 @@ function Teacher() {
                 dataTeachers?.map((item, id) => {
                   return <tr key={item?.id}>
                     <th scope="row">{id + 1}</th>
-                    <td>
+                    <td data-label={t("table_teacher")}>
                       <p className='w-[270px] flex items-center justify-start gap-2 min-h-max text-lg font-normal'> <img className='w-10 rounded-full' src={item?.imageUrl && item.imageUrl} alt="" />{[item?.firstName, item?.lastName, item?.patronymic].filter(Boolean).join(" ")}</p>
                     </td>
-                    <td>
-                      <p className='w-[150px]'>{item.subject.map(i => <span key={i.id}>{i.name}, </span>)}</p>
+                    <td data-label={t("table_subject")}>
+                      <p className='w-[150px]'>{item.subject.map(i => i?.name).filter(Boolean).join(", ")}</p>
                     </td>
-                    <td>
+                    <td data-label={t("birthday")}>
                       <p className='w-[110px]'>{item?.birthDate}</p>
                     </td>
-                    <td>
+                    <td data-label={t("phone_number")}>
                       <p className='min-w-max'>{item?.phoneNumber}</p>
                     </td>
-                    <td>
+                    <td data-label={t("active_table")}>
                       <div className='w-[150px] flex items-center justify-between relative'>
                         <button onClick={() => {
                           navigate(`/teacher-profile/${item?.id}`)

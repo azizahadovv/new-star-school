@@ -6,7 +6,7 @@ import studentCotrol from '../service/student'
 
 function ClassSchedule() {
     // Sahifa yangilanganida selectedOption qiymatini localStorage dan olish
-    const [selectedOption, setSelectedOption] = useState(localStorage.getItem('selectedOption') || '')
+    const [selectedOption, setSelectedOption] = useState(localStorage.getItem('term') || '')
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function ClassSchedule() {
 
     const handleOptionChange = (option) => {
         setSelectedOption(option)
-        localStorage.setItem('selectedOption', option) // selectedOption qiymatini localStorage ga saqlash
+        localStorage.setItem('term', option) // tanlangan term'ni saqlash (SELECTTERMS bilan bir xil kalit)
     }
 
     return (

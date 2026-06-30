@@ -6,7 +6,6 @@ import axios from './api'
 const auth = {
     headers: {
         'accept': '*/*',
-        'Authorization': " " + 'Bearer ' + localStorage.getItem('jwtToken')
     }
 }
 

@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { showModal } from "../slice/class";
 import { useTranslation } from "react-i18next";
+import { text as vText } from "../../../shared/validation";
 
 function ListOfSubjects() {
   const {t}=useTranslation()
@@ -18,23 +19,28 @@ function ListOfSubjects() {
   const [editControl, setEditControl] = useState('');
   const [idControl, setIdControl] = useState('');
   const [nameSubject, setNameSubject] = useState('');
+  const [nameError, setNameError] = useState('');
   useEffect(() => {
     getSubjects();
   }, []);
   const postSubjects = async () => {
+    const errKey = vText(60)(nameSubject);
+    if (errKey) {
+      setNameError(t(errKey));
+      return;
+    }
+    setNameError('');
     if (editControl !== "") {
-      if (nameSubject !== "") {
-        try {
-          await subjectFunction.changeSubject(idControl, {
-            name: nameSubject
-          })
-          setEditControl('')
-          setNameSubject('')
-          dispatch(showModal())
-          toast.success("Subject updated successfully")
-        } catch (error) {
-          toast.error("Error Update subject" + error)
-        }
+      try {
+        await subjectFunction.changeSubject(idControl, {
+          name: nameSubject
+        })
+        setEditControl('')
+        setNameSubject('')
+        dispatch(showModal())
+        toast.success("Subject updated successfully")
+      } catch (error) {
+        toast.error("Error Update subject" + error)
       }
     } else {
       try {
@@ -42,10 +48,9 @@ function ListOfSubjects() {
           name: nameSubject
         })
         dispatch(showModal())
-        setNameSubject("")
-        toast.success("Subject added successfully")
-        editControl('')
+        setEditControl('')
         setNameSubject('')
+        toast.success("Subject added successfully")
       } catch (error) {
         console.log("Error Add subject" + error)
       }
@@ -154,7 +159,7 @@ function ListOfSubjects() {
             </p>
             <div className="flex flex-col items-start justify-between h-28">
               <div className="flex items-center justify-between w-full gap-3">
-                <INPUT value={nameSubject} setValue={setNameSubject} width={370} placeholder={'Nomini kiriting'} />
+                <INPUT value={nameSubject} setValue={(v) => { setNameSubject(v); if (nameError) setNameError(''); }} width={370} placeholder={'Nomini kiriting'} error={Boolean(nameError)} helperText={nameError} />
               </div>
               <BUTTON
                 name={"Saqlash"}

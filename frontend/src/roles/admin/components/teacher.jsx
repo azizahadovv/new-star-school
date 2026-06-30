@@ -7,25 +7,45 @@ import { useSelector } from 'react-redux'
 import teacherController from '../service/teacher'
 import { useTranslation } from 'react-i18next'
 import Avatar from '../../../shared/Avatar'
+import Pagination from '../../../shared/Pagination'
+import Empty from '../../../shared/Empty'
+import { useQueryParam, useQueryNumber } from '../../../shared/useQueryState'
 
 function Teacher() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const open = useSelector(sel => sel.sidebarReduser.open)
   const [dataTeachers, setDataTeachers] = useState([])
-  const [searchValue, setSearcheValue] = useState('')
-  const [value, setValue] = useState('')
+  // Filter/qidiruv/sahifa — URL'da saqlanadi (refreshda yo'qolmaydi)
+  const [searchValue, setSearcheValue] = useQueryParam('q', '')
+  const [value, setValue] = useQueryParam('subject', '')
+  const [loading, setLoading] = useState(true)
+  const [page, setPage] = useQueryNumber('page', 1)
+  const PER_PAGE = 8
   useEffect(() => {
-    getTeachers();
+    if (searchValue || value) {
+      searchTeacher();
+    } else {
+      getTeachers();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const getTeachers = async () => {
     try {
       const teachersData = await teacherController.getTeacher()
-      setDataTeachers(teachersData);
+      setDataTeachers(teachersData || []);
     } catch (error) {
       console.log('getTeachers error', error);
+    } finally {
+      setLoading(false);
     }
   }
+  const totalPages = Math.ceil((dataTeachers?.length || 0) / PER_PAGE)
+  const pagedTeachers = dataTeachers?.slice((page - 1) * PER_PAGE, page * PER_PAGE)
+  useEffect(() => {
+    if (totalPages > 0 && page > totalPages) setPage(totalPages)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [totalPages])
   const remove_Teacher = async (teacherId, name) => {
     const chack = window.confirm(` Do you really want to remove ${name}?`)
     try {
@@ -41,12 +61,16 @@ function Teacher() {
 
   const searchTeacher = async () => {
     try {
-      await teacherController.searchTeacher(searchValue, value).then((teacher) => {
-        setDataTeachers(teacher);
-      })
+      const teacher = await teacherController.searchTeacher(searchValue, value)
+      setDataTeachers(teacher || []);
     } catch (error) {
       console.log(error);
     }
+  }
+  // Yangi qidiruv — har doim 1-sahifadan
+  const runSearch = () => {
+    setPage(1)
+    searchTeacher()
   }
 
 
@@ -56,7 +80,7 @@ function Teacher() {
         <div className='min-w-max flex items-center justify-center gap-3 '>
           <div className='tablet:w-2/3 minMobil:min-w-80'><SEARCH searchValue={searchValue} setSearcheValue={setSearcheValue} placeholder='FI bo‘ylab izlash' /></div>
           <div className='tablet:w-3/12 minMobil:min-w-36'><SELECTSCINES value={value} setValue={setValue} /></div>
-          <button onClick={searchTeacher} className="border border-brGray rounded-xl h-10 w-10 flex items-center justify-center">
+          <button onClick={runSearch} className="border border-brGray rounded-xl h-10 w-10 flex items-center justify-center">
             <img src={searchImg} alt="searchImg" />
           </button>
         </div>
@@ -66,9 +90,9 @@ function Teacher() {
       </div>
       <div className={`${styleTopBarUINoFlex} min-h-96 overflow-scroll p-3`}>
         {
-          dataTeachers?.length === 0 ? <div className='flex items-center justify-center mt-5'>
+          loading ? <div className='flex items-center justify-center mt-5'>
             < LOADER />
-          </div> : <table className={`table table-hover ${open ? 'hidden' : 'flex'}`}>
+          </div> : dataTeachers?.length === 0 ? <Empty title={t("table_teacher")} subtitle="—" /> : <table className={`table table-hover table-cards ${open ? 'hidden' : 'flex'}`}>
             <thead>
               <tr>
                 <th>№</th>
@@ -81,22 +105,22 @@ function Teacher() {
             </thead>
             <tbody>
               {
-                dataTeachers?.map((item, id) => {
+                pagedTeachers?.map((item, id) => {
                   return <tr key={item?.id}>
-                    <th scope="row">{id + 1}</th>
-                    <td>
+                    <th scope="row">{(page - 1) * PER_PAGE + id + 1}</th>
+                    <td data-label={t("table_teacher")}>
                       <p className='w-[270px] flex items-center justify-start gap-3 min-h-max text-[15px] font-normal'><Avatar src={item?.imageUrl} name={[item?.firstName, item?.lastName].filter(Boolean).join(" ")} size={40} />{[item?.firstName, item?.lastName, item?.patronymic].filter(Boolean).join(" ")}</p>
                     </td>
-                    <td>
+                    <td data-label={t("table_subject")}>
                       <p className='w-[150px]'>{item?.subject?.map(i => i?.name).filter(Boolean).join(", ")}</p>
                     </td>
-                    <td>
+                    <td data-label={t("birthday")}>
                       <p className='w-[110px]'>{item?.birthDate}</p>
                     </td>
-                    <td>
+                    <td data-label={t("phone_number")}>
                       <p className='min-w-max'>{item?.phoneNumber}</p>
                     </td>
-                    <td>
+                    <td data-label={t("active_table")}>
                       <div className='w-[150px] flex items-center justify-between relative'>
                         <button onClick={() => {
                           navigate(`/teacher-profile/${item?.id}`)
@@ -139,6 +163,9 @@ function Teacher() {
             </tbody>
           </table>
         }
+        {!loading && dataTeachers?.length > 0 && (
+          <Pagination page={page} totalPages={totalPages} onChange={setPage} />
+        )}
       </div>
     </div >
   )

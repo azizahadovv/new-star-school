@@ -8,6 +8,17 @@ import { ToastContainer, toast } from "react-toastify";
 import subjectFunction from "../service/subjects";
 import teacherController from "../service/teacher";
 import { useTranslation } from "react-i18next";
+import {
+  validate,
+  fieldProps,
+  required,
+  name as vName,
+  phone as vPhone,
+  login as vLogin,
+  password as vPassword,
+  passwordOptional as vPasswordOptional,
+  birthDate as vBirthDate,
+} from "../../../shared/validation";
 
 function AddTeacher() {
   const {t}=useTranslation()
@@ -31,22 +42,26 @@ function AddTeacher() {
   const [password, setPassword] = React.useState("");
   const [subjectTeacherId, setSubjectTeacherId] = React.useState('');
   const [parentPhoneNumber, setParentPhoneNumber] = React.useState("");
+  const [errors, setErrors] = React.useState({});
 
-  const check =
-    firstName &&
-    lastName &&
-    patronymic &&
-    birthDate &&
-    gender &&
-    nationality &&
-    country &&
-    region &&
-    district &&
-    address &&
-    phoneNumber &&
-    login &&
-    password &&
-    parentPhoneNumber
+  const buildErrors = () =>
+    validate({
+      firstName: { value: firstName, validators: [vName] },
+      lastName: { value: lastName, validators: [vName] },
+      patronymic: { value: patronymic, validators: [vName] },
+      birthDate: { value: birthDate, validators: [vBirthDate] },
+      gender: { value: gender, validators: [required] },
+      nationality: { value: nationality, validators: [required] },
+      country: { value: country, validators: [required] },
+      region: { value: region, validators: [required] },
+      district: { value: district, validators: [required] },
+      address: { value: address, validators: [required] },
+      phoneNumber: { value: phoneNumber, validators: [vPhone] },
+      parentPhoneNumber: { value: parentPhoneNumber, validators: [vPhone] },
+      login: { value: login, validators: [vLogin] },
+      // Tahrirlashda parol ixtiyoriy (bo'sh = o'zgarmaydi)
+      password: { value: password, validators: [id ? vPasswordOptional : vPassword] },
+    });
 
   const objectData = {
     firstName: firstName,
@@ -73,22 +88,25 @@ function AddTeacher() {
     setSubjectList(response)
   }
   const saveDataTeacher = async () => {
-    if (check) {
-      try {
-        if (id === undefined) {
-          await teacherController.postTeacherInSubjectId(subjectTeacherId,objectData,level)
-          toast.success("Teacher successfully created");
-          navigate(-1);
-        } else {
-          await teacherController.putTeacher(id, subjectTeacherId, objectData)
-          toast.success("success updateTeacher");
-          navigate(-1)
-        }
-      } catch (error) {
-        console.log(`Error add teacher line 38: ${error}`);
+    const errs = buildErrors();
+    setErrors(errs);
+    if (Object.keys(errs).length > 0) {
+      toast.error(t("v_form_invalid"));
+      return;
+    }
+    try {
+      if (id === undefined) {
+        await teacherController.postTeacherInSubjectId(subjectTeacherId, objectData, level)
+        toast.success("Teacher successfully created");
+        navigate(-1);
+      } else {
+        await teacherController.putTeacher(id, subjectTeacherId, objectData)
+        toast.success("success updateTeacher");
+        navigate(-1)
       }
-    } else {
-      toast.error(`Please fill in all lines`)
+    } catch (error) {
+      toast.error(`${error?.response?.data?.message || error.message}`)
+      console.log(`Error add teacher: ${error}`);
     }
   };
 
@@ -138,6 +156,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("firstName")}
+            {...fieldProps(errors, t, "firstName")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -146,6 +165,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("lastName")}
+            {...fieldProps(errors, t, "lastName")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -154,6 +174,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("patronymic")}
+            {...fieldProps(errors, t, "patronymic")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -162,6 +183,8 @@ function AddTeacher() {
             required
             type="date"
             label={t("birthday")}
+            InputLabelProps={{ shrink: true }}
+            {...fieldProps(errors, t, "birthDate")}
             sx={INPUT_CLASSES}
           />
           <GENDER gender={gender} setGender={setGender} />
@@ -176,6 +199,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("state")}
+            {...fieldProps(errors, t, "country")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -184,6 +208,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("province")}
+            {...fieldProps(errors, t, "region")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -192,6 +217,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("district")}
+            {...fieldProps(errors, t, "district")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -200,6 +226,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("home_address")}
+            {...fieldProps(errors, t, "address")}
             sx={INPUT_CLASSES}
           />
           <LEVEL level={level} setLevel={setLevel} />
@@ -213,6 +240,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("phone_number")}
+            {...fieldProps(errors, t, "phoneNumber")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -222,6 +250,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("additional_phone_number")}
+            {...fieldProps(errors, t, "parentPhoneNumber")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -230,6 +259,7 @@ function AddTeacher() {
             required
             placeholder={t("enter")}
             label={t("login")}
+            {...fieldProps(errors, t, "login")}
             sx={INPUT_CLASSES}
           />
           <TextField
@@ -239,6 +269,7 @@ function AddTeacher() {
             type="password"
             placeholder={t("enter")}
             label={t("password")}
+            {...fieldProps(errors, t, "password")}
             sx={INPUT_CLASSES}
           />
         </div>

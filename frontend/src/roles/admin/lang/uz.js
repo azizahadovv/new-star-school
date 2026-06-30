@@ -85,6 +85,41 @@ const uzLang = {
   info_warning: "Aktiv",
   info_danger: "Mavjud emas",
 
+  // ── Validatsiya xabarlari ──
+  v_required: "Bu maydon to'ldirilishi shart",
+  v_too_short: "Juda qisqa",
+  v_too_long: "Juda uzun",
+  v_name: "Faqat harflardan iborat bo'lsin",
+  v_phone: "Telefon raqami noto'g'ri (masalan +998901234567)",
+  v_login_short: "Login kamida 3 ta belgi",
+  v_login_chars: "Login faqat harf, raqam va _ . - dan iborat bo'lsin",
+  v_password_short: "Parol kamida 6 ta belgi",
+  v_date: "Sana noto'g'ri",
+  v_date_future: "Sana kelajakda bo'lishi mumkin emas",
+  v_date_old: "Sana juda eski",
+  v_form_invalid: "Iltimos, xatolarni to'g'rilang",
+  v_year: "Yil 2000-2100 oralig'ida bo'lsin",
+  v_term: "Chorak 1 dan 4 gacha bo'lsin",
+
+  // ── Choraklar (terms) boshqaruvi ──
+  terms_management: "Choraklar boshqaruvi",
+  add_term: "Chorak qo'shish",
+  term_name: "Chorak nomi",
+  term_year: "O'quv yili",
+  term_number: "Chorak raqami",
+  term_created: "Chorak yaratildi",
+  term_updated: "Chorak yangilandi",
+  term_deleted: "Chorak o'chirildi",
+  term_delete_confirm: "Ushbu chorakni o'chirmoqchimisiz?",
+
+  // ── Maktab sozlamalari ──
+  school_settings: "Maktab sozlamalari",
+  school_name: "Maktab nomi",
+  school_short_name: "Qisqa nomi",
+  school_year: "O'quv yili",
+  school_email: "Elektron pochta",
+  school_website: "Veb-sayt",
+  school_saved: "Maktab sozlamalari saqlandi",
 };
 
 export default uzLang;

@@ -4,7 +4,6 @@ import axios from "./api";
 const auth = {
     headers: {
         'accept': '*/*',
-        'Authorization': " " + 'Bearer ' + localStorage.getItem('jwtToken')
     }
 }
 
@@ -23,7 +22,8 @@ const user_register = {
             await axios.post(`v1/admins/${studentId}/upload-image`, file, auth)
             toast.success('Image uploaded successfully')
         } catch (error) {
-            toast.error(error?.message)
+            toast.error(error?.response?.data?.message || error.message)
+            throw error
         }
     }
 };

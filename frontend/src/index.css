@@ -21,11 +21,45 @@ body {
   text-rendering: optimizeLegibility;
   letter-spacing: -0.011em;
   color: #263039;
+  background-color: #F4F7F9;
+  /* Inter stilistik to'plamlari — SF Pro (apple.com) ga yaqin ko'rinish:
+     cv11=bir qavatli 'a', ss01=tabiiy harflar, cv02/03/04=toza raqam/belgilar */
+  font-feature-settings: "cv11", "ss01", "cv02", "cv03", "cv04";
+  font-variant-ligatures: contextual common-ligatures;
+}
+
+/* ============================================================
+   APPLE-VARI TIPOGRAFIYA — minimalist, yorqin, optik tracking
+   (apple.com his-tuyg'usi: katta sarlavhalar zich, tana matni keng)
+   ============================================================ */
+h1, h2, h3 {
+  letter-spacing: -0.022em;
+  line-height: 1.15;
+  font-weight: 600;
+}
+h4, h5, h6 {
+  letter-spacing: -0.017em;
+  line-height: 1.2;
+}
+p {
+  line-height: 1.55;
+}
+/* Raqamlar jadval/statistika ustunlarida tekis tursin */
+table, .tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
 
 ::selection {
   background-color: #3e4b57;
   color: white;
+}
+
+/* Klaviatura fokusi — toza, yorqin halqa (a11y + apple-vari aniqlik).
+   Sichqoncha bosishida ko'rinmaydi (:focus-visible). */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring, #3D7CC0);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Rodal modal — Figma uslubi (rounded, yumshoq soya) */
@@ -37,6 +71,143 @@ body {
 .rodal-close {
   top: 20px !important;
   right: 20px !important;
+}
+
+/* ============================================================
+   MOTION — "tiriklik" qatlami (08-Animatsiyalar.md)
+   Prinsip: tez, nozik, maqsadli. Faqat transform/opacity.
+   ============================================================ */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(8px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes overlay-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dropdown-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -300px 0; }
+  100% { background-position: 300px 0; }
+}
+
+/* Sahifa o'tishi — kontent yengil fade + pastdan suriluv */
+.page-enter {
+  animation: page-enter var(--dur-base, 220ms) var(--ease-out, cubic-bezier(0,0,.2,1));
+}
+
+/* Modal (Rodal) kirishi */
+.rodal-dialog { animation: modal-in var(--dur-base, 220ms) var(--ease-out, cubic-bezier(0,0,.2,1)); }
+.rodal-mask { animation: overlay-in var(--dur-base, 220ms) ease; }
+
+/* Dropdown / kontekst menyu kirishi */
+.dropdown-menu.show {
+  animation: dropdown-in var(--dur-fast, 150ms) var(--ease-out, cubic-bezier(0,0,.2,1));
+  transform-origin: top;
+}
+
+/* Tugmalar — hover/active/focus jonli feedback */
+button, .btn, a {
+  transition: background-color var(--dur-fast, 150ms) ease,
+              color var(--dur-fast, 150ms) ease,
+              box-shadow var(--dur-fast, 150ms) ease,
+              transform var(--dur-fast, 150ms) ease,
+              opacity var(--dur-fast, 150ms) ease;
+}
+button:active, .btn:active { transform: scale(.97); }
+
+/* Jadval qatori hover */
+tbody tr { transition: background-color var(--dur-fast, 150ms) ease; }
+tbody tr:hover { background-color: #f9fbfc; }
+
+/* Skeleton (yuklanish uchun, ixtiyoriy) */
+.skeleton {
+  background: linear-gradient(90deg, #ECF1F4 25%, #F4F7F9 37%, #ECF1F4 63%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 10px;
+}
+
+/* ============================================================
+   RESPONSIVE — 07-Responsive.md
+   Tablitsalar mobilda buzilmaydi: keng ekranda oddiy jadval,
+   telefonda (<768px) har qator "stacked card" ga aylanadi.
+   ============================================================ */
+
+/* Universal himoya: barcha jadvallar mobilda gorizontal scroll qiladi */
+@media (max-width: 1023px) {
+  .table { width: 100%; }
+}
+
+/* Opt-in: .table-cards — telefonda kartochka ko'rinishi (Strategiya B) */
+@media (max-width: 767px) {
+  .table-cards thead { display: none; }
+  .table-cards tbody,
+  .table-cards tr,
+  .table-cards td,
+  .table-cards th { display: block; width: 100% !important; }
+  .table-cards tr {
+    margin-bottom: 12px;
+    background: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border, #e1eaf1);
+    border-radius: var(--radius-lg, 12px);
+    padding: 10px 14px;
+    box-shadow: var(--shadow-card, 0 2px 8px rgba(38,48,57,.06));
+  }
+  .table-cards td,
+  .table-cards th[scope="row"] {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0 !important;
+    border: none !important;
+    text-align: right;
+  }
+  .table-cards td:not(:last-child) {
+    border-bottom: 1px dashed var(--color-border, #eef3f7) !important;
+  }
+  /* Ustun nomini chap tomonda ko'rsatish (data-label) */
+  .table-cards td[data-label]::before {
+    content: attr(data-label);
+    color: var(--color-text-secondary, #9AA7B2);
+    font-weight: 500;
+    font-size: 13px;
+    text-align: left;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+  /* Ichki qattiq kengliklarni bekor qilish (w-[270px] va h.k.) */
+  .table-cards td > *,
+  .table-cards td p { width: auto !important; min-width: 0 !important; max-width: 100% !important; margin: 0; }
+  /* "№" qatorini badge sifatida ko'rsatish */
+  .table-cards th[scope="row"]::before {
+    content: "№";
+    color: var(--color-text-secondary, #9AA7B2);
+    font-weight: 500;
+    font-size: 13px;
+  }
+}
+
+/* Sahifa ichki bo'shlig'i va sarlavha — fluid */
+.page-title { font-size: clamp(20px, 4vw, 24px); font-weight: 700; line-height: 1.3; }
+
+/* Touch nishon o'lchami (Apple HIG / WCAG ≥44px) */
+@media (max-width: 767px) {
+  button, .btn, .dropdown-item, a.flex { min-height: 40px; }
+}
+
+/* Harakatni kamaytirishni afzal ko'rganlar uchun */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Kontekst menyu (kebab dropdown) — Figma uslubi (modal.png) */

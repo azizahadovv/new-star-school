@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 const auth = {
   headers: {
     'accept': '*/*',
-    'Authorization': " " + 'Bearer ' + localStorage.getItem('jwtToken')
   }
 }
 

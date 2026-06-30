@@ -57,7 +57,7 @@ function GradeRating() {
         {
           newData?.length === 0 ? <div className='w-full flex items-center justify-center min-h-52'>
             <h1>{t("no_data")}</h1>
-          </div> : <table className="table table-hover cursor-pointer">
+          </div> : <table className="table table-hover table-cards cursor-pointer">
             <thead>
               <tr className='text-textGray'>
                 <th>№</th>
@@ -71,11 +71,11 @@ function GradeRating() {
               {
                 newData?.map((item, idx) => {
                   return <tr key={idx}>
-                    <td className='capitalize'>{idx + 1}</td>
-                    <td className='capitalize'>{item?.dateAssigned}</td>
-                    <td className='capitalize'>{item?.subjectName}</td>
-                    <td className='capitalize'>{item?.teacherName}</td>
-                    <td className='capitalize'>{item?.gradeValue}</td>
+                    <td className='capitalize' data-label="№">{idx + 1}</td>
+                    <td className='capitalize' data-label={t("class_date")}>{item?.dateAssigned}</td>
+                    <td className='capitalize' data-label={t("subject_name")}>{item?.subjectName}</td>
+                    <td className='capitalize' data-label={t("teachers_name")}>{item?.teacherName}</td>
+                    <td className='capitalize' data-label={t("grade")}>{item?.gradeValue}</td>
                   </tr>
                 })
               }

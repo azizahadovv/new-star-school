@@ -1,0 +1,71 @@
+# ════════════════════════════════════════════════════════════════
+# New Star School — to'liq stack (bitta buyruq bilan)
+#   docker compose up --build -d
+#
+#   • postgres  — ma'lumotlar bazasi (16)
+#   • backend   — Spring Boot API (8000)
+#   • frontend  — React + nginx (80), /api -> backend proxy
+#
+# Frontend butun ilovaning kirish nuqtasi: http://<server-ip>/
+# API faqat ichki tarmoqda; tashqaridan /api orqali frontend proxy qiladi.
+# ════════════════════════════════════════════════════════════════
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-nss_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-nss_user}
+      POSTGRES_DB: ${DB_NAME:-nss}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-nss_user} -d ${DB_NAME:-nss}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    networks:
+      - nss-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_USERNAME: ${DB_USERNAME:-nss_user}
+      DB_PASSWORD: ${DB_PASSWORD:-nss_user}
+      DB_URL: jdbc:postgresql://postgres:5432/${DB_NAME:-nss}
+    expose:
+      - "8000"
+    # API'ni to'g'ridan-to'g'ri ochish kerak bo'lsa (debug), pastdagini yoqing:
+    # ports:
+    #   - "8000:8000"
+    networks:
+      - nss-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # nginx /api proxy qilgani uchun relative manzil
+        REACT_APP_API_URL: /api/
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "${WEB_PORT:-80}:80"
+    networks:
+      - nss-net
+
+volumes:
+  postgres-data:
+
+networks:
+  nss-net:
+    driver: bridge

@@ -20,7 +20,7 @@ function ArchiveStudents() {
         {users.length === 0 ? (
           <h3 className="flex items-center justify-center">{t('no_date')}</h3>
         ) : (
-          <table className="table table-hover">
+          <table className="table table-hover table-cards">
             <thead>
               <tr>
                 <th>
@@ -49,14 +49,14 @@ function ArchiveStudents() {
               {users?.map((item, id) => {
                 return (
                   <tr key={item.id}>
-                    <td>{id + 1}</td>
-                    <td>
+                    <td data-label="№">{id + 1}</td>
+                    <td data-label={t("table_pupils")}>
                       {item.firstName} {item.lastName} {item.patronymic}
                     </td>
-                    <td>{item.birthDate}</td>
-                    <td>{item.phoneNumber}</td>
-                    <td>{item?.grade}</td>
-                    <td className="font-bold">
+                    <td data-label={t("birthday")}>{item.birthDate}</td>
+                    <td data-label={t("phone_number")}>{item.phoneNumber}</td>
+                    <td data-label={t("table_classes")}>{item?.grade}</td>
+                    <td className="font-bold" data-label={t("active_table")}>
                       <span className="text-red">
                         {item.isActive ? t("active_table") : t("inactive_table")}
                       </span>

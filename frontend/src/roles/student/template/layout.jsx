@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { NAVBAR, SIDEBAR } from ".";
 import { closeSidebar } from "../slice/sidebar";
@@ -9,6 +9,7 @@ import { closeSidebar } from "../slice/sidebar";
 function Layout() {
   const dispatch = useDispatch();
   const open = useSelector((s) => s.sidebarReduser.open);
+  const location = useLocation();
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#F4F7F9]">
@@ -34,7 +35,9 @@ function Layout() {
       <div className="flex-1 flex flex-col min-w-0">
         <NAVBAR />
         <main className="flex-1 overflow-y-auto">
-          <Outlet />
+          <div key={location.pathname} className="page-enter">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

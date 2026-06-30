@@ -51,7 +51,7 @@ function Attendance() {
         {
           newData?.length === 0 ? <div className='w-full flex items-center justify-center min-h-52'>
             <h1>{t("no_data")}</h1>
-          </div> : <table className="table table-hover cursor-pointer">
+          </div> : <table className="table table-hover table-cards cursor-pointer">
             <thead>
               <tr className='text-textGray capitalize'>
                 <th>№</th>
@@ -64,11 +64,11 @@ function Attendance() {
             <tbody>
               {newData?.map((item, index) => (
                 <tr key={index} >
-                  <td>{index + 1}</td>
-                  <td>{item?.termName}</td>
-                  <td>{item?.dateAssigned}</td>
-                  <td>{item?.subjectName}</td>
-                  <td>{item?.teacherName}</td>
+                  <td data-label="№">{index + 1}</td>
+                  <td data-label={t("term")}>{item?.termName}</td>
+                  <td data-label={t("date_lesson")}>{item?.dateAssigned}</td>
+                  <td data-label={t("name_lesson")}>{item?.subjectName}</td>
+                  <td data-label={t("teachers_name")}>{item?.teacherName}</td>
                 </tr>
               ))
               }

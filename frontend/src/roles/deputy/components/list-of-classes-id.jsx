@@ -79,7 +79,7 @@ function ListOfClassesID() {
         className={`${styleTopBarUINoFlex} ${open ? "hidden" : "block"
           } min-h-96 overflow-scroll p-3`}
       >
-        <table className="table table-hover">
+        <table className="table table-hover table-cards">
           <thead>
             <tr>
               <th>№</th>
@@ -95,27 +95,23 @@ function ListOfClassesID() {
               return (
                 <tr key={item.id}>
                   <th scope="row">{id + 1}</th>
-                  <td className="relative">
+                  <td className="relative" data-label={t("student_home")}>
                     <p className="w-[270px] static left-0 top-0">
-                      {item.lastName +
-                        " " +
-                        item.firstName +
-                        " " +
-                        item.patronymic}
+                      {[item.lastName, item.firstName, item.patronymic].filter(Boolean).join(" ")}
                     </p>
                   </td>
-                  <td>
+                  <td data-label={t("login_parol")}>
                     <p className="w-[150px]">
                       {item.login}
                     </p>
                   </td>
-                  <td>
+                  <td data-label={t("phone_number")}>
                     <p className="w-[110px]">{item.phoneNumber}</p>
                   </td>
-                  <td>
+                  <td data-label={t("additional_phone_number")}>
                     <p className="min-w-max">{item.parentPhoneNumber}</p>
                   </td>
-                  <td>
+                  <td data-label={t("active_table")}>
                     <div className="w-[150px] flex items-center justify-between relative">
                       <button onClick={() => {
                         navigate(`/students/${item.id}`)

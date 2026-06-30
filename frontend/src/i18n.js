@@ -18,9 +18,9 @@ import deputyEn from "./roles/deputy/lang/en";
 import deputyRu from "./roles/deputy/lang/ru";
 import deputyUz from "./roles/deputy/lang/uz";
 
-import directorEn from "./roles/director/locales/en/global";
-import directorRu from "./roles/director/locales/ru/global";
-import directorUz from "./roles/director/locales/uz/global";
+import directorEn from "./roles/director/lang/en";
+import directorRu from "./roles/director/lang/ru";
+import directorUz from "./roles/director/lang/uz";
 
 // Rollar bir vaqtda bitta mount bo'ladi, kalitlar deyarli bir xil. Birlashtiramiz
 // (flat obyektlar) — har rol o'z matnini ko'radi.

@@ -96,8 +96,16 @@ function ListOfClasses() {
   return (
     <div className={`${Container} py-2 overflow-scroll`}>
       <div
-        className={`${styleTopBarUINoFlex} w-full min-h-20 flex items-center justify-end px-3 overflow-scroll`}
+        className={`${styleTopBarUINoFlex} w-full min-h-20 flex items-center justify-between gap-3 px-4 overflow-scroll`}
       >
+        <div className="flex items-center gap-2 min-w-max">
+          <span className="text-[15px] font-semibold text-[#263039]">
+            {t("list_of_classes_home")}
+          </span>
+          <span className="text-xs font-semibold text-[#125DAC] bg-[#ECF2F8] rounded-full px-2.5 py-1">
+            {classesData?.length || 0}
+          </span>
+        </div>
         <div>
           <BUTTON
             buttonFunction={() => dispatch(showModal())}

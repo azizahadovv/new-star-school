@@ -61,7 +61,7 @@ function Personnel() {
           } min-h-96 overflow-scroll p-3`}
       >
         {
-          !students ? <div className="flex items-center justify-center min-h-32"> <LOADER /></div> : <table className="table table-hover">
+          !students ? <div className="flex items-center justify-center min-h-32"> <LOADER /></div> : <table className="table table-hover table-cards">
             <thead>
               <tr>
                 <th>№</th>
@@ -76,19 +76,19 @@ function Personnel() {
                 return (
                   <tr key={id}>
                     <th scope="row">{id + 1}</th>
-                    <td>
+                    <td data-label={t("table_pupils")}>
                       <p className="min-w-max h-full flex items-center justify-start gap-2 min-h-max text-lg font-normal">
                         <img className='w-10 h-10 bg-center rounded-full' hidden={item?.image ? false : true} src={item?.image && item.image} alt="item?.image && item.image" />
-                        {item.lastName + ' ' + item.firstName + ' ' + item.middleName}
+                        {[item.lastName, item.firstName, item.middleName].filter(Boolean).join(' ')}
                       </p>
                     </td>
-                    <td>
+                    <td data-label={t("table_classes")}>
                       <p className="min-w-max h-full">{item.profession}</p>
                     </td>
-                    <td>
+                    <td data-label={t("table_number")}>
                       <p className="min-w-max h-full">{item.phoneNumber}</p>
                     </td>
-                    <td>
+                    <td data-label={t("active_table")}>
                       <div className="min-w-max h-full leading-5 flex items-center justify-between relative">
                         <button onClick={() => {
                           navigate(`${item.id}`)

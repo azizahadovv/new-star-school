@@ -55,7 +55,7 @@ function Teachers() {
             <LOADER />
           </div>
         ) : (
-          <table className="table table-hover">
+          <table className="table table-hover table-cards">
             <thead>
               <tr>
                 <th>№</th>
@@ -73,7 +73,7 @@ function Teachers() {
                     <th scope="row" key={item.id}>
                       {id + 1}
                     </th>
-                    <td>
+                    <td data-label={t("table_teacher")}>
                       <p className="w-[270px] flex items-center justify-start gap-2">
                         <img
                           className="w-10 h-10 rounded-full"
@@ -81,22 +81,18 @@ function Teachers() {
                           src={item?.image && item?.image}
                           alt=""
                         />
-                        {item?.firstName +
-                          " " +
-                          item?.lastName +
-                          " " +
-                          item?.patronymic}
+                        {[item?.firstName, item?.lastName, item?.patronymic].filter(Boolean).join(" ")}
                       </p>
                     </td>
-                    <td>
+                    <td data-label={t("table_subject")}>
                       <p className="w-[150px]">
-                        {item?.subject.map((i) => i.name + ', ')}
+                        {item?.subject?.map((i) => i?.name).filter(Boolean).join(", ")}
                       </p>
                     </td>
-                    <td>
+                    <td data-label={t("table_birthday")}>
                       <p className="w-[110px]">{item?.birthDate}</p>
                     </td>
-                    <td>
+                    <td data-label={t("table_number")}>
                       <p className="min-w-[85px]">{item?.phoneNumber}</p>
                     </td>
                     <td>

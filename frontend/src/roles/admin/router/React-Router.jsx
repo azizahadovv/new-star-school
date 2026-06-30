@@ -22,6 +22,8 @@ import {
   STUDENTS,
   TEACHER,
   TEACHERPROFILE,
+  TERMS,
+  SCHOOLSETTINGS,
 } from "../components";
 import { LAYOUT } from "../template";
 
@@ -50,6 +52,10 @@ function ReactRouter() {
           <Route path="settings" element={<SETING />} />
           {/*  */}
           <Route path="settings/archive-lesson-times" element={<ARCHIVELESSONTIME />} />
+          {/*  */}
+          <Route path="settings/terms" element={<TERMS />} />
+          {/*  */}
+          <Route path="settings/school" element={<SCHOOLSETTINGS />} />
           {/*  */}
           <Route path="settings/position" element={<POSITIONS />} />
           {/*  */}

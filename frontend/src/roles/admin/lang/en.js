@@ -80,8 +80,39 @@ const enLang = {
   create_admin: "Create admin",
   information_create_admin: "Creating an administrator is not possible! Please contact +998978611199.",
   "info_warning": "Active",
-  "info_danger": "Unavailable"
+  "info_danger": "Unavailable",
 
+  "v_required": "This field is required",
+  "v_too_short": "Too short",
+  "v_too_long": "Too long",
+  "v_name": "Letters only",
+  "v_phone": "Invalid phone (e.g. +998901234567)",
+  "v_login_short": "Login must be at least 3 characters",
+  "v_login_chars": "Login: letters, digits and _ . - only",
+  "v_password_short": "Password must be at least 6 characters",
+  "v_date": "Invalid date",
+  "v_date_future": "Date cannot be in the future",
+  "v_date_old": "Date is too old",
+  "v_form_invalid": "Please fix the errors",
+  "v_year": "Year must be between 2000 and 2100",
+  "v_term": "Term must be between 1 and 4",
 
+  "terms_management": "Terms management",
+  "add_term": "Add term",
+  "term_name": "Term name",
+  "term_year": "Academic year",
+  "term_number": "Term number",
+  "term_created": "Term created",
+  "term_updated": "Term updated",
+  "term_deleted": "Term deleted",
+  "term_delete_confirm": "Delete this term?",
+
+  "school_settings": "School settings",
+  "school_name": "School name",
+  "school_short_name": "Short name",
+  "school_year": "Academic year",
+  "school_email": "Email",
+  "school_website": "Website",
+  "school_saved": "School settings saved"
 };
 export default enLang;

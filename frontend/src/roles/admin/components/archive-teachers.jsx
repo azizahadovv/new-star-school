@@ -23,7 +23,7 @@ function ArchiveTeachers() {
             <h3 className="flex items-center justify-center">{t("no_date")}</h3>
           </div>
         ) : (
-          <table className="table table-hover">
+          <table className="table table-hover table-cards">
             <thead>
               <tr>
                 <th>
@@ -52,13 +52,13 @@ function ArchiveTeachers() {
               {users?.map((item, id) => {
                 return (
                   <tr key={item.id}>
-                    <td>{id + 1}</td>
-                    <td>
+                    <td data-label="№">{id + 1}</td>
+                    <td data-label={t("table_teacher")}>
                       {item.firstName} {item.lastName} {item.patronymic}
                     </td>
-                    <td>{item.birthDate}</td>
-                    <td>{item.phoneNumber}</td>
-                    <td>
+                    <td data-label={t("birthday")}>{item.birthDate}</td>
+                    <td data-label={t("phone_number")}>{item.phoneNumber}</td>
+                    <td data-label={t("science_teacher")}>
                       {item?.subject?.map((subject, index) => (
                         <span key={subject.id}>
                           {subject?.name}

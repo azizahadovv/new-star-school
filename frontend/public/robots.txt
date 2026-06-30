@@ -1,0 +1,14 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /$
+Allow: /login
+
+# Authenticated dashboard areas — keep out of search indexes
+Disallow: /admin
+Disallow: /teachers
+Disallow: /students
+Disallow: /directors
+Disallow: /deputy
+Disallow: /api/
+
+Sitemap: https://newstarschool.uz/sitemap.xml

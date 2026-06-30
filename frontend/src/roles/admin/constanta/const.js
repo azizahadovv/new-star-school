@@ -134,6 +134,18 @@ export const settings = [{
         link: "archive-lesson-times",
     },
     {
+        id: 0,
+        img: TIMESCHEDULE,
+        title: "terms_management",
+        link: "terms",
+    },
+    {
+        id: -1,
+        img: RANK,
+        title: "school_settings",
+        link: "school",
+    },
+    {
         id: 2,
         img: RANK,
         title: "position",

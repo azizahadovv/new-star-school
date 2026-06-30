@@ -6,7 +6,6 @@ import axios from "./api";
 const auth = {
   headers: {
     accept: "*/*",
-    Authorization: " " + "Bearer " + localStorage.getItem("jwtToken"),
   },
 };
 
@@ -121,7 +120,8 @@ const teacherController = {
       await axios.post(`teachers/${teacherId}/upload-image`, file, auth)
       toast.success("success upload");
     } catch (error) {
-      toast.error(error);
+      toast.error(error?.response?.data?.message || error.message);
+      throw error;
     }
   },
   async getImage(imgId) {

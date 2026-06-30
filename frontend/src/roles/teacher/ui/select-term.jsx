@@ -8,15 +8,21 @@ function SelectTerm({ selectedOption = 1, setSelectedOption = {} }) {
 
   useEffect(() => {
     gettermData()
-    const savedOption = localStorage.getItem('term');
-    if (savedOption) {
-      setSelectedOption(savedOption);
-    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const gettermData = async () => {
     const datas = await TermControl.myTerm()
     setTermas(datas);
+    // Default term avto-tanlash (sahifa bo'sh ochilmasligi uchun)
+    if (!selectedOption && datas?.length) {
+      const saved = localStorage.getItem('term');
+      const def = saved || String(datas[0]?.id);
+      if (def) {
+        setSelectedOption(def);
+        localStorage.setItem('term', def);
+      }
+    }
   }
 
   const handleChange = (e) => {
