@@ -1,0 +1,4 @@
+firstName,lastName,patronymic,birthDate,gender,nationality,country,region,district,address,phoneNumber,login,password,parentPhoneNumber
+Madina,Saidova,Aziz qizi,2005-03-15,Female,Uzbek,Uzbekistan,Khorezm,Urgench,Urgench ko'chasi 7-uy,+998905432109,madinas,pass0987,+998905432110
+Muzaffar,Qodirov,Shokir o'g'li,2005-02-28,Male,Uzbek,Uzbekistan,Andijan,Asaka,Asaka ko'chasi 19-uy,+998904321098,muzaffarq,pass5432,+998904321099
+Marjona,Shaykhov,Shavkat qizi,2005-10-05,Female,Uzbek,Uzbekistan,Tashkent,Yashnobod,Yashnobod ko'chasi 18-uy,+998903210987,marjonash,pass6789,+998903210988

@@ -1,0 +1,4 @@
+firstName,lastName,patronymic,birthDate,gender,nationality,country,region,district,address,phoneNumber,login,password,parentPhoneNumber
+Shoxrux,Rasulov,Jamshid o'g'li,2005-08-25,Male,Uzbek,Uzbekistan,Sirdaryo,Guliston,Guliston ko'chasi 11-uy,+998902109876,shoxruxr,pass3210,+998902109877
+Lobar,Abdullaeva,Shukur qizi,2005-05-20,Female,Uzbek,Uzbekistan,Navoi,Navoi,Navoi ko'chasi 15-uy,+998901098765,labarabdullaeva,pass2109,+998901098766
+Sarvar,Qoziyev,Aziz o'g'li,2005-12-14,Male,Uzbek,Uzbekistan,Andijan,Asaka,Asaka ko'chasi 14-uy,+998909876543,sarvarq,pass4321,+998909876544

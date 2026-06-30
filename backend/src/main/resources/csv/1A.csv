@@ -1,0 +1,25 @@
+firstName,lastName,patronymic,birthDate,gender,nationality,country,region,district,address,phoneNumber,login,password,parentPhoneNumber
+Aziz,Rahmonov,Rahmon o'g'li,2005-03-21,Male,Uzbek,Uzbekistan,Tashkent,Yunusobod,Amir Temur ko'chasi 10-uy,+998901234567,azizr,pass1234,+998901234568
+Madina,Akbarova,Shavkat qizi,2005-05-18,Female,Uzbek,Uzbekistan,Xiva,Xiva,Xiva ko'chasi 9-uy,+998901098765,madinaakbarova,pass5432,+998901098766
+Otabek,Toshev,Rustam o'g'li,2005-07-30,Male,Uzbek,Uzbekistan,Fergana,Fergana,Yoshlik ko'chasi 3-uy,+998909876543,otabekt,pass6789,+998909876544
+Gulnora,Usmonova,Mansur qizi,2005-01-12,Female,Uzbek,Uzbekistan,Andijan,Andijan,Mustaqillik ko'chasi 5-uy,+998901234568,gulnorausmonova,pass2345,+998901234569
+Javohir,Karimov,Botir o'g'li,2005-09-15,Male,Uzbek,Uzbekistan,Bukhara,Bukhara,Navoi ko'chasi 7-uy,+998909876545,javohirkarimov,pass3456,+998909876546
+Nilufar,Norova,Said qizi,2005-04-22,Female,Uzbek,Uzbekistan,Samarqand,Samarqand,Shirin ko'chasi 2-uy,+998907654321,nilufarnorova,pass4567,+998907654322
+Farhod,Safarov,Ravshan o'g'li,2005-11-03,Male,Uzbek,Uzbekistan,Khorezm,Khorezm,Do'stlik ko'chasi 6-uy,+998901234569,farhodsafarov,pass5678,+998901234570
+Shahnoza,Abdullayeva,Farrukh qizi,2005-06-27,Female,Uzbek,Uzbekistan,Kashkadarya,Kashkadarya,Yoshlik ko'chasi 8-uy,+998907654322,shahnozaabdullayeva,pass6789,+998907654323
+Bekzod,Turgunov,Shavkat o'g'li,2005-12-10,Male,Uzbek,Uzbekistan,Surkhandarya,Surkhandarya,Yangiobod ko'chasi 4-uy,+998909876547,bekzodturgunov,pass7890,+998909876548
+Lola,Makhmudova,Islom qizi,2005-02-14,Female,Uzbek,Uzbekistan,Jizzakh,Jizzakh,Oltinsoy ko'chasi 11-uy,+998907654324,lolamakhmudova,pass8901,+998907654325
+Sanjar,Akramov,Yusuf o'g'li,2005-08-19,Male,Uzbek,Uzbekistan,Navoi,Navoi,Beshkent ko'chasi 9-uy,+998909876549,sanjarakramov,pass9012,+998909876550
+Malika,Haydarova,Shokir qizi,2005-07-04,Female,Uzbek,Uzbekistan,Namangan,Namangan,Guliston ko'chasi 3-uy,+998901234571,malikahaydarova,pass0123,+998901234572
+Ulug'bek,Nabiev,Rashid o'g'li,2005-05-29,Male,Uzbek,Uzbekistan,Sirdaryo,Sirdaryo,Fidokor ko'chasi 10-uy,+998909876551,ulugbeknabiev,pass1234,+998909876552
+Dilnoza,Abdurahmonova,Ilhom qizi,2005-03-16,Female,Uzbek,Uzbekistan,Tashkent,Tashkent,Olmazor ko'chasi 12-uy,+998907654326,dilnozaabdurahmonova,pass2345,+998907654327
+Azamat,Ibragimov,Bahodir o'g'li,2005-01-01,Male,Uzbek,Uzbekistan,Fergana,Fergana,Farg'ona ko'chasi 13-uy,+998909876553,azamatibragimov,pass3456,+998909876554
+Durdona,Rashidova,Shukhrat qizi,2005-01-01,Female,Uzbek,Uzbekistan,Sirdaryo,Guliston,Guliston ko'chasi 8-uy,+998908765432,durdonar,pass2109,+998908765433
+Rustam,Khasanov,Azamat o'g'li,2005-02-21,Male,Uzbek,Uzbekistan,Jizzakh,Paxtakor,Paxtakor ko'chasi 13-uy,+998907654321,rustamk,pass1098,+998907654322
+Sardor,Ibragimov,Ibrohim o'g'li,2005-04-19,Male,Uzbek,Uzbekistan,Bukhara,Bukhara,Bukhara ko'chasi 5-uy,+998906543210,sardori,pass3210,+998906543211
+Madina,Saidova,Aziz qizi,2005-03-15,Female,Uzbek,Uzbekistan,Khorezm,Urgench,Urgench ko'chasi 7-uy,+998905432109,madinas,pass0987,+998905432110
+Muzaffar,Qodirov,Shokir o'g'li,2005-02-28,Male,Uzbek,Uzbekistan,Andijan,Asaka,Asaka ko'chasi 19-uy,+998904321098,muzaffarq,pass5432,+998904321099
+Marjona,Shaykhov,Shavkat qizi,2005-10-05,Female,Uzbek,Uzbekistan,Tashkent,Yashnobod,Yashnobod ko'chasi 18-uy,+998903210987,marjonash,pass6789,+998903210988
+Shoxrux,Rasulov,Jamshid o'g'li,2005-08-25,Male,Uzbek,Uzbekistan,Sirdaryo,Guliston,Guliston ko'chasi 11-uy,+998902109876,shoxruxr,pass3210,+998902109877
+Lobar,Abdullaeva,Shukur qizi,2005-05-20,Female,Uzbek,Uzbekistan,Navoi,Navoi,Navoi ko'chasi 15-uy,+998901098765,labarabdullaeva,pass2109,+998901098766
+Sarvar,Qoziyev,Aziz o'g'li,2005-12-14,Male,Uzbek,Uzbekistan,Andijan,Asaka,Asaka ko'chasi 14-uy,+998909876543,sarvarq,pass4321,+998909876544

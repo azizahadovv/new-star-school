@@ -1,0 +1,22 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: New Star School Backend
+  datasource:
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:data}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/nss?currentSchema=dev}
+  jpa:
+    hibernate:
+      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+    database: postgresql
+    open-in-view: false
+jwt:
+  secret: 645267556A586E3272357538782F413F4428472B4B6250655368566D59703373
+  expiration: 3600000
+  refreshExpiration: 604800000

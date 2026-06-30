@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: nss_user
+      POSTGRES_PASSWORD: nss_user
+      POSTGRES_DB: nss
+    ports:
+      - "5400:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  nss:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    environment:
+      - DB_USERNAME=nss_user
+      - DB_PASSWORD=nss_user
+      - DB_URL=jdbc:postgresql://postgres:5432/nss

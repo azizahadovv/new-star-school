@@ -1,0 +1,4 @@
+firstName,lastName,patronymic,birthDate,gender,nationality,country,region,district,address,phoneNumber,login,password,parentPhoneNumber
+Durdona,Rashidova,Shukhrat qizi,2005-01-01,Female,Uzbek,Uzbekistan,Sirdaryo,Guliston,Guliston ko'chasi 8-uy,+998908765432,durdonar,pass2109,+998908765433
+Rustam,Khasanov,Azamat o'g'li,2005-02-21,Male,Uzbek,Uzbekistan,Jizzakh,Paxtakor,Paxtakor ko'chasi 13-uy,+998907654321,rustamk,pass1098,+998907654322
+Sardor,Ibragimov,Ibrohim o'g'li,2005-04-19,Male,Uzbek,Uzbekistan,Bukhara,Bukhara,Bukhara ko'chasi 5-uy,+998906543210,sardori,pass3210,+998906543211
